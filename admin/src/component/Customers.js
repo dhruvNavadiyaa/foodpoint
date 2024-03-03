@@ -1,0 +1,155 @@
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import '../css/Util.css'
+import SideBar from './SideBar'
+
+export default function Customer() {
+
+  const hide = () => {
+    if (window.innerWidth <= 750) {
+      let sidebar, slide, main, title
+      sidebar = document.querySelector(".sidebar")
+      sidebar.classList.toggle("hide")
+
+      slide = document.querySelector(".slide")
+      slide.classList.toggle("moveSlide")
+
+      main = document.querySelector(".main")
+      main.classList.toggle("mainMove")
+      main.classList.toggle("mainDissable")
+
+      title = document.querySelector(".header")
+      title.classList.toggle("headerMove")
+    }
+  }
+  //SIDEBAR AND MAINCOMPONENT MOVEMENT FUNCTIONS
+  const hideS = () => {
+    let sidebar, slide, main, title
+    sidebar = document.querySelector(".sidebar")
+    sidebar.classList.toggle("hide")
+
+    slide = document.querySelector(".slide")
+    slide.classList.toggle("moveSlide")
+
+    main = document.querySelector(".main")
+    main.classList.toggle("mainMove")
+    main.classList.toggle("mainDissable")
+
+    title = document.querySelector(".header")
+    title.classList.toggle("headerMove")
+  }
+  const User = [
+    {
+      "_id": "65dd909a7dc90597113c56ff",
+      "name": "zxc",
+      "email": "dhruvna9@gmail.com",
+      "password": "$2b$04$.exGBa2EHvgRIC6V7QSJGe3cTBcOaQU6y2w8M7Rtk5wVdTnIHak1W",
+      "number": "81222",
+      "order": [{ name: "dhruv" }, { name: "om" }],
+      "createdAt": "2024-02-27T07:34:50.936Z",
+      "updatedAt": "2024-02-27T07:34:50.936Z",
+      "__v": 0
+    },
+    {
+      "_id": "65dd92b37dc90597113c5708",
+      "name": "qwe",
+      "email": "qwe@gmail.com",
+      "password": "$2b$04$Vtk1Fylg9Z3HV/ojPBWw9O26QgrKQB0JsPhFWidh0GQxvFgAWL2dC",
+      "number": "123",
+      "order": [{ name: "dhruv" }, { name: "om" }, { name: "dhruva" }, { name: "oma" }],
+      "createdAt": "2024-02-27T07:43:47.369Z",
+      "updatedAt": "2024-02-27T07:43:47.369Z",
+      "__v": 0
+    }
+  ]
+  const [customers, setCustomers] = useState([])
+  const getCustomers = async () => {
+    const response = await axios.get('http://localhost:5000/api/user/all')
+    console.log(response.data.User)
+    setCustomers(response.data.User)
+    // console.log(customers)
+  }
+  
+  useEffect(() => {
+    getCustomers()
+  }, [])
+  
+  const deleteUser = async(id) => {
+    const response = await axios.post('http://localhost:5000/api/user/delete',id)
+    console.log(response.data)
+  }
+
+  return (
+    <>
+      <SideBar />
+      <div className="container-fluid m-0 p-0" onClick={hide}>
+
+        <div className='container-fluid main mainDissable' onClick={hide}>
+
+          <div className="row header">
+            <div className='d-flex' >
+              <i className="bi bi-list rounded-circle slide box-shadow" onClick={hideS}></i>
+              <p className='fs-5 d-inline w-auto ms-auto me-2 font-light-thick me-3'>Hi! , dhruv</p>
+            </div>
+          </div >
+
+          <div className="row row2 ">
+            <div className="container-fluid m-0 p-0">
+
+              <div className='container-fluid px-3 py-2 me-5  '>
+                <h2 className='pageName py-3 ps-3'>Customers</h2>
+
+                <div className="orders border mt-4 p-3 box-shadow rounded" >
+
+                  <div className="row">
+                    <div className="col d-flex">
+                      {/* <select name="" id="" className='btn btn-outline-dark'>
+                        <option value="">Order</option>
+                        <option value="">Rupee</option>
+                      </select> */}
+                      <input type="text"
+                        placeholder='Search for User!'
+                        className='btn btn-light d-inline border ms-auto ' />
+                    </div>
+
+                  </div>
+                  <div className="row">
+                    <div className="col">
+                      <table className="table table-hover mt-3">
+                        <thead>
+                          <tr className='table-active'>
+                            <th scope="col">NAMEa</th>
+                            <th scope="col">ORDERS</th>
+                            <th scope="col">TYPE</th>
+                            <th scope="col">ACTION</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {
+                            customers.map((item) => {
+                              return (
+                                <tr key={item._id}>
+                                  <td >{item.name}</td>
+                                  <td>{item.order.length}</td>
+                                  <td>{item.number}</td>
+                                  <td className='d-flex align-items-center'>
+                                    <button className='d-inline btn btn-outline-danger btn-sm me-2' onClick={() => { deleteUser(item._id) }}>Delete</button>
+                                    {/* <button className='d-inline btn btn-outline-success btn-sm'>Type</button> */}
+                                  </td>
+                                </tr>
+                              )
+                            })
+                          }
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}

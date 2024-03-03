@@ -1,0 +1,113 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+.sidebar::-webkit-scrollbar {
+    width: 0.2vw;
+}
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: rgba(0,    0, 0, 0.150);
+    /* background-color: red; */
+    border-radius: 10px;
+}
+.sidebar {
+    position: absolute;
+    height: 100vh;
+    width: 22vw;
+    left: 0;
+    background-color: white;
+    transition: left 0.5s;
+    box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.100);
+    overflow: scroll;
+}
+.hide{
+    left: -22vw;
+}
+.main-logo {
+    height: 30px;
+    /* padding: 15px; */
+    /* background-color: rgb(229, 250, 251); */
+    border-radius: 70%;
+    transition: all 0.1s linear;
+}
+
+
+.pageHover:hover{
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.050);   
+}
+p{
+    margin: 0;
+}
+
+@media only screen and (max-width:750px){
+    .user-detail{
+        font-size: 10px;
+    }
+    .useName{
+        font-size: 15px;
+    }
+    .sidebar {
+        /* width: 35vw; */
+        width: 260px;
+        left: 0;
+        z-index: 3;
+    }
+    .hide{
+        left: -260px;
+    }
+    .slide {
+        padding: 2px 8px;
+        left: 215px;
+        top: 18px;
+        font-size: 16px;
+        padding: 0px 5px;
+    }
+    .moveSlide{
+        left: 275px;
+        top: 18px;
+    }
+}
+
+@media only screen and (min-width:750px){
+    .sidebar {
+        width: 220px;
+        /* width: 22vw; */
+        left: 0;    
+    }
+    .hide{
+        left: -250px;
+    }
+    .slide {
+        left: 175px;
+        top: 17px;
+        font-size: 18px;
+        padding: 0px 5px;
+    }
+    .moveSlide{
+        left: 267px;
+        top: 17px;
+    }
+}
+@media only screen and (min-width:1000px){
+    .sidebar {
+        height: 100vh;
+        width: 22vw;
+        left: 0;    
+    }
+    .hide{
+        left: -25vw;
+        /* transition: left 0.5s; */
+    }
+    .slide {
+        padding: 2px 8px;
+        left: 18vw;
+        top: 15px;
+        font-size: 20px;
+        padding: 0px 5px;
+    }
+    .moveSlide{
+        left: 26.5vw;
+    }
+    
+}

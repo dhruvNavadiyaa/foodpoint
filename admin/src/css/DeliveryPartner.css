@@ -1,0 +1,46 @@
+.card-delivery {
+    display: inline-block;
+    width: 225px;
+    height: 175px;
+    margin: 0px 2px;
+    border-radius: 15px;
+    /* background-color: rgba(215, 221, 227, 0.792); */
+    /* background-color: rgb(202, 217, 231); */
+    background-color: rgb(241 245 249);
+    /* overflow: hidden; */
+}
+.cardContent {
+    align-items: start;
+    margin-top: auto;
+    height: 100%;
+}
+.img-logo-delivery {
+    position: relative;
+    /* font-size: 100px; */
+    height: 60px;
+    /* padding: 15px; */
+    /* background-color: rgb(96, 237, 245); */
+    border-radius: 70%;
+    transition: all 0.1s linear;
+    top: -20px;
+    left: 10px;
+}
+.buttons{
+    background-color: transparent;
+    font-size: 17px;
+    padding: 5px 20px;
+    border: 1px solid black;
+    border-radius: 7px;
+}
+.font-danger{
+    color: red;
+    border: 1px solid red;
+}
+.font-success{
+    color: green;
+    border: 1px solid green;
+}
+.font-dark{
+    color: black;
+    border: 1px solid black;
+}

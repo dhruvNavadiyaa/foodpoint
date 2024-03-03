@@ -1,0 +1,16 @@
+.restro{
+    height: 200px;
+    width: 200px;
+    margin: 10px;
+    background-image: url('https://images.pexels.com/photos/2253643/pexels-photo-2253643.jpeg?auto=compress&cs=tinysrgb&w=600');
+    background-size: cover;
+    /* padding: 10px;    */
+}
+.restro-detail{
+    position: relative;
+    height: 130px;
+    width: 150px;
+    top: 100px;
+    margin: auto;
+    /* box-shadow: 10px 10px 10px black; */
+}

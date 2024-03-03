@@ -1,0 +1,30 @@
+.Restaurent-page {  
+    /* background-color: rgba(255, 166, 0, 0.100); */
+}
+.restaurents-component{
+    background-color: rgba(255, 166, 0, 0.200);
+}
+.reataurent{
+    height: 130px;
+    width: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.237);
+}
+.foodImg{
+    margin: auto;
+    width: 60%;
+    margin-top: 30%;
+}
+
+.items{
+    height: 150px;
+}
+.item-image{
+    height: 150px;
+    width: 100%;
+    border-radius: 10px;
+}
