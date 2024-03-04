@@ -36,17 +36,17 @@ const SideBar = () => {
                                 <Link to='/DeliveryPartner' className='text-decoration-none text-dark'>
                                     <p className='ps-3 h-40 pageHover mb-3'><i className="bi bi-truck me-3"></i> Delivery partner</p>
                                 </Link>
+                                <Link to='/Restaurant' className='text-decoration-none text-dark'>
+                                    <p className='ps-3 h-40 pageHover mb-3'><i className="bi bi-shop-window me-3"></i> Restaurant</p>
+                                </Link>
                                 <Link to='/Category' className='text-decoration-none text-dark'>
                                     <p className='ps-3 h-40 pageHover mb-3'><i className="bi bi-tag me-3"></i> Category</p>
                                 </Link>
                                 <Link to='/Request' className='text-decoration-none text-dark'>
                                     <p className='ps-3 h-40 pageHover mb-3'><i className="bi bi-list-ul me-3"></i> Request</p>
                                 </Link>
-                                <Link to='/Restaurant' className='text-decoration-none text-dark'>
-                                    <p className='ps-3 h-40 pageHover mb-3'><i className="bi bi-shop-window me-3"></i> Restaurant</p>
-                                </Link>
                                 <Link to='/ContactUs' className='text-decoration-none text-dark'>
-                                <p className='ps-3 h-40 pageHover'><i className="bi bi-phone-vibrate me-3"></i> Contact us</p>
+                                    <p className='ps-3 h-40 pageHover'><i className="bi bi-phone-vibrate me-3"></i> Contact us</p>
                                 </Link>
                             </div>
                         </div>
