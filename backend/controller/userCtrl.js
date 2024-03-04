@@ -45,7 +45,9 @@ const LoginUser = async(req,res)=>{
 
 
 const DeleteUser =async (req, res) => {
-    const deleteUser = await User.findByIdAndDelete(req?.body?.User_id)
+    // const deleteUser = await User.findByIdAndDelete(req?.body?.User_id)
+    const deleteUser = await User.deleteOne({_id : req?.body?.User_id})
+    console.log(deleteUser)
     res.send({
         "user": "User deleted"
     })

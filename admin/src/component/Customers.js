@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import '../css/Util.css'
+import '../css/Modal.css'
 import SideBar from './SideBar'
 
 export default function Customer() {
@@ -38,47 +39,52 @@ export default function Customer() {
     title = document.querySelector(".header")
     title.classList.toggle("headerMove")
   }
-  const User = [
-    {
-      "_id": "65dd909a7dc90597113c56ff",
-      "name": "zxc",
-      "email": "dhruvna9@gmail.com",
-      "password": "$2b$04$.exGBa2EHvgRIC6V7QSJGe3cTBcOaQU6y2w8M7Rtk5wVdTnIHak1W",
-      "number": "81222",
-      "order": [{ name: "dhruv" }, { name: "om" }],
-      "createdAt": "2024-02-27T07:34:50.936Z",
-      "updatedAt": "2024-02-27T07:34:50.936Z",
-      "__v": 0
-    },
-    {
-      "_id": "65dd92b37dc90597113c5708",
-      "name": "qwe",
-      "email": "qwe@gmail.com",
-      "password": "$2b$04$Vtk1Fylg9Z3HV/ojPBWw9O26QgrKQB0JsPhFWidh0GQxvFgAWL2dC",
-      "number": "123",
-      "order": [{ name: "dhruv" }, { name: "om" }, { name: "dhruva" }, { name: "oma" }],
-      "createdAt": "2024-02-27T07:43:47.369Z",
-      "updatedAt": "2024-02-27T07:43:47.369Z",
-      "__v": 0
-    }
-  ]
+  // const User = [
+  //   {
+  //     "_id": "65dd909a7dc90597113c56ff",
+  //     "name": "zxc",
+  //     "email": "dhruvna9@gmail.com",
+  //     "password": "$2b$04$.exGBa2EHvgRIC6V7QSJGe3cTBcOaQU6y2w8M7Rtk5wVdTnIHak1W",
+  //     "number": "81222",
+  //     "order": [{ name: "dhruv" }, { name: "om" }],
+  //     "createdAt": "2024-02-27T07:34:50.936Z",
+  //     "updatedAt": "2024-02-27T07:34:50.936Z",
+  //     "__v": 0
+  //   },
+  //   {
+  //     "_id": "65dd92b37dc90597113c5708",
+  //     "name": "qwe",
+  //     "email": "qwe@gmail.com",
+  //     "password": "$2b$04$Vtk1Fylg9Z3HV/ojPBWw9O26QgrKQB0JsPhFWidh0GQxvFgAWL2dC",
+  //     "number": "123",
+  //     "order": [{ name: "dhruv" }, { name: "om" }, { name: "dhruva" }, { name: "oma" }],
+  //     "createdAt": "2024-02-27T07:43:47.369Z",
+  //     "updatedAt": "2024-02-27T07:43:47.369Z",
+  //     "__v": 0
+  //   }
+  // ]
   const [customers, setCustomers] = useState([])
   const getCustomers = async () => {
     const response = await axios.get('http://localhost:5000/api/user/all')
-    console.log(response.data.User)
+    // console.log(response.data.User)
     setCustomers(response.data.User)
     // console.log(customers)
   }
-  
+
   useEffect(() => {
     getCustomers()
   }, [])
-  
-  const deleteUser = async(id) => {
-    const response = await axios.post('http://localhost:5000/api/user/delete',id)
-    console.log(response.data)
-  }
 
+  const [showModal, setShowModal] = useState(true)
+  const [currentId, setCurrentId] = useState('')
+
+  const deleteUser = async () => {
+    const User_id = currentId
+    const response = await axios.post('http://localhost:5000/api/user/delete', User_id)
+    console.log(response.data)
+    console.log(User_id)
+    setShowModal(true)
+  }
   return (
     <>
       <SideBar />
@@ -115,12 +121,12 @@ export default function Customer() {
                   </div>
                   <div className="row">
                     <div className="col">
-                      <table className="table table-hover mt-3">
-                        <thead>
-                          <tr className='table-active'>
-                            <th scope="col">NAMEa</th>
+                      <table className="table table-hover mt-3" >
+                        <thead className='table-active'>
+                          <tr className='fs-6'>
+                            <th scope="col ">NAME</th>
                             <th scope="col">ORDERS</th>
-                            <th scope="col">TYPE</th>
+                            <th scope="col">NUMBER</th>
                             <th scope="col">ACTION</th>
                           </tr>
                         </thead>
@@ -128,13 +134,20 @@ export default function Customer() {
                           {
                             customers.map((item) => {
                               return (
-                                <tr key={item._id}>
-                                  <td >{item.name}</td>
+                                <tr key={item._id} className=''>
+                                  <td className='fw-bold d-flex'>
+                                    <div>
+                                      <i className="bi bi-person-circle text-logo fs-2 me-2"></i>
+                                    </div>
+                                    <div>
+                                      {item.name} <br />
+                                      <small className='font-light-thick'>{item.email}</small>
+                                    </div>
+                                  </td>
                                   <td>{item.order.length}</td>
                                   <td>{item.number}</td>
-                                  <td className='d-flex align-items-center'>
-                                    <button className='d-inline btn btn-outline-danger btn-sm me-2' onClick={() => { deleteUser(item._id) }}>Delete</button>
-                                    {/* <button className='d-inline btn btn-outline-success btn-sm'>Type</button> */}
+                                  <td className='align-items-center'>
+                                    <button className='d-inline btn btn-outline-danger btn-sm me-2' onClick={() => { setShowModal(false); setCurrentId(`${item._id}`) }}>Delete</button>
                                   </td>
                                 </tr>
                               )
@@ -142,6 +155,22 @@ export default function Customer() {
                           }
                         </tbody>
                       </table>
+
+                      {/* MODAL */}
+                      <div className="modal-overlay" hidden={showModal}>
+                        <div className="modal-content bg-light p-4 box-shadow">
+                          <div className='text-center'>
+                            <img src="https://www.svgrepo.com/show/527338/question-circle.svg" alt="" className='w-25' />
+                            <p className='fs-3 fw-bold mt-2'>Are you sure?</p>
+                            <p className='font-light-thick'>You want to delete this User?</p>
+                          </div>
+                          <div className="modal-actions d-flex ms-auto mt-auto">
+                            <button className='btn btn-secondary me-2 px-3' onClick={() => setShowModal(true)}>Cancel</button>
+                            <button className='btn btn-danger px-3' onClick={deleteUser}>Ok</button>
+                          </div>
+                        </div>
+                      </div>
+
                     </div>
                   </div>
                 </div>

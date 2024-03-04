@@ -4,6 +4,7 @@ import SignUp from './component/SignUp'
 import Home from './component/Home'
 import Dashboard from './component/Dashboard'
 import Orders from './component/Orders'
+import Orderdetails from './component/Orderdetails'
 import Customers from './component/Customers'
 import DeliveryPartner from './component/DeliveryPartner'
 import Category from './component/Category'
@@ -21,6 +22,7 @@ function App() {
           <Route path='/signup' element={<SignUp/>}/>
           <Route path='/Dashboard' element={<Dashboard/>}/>
           <Route path='/Orders' element={<Orders/>}/>
+          <Route path='/Orderdetails' element={<Orderdetails/>}/>
           <Route path='/Customers' element={<Customers/>}/>
           <Route path='/DeliveryPartner' element={<DeliveryPartner/>}/>
           <Route path='/Category' element={<Category/>}/>

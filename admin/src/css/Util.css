@@ -23,3 +23,12 @@
 .text-sm{
     font-size: 13px;
 }
+.text-logo{
+    color: rgb(70, 181, 254);
+}
+.tableHover:hover{
+    background-color: black;
+}
+.bg-grey{
+    background-color: rgba(128, 128, 128, 0.300);
+}
