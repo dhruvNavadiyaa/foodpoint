@@ -39,6 +39,12 @@
 p{
     margin: 0;
 }
+.bg-sidebarOptions{
+    background-color:rgb(3, 201, 215);
+}
+.bg-sidebarOptions:hover{
+    background-color: rgb(3, 201, 215);
+}
 
 @media only screen and (max-width:750px){
     .user-detail{

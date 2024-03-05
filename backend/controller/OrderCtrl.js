@@ -21,6 +21,14 @@ const CreateOrder = async(req,res)=>{
 }
 
 
+const allOrder = async(req,res)=>{
+
+    const finde = await Order.find().sort( { "createdAt": 1 } )
+
+    res.send({
+        Orderinformation : create
+    })
+}
 
 
 export  { CreateOrder }

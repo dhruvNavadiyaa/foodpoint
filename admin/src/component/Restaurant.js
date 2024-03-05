@@ -2,6 +2,7 @@ import React from 'react'
 import '../css/Util.css'
 import '../css/Restaurant.css'
 import SideBar from './SideBar'
+import { useNavigate } from 'react-router-dom'
 
 export default function Restaurant() {
 
@@ -38,6 +39,10 @@ export default function Restaurant() {
         title = document.querySelector(".header")
         title.classList.toggle("headerMove")
     }
+    const navigation = useNavigate()
+    const getoRestautantdetails = ()=>{
+        navigation('/Restaurantdetails')
+    }
     return (
         <>
             <SideBar />
@@ -63,7 +68,7 @@ export default function Restaurant() {
                                     <div className='row mb-5'>
 
                                         {/* RESTAURENT CARDS */}
-                                        <div className='restro rounded box-shadow mb-5'>
+                                        <div className='restro rounded box-shadow mb-5' onClick={()=>getoRestautantdetails()}>
                                             <div className='restro-detail bg-light rounded box-shadow p-2'>
                                                 <small className='bg-success rounded px-2'>NEW</small>
                                                 <div className="overflow-hidden mt-1" style={{whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}} >

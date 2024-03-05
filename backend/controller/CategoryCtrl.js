@@ -18,14 +18,26 @@ const CreateCategory = async(req,res)=>{
 
 // featch All catagory with Resturent Id 
 
-const FeatchAll = async(req,res)=>{
-    const AllFeatch = await Category.find({
+const FetchWithId = async(req,res)=>{
+    const AllFetch = await Category.find({
         Resturant : req?.query?.Resturant_id
     })
     res.send({
-        AllProduct : AllFeatch
+        AllProduct : AllFetch
     })
 }
 
+const FetchAll = async(req,res)=>{
+    const AllFetch = await Category.find()
+    res.send({
+        AllProduct : AllFetch
+    })
+}
 
-export  { CreateCategory ,FeatchAll }
+const DeleteCategory = async (req, res) => {
+    const  deleteCatagory = await Category.deleteOne({_id : req?.body?.Category_id})
+    return res.send({
+        "ResturantDelete": "successfull"
+    })
+}
+export  { CreateCategory ,FetchWithId , FetchAll ,DeleteCategory}

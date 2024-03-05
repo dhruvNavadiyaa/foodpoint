@@ -65,7 +65,7 @@ const allDeliveryBoy =async (req, res) => {
 }
 
 const DeleteDeliveryBoy =async (req, res) => {
-    const deleteDeliveryBoy = await DeliveryBoy.findByIdAndDelete(req?.body?.DeliveryBoy_id)
+    const deleteDeliveryBoy = await DeliveryBoy.deleteOne({_id : req?.body?.DeliveryBoy_id})
     res.send({
         "user": "User deleted"
     })

@@ -39,6 +39,8 @@ const DeliveryBoySchema = new Schema({
         ref:'Order'
     }
     ],
+},{
+    timestamps : true,
 })
 
 

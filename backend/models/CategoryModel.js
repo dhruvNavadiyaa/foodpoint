@@ -20,6 +20,8 @@ const Category = new Schema({
         type: mongoose.Types.ObjectId,
         ref:'Resturant'
     }
+},{
+    timestamps : true,
 })
 
 export default mongoose.model('Category', Category);

@@ -50,10 +50,6 @@ const OrderSchema = new Schema({
         type: mongoose.Types.ObjectId,
         ref:'Review'
     },
-     createdAt: {
-        type: Date,
-        default: Date.now
-      },
       isreviewGiven:{
         forResturant:{
             type:Boolean,
@@ -65,6 +61,8 @@ const OrderSchema = new Schema({
         }
     },
     
+},{
+    timestamps : true,
 })
 
 export default mongoose.model('Order', OrderSchema);

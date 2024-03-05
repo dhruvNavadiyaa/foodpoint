@@ -10,6 +10,7 @@ import DeliveryPartner from './component/DeliveryPartner'
 import Category from './component/Category'
 import Request from './component/Request'
 import Restaurant from './component/Restaurant'
+import Restaurantdetails from './component/Restaurantdetails'
 import ContactUs from './component/ContactUs'
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path='/Category' element={<Category/>}/>
           <Route path='/Request' element={<Request/>}/>
           <Route path='/Restaurant' element={<Restaurant/>}/>
+          <Route path='/Restaurantdetails' element={<Restaurantdetails/>}/>
           <Route path='/ContactUs' element={<ContactUs/>}/>
         </Routes>
       </BrowserRouter>

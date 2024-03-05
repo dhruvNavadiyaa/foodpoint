@@ -82,7 +82,7 @@ const FeatchResturant = async (req, res) => {
 }
 
 const DeleteResturant = async (req, res) => {
-    const  featchAll = await Resturant.findByIdAndDelete(req?.body?.Resturant_id)
+    const  delteRest = await Resturant.deleteOne({_id : req?.body?.Resturant_id})
     return res.send({
         "ResturantDelete": "successfull"
     })

@@ -45,7 +45,7 @@ export default function Dashboard() {
     const dashboardDetails = async()=> {
         const response = await axios.get('http://localhost:5000/api/admin/dashboard')
         setDetails(response.data)
-        console.log(response.data)
+        // console.log(response.data)
     }
     useEffect(() => {
         dashboardDetails()

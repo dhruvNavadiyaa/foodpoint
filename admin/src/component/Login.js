@@ -66,7 +66,7 @@ const Login = () => {
                             required
                         />
                     </div>
-                    <button type="submit" className='w-100 py-2 btn btn-outline-danger'>Log In</button>
+                    <button type="submit" className='w-100 mt-2 py-2 btn btn-outline-danger'>Log In</button>
                 </form>
             </div>
         </div>

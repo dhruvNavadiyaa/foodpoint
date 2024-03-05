@@ -69,6 +69,8 @@ const resturantSchema = mongoose.Schema({
             ref:'Review'
         }
     ],
+},{
+    timestamps : true,
 })
 
 resturantSchema.pre('save', async function (next){

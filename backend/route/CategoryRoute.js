@@ -1,9 +1,11 @@
-import { CreateCategory ,FeatchAll } from '../controller/CategoryCtrl.js';
+import { CreateCategory ,FetchWithId , FetchAll , DeleteCategory } from '../controller/CategoryCtrl.js';
 import { Router } from 'express';
 
 const router = Router();
 router.route('/create').post(CreateCategory)
-router.route('/featch').get(FeatchAll)
+router.route('/fetch').get(FetchAll)
+router.route('/fetchid').get(FetchWithId)
+router.route('/delete').post(DeleteCategory)
 
 
 export default router

@@ -52,28 +52,38 @@ export default function DeliveryPartner() {
     const allDeliveryBoy = async () => {
         const response = await axios.get('http://localhost:5000/api/delivery/allfetch')
         setDeliveryBoys(response.data)
-        console.log(deliveryBoys)
+        // console.log(deliveryBoys)
     }
     
     useEffect(() => {
         allDeliveryBoy()
         setCurrentData(delivers.approved)
+        // console.log(currentData)
     }, [])
 
+    const [state,setState] = useState(false)
     const changeData = (change) => {
         
         if (change === 'pending') {
             // setCurrentData(deliveryBoys.pending)
+            setState(true);
             setCurrentData(delivers.pending)
         }
         else if(change === 'rejected') {
             // setCurrentData(deliveryBoys.rejected)
+            setState(true)
             setCurrentData(delivers.rejected)
         }
         else{
             // setCurrentData(deliveryBoys.rejected)
+            setState(false)
             setCurrentData(delivers.approved)
         }
+    };
+
+    const approveBoy = (no) => {
+        console.log(no)
+        
     }
 
     return (
@@ -131,7 +141,7 @@ export default function DeliveryPartner() {
                                                     <p className='ms-auto d-inline font-light-thick'>{item.no}</p>
                                                 </div>
                                                 <div className='d-flex justify-content-evenly mt-3'>
-                                                    <i className="bi bi-check-circle bg-light rounded-3 px-2 py-1 box-shadow font-success"></i>
+                                                    {state && <i className="bi bi-check-circle bg-light rounded-3 px-2 py-1 box-shadow font-success" onClick={()=>{approveBoy(index)}}></i>}
                                                     <i className="bi bi-x-circle bg-light rounded-3 px-2 py-1 box-shadow font-danger"></i>
                                                     <i className="bi bi-trash3 bg-light rounded-3 px-2 py-1 box-shadow font-dark"></i>
                                                 </div>

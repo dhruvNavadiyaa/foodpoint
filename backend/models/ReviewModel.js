@@ -26,6 +26,8 @@ const ReviewSchema = new Schema({
     itsFor: {
         type:String
     }
+},{
+    timestamps : true,
 })
 
 
