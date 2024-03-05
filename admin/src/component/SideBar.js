@@ -34,10 +34,14 @@ const SideBar = () => {
             let currentComponent = document.querySelector("#Restaurant")
             currentComponent.classList.add('bg-sidebarOptions')
         }
-        else if(path === '/Category'){
-            let currentComponent = document.querySelector("#Category")
+        else if(path === '/Restaurantdetails'){
+            let currentComponent = document.querySelector("#Restaurant")
             currentComponent.classList.add('bg-sidebarOptions')
         }
+        // else if(path === '/Category'){
+        //     let currentComponent = document.querySelector("#Category")
+        //     currentComponent.classList.add('bg-sidebarOptions')
+        // }
         else if(path === '/Request'){
             let currentComponent = document.querySelector("#Request")
             currentComponent.classList.add('bg-sidebarOptions')
@@ -88,9 +92,9 @@ const SideBar = () => {
                                 <Link to='/Restaurant' className='text-decoration-none text-dark'>
                                     <p className='ps-3 h-40 pageHover mb-3 rounded rounded-3' id='Restaurant'><i className="bi bi-shop-window me-3"></i> Restaurant</p>
                                 </Link>
-                                <Link to='/Category' className='text-decoration-none text-dark'>
+                                {/* <Link to='/Category' className='text-decoration-none text-dark'>
                                     <p className='ps-3 h-40 pageHover mb-3 rounded rounded-3' id='Category'><i className="bi bi-tag me-3"></i> Category</p>
-                                </Link>
+                                </Link> */}
                                 <Link to='/Request' className='text-decoration-none text-dark'>
                                     <p className='ps-3 h-40 pageHover mb-3 rounded rounded-3' id='Request'><i className="bi bi-list-ul me-3"></i> Request</p>
                                 </Link>

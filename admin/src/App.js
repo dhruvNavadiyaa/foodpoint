@@ -12,12 +12,11 @@ import Restaurant from './component/Restaurant'
 import Restaurantdetails from './component/Restaurantdetails'
 import ContactUs from './component/ContactUs'
 import Createadmin from './component/Createadmin'
-import {store} from './redux/store'
-import { Provider } from 'react-redux'
+
 function App() {
   return (
     <>
-    <Provider store={store}>
+   
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home/>}/>
@@ -35,7 +34,6 @@ function App() {
           <Route path='/Createadmin' element={<Createadmin  />}/>
         </Routes>
       </BrowserRouter>
-      </Provider>
     </>
   );
 }

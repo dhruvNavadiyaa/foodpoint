@@ -1,0 +1,21 @@
+/* .restroheader{ */
+    /* background-image: url('../assets/images/wallpaper.jpg'); */
+    /* background-size: cover; */
+    /* overflow: hidden; */
+    /* height: 50vh; */
+/* }
+.restroName{
+    margin: 60px 100px;
+    color: rgba(255, 255, 255, 0.900);
+    word-wrap: break-word;
+}
+.restroTitle{
+    font-size: 50px;
+} */
+
+.bg-purple{
+    background-color:rgb(174, 192, 241)
+}
+.bg-heading{
+    background-color: rgb(223, 237, 254);
+}
