@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from 'react'
 import '../css/MainContent.css'
+import { useSelector } from 'react-redux'
 
 const MainContent = () => {
 
@@ -36,7 +37,14 @@ const MainContent = () => {
         title = document.querySelector(".header")
         title.classList.toggle("headerMove")
     }
-    const [currentComponent, setCurrentComponent] = useState('Dashboard')
+
+    // const [currentComponent, setCurrentComponent] = useState('Dashboard')
+
+    const adminName = useSelector(state => state.admin.adminInfo.name)
+    // useEffect(()=>{
+        // console.log(adminName)
+    // },[])
+
     return (
         <>
 
@@ -47,7 +55,7 @@ const MainContent = () => {
                     <div className="row header">
                         <div className='d-flex' >
                             <i className="bi bi-list rounded-circle slide box-shadow" onClick={hideS}></i>
-                            <p className='fs-5 d-inline w-auto ms-auto me-2 font-light-thick me-3'>Hi! , dhruv</p>
+                            <p className='fs-5 d-inline w-auto ms-auto me-2 font-light-thick me-3'>Hi! , {adminName}</p>
                         </div>
                     </div >
 

@@ -3,8 +3,11 @@ import axios from 'axios'
 import '../css/Util.css'
 import '../css/Modal.css'
 import SideBar from './SideBar'
+import { useSelector } from 'react-redux'
 
 export default function Customer() {
+
+  const adminName = useSelector(state => state.admin.adminInfo.name)
 
   const hide = () => {
     if (window.innerWidth <= 750) {
@@ -95,7 +98,7 @@ export default function Customer() {
           <div className="row header">
             <div className='d-flex' >
               <i className="bi bi-list rounded-circle slide box-shadow" onClick={hideS}></i>
-              <p className='fs-5 d-inline w-auto ms-auto me-2 font-light-thick me-3'>Hi! , dhruv</p>
+              <p className='fs-5 d-inline w-auto ms-auto me-2 font-light-thick me-3'>Hi! , {adminName}</p>
             </div>
           </div >
 

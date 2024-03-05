@@ -32,3 +32,11 @@
 .bg-grey{
     background-color: rgba(128, 128, 128, 0.300);
 }
+
+.addAdminForm{
+    background-color: transparent;
+    border: none;
+}
+.addAdminForm:active{
+    border: none;
+}

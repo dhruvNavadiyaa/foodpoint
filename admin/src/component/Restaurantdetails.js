@@ -3,9 +3,11 @@ import '../css/Util.css'
 import '../css/Restaurant.css'
 import SideBar from './SideBar'
 import wallpaper from '../assets/images/wallpaper.jpg'
+import { useSelector } from 'react-redux'
 
 export default function Restaurantdetails() {
 
+    const adminName = useSelector(state => state.admin.adminInfo.name)
     const hide = () => {
         if (window.innerWidth <= 750) {
             let sidebar, slide, main, title
@@ -49,7 +51,7 @@ export default function Restaurantdetails() {
                     <div className="row header">
                         <div className='d-flex' >
                             <i className="bi bi-list rounded-circle slide box-shadow" onClick={hideS}></i>
-                            <p className='fs-5 d-inline w-auto ms-auto me-2 font-light-thick me-3'>Hi! , dhruv</p>
+                            <p className='fs-5 d-inline w-auto ms-auto me-2 font-light-thick me-3'>Hi! , {adminName}</p>
                         </div>
                     </div >
 

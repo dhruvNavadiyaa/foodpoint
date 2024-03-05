@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-// import { UseDispatch, useDispatch } from 'react-redux';
+import { UseDispatch, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import '../css/Login.css';
-// import { setUserDetails } from '../redux/user/userSlice'
+import { setAdminDetails } from '../redux/features/AdminSlice'
 
 const Login = () => {
 
     const navigate = useNavigate()
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [details, setDetails] = useState({});
@@ -19,26 +19,28 @@ const Login = () => {
     }
 
     const getdata = async () => {
-        // try {
-            // // const response = await axios.post('http://localhost:5000/api/user/signin', data);
-            // // console.log(details)
-            // if (!response.data.loginUser) {
-            //     alert("Pleas Enter valid detail!")
-            // }
-            // else {
-            //     setDetails(response.data.loginUser)
-            //     // console.log(details);
-            //     // dispatch(setUserDetails(details))
-            //     navigate('/')
-            // }
-        // } catch (error) {
-        //     console.log('Error fetching data:');
-        // }
+        try {
+            const response = await axios.post('http://localhost:5000/api/admin/signin', data);
+            // console.log(response.data.loginAdmin)
+            // console.log(details)
+            if (!response.data.loginAdmin) {
+                alert("Please Enter valid detail!")
+            }
+            else {
+                setDetails(response.data.loginUser)
+                // console.log(details);
+                dispatch(setAdminDetails(response.data.loginAdmin))
+                navigate('/')
+            }
+        } catch (error) {
+            console.log('Error fetching data:');
+        }
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async(event) => {
         event.preventDefault();
-        // getdata()
+        await getdata()
+        console.log(details)
     };
 
     return (

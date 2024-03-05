@@ -46,7 +46,10 @@ const SideBar = () => {
             let currentComponent = document.querySelector("#ContactUs")
             currentComponent.classList.add('bg-sidebarOptions')
         }
-
+        else if(path === '/Createadmin'){
+            let currentComponent = document.querySelector("#Createadmin")
+            currentComponent.classList.add('bg-sidebarOptions')
+        }
     }
     useEffect(() => {
         changeBgColor()
@@ -92,7 +95,10 @@ const SideBar = () => {
                                     <p className='ps-3 h-40 pageHover mb-3 rounded rounded-3' id='Request'><i className="bi bi-list-ul me-3"></i> Request</p>
                                 </Link>
                                 <Link to='/ContactUs' className='text-decoration-none text-dark'>
-                                    <p className='ps-3 h-40 pageHover rounded rounded-3' id='ContactUs'><i className="bi bi-phone-vibrate me-3"></i> Contact us</p>
+                                    <p className='ps-3 h-40 pageHover mb-3 rounded rounded-3' id='ContactUs'><i className="bi bi-phone-vibrate me-3"></i> Contact us</p>
+                                </Link>
+                                <Link to='/Createadmin' className='text-decoration-none text-dark'>
+                                    <p className='ps-3 h-40 pageHover mb-3 rounded rounded-3' id='Createadmin'><i className="bi bi-person-plus me-3"></i> Create Admin</p>
                                 </Link>
                             </div>
                         </div>
