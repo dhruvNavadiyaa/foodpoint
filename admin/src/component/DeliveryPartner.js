@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../css/Util.css'
 import '../css/DeliveryPartner.css'
+import '../css/MainContent.css'
 import SideBar from './SideBar'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
@@ -45,7 +46,7 @@ export default function DeliveryPartner() {
     const delivers = {
         "approved": [{ name: "yash", no: 8140974832, email:"xyz@gmail.com" }],
         "pending": [{ name: "jaydeep", no: 8140974832, email:"xyz@gmail.com" }, { name: "deep", no: 8122281222, email:"xyz@gmail.com" }],
-        "rejected": [{ name: "jaydeep", no: 8140974832, email:"xyz@gmail.com" }, { name: "deep", no: 8122281222, email:"xyz@gmail.com" }, { name: "yash", no: 8122281222, email:"xyz@gmail.com" }]
+        "rejected": [{ name: "jaydeep", no: 8140974832, email:"xyz@gmail.com" }, { name: "deep", no: 8122281222, email:"xyz@gmail.com" }, { name: "dhruv asodariya", no: 8122281222, email:"asodariya@gmail.com" }]
     }
 
     const [deliveryBoys, setDeliveryBoys] = useState({})

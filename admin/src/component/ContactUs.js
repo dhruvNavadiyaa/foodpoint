@@ -1,5 +1,6 @@
 import React from 'react'
 import '../css/Util.css'
+import '../css/MainContent.css'
 import SideBar from './SideBar'
 import { useSelector } from 'react-redux'
 

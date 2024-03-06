@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link,useNavigate } from 'react-router-dom'
 import '../css/Util.css'
+import '../css/MainContent.css'
 import SideBar from './SideBar'
 import { useSelector } from 'react-redux'
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import '../css/Util.css'
 import '../css/Restaurant.css'
+import '../css/MainContent.css'
 import SideBar from './SideBar'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'

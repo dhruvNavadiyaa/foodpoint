@@ -1,6 +1,7 @@
 import React from 'react'
 import '../css/Util.css'
 import '../css/Restaurantdetails.css'
+import '../css/MainContent.css'
 import SideBar from './SideBar'
 import foodLogo from '../assets/images/foodLogo.png'
 import { useSelector } from 'react-redux'

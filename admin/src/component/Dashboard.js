@@ -1,5 +1,6 @@
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
+import '../css/MainContent.css'
 import '../css/Dashboard.css'
 import '../css/Util.css'
 import SideBar from './SideBar'

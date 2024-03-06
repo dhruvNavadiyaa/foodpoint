@@ -10,7 +10,7 @@ const SideBar = () => {
     const changeBgColor = () => {
         let path = location.pathname
         // console.log(path)
-        if(path === '/Dashboard'){
+        if(path === '/'){
             let currentComponent = document.querySelector("#Dashboard")
             currentComponent.classList.add('bg-sidebarOptions')
         }
@@ -72,7 +72,7 @@ const SideBar = () => {
                         <div className="project">
                             <p className='mt-2 fs-6  font-light-thick h-40' id='Home'>DASHBOARD</p>
                             <div>
-                                <Link to='/Dashboard' className='text-decoration-none text-dark'>
+                                <Link to='/' className='text-decoration-none text-dark'>
                                     <p className='ps-3 h-40 rounded rounded-3 pageHover' id='Dashboard'><i className="bi bi-suitcase-lg me-3"></i> Dashboard</p>
                                 </Link>
                             </div>

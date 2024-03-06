@@ -30,7 +30,7 @@ const Login = () => {
                 setDetails(response.data.loginUser)
                 // console.log(details);
                 dispatch(setAdminDetails(response.data.loginAdmin))
-                navigate('/Dashboard')
+                navigate('/')
             }
         } catch (error) {
             console.log('Error fetching data:');

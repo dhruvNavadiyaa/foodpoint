@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import '../css/Util.css'
 import '../css/Modal.css'
+import '../css/MainContent.css'
 import SideBar from './SideBar'
 import { useSelector } from 'react-redux'
 
