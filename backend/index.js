@@ -2,6 +2,7 @@ import express from "express";
 import db from "./db.js";
 import dotenv from 'dotenv'
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import user from './route/userRoute.js'
 import delivery from './route/DeliveryBoyRoute.js'
 import resturant from './route/ResturantRoute.js'
@@ -13,6 +14,7 @@ const app = express();
 app.use(express.json())
 db()
 app.use(cors())
+app.use(cookieParser())
 app.use("/api/user",user)
 app.use("/api/delivery",delivery)
 app.use("/api/resturant",resturant)

@@ -41,6 +41,7 @@ p{
 }
 .bg-sidebarOptions{
     background-color:rgb(3, 201, 215);
+    color: white;
 }
 .bg-sidebarOptions:hover{
     background-color: rgb(3, 201, 215);
@@ -62,13 +63,13 @@ p{
     .hide{
         left: -260px;
     }
-    .slide {
+    /* .slide {
         padding: 2px 8px;
         left: 215px;
         top: 18px;
         font-size: 16px;
         padding: 0px 5px;
-    }
+    } */
     .moveSlide{
         left: 275px;
         top: 18px;
@@ -84,12 +85,12 @@ p{
     .hide{
         left: -250px;
     }
-    .slide {
+    /* .slide {
         left: 175px;
         top: 17px;
         font-size: 18px;
         padding: 0px 5px;
-    }
+    } */
     .moveSlide{
         left: 267px;
         top: 17px;
@@ -105,13 +106,13 @@ p{
         left: -25vw;
         /* transition: left 0.5s; */
     }
-    .slide {
+    /* .slide {
         padding: 2px 8px;
         left: 18vw;
         top: 15px;
         font-size: 20px;
         padding: 0px 5px;
-    }
+    } */
     .moveSlide{
         left: 26.5vw;
     }

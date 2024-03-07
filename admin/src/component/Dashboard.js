@@ -5,10 +5,12 @@ import '../css/Dashboard.css'
 import '../css/Util.css'
 import SideBar from './SideBar'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 export default function Dashboard() {
 
-    const adminName = useSelector(state => state.admin.adminInfo.name)
+    // const adminName = useSelector(state => state.admin.adminInfo.name)
+    const navigate = useNavigate()
     const hide = () => {
         if (window.innerWidth <= 750) {
             let sidebar, slide, main, title
@@ -50,6 +52,15 @@ export default function Dashboard() {
         setDetails(response.data)
         // console.log(response.data)
     }
+    const adminName = useSelector(state => state.admin.adminInfo.name);
+    // const checkAdmin = async()=>{
+    //     if(!adminName){
+    //         navigate('/login')
+    //     }
+    //     else{
+    //         dashboardDetails()
+    //     }
+    // }
     useEffect(() => {
         dashboardDetails()
     },[]) 

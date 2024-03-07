@@ -20,7 +20,7 @@ const CreateCategory = async(req,res)=>{
 
 const FetchWithId = async(req,res)=>{
     const AllFetch = await Category.find({
-        Resturant : req?.query?.Resturant_id
+        Resturant : req?.body?.Resturant_id
     })
     res.send({
         AllProduct : AllFetch

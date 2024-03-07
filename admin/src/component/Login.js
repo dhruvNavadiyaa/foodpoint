@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { UseDispatch, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import '../css/Login.css';
@@ -21,16 +21,14 @@ const Login = () => {
     const getdata = async () => {
         try {
             const response = await axios.post('http://localhost:5000/api/admin/signin', data);
-            // console.log(response.data.loginAdmin)
-            // console.log(details)
-            if (!response.data.loginAdmin) {
-                alert("Please Enter valid detail!")
+            if (response.data.login === true) {
+                console.log(response.data)
+                // console.log(response.data.login)
+                dispatch(setAdminDetails(response.data.adminInfo))
+                navigate('/Dashboard')
             }
             else {
-                setDetails(response.data.loginUser)
-                // console.log(details);
-                dispatch(setAdminDetails(response.data.loginAdmin))
-                navigate('/')
+                alert("Your Email Id and Password are incorrect!")
             }
         } catch (error) {
             console.log('Error fetching data:');
@@ -39,8 +37,8 @@ const Login = () => {
 
     const handleSubmit = async(event) => {
         event.preventDefault();
-        await getdata()
-        console.log(details)
+        getdata()
+        // console.log(details)
     };
 
     return (
