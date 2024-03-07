@@ -21,17 +21,17 @@ const Login = () => {
     const getdata = async () => {
         try {
             const response = await axios.post('http://localhost:5000/api/admin/signin', data);
+            // console.log(response)
             if (response.data.login === true) {
-                console.log(response.data)
-                // console.log(response.data.login)
-                dispatch(setAdminDetails(response.data.adminInfo))
+                // console.log(response.data)
+                dispatch(setAdminDetails(response.data))
                 navigate('/Dashboard')
             }
             else {
                 alert("Your Email Id and Password are incorrect!")
             }
         } catch (error) {
-            console.log('Error fetching data:');
+            console.log('Error fetching data:' , error);
         }
     }
 

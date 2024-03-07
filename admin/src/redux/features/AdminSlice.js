@@ -3,10 +3,12 @@ import { createSlice } from '@reduxjs/toolkit';
 export const adminSlice = createSlice({
   name: 'admin',
   initialState: {
-    adminInfo: null
+    login: false,
+    adminInfo: {}
   },
   reducers: {
     setAdminDetails: (state, action) => {
+      state.login = action.payload.login
       state.adminInfo = action.payload;
     },
     clearAdminDetails: (state) => {
