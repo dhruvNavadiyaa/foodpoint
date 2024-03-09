@@ -1,0 +1,9 @@
+.front-img{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+    top: -30vh;
+    background-image: url('../assets/images/p5.jpg');
+    background-size: cover;
+}

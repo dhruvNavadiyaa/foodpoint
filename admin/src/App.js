@@ -19,20 +19,20 @@ import { useSelector } from 'react-redux'
 function App() {
   // let status = ''
   const refresh = async () => {
-    const response = await axios.post('http://localhost:5000/api/admin/refresh');
-    console.log(response.data)
+    const response = await axios.post('http://localhost:5000/api/admin/refresh',{},{withCredentials:true});
+    // console.log(response.data)
     // status = response.data.token
   }
   const login = useSelector(state => state.admin.login)
   useEffect(() => {
     refresh()
-    console.log(login)
+    // console.log(login)
   }, [])
   return (
     <>
       <BrowserRouter>
         <Routes>
-          {login === false ? (<Route path='/' element={<Login />} />):(<>
+          {!login ? (<Route path='/' element={<Login />} />):(<>
               <Route path='/Dashboard' element={<Dashboard />} />
               <Route path='/Orders' element={<Orders />} />
               <Route path='/Orderdetails' element={<Orderdetails />} />

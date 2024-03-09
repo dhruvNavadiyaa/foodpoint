@@ -20,9 +20,9 @@ const Login = () => {
 
     const getdata = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/api/admin/signin', data);
-            // console.log(response)
+            const response = await axios.post('http://localhost:5000/api/admin/signin', data,{withCredentials:true});
             if (response.data.login === true) {
+                // console.log(response)
                 // console.log(response.data)
                 dispatch(setAdminDetails(response.data))
                 navigate('/Dashboard')

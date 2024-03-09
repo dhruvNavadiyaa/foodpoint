@@ -13,7 +13,11 @@ dotenv.config()
 const app = express();
 app.use(express.json())
 db()
-app.use(cors())
+const corsOptions = {
+    origin : true,
+    credentials : true
+}
+app.use(cors(corsOptions))
 app.use(cookieParser())
 app.use("/api/user",user)
 app.use("/api/delivery",delivery)
