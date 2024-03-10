@@ -4,3 +4,10 @@
 .title{
     width: 50px;
 }
+.font-light-thick{
+    color: rgba(0, 0, 0, 0.400);
+    font-weight: 600;
+}
+.box-shadow{
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.200);
+}

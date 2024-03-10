@@ -1,0 +1,19 @@
+.file-upload::-webkit-file-upload-button{
+    padding: 7px 15px;
+    font-size: 15px;
+    color: white;
+    background-color: rgb(33, 37, 41);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: none;
+    margin-right: 10px;
+}
+.form-input{
+    background-color: rgb(243, 244, 246);
+    border: 1px solid rgba(0, 0, 0, 0.100);
+    border-radius: 5px;
+}
+.label-text{
+    color: rgba(0, 0, 0, 0.800);
+    font-weight: 600;
+}
