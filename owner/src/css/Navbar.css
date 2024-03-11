@@ -18,7 +18,9 @@ li{
 .bg-navitem{
     /* padding: ; */
     /* background-color: rgb(226, 232, 240); */
-    background: linear-gradient(45deg, rgb(253, 244, 181),rgb(184, 201, 246),rgb(251, 214, 212));
+    /* background: linear-gradient(45deg, rgb(253, 244, 181),rgb(184, 201, 246),rgb(251, 214, 212)); */
+    background-color: rgba(28, 39, 76, 0.879);
+    color: white;
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.200);
 }
 
