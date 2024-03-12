@@ -16,10 +16,10 @@ const Footer = () => {
           <div className="col-md-4 col-6 mb-3 ">
             <h5 className="text-uppercase mb-4">Follow Us</h5>
             <ul className="list-unstyled d-flex justify-content-evenly">
-              <i class="bi bi-facebook fs-2"></i>
-              <i class="bi bi-twitter-x fs-2"></i>
-              <i class="bi bi-instagram fs-2"></i>
-              <i class="bi bi-threads fs-2"></i>
+              <i className="bi bi-facebook fs-2"></i>
+              <i className="bi bi-twitter-x fs-2"></i>
+              <i className="bi bi-instagram fs-2"></i>
+              <i className="bi bi-threads fs-2"></i>
             </ul>
           </div>
 

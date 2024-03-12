@@ -6,8 +6,8 @@ import '../css/Navbar.css'
 export default function Navbar() {
 
   const location = useLocation()
+  const path = location.pathname
   const changeBgColor = () => {
-    let path = location.pathname
     // console.log(path)
     if (path === '/Home') {
       let cComponent = document.querySelector("#Home")
@@ -34,9 +34,24 @@ export default function Navbar() {
       cComponent.classList.add('bg-navitem')
     }
   }
+
+  // const changeBgColor = (c) => {
+  //   const elements = document.querySelectorAll('.bg-navitem');
+  //   elements.forEach(element => {
+  //     element.classList.remove('bg-navitem');
+  //   });
+
+  //   console.log(c);
+  //   const element = document.querySelector(`#${c}`);
+  //   if (element) {
+  //     element.classList.add('bg-navitem');
+  //   } else {
+  //     console.error(`Element with ID ${c} not found.`);
+  //   }
+  // };
   useEffect(() => {
     changeBgColor()
-  }, [])
+  }, [path])
 
   return (
     <nav>
@@ -66,23 +81,23 @@ export default function Navbar() {
         <div className='col-8  d-md-block d-none'>
           <div className='d-flex justify-content-evenly'>
             <Link to='/Home' className='text-dark text-decoration-none'>
-              <li className='p-2 rounded rounded-3' id='Home'>Home</li>
+              <li className='p-2 rounded rounded-3' id='Home' onClick={() => changeBgColor("Home")}>Home</li>
             </Link>
             {/* <li className='p-2 rounded rounded-3'>Search</li> */}
             <Link to='/OrderList' className='text-dark text-decoration-none'>
-              <li className='p-2 rounded rounded-3' id='OrderList'>Order List</li>
+              <li className='p-2 rounded rounded-3' id='OrderList' onClick={() => changeBgColor("OrderList")}>Order List</li>
             </Link>
             <Link to='/AddProduct' className='text-dark text-decoration-none'>
-              <li className='p-2 rounded rounded-3' id='AddProduct'>Add Product</li>
+              <li className='p-2 rounded rounded-3' id='AddProduct' onClick={changeBgColor}>Add Product</li>
             </Link>
             <Link to='/YourProducts' className='text-dark text-decoration-none'>
-              <li className='p-2 rounded rounded-3' id='YourProducts'>Your Products</li>
+              <li className='p-2 rounded rounded-3' id='YourProducts' onClick={changeBgColor}>Your Products</li>
             </Link>
             <Link to='/ContactUs' className='text-dark text-decoration-none'>
-              <li className='p-2 rounded rounded-3' id='ContactUs'>Contact Us</li>
+              <li className='p-2 rounded rounded-3' id='ContactUs' onClick={changeBgColor}>Contact Us</li>
             </Link>
             <Link to='/Profile' className='text-dark text-decoration-none'>
-            <li className='p-2 rounded rounded-3' id='Profile'>Profile</li>
+              <li className='p-2 rounded rounded-3' id='Profile' onClick={changeBgColor}>Profile</li>
             </Link>
           </div>
         </div>

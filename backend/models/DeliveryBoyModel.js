@@ -1,5 +1,6 @@
 import mongoose , {Schema} from "mongoose";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 
 const DeliveryBoySchema = new Schema({
@@ -39,6 +40,9 @@ const DeliveryBoySchema = new Schema({
         ref:'Order'
     }
     ],
+    refreshToken:{
+        type: String,
+    }
 },{
     timestamps : true,
 })
@@ -54,7 +58,30 @@ DeliveryBoySchema.methods.isPasswordCorrect = async function(password){
     return await bcrypt.compare(password, this.password)
 }
 
+DeliveryBoySchema.methods.generateAccessToken = async function(){
+    return jwt.sign(
+        {
+            _id : this._id,
+            email : this.email,
+    },
+    process.env.ACCESS_TOKEN_SECRET,
+    {
+        expiresIn:process.env.ACCESS_TOKEN_EXPIRY
+    }
+    )
+}
 
+DeliveryBoySchema.methods.generateRefreshToken = async function(){
+    return jwt.sign(
+        {
+            _id : this._id
+    },
+    process.env.REFRESH_TOKEN_SECRET,
+    {
+        expiresIn:process.env.REFRESH_TOKEN_EXPIRY
+    }
+    )
+}
 
 
 

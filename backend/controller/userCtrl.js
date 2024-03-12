@@ -1,5 +1,14 @@
 import User from "../models/UserModel.js";
+import jwt  from "jsonwebtoken";
 
+const generateAccesssAndRefreshToken = async(_id) => {
+    const userFind = await User.findById(_id)
+    const accessToken = await userFind.generateAccessToken()
+    const refreshToken = await userFind.generateRefreshToken()
+    userFind.refreshToken=refreshToken
+    userFind.save({validateBeforeSave: false})
+    return { accessToken , refreshToken}
+  }
 
 const CreateUser = async(req,res)=>{
     const exists = await User.findOne({
@@ -27,19 +36,30 @@ const LoginUser = async(req,res)=>{
     })
     if(!loginUser) {
         return res.send({
-            "login" :"failed",
+            login: false,
         })
     }
     const password = await loginUser.isPasswordCorrect(req?.body?.password)
-    if(password){
-    return   res.send({
-        loginUser 
-    })
-}
-
-    return res.send({
-        "login": "failed"
-    })
+    if (!password) {
+        return res.send({
+          login: false
+        });
+      }
+      const { accessToken , refreshToken} = await generateAccesssAndRefreshToken(loginUser._id)
+      const userInfo= await User.findById(loginUser._id).select("-password -refreshToken")
+      const options={
+         httpOnly : true,
+         secure : true
+       }
+       return res
+       .cookie("accessToken", accessToken ,options )
+       .cookie("refreshToken", refreshToken ,options )
+       .json({
+         login : true,
+         userInfo ,
+         accessToken,
+         refreshToken
+       });
         
 }
 
@@ -60,4 +80,39 @@ const AllUser = async(req ,res)=>{
     })
 }
 
-export { CreateUser , LoginUser ,AllUser ,DeleteUser}
+
+
+const RefreshTokenEndPoint  = async (req, res) => {
+    const refreshToken = req?.cookies?.refreshToken || req?.body?.refreshToken || req?.header("Authorization")?.replace("Bearer ","")
+    if(!refreshToken){
+      return res.send({
+        login : false,
+        "Token": "UnAuthorized",
+      });
+    }
+    const veriftoken = jwt.verify(refreshToken , process.env.REFRESH_TOKEN_SECRET)
+
+    const userFind = await User.findById(veriftoken._id).select("-password")
+    if (!userFind) {
+      return res.send({
+        login : false,
+        "Token": "UnAuthorized",
+      });
+    }
+    if(!refreshToken == userFind.refreshToken){
+        return res.send({
+          login : false,
+            "Token": "UnAuthorized",
+          });
+      }
+    const userInfo = await User.findById(veriftoken._id).select("-password -refreshToken")
+    const accessToken = await userInfo.generateAccessToken()
+
+    return res.send({
+      login : true,
+      userInfo,
+      accessToken
+    });
+}
+
+export { CreateUser , LoginUser ,AllUser ,DeleteUser ,RefreshTokenEndPoint}

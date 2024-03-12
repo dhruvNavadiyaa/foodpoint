@@ -12,10 +12,6 @@ const Category = new Schema({
         type: Boolean,
         default:true
     },
-    product: [{
-        type: mongoose.Types.ObjectId,
-        ref:'Product'
-    }] ,
     Resturant : {
         type: mongoose.Types.ObjectId,
         ref:'Resturant'

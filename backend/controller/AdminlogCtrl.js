@@ -34,21 +34,19 @@ const LoginAdmin = async (req, res) => {
     return res.send({
       login: false
     });
-    
   }
     const { accessToken , refreshToken} = await generateAccesssAndRefreshToken(loginAdmin._id)
-      const AdminFind = await Admin.findById(loginAdmin._id).select("-password -refreshToken")
+      const adminFind = await Admin.findById(loginAdmin._id).select("-password -refreshToken")
       const options={
         httpOnly : true,
-        secure : true
+        secure : true,
       }
-
     return res
     .cookie("accessToken", accessToken ,options )
     .cookie("refreshToken", refreshToken ,options )
     .json({
       login : true,
-      adminInfo : AdminFind ,
+      adminInfo : adminFind ,
       accessToken,
       refreshToken
     });
@@ -56,37 +54,45 @@ const LoginAdmin = async (req, res) => {
 
 
 const generateAccesssAndRefreshToken = async(_id) => {
-      const AdminFind = await Admin.findById(_id)
-      const accessToken = await AdminFind.generateAccessToken()
-      const refreshToken = await AdminFind.generateRefreshToken()
-      AdminFind.refreshToken=refreshToken
-      AdminFind.save({validateBeforeSave: false})
+      const adminFind = await Admin.findById(_id)
+      const accessToken = await adminFind.generateAccessToken()
+      const refreshToken = await adminFind.generateRefreshToken()
+      adminFind.refreshToken=refreshToken
+      adminFind.save({validateBeforeSave: false})
       return { accessToken , refreshToken}
     }
 
 
     const RefreshTokenEndPoint = async (req, res)=> {
       const refreshToken = req?.cookies?.refreshToken || req?.body?.refreshToken || req?.header("Authorization")?.replace("Bearer ","")
+      console.log(req?.cookies)
       if(!refreshToken){
         return res.send({
+        login : false,
           "Token": "UnAuthorized",
         });
       }
       const veriftoken = jwt.verify(refreshToken , process.env.REFRESH_TOKEN_SECRET)
 
-      const AdminFind = await Admin.findById(veriftoken._id).select("-password -refreshToken")
-      if (!AdminFind) {
+      const adminFind = await Admin.findById(veriftoken._id).select("-password")
+      if (!adminFind) {
         return res.send({
+        login : false,
           "Token": "UnAuthorized",
         });
       }
-      const accessToken = await AdminFind.generateAccessToken()
-
+      if(!refreshToken == adminFind.refreshToken){
+        return res.send({
+          login : false,
+            "Token": "UnAuthorized",
+          });
+      }
+      const accessToken = await adminFind.generateAccessToken()
+      const adminInfo = await Admin.findById(veriftoken._id).select("-password -refreshToken")
       return res.send({
         login : true,
-        adminInfo : AdminFind,
+        adminInfo ,
         accessToken
       });
-      // req.admin = admin
     } 
 export { CreateAdmin, LoginAdmin , RefreshTokenEndPoint };

@@ -49,7 +49,7 @@ adminSchema.methods.generateAccessToken = async function(){
     )
 }
 
-adminSchema.methods.generateRefreshToken = async function(password){
+adminSchema.methods.generateRefreshToken = async function(){
     return jwt.sign(
         {
             _id : this._id

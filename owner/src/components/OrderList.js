@@ -4,11 +4,12 @@ import '../css/Util.css'
 import Footer from './Footer';
 
 export default function OrderList() {
+    
     return (
         <>
             <Navbar />
             <div className='row m-0 p-3'>
-                <div className="col p-3 border box-shadow" style={{ marginTop: '100px' }}>
+                <div className="col p-3 border box-shadow" style={{ marginTop: '100px', marginBottom:'50vh' }}>
                     <h3 className='fw-bold'>&#x2022; Order Summary</h3>
                     <table className="table table-hover">
                         <thead>
@@ -36,13 +37,6 @@ export default function OrderList() {
                                 <td>Otto</td>
                                 <td>@mdo</td>
                                 <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                                <td>@fat</td>
                             </tr>
                         </tbody>
                     </table>

@@ -13,8 +13,6 @@ const CreateProduct = async(req,res)=>{
         resturnat  : req?.body?.resturnat_id,
         description  : req?.body?.description
     })
-    const pushcat = await Category.findByIdAndUpdate(req?.body?.category_id,{ $push:{product : req?.body?.create._id } })
-    const pushRes = await Category.findByIdAndUpdate(req?.body?.resturnat_id,{ $push:{product : req?.body?.create._id } })
     res.send({
         Productinformation : create
     })
@@ -31,5 +29,15 @@ const CatagoryProuct = async(req,res)=>{
         AllProduct : AllFeatch
     })
 }
+const ResturentProuct = async(req,res)=>{
+    const AllFeatch = await Product.aggregate([{
+        $match: {
+          resturnat : req?.body?.resturnat_id
+        }
+      }])
+      res.send({
+        AllProduct : AllFeatch
+    })
+}
 
-export  { CreateProduct , CatagoryProuct }
+export  { CreateProduct , CatagoryProuct ,ResturentProuct}

@@ -19,32 +19,42 @@ import { useSelector } from 'react-redux'
 function App() {
   // let status = ''
   const refresh = async () => {
-    const response = await axios.post('http://localhost:5000/api/admin/refresh',{},{withCredentials:true});
-    // console.log(response.data)
-    // status = response.data.token
+    try {
+        const response = await axios.post('http://localhost:5000/api/admin/refresh', {}, { withCredentials: true });
+        if (response.data.login === true) {
+          // console.log(response)
+          // console.log(response.data)
+          dispatch(setRestroDetails(response.data))
+          navigate('/Home')
+        }
+        else{
+          navigate('/Login')
+        }
+      } catch (error) {
+        console.log('Error fetching data:', error);
+      }
   }
   const login = useSelector(state => state.admin.login)
   useEffect(() => {
     refresh()
-    // console.log(login)
   }, [])
   return (
     <>
       <BrowserRouter>
         <Routes>
-          {!login ? (<Route path='/' element={<Login />} />):(<>
-              <Route path='/Dashboard' element={<Dashboard />} />
-              <Route path='/Orders' element={<Orders />} />
-              <Route path='/Orderdetails' element={<Orderdetails />} />
-              <Route path='/Customers' element={<Customers />} />
-              <Route path='/DeliveryPartner' element={<DeliveryPartner />} />
-              <Route path='/Category' element={<Category />} />
-              <Route path='/Request' element={<Request />} />
-              <Route path='/Restaurant' element={<Restaurant />} />
-              <Route path='/Restaurantdetails' element={<Restaurantdetails />} />
-              <Route path='/ContactUs' element={<ContactUs />} />
-              <Route path='/Createadmin' element={<Createadmin />} />
-            </>)
+          {!login ? (<Route path='/' element={<Login />} />) : (<>
+            <Route path='/Dashboard' element={<Dashboard />} />
+            <Route path='/Orders' element={<Orders />} />
+            <Route path='/Orderdetails' element={<Orderdetails />} />
+            <Route path='/Customers' element={<Customers />} />
+            <Route path='/DeliveryPartner' element={<DeliveryPartner />} />
+            <Route path='/Category' element={<Category />} />
+            <Route path='/Request' element={<Request />} />
+            <Route path='/Restaurant' element={<Restaurant />} />
+            <Route path='/Restaurantdetails' element={<Restaurantdetails />} />
+            <Route path='/ContactUs' element={<ContactUs />} />
+            <Route path='/Createadmin' element={<Createadmin />} />
+          </>)
           }
         </Routes>
       </BrowserRouter>
