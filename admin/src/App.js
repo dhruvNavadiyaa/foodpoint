@@ -33,7 +33,7 @@ function App() {
           // navigate('/Dashboard')
         }
         else{
-          navigate('/Login')
+          navigate('/')
         }
       } catch (error) {
         console.log('Error fetching data:', error);
