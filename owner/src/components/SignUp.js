@@ -11,6 +11,7 @@ const Login = () => {
     const [number, setNumber] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [valid, setValid] = useState('');
 
     const data = {
         name: name,
@@ -32,7 +33,12 @@ const Login = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        sendData()
+        if(password.length < 3){
+            setValid('Password should be more than 3 letters!')
+        }
+        else{
+            sendData()
+        }
     };
 
     return (
@@ -41,7 +47,7 @@ const Login = () => {
                 <h4 className='fs-2 text-center fw-bold text-secondary'>Register new Restaurant</h4>
                 <form onSubmit={handleSubmit}>
                     <div className="input-group">
-                        <label htmlFor="email">Restaurant Name</label>
+                        <label htmlFor="email">Owner Name</label>
                         <input
                             type="text"
                             id="name"
@@ -56,7 +62,8 @@ const Login = () => {
                             type="number"
                             id="number"
                             value={number}
-                            onChange={(e) => setNumber(e.target.value)}
+                            onChange={(e) => {setNumber(e.target.value)}}
+                            maxLength={10}
                             required
                         />
                     </div>
@@ -70,7 +77,7 @@ const Login = () => {
                             required
                         />
                     </div>
-                    <div className="input-group">
+                    <div className="input-group mb-0">
                         <label htmlFor="password">Password</label>
                         <input
                             type="password"
@@ -80,7 +87,8 @@ const Login = () => {
                             required
                         />
                     </div>
-                    <button type="submit" className='btn btn-primary w-100 mt-2'>Sign Up</button>
+                    <small className='text-danger'>{valid}</small>
+                    <button type="submit" className='btn btn-primary w-100 mt-3'>Sign Up</button>
                 </form>
             </div>
         </div>

@@ -8,9 +8,8 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 export default function Dashboard() {
-
-    // const adminName = useSelector(state => state.admin.adminInfo.name)
-    const navigate = useNavigate()
+    
+    //SIDEBAR AND MAINCOMPONENT MOVEMENT FUNCTIONS
     const hide = () => {
         if (window.innerWidth <= 750) {
             let sidebar, slide, main, title
@@ -44,7 +43,9 @@ export default function Dashboard() {
         title = document.querySelector(".header")
         title.classList.toggle("headerMove")
     }
-    
+
+    const adminName = useSelector(state => state.admin.adminInfo.name);
+    const navigate = useNavigate()
     const [details,setDetails] = useState({})
 
     const dashboardDetails = async()=> {
@@ -52,15 +53,6 @@ export default function Dashboard() {
         setDetails(response.data)
         // console.log(response.data)
     }
-    const adminName = useSelector(state => state.admin.adminInfo.name);
-    // const checkAdmin = async()=>{
-    //     if(!adminName){
-    //         navigate('/login')
-    //     }
-    //     else{
-    //         dashboardDetails()
-    //     }
-    // }
     useEffect(() => {
         dashboardDetails()
     },[]) 

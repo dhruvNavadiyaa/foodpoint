@@ -12,6 +12,8 @@ import YourProducts from './components/YourProducts';
 import ContactUs from './components/ContactUs';
 import Profile from './components/Profile';
 import Sorry from './components/Sorry'
+import RestroDetails from './components/RestroDetails';
+
 function App() {
 
   const navigate = useNavigate();
@@ -44,32 +46,23 @@ function App() {
   return (
     <>
       <Routes>
-        {!login ? (
-          <Route path='/' element={<Login />} />
-        ) : (
-          isApproved === "Pending" ? (
+        { !login ?
+          <Route path='/Login' element={<Login />} />
+          :
+          // isApproved === "Pending"
             <>
               <Route path='/' element={<Login />} />
+              <Route path='/SignUp' element={<SignUp />} />
               <Route path='/Home' element={<Home />} />
-              <Route path='/OrderList' element={<Sorry />} />
-              <Route path='/AddProduct' element={<Sorry />} />
-              <Route path='/YourProducts' element={<Sorry />} />
-              <Route path='/ContactUs' element={<Sorry />} />
-              <Route path='/Profile' element={<Sorry />} />
-            </>
-          ) : isApproved !== "Pending"(<>
-            <Route path='/' element={<Login />} />
-            <Route path='/SignUp' element={<SignUp />} />
-            <Route path='/Home' element={<Home />} />
-            <Route path='/OrderList' element={<OrderList />} />
-            <Route path='/AddProduct' element={<AddProduct />} />
-            <Route path='/YourProducts' element={<YourProducts />} />
-            <Route path='/ContactUs' element={<ContactUs />} />
-            <Route path='/Profile' element={<Profile />} />
-          </>
-          )
-        )}
-      </Routes >
+              <Route path='/OrderList' element={<OrderList />} />
+              <Route path='/AddProduct' element={<AddProduct />} />
+              <Route path='/YourProducts' element={<YourProducts />} />
+              <Route path='/ContactUs' element={<ContactUs />} />
+              <Route path='/Profile' element={<Profile />} />
+              <Route path='/RestroDetails' element={<RestroDetails />} />
+            </>          
+        }
+      </Routes>
     </>
   );
 }

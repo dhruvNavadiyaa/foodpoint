@@ -1,4 +1,8 @@
-import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Route, Routes, useNavigate } from 'react-router-dom'
+import { useSelector,useDispatch } from 'react-redux'
+import { setAdminDetails } from './redux/features/AdminSlice'
+import axios from 'axios'
 import Login from './component/Login'
 import Dashboard from './component/Dashboard'
 import Orders from './component/Orders'
@@ -11,21 +15,22 @@ import Restaurant from './component/Restaurant'
 import Restaurantdetails from './component/Restaurantdetails'
 import ContactUs from './component/ContactUs'
 import Createadmin from './component/Createadmin'
-import { Store } from 'redux'
-import { useEffect } from 'react'
-import axios from 'axios'
-import { useSelector } from 'react-redux'
 
 function App() {
-  // let status = ''
+
+  // let status = ''  
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const login = useSelector(state => state.admin.login)
+
   const refresh = async () => {
     try {
         const response = await axios.post('http://localhost:5000/api/admin/refresh', {}, { withCredentials: true });
         if (response.data.login === true) {
           // console.log(response)
           // console.log(response.data)
-          dispatch(setRestroDetails(response.data))
-          navigate('/Home')
+          dispatch(setAdminDetails(response.data))
+          // navigate('/Dashboard')
         }
         else{
           navigate('/Login')
@@ -34,13 +39,11 @@ function App() {
         console.log('Error fetching data:', error);
       }
   }
-  const login = useSelector(state => state.admin.login)
   useEffect(() => {
     refresh()
   }, [])
   return (
     <>
-      <BrowserRouter>
         <Routes>
           {!login ? (<Route path='/' element={<Login />} />) : (<>
             <Route path='/Dashboard' element={<Dashboard />} />
@@ -54,10 +57,10 @@ function App() {
             <Route path='/Restaurantdetails' element={<Restaurantdetails />} />
             <Route path='/ContactUs' element={<ContactUs />} />
             <Route path='/Createadmin' element={<Createadmin />} />
+            <Route path='/Login' element={<Login />} />
           </>)
           }
         </Routes>
-      </BrowserRouter>
     </>
   );
 }

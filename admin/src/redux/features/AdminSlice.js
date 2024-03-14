@@ -9,7 +9,7 @@ export const adminSlice = createSlice({
   reducers: {
     setAdminDetails: (state, action) => {
       state.login = action.payload.login
-      state.adminInfo = action.payload;
+      state.adminInfo = action.payload.adminInfo;
     },
     clearAdminDetails: (state) => {
       state.adminInfo = null

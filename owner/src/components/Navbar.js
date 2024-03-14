@@ -40,7 +40,6 @@ export default function Navbar() {
   //   elements.forEach(element => {
   //     element.classList.remove('bg-navitem');
   //   });
-
   //   console.log(c);
   //   const element = document.querySelector(`#${c}`);
   //   if (element) {
@@ -49,13 +48,14 @@ export default function Navbar() {
   //     console.error(`Element with ID ${c} not found.`);
   //   }
   // };
+  
   useEffect(() => {
     changeBgColor()
   }, [path])
 
   return (
     <nav>
-      <div className="row p-0 m-0 d-flex justify-content-center align-items-center navbar fw-medium w-100 position-fixed" style={{ height: '70px' }}>
+      <div className="row p-0 m-0 d-flex justify-content-center align-items-center navbar fw-medium w-100 position-fixed box-shadow" style={{ height: '70px' }}>
         {/* <div className="col"> */}
 
         <div className='col-2 d-md-none'>

@@ -2,12 +2,36 @@ import React, { useState } from 'react'
 import Navbar from './Navbar'
 import '../css/AddProject.css'
 import Footer from './Footer'
+import axios from 'axios'
 
 export default function AddProduct() {
-    const [img, setImg] = useState("")
+
+    const [productName, setProductName] = useState("")
+    const [price, setPrice] = useState("")
+    const [desc, setDesc] = useState("")
+    const [category, setCategory] = useState("")
+    const [pimg, setPimg] = useState("")
+
+    const data = {
+        name: productName,
+        price: price,
+        description: desc,
+        category: category
+    }
+
+    const sendData = async () => {
+        try {
+            const response = await axios.post('http://localhost:5000/api/product/create', data);
+            // console.log(response)
+        } catch (error) {
+            console.log('Error adding data:', error);
+        }
+        // console.log(data)
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log(img)
+        sendData()
     }
     return (
         <>
@@ -16,34 +40,50 @@ export default function AddProduct() {
                 <Navbar />
                 <div className='row  p-5 py-3 m-0' >
 
-                    <form action="">
-                        <div className="col px-5 py-4 mb-5   rounded rounded-5 box-shadow" style={{ backgroundColor: 'rgb(226, 232, 240)', marginTop: '100px' }}>
-                            <h1 className='fs-4 fw-bold'>&#x2022; Add Product</h1>
+                    {/* <form action=""> */}
+                    <div className="col px-5 py-4 mb-5   rounded rounded-5 box-shadow" style={{ backgroundColor: 'rgb(226, 232, 240)', marginTop: '100px' }}>
+                        <h1 className='fs-4 fw-bold'>&#x2022; Add Product</h1>
 
-                            <div className="row m-0 mt-4">
-                                <div className="col ">
-                                    <small className='label-text'>PRODUCT NAME</small><br />
-                                    <input type="text" className='w-100 mt-1 py-2 px-3 form-input' placeholder='Enter product name' />
-                                </div>
-                                <div className="col ">
-                                    <small className='label-text'>PRICE</small><br />
-                                    <input type="text" className='w-100 mt-1 py-2 px-3 form-input' placeholder='0' />
-                                </div>
+                        <div className="row m-0 mt-4">
+                            <div className="col ">
+                                <small className='label-text'>PRODUCT NAME</small><br />
+                                <input type="text" className='w-100 mt-1 py-2 px-3 form-input' placeholder='Enter product name'
+                                    value={productName}
+                                    onChange={(e) => setProductName(e.target.value)}
+                                    required
+                                />
                             </div>
-
-                            <div className="row m-0 mt-2">
-                                <div className="col">
-                                    <small className='label-text'>DESCRIPTION</small><br />
-                                    <textarea name="" id="" cols="" rows="2" className='w-100 mt-1 py-2 px-3 form-input' placeholder='Write product description....'></textarea>
-                                    <small className='fw-light'><i>Make it as long as you like</i></small>
-                                </div>
+                            <div className="col ">
+                                <small className='label-text'>PRICE</small><br />
+                                <input type="text" className='w-100 mt-1 py-2 px-3 form-input' placeholder='0'
+                                    value={price}
+                                    onChange={(e) => setPrice(e.target.value)}
+                                    required
+                                />
                             </div>
+                        </div>
 
-                            <div className="row m-0 mt-2" >
-                                <div className="col ">
-                                    <small className='label-text'>TYPE</small><br />
-                                    {/* <input type="text" className='w-100 py-2 mt-1 form-input' /> */}
-                                    <select name="" id="" className='w-100 mt-1 py-2 px-3 form-input'>
+                        <div className="row m-0 mt-2">
+                            <div className="col">
+                                <small className='label-text'>DESCRIPTION</small><br />
+                                <textarea name="" id="" cols="" rows="2" className='w-100 mt-1 py-2 px-3 form-input' placeholder='Write product description....'
+                                    value={desc}
+                                    onChange={(e) => setDesc(e.target.value)}
+                                    required
+                                ></textarea>
+                                <small className='fw-light'><i>Make it as long as you like</i></small>
+                            </div>
+                        </div>
+
+                        <div className="row m-0 mt-2" >
+                            <div className="col ">
+                                <small className='label-text'>TYPE</small><br />
+                                {/* <input type="text" className='w-100 py-2 px-3 mt-1 form-input' placeholder='Enter Categoty'
+                                    value={category}
+                                    onChange={(e) => setCategory(e.target.value)}
+                                    required
+                                /> */}
+                                <select name="" id="" className='w-100 mt-1 py-2 px-3 form-input'>
                                         <option value="">Street food</option>
                                         <option value="">Street food</option>
                                         <option value="">Street food</option>
@@ -51,19 +91,19 @@ export default function AddProduct() {
                                         <option value="">Street food</option>
                                         <option value="">Street food</option>
                                     </select>
-                                </div>
-                                <div className="col ">
-                                    <small className="label-text">ADD IMAGE</small>
-                                    <input type="file" value={img} onChange={(e) => e.target.files[0]} className="w-100 py-1 file-upload" />
-                                </div>
                             </div>
-
-                            <div className="row mt-5">
-                                <button type='submit' onClick={handleSubmit} className='btn btn-dark w-25 m-auto'>Submit</button>
+                            <div className="col ">
+                                <small className="label-text">ADD IMAGE</small>
+                                <input type="file" onChange={(e) => setPimg(e.target.files[0])} className="w-100 py-1 file-upload" disabled />
                             </div>
-
                         </div>
-                    </form>
+
+                        <div className="row mt-5">
+                            <button type='submit' onClick={handleSubmit} className='btn btn-dark w-25 m-auto'
+                                disabled={productName === '' || price === '' || desc === '' || category === ''}>Submit</button>
+                        </div>
+                    </div>
+                    {/* </form> */}
                 </div>
             </div >
             <Footer />
