@@ -34,7 +34,7 @@ function App() {
         navigate('/Login')
       }
     } catch (error) {
-      console.log('Error fetching data:', error);
+      console.log('Error fetching data:');
     }
 
   }
@@ -46,21 +46,23 @@ function App() {
   return (
     <>
       <Routes>
-        { !login ?
-          <Route path='/Login' element={<Login />} />
+        {!login ?
+          <>
+            <Route path='/' element={<Login />} />
+            <Route path='/SignUp' element={<SignUp />} />
+          </>
           :
           // isApproved === "Pending"
-            <>
-              <Route path='/' element={<Login />} />
-              <Route path='/SignUp' element={<SignUp />} />
-              <Route path='/Home' element={<Home />} />
-              <Route path='/OrderList' element={<OrderList />} />
-              <Route path='/AddProduct' element={<AddProduct />} />
-              <Route path='/YourProducts' element={<YourProducts />} />
-              <Route path='/ContactUs' element={<ContactUs />} />
-              <Route path='/Profile' element={<Profile />} />
-              <Route path='/RestroDetails' element={<RestroDetails />} />
-            </>          
+          <>
+            <Route path='/' element={<Login />} />
+            <Route path='/Home' element={<Home />} />
+            <Route path='/OrderList' element={<OrderList />} />
+            <Route path='/AddProduct' element={<AddProduct />} />
+            <Route path='/YourProducts' element={<YourProducts />} />
+            <Route path='/ContactUs' element={<ContactUs />} />
+            <Route path='/Profile' element={<Profile />} />
+            <Route path='/RestroDetails' element={<RestroDetails />} />
+          </>
         }
       </Routes>
     </>

@@ -1,19 +1,21 @@
-import Resturant from "../models/ResturantModel.js";
+import Restaurant from "../models/RestaurantModel.js";
 import jwt  from "jsonwebtoken";
-
+import fs from "fs";
+import uploadCloudinary from "../utils/cloudinary.js";
 
 const generateAccesssAndRefreshToken = async(_id) => {
-    const resturantFind = await Resturant.findById(_id)
-    const accessToken = await resturantFind.generateAccessToken()
-    const refreshToken = await resturantFind.generateRefreshToken()
-    resturantFind.refreshToken=refreshToken
-    resturantFind.save({validateBeforeSave: false})
+    const RestaurantFind = await Restaurant.findById(_id)
+    const accessToken = await RestaurantFind.generateAccessToken()
+    const refreshToken = await RestaurantFind.generateRefreshToken()
+    RestaurantFind.refreshToken=refreshToken
+    RestaurantFind.save({validateBeforeSave: false})
     return { accessToken , refreshToken}
   }
 
 
-const CreateResturant = async(req,res)=>{
-    const exists = await Resturant.findOne({
+const CreateRestaurant = async(req,res)=>{
+    // console.log(req.files.restaurant)
+    const exists = await Restaurant.findOne({
         email : req?.body?.email
     })
     if (exists){
@@ -21,14 +23,22 @@ const CreateResturant = async(req,res)=>{
             "email":"exists",
         })
     }
-
-    const create = await Resturant.create({
+    const fileimg = req?.files?.restaurant
+    let url
+    let img =[]
+    if(fileimg){
+    for( let i=0; i<fileimg.length; i++ ){
+        url =await uploadCloudinary(`./temp/img/${fileimg[i].filename}`)
+        img.push(url);
+        }
+    }
+    const create = await Restaurant.create({
         name  : req?.body?.name,
         ownerName : req?.body?.ownerName,
         email  : req?.body?.email,
         password  : req?.body?.password,
         number  : req?.body?.number,
-        resturantType : req?.body?.resturantType,
+        RestaurantType : req?.body?.RestaurantType,
         timing:{
             openAt: req?.body?.openAt,
             closeAt: req?.body?.closeAt
@@ -46,32 +56,34 @@ const CreateResturant = async(req,res)=>{
         pancardDetail:{
             panName: req?.body?.panName,
             panNo: req?.body?.panNo
-        }
+        },
+        img : img
     })
     res.send({
-        resturantinformation : create
+        success: true,
+        Restaurantinformation : create
     })
 }
 
 
 
-const LoginResturant = async(req,res)=>{
-    const loginResturant = await Resturant.findOne({
+const LoginRestaurant = async(req,res)=>{
+    const loginRestaurant = await Restaurant.findOne({
         email : req?.body?.email
     })
-    if(!loginResturant) {
+    if(!loginRestaurant) {
         return res.send({
             login: false,
         })
     }
-    const password = await loginResturant.isPasswordCorrect(req?.body?.password)
+    const password = await loginRestaurant.isPasswordCorrect(req?.body?.password)
     if (!password) {
         return res.send({
           login: false
         });
       }
-      const { accessToken , refreshToken} = await generateAccesssAndRefreshToken(loginResturant._id)
-     const resturantInfo= await Resturant.findById(loginResturant._id).select("-password -refreshToken")
+      const { accessToken , refreshToken} = await generateAccesssAndRefreshToken(loginRestaurant._id)
+     const RestaurantInfo= await Restaurant.findById(loginRestaurant._id).select("-password -refreshToken")
      const options={
         httpOnly : true,
         secure : true
@@ -81,7 +93,7 @@ const LoginResturant = async(req,res)=>{
       .cookie("refreshToken", refreshToken ,options )
       .json({
         login : true,
-        resturantInfo  ,
+        RestaurantInfo,
         accessToken,
         refreshToken
       });
@@ -90,20 +102,33 @@ const LoginResturant = async(req,res)=>{
 
 
 const FetchAll = async (req, res) => {
-    const  featchAll = await Resturant.find()
+    const  featchAll = await Restaurant.find()
     return res.send({
-        "All Resturant": featchAll
+        "All Restaurant": featchAll
     })
 }
-
-const UpdateResturant= async (req, res) => {
-    const updatedResturent = await Resturant.findByIdAndUpdate(req?.body?.Resturant_id , {
+const UpdateRestaurant= async (req, res) => {
+    const fileimg = req?.files?.restaurant
+    let img =[]
+    let url
+    if(!fileimg){
+        const find =  await Restaurant.findById(req?.body?.Restaurant_id)
+        img = find?.img
+    }
+    else{
+    for( let i=0; i<fileimg.length; i++ ){
+        url =await uploadCloudinary(`./temp/img/${fileimg[i].filename}`)
+        img.push(url);
+        }
+    }
+    const updatedResturent = await Restaurant.findByIdAndUpdate(req?.body?.Restaurant_id , {
+        img ,
         name  : req?.body?.name,
         ownerName : req?.body?.ownerName,
         email  : req?.body?.email,
         password  : req?.body?.password,
         number  : req?.body?.number,
-        resturantType : req?.body?.resturantType,
+        RestaurantType : req?.body?.RestaurantType,
         timing:{
             openAt: req?.body?.openAt,
             closeAt: req?.body?.closeAt
@@ -123,26 +148,27 @@ const UpdateResturant= async (req, res) => {
             panNo: req?.body?.panNo
         },
         isApproved : req?.body?.isApproved
-    })
-    req.send({
-        "Resturant": "Updated Successfully"
+    },{new : true})
+    
+    res.send({
+        "Restaurant": "Updated Successfully"
     })
 }
 
 
-const FeatchResturant = async (req, res) => {
-    const  featchAll = await Resturant.find({
+const FeatchRestaurant = async (req, res) => {
+    const  featchAll = await Restaurant.find({
         isApproved : "Approved"
     })
     return res.send({
-        "All Resturant": featchAll
+        "All Restaurant": featchAll
     })
 }
 
-const DeleteResturant = async (req, res) => {
-    const  delteRest = await Resturant.deleteOne({_id : req?.body?.Resturant_id})
+const DeleteRestaurant = async (req, res) => {
+    const  delteRest = await Restaurant.deleteOne({_id : req?.body?.Restaurant_id})
     return res.send({
-        "ResturantDelete": "successfull"
+        "RestaurantDelete": "successfull"
     })
 }
 
@@ -158,26 +184,26 @@ const RefreshTokenEndPoint  = async (req, res) => {
     }
     const veriftoken = jwt.verify(refreshToken , process.env.REFRESH_TOKEN_SECRET)
 
-    const resturantFind = await Resturant.findById(veriftoken._id).select("-password")
-    if (!resturantFind) {
+    const RestaurantFind = await Restaurant.findById(veriftoken._id).select("-password")
+    if (!RestaurantFind) {
       return res.send({
         login : false,
         "Token": "UnAuthorized",
       });
     }
-    if(!refreshToken == resturantFind.refreshToken){
+    if(!refreshToken == RestaurantFind.refreshToken){
         return res.send({
           login : false,
             "Token": "UnAuthorized",
           });
       }
-    const resturantInfo = await Resturant.findById(veriftoken._id).select("-password -refreshToken")
-    const accessToken = await resturantInfo.generateAccessToken()
+    const RestaurantInfo = await Restaurant.findById(veriftoken._id).select("-password -refreshToken")
+    const accessToken = await RestaurantInfo.generateAccessToken()
 
     return res.send({
       login : true,
-      resturantInfo,
+      RestaurantInfo,
       accessToken
     });
 }
-export  { CreateResturant , LoginResturant  ,FetchAll,UpdateResturant,FeatchResturant , DeleteResturant ,RefreshTokenEndPoint}
+export  { CreateRestaurant , LoginRestaurant  ,FetchAll,UpdateRestaurant,FeatchRestaurant , DeleteRestaurant ,RefreshTokenEndPoint}

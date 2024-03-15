@@ -8,7 +8,7 @@ const CreateCategory = async(req,res)=>{
     const create = await Category.create({
         name  : req?.body?.name,
         description  : req?.body?.description,
-        Resturant : req?.body?.Resturant_id
+        Restaurant : req?.body?.Restaurant_id
     })
     res.send({
         Categoryinformation : create
@@ -20,7 +20,7 @@ const CreateCategory = async(req,res)=>{
 
 const FetchWithId = async(req,res)=>{
     const AllFetch = await Category.find({
-        Resturant : req?.body?.Resturant_id
+        Restaurant : req?.body?.Restaurant_id
     })
     res.send({
         AllProduct : AllFetch
@@ -37,7 +37,7 @@ const FetchAll = async(req,res)=>{
 const DeleteCategory = async (req, res) => {
     const  deleteCatagory = await Category.deleteOne({_id : req?.body?.Category_id})
     return res.send({
-        "ResturantDelete": "successfull"
+        "RestaurantDelete": "successfull"
     })
 }
 export  { CreateCategory ,FetchWithId , FetchAll ,DeleteCategory}

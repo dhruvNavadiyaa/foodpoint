@@ -2,8 +2,7 @@ import mongoose , {Schema} from "mongoose";
 
 
 const OrderSchema = new Schema({
-    products: [
-        {
+    products: {
             product: {
               type: Schema.Types.ObjectId,
               ref: "Product",
@@ -11,10 +10,9 @@ const OrderSchema = new Schema({
             quantity: {
               type: Number,
                 default: 1,
-                  min:[1,'something wrong']
+                  min:1
             },
           },
-    ],
     customer: {
         type: mongoose.Types.ObjectId,
         ref:'User'
@@ -25,9 +23,9 @@ const OrderSchema = new Schema({
     total: {
         type:Number,
     },
-    resturant: {
+    Restaurant: {
         type: mongoose.Types.ObjectId,
-        ref:'Resturant'
+        ref:'Restaurant'
     },
     status: {
         type: String,
@@ -42,7 +40,7 @@ const OrderSchema = new Schema({
                 type: String,
             },
     },
-    resturantReview: {
+    RestaurantReview: {
         type: mongoose.Types.ObjectId,
         ref:"Review"
     },
@@ -51,7 +49,7 @@ const OrderSchema = new Schema({
         ref:'Review'
     },
       isreviewGiven:{
-        forResturant:{
+        forRestaurant:{
             type:Boolean,
             default:false
         },

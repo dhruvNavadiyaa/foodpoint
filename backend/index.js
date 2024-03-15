@@ -5,7 +5,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import user from './route/userRoute.js'
 import delivery from './route/DeliveryBoyRoute.js'
-import resturant from './route/ResturantRoute.js'
+import Restaurant from './route/RestaurantRoute.js'
 import product from './route/ProductRoute.js'
 import admin from './route/AdminRoute.js'
 import category from './route/CategoryRoute.js'
@@ -21,7 +21,7 @@ app.use(cors(corsOptions))
 app.use(cookieParser())
 app.use("/api/user",user)
 app.use("/api/delivery",delivery)
-app.use("/api/resturant",resturant)
+app.use("/api/Restaurant",Restaurant)
 app.use("/api/product",product)
 app.use("/api/admin",admin)
 app.use("/api/category",category)

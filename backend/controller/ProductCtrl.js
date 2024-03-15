@@ -1,17 +1,21 @@
 import Product from "../models/ProductModel.js";
-import Category from "../models/CategoryModel.js";
-import Resturant from "../models/ResturantModel.js";
 
-
-//Add Product and Also id push in to the Category And Resturant models
+//Add Product and Also id push in to the Category And Restaurant models
 const CreateProduct = async(req,res)=>{
-
+    const fileimg = req?.files?.product
+    if(fileimg){
+    const  img =await uploadCloudinary(`./temp/img/${fileimg[0]?.filename}`)
+    }
+    else{
+        const img = ""
+    }
     const create = await Product.create({
         name  : req?.body?.name,
         price : req?.body?.price,
         category  : req?.body?.category_id,
         resturnat  : req?.body?.resturnat_id,
-        description  : req?.body?.description
+        description  : req?.body?.description,
+        img
     })
     res.send({
         Productinformation : create
@@ -39,5 +43,28 @@ const ResturentProuct = async(req,res)=>{
         AllProduct : AllFeatch
     })
 }
+const updateProduct = async (req, res) => {
+    const fileimg = req?.files?.product
+    if(!fileimg){
+        const find =  await Product.findById(req?.body?.product_id)
+        const img = find?.img
+    }
+    else{
+        const img =await uploadCloudinary(`./temp/img/${fileimg[0]?.filename}`)
+    }
+const updatedResturent = await Product.findByIdAndUpdate(req?.body?.product_id , {
+    name  : req?.body?.name,
+        price : req?.body?.price,
+        category  : req?.body?.category_id,
+        resturnat  : req?.body?.resturnat_id,
+        description  : req?.body?.description,
+        img
+})
 
-export  { CreateProduct , CatagoryProuct ,ResturentProuct}
+return res.send({
+    "success": true,
+})
+
+}
+
+export  { CreateProduct , CatagoryProuct ,ResturentProuct,updateProduct}

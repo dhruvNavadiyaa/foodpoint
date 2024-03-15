@@ -9,9 +9,9 @@ const ReviewSchema = new Schema({
     userName: {
         type:String
     },
-    resturant: {
+    Restaurant: {
         type: mongoose.Types.ObjectId,
-        ref:'Resturant'
+        ref:'Restaurant'
     },
     review: {
         type:String

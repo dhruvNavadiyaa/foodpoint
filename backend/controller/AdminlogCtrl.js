@@ -24,6 +24,8 @@ const LoginAdmin = async (req, res) => {
   const loginAdmin = await Admin.findOne({
     email: req?.body?.email,
   });
+  console.log(loginAdmin);
+
   if (!loginAdmin) {
     return res.send({
       login: false,
@@ -65,7 +67,6 @@ const generateAccesssAndRefreshToken = async(_id) => {
 
     const RefreshTokenEndPoint = async (req, res)=> {
       const refreshToken = req?.cookies?.refreshToken || req?.body?.refreshToken || req?.header("Authorization")?.replace("Bearer ","")
-      console.log(req?.cookies)
       if(!refreshToken){
         return res.send({
         login : false,

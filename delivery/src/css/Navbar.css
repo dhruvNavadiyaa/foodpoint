@@ -1,0 +1,32 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.navbar{
+    backdrop-filter: blur(20px);
+    z-index: 10;
+}
+.main-logo {
+    height: 30px;
+    border-radius: 70%;
+}
+li{
+    list-style: none;
+    /* padding: 0px 16px; */
+    font-size: 17px;
+}
+.bg-navitem{
+    /* padding: ; */
+    /* background-color: rgb(226, 232, 240); */
+    /* background: linear-gradient(45deg, rgb(253, 244, 181),rgb(184, 201, 246),rgb(251, 214, 212)); */
+    background-color: rgba(28, 39, 76, 0.879);
+    color: white;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.200);
+}
+
+@media only screen and (max-width:1000px) {
+    li{
+        font-size: 10px;
+        /* background-color: red; */
+    }
+}

@@ -12,9 +12,9 @@ const Category = new Schema({
         type: Boolean,
         default:true
     },
-    Resturant : {
+    Restaurant : {
         type: mongoose.Types.ObjectId,
-        ref:'Resturant'
+        ref:'Restaurant'
     }
 },{
     timestamps : true,

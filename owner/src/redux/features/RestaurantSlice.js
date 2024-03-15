@@ -10,7 +10,7 @@ export const RestaurantSlice = createSlice({
     reducers: {
         setRestroDetails: (state, action) => {
             state.login = action.payload.login
-            state.isApproved = action.payload.resturantInfo.isApproved
+            state.isApproved = action.payload.RestaurantInfo.isApproved
             state.RestaurantInfo = action.payload
         }
     }

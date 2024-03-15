@@ -7,7 +7,7 @@ const CreateReview = async(req,res)=>{
     const create = await Review.create({
         userId  : req?.body?.userId,
         userName  : req?.body?.userName,
-        Resturant : req?.body?.Resturant_id,
+        Restaurant : req?.body?.Restaurant_id,
         review : req?.body?.review,
         star : req?.body?.star,
         deliveryBoyId : req?.body?.deliveryBoyId,

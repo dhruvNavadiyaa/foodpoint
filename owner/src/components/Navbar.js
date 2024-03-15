@@ -88,10 +88,10 @@ export default function Navbar() {
               <li className='p-2 rounded rounded-3' id='OrderList' onClick={() => changeBgColor("OrderList")}>Order List</li>
             </Link>
             <Link to='/AddProduct' className='text-dark text-decoration-none'>
-              <li className='p-2 rounded rounded-3' id='AddProduct' onClick={changeBgColor}>Add Product</li>
+              <li className='p-2 rounded rounded-3' id='AddProduct' onClick={changeBgColor}>Add Product / Category</li>
             </Link>
             <Link to='/YourProducts' className='text-dark text-decoration-none'>
-              <li className='p-2 rounded rounded-3' id='YourProducts' onClick={changeBgColor}>Your Products</li>
+              <li className='p-2 rounded rounded-3' id='YourProducts' onClick={changeBgColor}>Menu</li>
             </Link>
             <Link to='/ContactUs' className='text-dark text-decoration-none'>
               <li className='p-2 rounded rounded-3' id='ContactUs' onClick={changeBgColor}>Contact Us</li>

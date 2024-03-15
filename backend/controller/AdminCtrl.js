@@ -1,19 +1,17 @@
 import User from "../models/UserModel.js";
 import Category from "../models/CategoryModel.js";
 import DeliveryBoy from "../models/DeliveryBoyModel.js";
-import Order from "../models/OrderModel.js";
 import Product from "../models/ProductModel.js";
-import Resturant from "../models/ResturantModel.js";
-import Review from "../models/ReviewModel.js";
+import Restaurant from "../models/RestaurantModel.js";
 
 
 const AllUser = async(req , res)=>{
     const ExistsUser = await User.find().count()
-    const ExistsResturant = await Resturant.find().count()
-    const ActiveResturant = await Resturant.find({
+    const ExistsRestaurant = await Restaurant.find().count()
+    const ActiveRestaurant = await Restaurant.find({
         isActive : true
     }).count()
-    const InActiveResturant = await Resturant.find({
+    const InActiveRestaurant = await Restaurant.find({
         isActive : false
     }).count()
     const ExistsDeliveryBoy = await DeliveryBoy.find().count()
@@ -40,9 +38,9 @@ const AllUser = async(req , res)=>{
     }).count()
     return res.send({
         ExistsUser,
-        ExistsResturant,
-        ActiveResturant,
-        InActiveResturant,
+        ExistsRestaurant,
+        ActiveRestaurant,
+        InActiveRestaurant,
         ExistsDeliveryBoy,
         ActiveDeliveryBoy,
         InActiveDeliveryBoy,
