@@ -23,7 +23,7 @@ function App() {
 
   const refresh = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/api/resturant/refresh', {}, { withCredentials: true });
+      const response = await axios.post('http://localhost:5000/api/Restaurant/refresh', {}, { withCredentials: true });
       if (response.data.login === true) {
         // console.log(response)
         // console.log(response.data)
@@ -31,7 +31,7 @@ function App() {
         // navigate('/Home')
       }
       else {
-        navigate('/Login')
+        navigate('/')
       }
     } catch (error) {
       console.log('Error fetching data:');

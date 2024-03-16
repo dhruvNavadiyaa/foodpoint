@@ -4,7 +4,7 @@ import Category from "../models/CategoryModel.js";
 //Adding Category 
 
 const CreateCategory = async(req,res)=>{
-
+console.log(req.body)
     const create = await Category.create({
         name  : req?.body?.name,
         description  : req?.body?.description,

@@ -21,7 +21,7 @@ const Login = () => {
     const getdata = async () => {
         try {
             const response = await axios.post('http://localhost:5000/api/Restaurant/signin', data,{withCredentials:true});
-            console.log(response.data)
+            // console.log(response.data)
             if (response.data.login === true) {
                 dispatch(setRestroDetails(response.data))
                 navigate('/Home')
@@ -50,7 +50,7 @@ const Login = () => {
                         <input
                             type="email"
                             id="email"
-                            className='w-100'
+                            className='w-100 py-1 ps-2 '
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
@@ -61,7 +61,7 @@ const Login = () => {
                         <input
                             type="password"
                             id="password"
-                            className='w-100'
+                            className='w-100 py-1 ps-2'
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required

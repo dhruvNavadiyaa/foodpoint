@@ -10,20 +10,20 @@ export default function AddProduct() {
 
     const [changeForm, setChangeForm] = useState(true)
     const restroInfo = useSelector(state => state.restaurant.RestaurantInfo)
-    useEffect(() => {
-        console.log(restroInfo)
-    }, [])
+    const restroId = useSelector(state => state.restaurant.RestaurantInfo.RestaurantInfo._id)
+
     //category details adding
     const [categoryName, setCategoryName] = useState('')
     const [categoryDesc, setCategoryDesc] = useState('')
     const categoryData = {
         name: categoryName,
-        description: categoryDesc
+        description: categoryDesc,
+        Restaurant_id: restroId
     }
     const sendCategoryData = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/api/product/create', data);
-            // console.log(response)
+            const response = await axios.post('http://localhost:5000/api/category/create', categoryData);
+            console.log(response)
         } catch (error) {
             console.log('Error adding data:', error);
         }
@@ -38,13 +38,14 @@ export default function AddProduct() {
     const [price, setPrice] = useState("")
     const [desc, setDesc] = useState("")
     const [category, setCategory] = useState("")
-    const [pimg, setPimg] = useState("")
+    const [pimg, setPimg] = useState({})
 
     const data = {
         name: productName,
         price: price,
         description: desc,
-        category: category
+        category: category,
+        img: pimg
     }
 
     const sendProductData = async () => {
@@ -62,6 +63,19 @@ export default function AddProduct() {
         sendProductData()
     }
 
+    // FETCH ALL CATEGORY
+    const [categories,setCategories] = useState([])
+    const fetchCategory=async()=>{
+        const response = await axios.get('http://localhost:5000/api/category/fetch')
+        setCategories(response.data.AllProduct)
+        console.log(categories)
+    }
+    
+    useEffect(() => {
+        // console.log(restroInfo)
+        // console.log(restroId)
+        fetchCategory()
+    }, [])
 
     return (
         <>
@@ -149,30 +163,27 @@ export default function AddProduct() {
 
                                 <div className="row m-0 mt-2" >
                                     <div className="col ">
-                                        <small className='label-text'>TYPE</small><br />
-                                        {/* <input type="text" className='w-100 py-2 px-3 mt-1 form-input' placeholder='Enter Categoty'
-                                    value={category}
-                                    onChange={(e) => setCategory(e.target.value)}
-                                    required
-                                /> */}
-                                        <select name="" id="" className='w-100 mt-1 py-2 px-3 form-input'>
-                                            <option value="">Street food</option>
-                                            <option value="">Street food</option>
-                                            <option value="">Street food</option>
-                                            <option value="">Street food</option>
+                                        <small className='label-text'>FOOD TYPE</small><br />
+                                        <select name="" id="" className='w-100 mt-1 py-2 px-3 form-input text-secondary'>
+                                            {
+                                                categories.map((items,index)=>{
+
+                                                })
+                                            }
                                             <option value="">Street food</option>
                                             <option value="">Street food</option>
                                         </select>
                                     </div>
                                     <div className="col ">
                                         <small className="label-text">ADD IMAGE</small>
-                                        <input type="file" onChange={(e) => setPimg(e.target.files[0])} className="w-100 py-1 file-upload" disabled />
+                                        <input type="file" onChange={(e) => setPimg(e.target.files[0])} className="w-100 py-1 file-upload" 
+                                        required/>
                                     </div>
                                 </div>
 
                                 <div className="row mt-5">
                                     <button type='submit' onClick={handleSubmitProduct} className='btn btn-dark w-25 m-auto'
-                                        disabled={productName === '' || price === '' || desc === '' || category === ''}>Submit</button>
+                                        disabled={productName === '' || price === '' || desc === '' || category === '' || pimg===''}>Submit</button>
                                 </div>
                             </div>
                         </div>

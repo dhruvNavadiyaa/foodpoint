@@ -11,8 +11,8 @@ export default function RestroDetails() {
     return (
         <>
             {/* <Navbar /> */}
-            <h2 className='py-3 text-center box-shadow position-fixed top-0 w-100' style={{backdropFilter:'blur(5px)'}}>Fill Bank Account Details</h2>
-            <div className='row m-0 px-4 my-5' style={{marginTop:'100px'}}>
+            <h2 className='py-3 text-center box-shadow position-fixed top-0 w-100' style={{ backdropFilter: 'blur(5px)' }}>Fill Bank Account Details</h2>
+            <div className='row m-0 px-4 my-5' style={{ marginTop: '100px' }}>
                 {/* <hr className='my-1 mb-3 text-dark border border-2 border-dark ' /> */}
 
                 <div className="row mt-5">
@@ -83,6 +83,10 @@ export default function RestroDetails() {
                                                 />
                                             </div>
                                         </div>
+                                    </div>
+                                    <div className="row m-0 mt-2">
+                                        <h3 className='mt-3'>Add your Restaurant Photos</h3>
+                                        <input type="file" className="w-100 py-1 file-upload" required />
                                     </div>
                                     <div className="col mt-3">
 
