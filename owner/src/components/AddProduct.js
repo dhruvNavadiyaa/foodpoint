@@ -10,8 +10,7 @@ export default function AddProduct() {
 
     const [changeForm, setChangeForm] = useState(true)
     const restroInfo = useSelector(state => state.restaurant.RestaurantInfo)
-    const restroId = useSelector(state => state.restaurant.RestaurantInfo.RestaurantInfo._id)
-
+    
     //category details adding
     const [categoryName, setCategoryName] = useState('')
     const [categoryDesc, setCategoryDesc] = useState('')
@@ -32,8 +31,9 @@ export default function AddProduct() {
         event.preventDefault()
         sendCategoryData()
     }
-
-    // product details adding
+    
+    // product details adding form
+    const restroId = useSelector(state => state.restaurant.RestaurantInfo.RestaurantInfo._id)
     const [productName, setProductName] = useState("")
     const [price, setPrice] = useState("")
     const [desc, setDesc] = useState("")
@@ -44,8 +44,9 @@ export default function AddProduct() {
         name: productName,
         price: price,
         description: desc,
-        category: category,
-        img: pimg
+        category_id: category,
+        resturnat_id:restroId,
+        product: pimg
     }
 
     const sendProductData = async () => {
@@ -64,13 +65,13 @@ export default function AddProduct() {
     }
 
     // FETCH ALL CATEGORY
-    const [categories,setCategories] = useState([])
-    const fetchCategory=async()=>{
+    const [categories, setCategories] = useState([])
+    const fetchCategory = async () => {
         const response = await axios.get('http://localhost:5000/api/category/fetch')
         setCategories(response.data.AllProduct)
         console.log(categories)
     }
-    
+
     useEffect(() => {
         // console.log(restroInfo)
         // console.log(restroId)
@@ -164,26 +165,28 @@ export default function AddProduct() {
                                 <div className="row m-0 mt-2" >
                                     <div className="col ">
                                         <small className='label-text'>FOOD TYPE</small><br />
-                                        <select name="" id="" className='w-100 mt-1 py-2 px-3 form-input text-secondary'>
+                                        <select  value={category} onChange={(e)=>setCategory(e.target.value)} className='w-100 mt-1 py-2 px-3 form-input text-secondary'>
                                             {
-                                                categories.map((items,index)=>{
-
+                                                categories.map((items, index) => {
+                                                    return (
+                                                        <>
+                                                            <option value={items._id}>{items.name}</option>
+                                                        </>
+                                                    )
                                                 })
                                             }
-                                            <option value="">Street food</option>
-                                            <option value="">Street food</option>
                                         </select>
                                     </div>
                                     <div className="col ">
                                         <small className="label-text">ADD IMAGE</small>
-                                        <input type="file" onChange={(e) => setPimg(e.target.files[0])} className="w-100 py-1 file-upload" 
-                                        required/>
+                                        <input type="file" onChange={(e) => setPimg(e.target.files[0])} className="w-100 py-1 file-upload"
+                                            required />
                                     </div>
                                 </div>
 
                                 <div className="row mt-5">
                                     <button type='submit' onClick={handleSubmitProduct} className='btn btn-dark w-25 m-auto'
-                                        disabled={productName === '' || price === '' || desc === '' || category === '' || pimg===''}>Submit</button>
+                                        disabled={productName === '' || price === '' || desc === '' || category === '' || pimg === ''}>Submit</button>
                                 </div>
                             </div>
                         </div>
