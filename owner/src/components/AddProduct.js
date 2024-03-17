@@ -39,24 +39,27 @@ export default function AddProduct() {
     const [desc, setDesc] = useState("")
     const [category, setCategory] = useState("")
     const [pimg, setPimg] = useState({})
+   
 
     
 
     const sendProductData = async () => {
-        try {
-            const data = {
-                name: productName,
-                price: price,
-                description: desc,
-                category_id: category,
-                restaurant_id:restroId,
-                product: pimg
+        const formData = new FormData();
+
+        formData.append('name', productName);
+        formData.append('price', price);
+        formData.append('category_id', category);
+        formData.append('restaurant_id', restroId);
+        formData.append('description', desc);
+        formData.append("product",pimg)
+        
+    
+        const response = await axios.post('http://localhost:5000/api/product/create', formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data'
             }
-            const response = await axios.post('http://localhost:5000/api/product/create', data);
+          })
             console.log(response)
-        } catch (error) {
-            console.log('Error adding data:', error);
-        }
         // console.log(data)
     }
 
@@ -74,8 +77,6 @@ export default function AddProduct() {
     }
 
     useEffect(() => {
-        // console.log(restroInfo)
-        // console.log(restroId)
         fetchCategory()
     }, [])
 
@@ -171,7 +172,7 @@ export default function AddProduct() {
                                                 categories.map((items, index) => {
                                                     return (
                                                         <>
-                                                            <option value={items._id}>{items.name}</option>
+                                                            <option key={index} value={items._id}>{items.name}</option>
                                                         </>
                                                     )
                                                 })
