@@ -21,7 +21,7 @@ const Login = () => {
     const getdata = async () => {
         try {
             const response = await axios.post('http://localhost:5000/api/user/signin', data);
-            console.log(response.data)
+            // console.log(response.data)
             if (response.data.login === true) {
                 dispatch(setUserDetails(response.data))
                 navigate('/Home')

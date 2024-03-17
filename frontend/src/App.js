@@ -23,15 +23,15 @@ function App() {
   const refresh = async () => {
     try {
       const response = await axios.post('http://localhost:5000/api/user/refresh', {}, { withCredentials: true });
-      console.log(response)
+      // console.log(response)
       if (response.data.login === true) {
         // console.log(response.data)
         dispatch(setUserDetails(response.data))
         // navigate('/Home')
       }
-      else {
-        navigate('/')
-      }
+      // else {
+      //   navigate('/')
+      // }
     } catch (error) {
       console.log('Error fetching data:', error);
     }
