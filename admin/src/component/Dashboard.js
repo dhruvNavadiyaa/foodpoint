@@ -84,19 +84,19 @@ export default function Dashboard() {
 
                                 <div className='card text-start'>
                                     <img src="https://www.svgrepo.com/show/413888/eat.svg" className='img-logo mt-4 ms-3' alt="" style={{ backgroundColor: 'rgb(254, 201, 15)' }} />
-                                    <p className='mt-3 ms-4 fw-bold'>{details.ExistsResturant}</p>
+                                    <p className='mt-3 ms-4 fw-bold'>{details.ExistsRestaurant}</p>
                                     <p className='ms-4 font-light-thick'>Restaurants</p>
                                 </div>
                                 
                                 <div className='card text-start'>
                                     <img src="https://www.svgrepo.com/show/156232/restaurant-table-and-chairs.svg" className='img-logo mt-4 ms-3' alt="" style={{ backgroundColor: 'rgb(59 130 246 / 0.5)' }} />
-                                    <p className='mt-3 ms-4 fw-bold'>{details.ExistsResturant}</p>
+                                    <p className='mt-3 ms-4 fw-bold'>{details.ExistsRestaurant}</p>
                                     <p className='ms-4 font-light-thick'>Active Restaurants</p>
                                 </div>
 
                                 <div className='card text-start'>
                                     <img src="https://www.svgrepo.com/show/156232/restaurant-table-and-chairs.svg" className='img-logo mt-4 ms-3' alt="" style={{ backgroundColor: 'rgb(252, 228, 236)' }} />
-                                    <p className='mt-3 ms-4 fw-bold'>{details.InActiveResturant}</p>
+                                    <p className='mt-3 ms-4 fw-bold'>{details.InActiveRestaurant}</p>
                                     <p className='ms-4 font-light-thick'>Inctive Restaurants</p>
                                 </div>
 
