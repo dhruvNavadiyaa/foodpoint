@@ -14,10 +14,11 @@
     width: 500px;
     height: 320px;
     border-radius: 5px;
+    z-index: 110;
   }
   
   .model-content-edit{
-    height: 400px;
+    height: 370px;
     width: 400px;
     /* margin-top: 50px; */
   }
