@@ -14,6 +14,7 @@ export default function AddProduct() {
     //category details adding
     const [categoryName, setCategoryName] = useState('')
     const [categoryDesc, setCategoryDesc] = useState('')
+    const restroId = useSelector(state => state.restaurant.RestaurantInfo._id)
     const categoryData = {
         name: categoryName,
         description: categoryDesc,
@@ -33,26 +34,26 @@ export default function AddProduct() {
     }
     
     // product details adding form
-    const restroId = useSelector(state => state.restaurant.RestaurantInfo.RestaurantInfo._id)
     const [productName, setProductName] = useState("")
     const [price, setPrice] = useState("")
     const [desc, setDesc] = useState("")
     const [category, setCategory] = useState("")
     const [pimg, setPimg] = useState({})
 
-    const data = {
-        name: productName,
-        price: price,
-        description: desc,
-        category_id: category,
-        resturnat_id:restroId,
-        product: pimg
-    }
+    
 
     const sendProductData = async () => {
         try {
+            const data = {
+                name: productName,
+                price: price,
+                description: desc,
+                category_id: category,
+                restaurant_id:restroId,
+                product: pimg
+            }
             const response = await axios.post('http://localhost:5000/api/product/create', data);
-            // console.log(response)
+            console.log(response)
         } catch (error) {
             console.log('Error adding data:', error);
         }
@@ -186,7 +187,7 @@ export default function AddProduct() {
 
                                 <div className="row mt-5">
                                     <button type='submit' onClick={handleSubmitProduct} className='btn btn-dark w-25 m-auto'
-                                        disabled={productName === '' || price === '' || desc === '' || category === '' || pimg === ''}>Submit</button>
+                                        disabled={productName === '' || price === '' || desc === ''  || pimg === ''}>Submit</button>
                                 </div>
                             </div>
                         </div>

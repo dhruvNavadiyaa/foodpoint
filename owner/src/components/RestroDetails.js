@@ -1,12 +1,54 @@
 import React, { useState } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
+import { useSelector} from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-
+import axios from 'axios'
 export default function RestroDetails() {
-
+    const [resturant ,setResturant] = useState("")
+    const [address ,setAddress] = useState("")
+    const [area ,setArea] = useState("")
+    const [street ,setStreet] = useState("")
+    const [img ,setImg] = useState("")
+    const [acNo ,setAcNo] = useState("")
+    const [acType ,setAcType] = useState("")
+    const [ifsc ,setIfsc] = useState("")
+    const [panName ,setPanName] = useState("")
+    const [panNo ,setpanNo] = useState("")
+    const [open ,setOpen] = useState("")
+    const [close ,setClose] = useState("")
+    const resturantInfoId  = useSelector(state => state.restaurant.RestaurantInfo._id)
     const navigation = useNavigate()
     const [changeDetail, setChageDetail] = useState(true)
+    const submitDetail = async()=>{
+
+        const formData = new FormData();
+
+        for(var i = 0 ; i <img.length;i++){
+            formData.append("restaurant",img[i])
+            }
+            
+        formData.append('name', resturant);
+        formData.append('fulladdress', address);
+        formData.append('area', area);
+        formData.append('street', street);
+        formData.append('restaurant', resturant);
+        formData.append('acType', acType);
+        formData.append('acNo', acNo);
+        formData.append('ifscCode', ifsc);
+        formData.append('panName', panName);
+        formData.append('panNo', panNo);
+        formData.append('openAt', open.toString());
+        formData.append('closeAt', close.toString());
+        formData.append('Restaurant_id', resturantInfoId);
+        const response = await axios.post('http://localhost:5000/api/restaurant/update', formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          })
+          console.log(response.data)
+
+    }
 
     return (
         <>
@@ -36,14 +78,14 @@ export default function RestroDetails() {
                                     <h3 className=''>Restaurant Details</h3>
                                     <div className="mt-2 m-0">
                                         <p className='mb-0'>Restaurant Name</p>
-                                        <input type="text" className='py-2 px-2 border rounded'
-                                            placeholder='Resturant Name'
+                                        <input type="text" className='py-2 px-2 border rounded' value={resturant}
+                                            placeholder='Resturant Name' minLength="8" onChange={(e) => {setResturant(e.target.value)}}
                                         />
                                     </div>
                                     <div className="mt-2 m-0">
                                         <p className='mb-0'>Address</p>
-                                        <textarea className='w-100 py-1 px-2 border rounded'
-                                            placeholder='Enter Address'
+                                        <textarea className='w-100 py-1 px-2 border rounded' value={address}
+                                            placeholder='Enter Address' onChange={(e) => {setAddress(e.target.value)}}
                                         />
                                     </div>
 
@@ -52,41 +94,40 @@ export default function RestroDetails() {
                                         <div className="col">
                                             <div className="mt-2 m-0">
                                                 <p className='mb-0'>Area</p>
-                                                <input type="text" className='w-100 py-2 px-2 border rounded'
-                                                    placeholder='Resturant Area'
+                                                <input type="text" className='w-100 py-2 px-2 border rounded' value={area}
+                                                    placeholder='Resturant Area' onChange={(e) => {setArea(e.target.value)}}
                                                 />
                                             </div>
                                         </div>
                                         <div className="col">
                                             <div className="mt-2 m-0">
-                                                <p className='mb-0'>Pincode</p>
-                                                <input type="text" className='w-100 py-2 px-2 border rounded'
-                                                    placeholder='Restaurant Pincode'
+                                                <p className='mb-0'>Street</p>
+                                                <input type="text" className='w-100 py-2 px-2 border rounded' value={street}
+                                                    placeholder='Restaurant-Street' onChange={(e) => {setStreet(e.target.value)}}
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="col">
+                                            <div className="mt-2 m-0">
+                                                <p className='mb-0'>Street</p>
+                                                <input type="time" className='w-100 py-2 px-2 border rounded' value={open}
+                                                    placeholder='Open At Time' onChange={(e) => {setOpen(e.target.value)}}
+                                                />
+                                            </div>
+                                        </div><div className="col">
+                                            <div className="mt-2 m-0">
+                                                <p className='mb-0'>Street</p>
+                                                <input type="time" className='w-100 py-2 px-2 border rounded' value={close}
+                                                    placeholder='Close At Time' onChange={(e) => {setClose(e.target.value)}}
                                                 />
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="row">
-                                        <div className="col">
-                                            <div className="mt-2 m-0">
-                                                <p className='mb-0'>City</p>
-                                                <input type="text" className='w-100 py-2 px-2 border rounded'
-                                                    placeholder='Enter City'
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="col">
-                                            <div className="mt-2 m-0">
-                                                <p className='mb-0'>State</p>
-                                                <input type="text" className='w-100 py-2 px-2 border rounded'
-                                                    placeholder='State Name'
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
+                                   
                                     <div className="row m-0 mt-2">
                                         <h3 className='mt-3'>Add your Restaurant Photos</h3>
-                                        <input type="file" className="w-100 py-1 file-upload" required />
+                                        <input type="file" onChange={(e) => { setImg(e.target.files)}} 
+                                         multiple className="w-100 py-1 file-upload" required />
                                     </div>
                                     <div className="col mt-3">
 
@@ -108,7 +149,7 @@ export default function RestroDetails() {
                                             <div className="mt-2 m-0">
                                                 <p className='mb-0'>Account Number</p>
                                                 <input type="text" className='w-100 py-2 px-2 border rounded'
-                                                    placeholder='Bank Account Number'
+                                                    placeholder='Bank Account Number' onChange={(e) => {setAcNo(e.target.value)}} value={acNo}
                                                 />
                                             </div>
                                         </div>
@@ -116,7 +157,7 @@ export default function RestroDetails() {
                                             <div className="mt-2 m-0">
                                                 <p className='mb-0'>Re-Enter Account Number</p>
                                                 <input type="text" className='w-100 py-2 px-2 border rounded'
-                                                    placeholder='Re-Enter Account Number'
+                                                    placeholder='Re-Enter Account Number' 
                                                 />
                                             </div>
                                         </div>
@@ -128,7 +169,8 @@ export default function RestroDetails() {
                                                 {/* <input type="text" className='w-100 py-2 px-2 border rounded'
                                                 placeholder='Enter City'
                                             /> */}
-                                                <select name="" id="" className='w-100 py-2 px-2 border rounded'>
+                                                <select name="" id="" className='w-100 py-2 px-2 border rounded'
+                                                value={acType} onChange={(e) => {setAcType(e.target.value)}}>
                                                     <option value="">Saving</option>
                                                     <option value="">Current</option>
                                                 </select>
@@ -138,7 +180,7 @@ export default function RestroDetails() {
                                             <div className="mt-3 m-0">
                                                 <p className='mb-0'>IFSC Code</p>
                                                 <input type="text" className='w-100 py-2 px-2 border rounded'
-                                                    placeholder='Bank IFSC Code'
+                                                    placeholder='Bank IFSC Code' onChange={(e) => {setIfsc(e.target.value)}} value={ifsc}
                                                 />
                                             </div>
                                         </div>
@@ -152,7 +194,7 @@ export default function RestroDetails() {
                                             <div className="mt-2 m-0">
                                                 <p className='mb-0'>PAN Number</p>
                                                 <input type="text" className='w-100 py-2 px-2 border rounded'
-                                                    placeholder='PAN card Number'
+                                                    placeholder='PAN card Number' onChange={(e) => {setpanNo(e.target.value)}} value={panNo}
                                                 />
                                             </div>
                                         </div>
@@ -160,13 +202,13 @@ export default function RestroDetails() {
                                             <div className="mt-2 m-0">
                                                 <p className='mb-0'>PAN holder name</p>
                                                 <input type="text" className='w-100 py-2 px-2 border rounded'
-                                                    placeholder='PAN holder name'
+                                                    placeholder='PAN holder name' onChange={(e) => {setPanName(e.target.value)}} value={panName}
                                                 />
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col text-center mt-4">
-                                        <button className='btn btn-dark mt-3 px-5 fw-bold'>Save</button>
+                                        <button className='btn btn-dark mt-3 px-5 fw-bold' onClick={submitDetail}>Save</button>
                                     </div>
                                 </div>
                             </>

@@ -10,7 +10,7 @@ const ProductSchema = new mongoose.Schema({
     img:[
         {type:String}
     ],
-    resturnat: {
+    restaurant: {
         type: mongoose.Types.ObjectId,
         ref:'Restaurant'  
     },

@@ -8,7 +8,7 @@ const client = twilio(process.env.TWILIO_ACCOUNT_SID,process.env.TWILIO_ACCOUNT_
 const sendMessage = async (body,number)=>{
         let msgOptions = {
             from : process.env.TWILIO_ACCOUNT_NUMBER,
-            to : number,
+            to : "+91"+number,
             body 
         }
         const message = await client.messages.create(msgOptions);

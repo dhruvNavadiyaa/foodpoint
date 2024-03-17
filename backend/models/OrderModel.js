@@ -1,6 +1,5 @@
 import mongoose , {Schema} from "mongoose";
 
-
 const OrderSchema = new Schema({
     products: {
             product: {
@@ -16,6 +15,8 @@ const OrderSchema = new Schema({
     customer: {
         type: mongoose.Types.ObjectId,
         ref:'User'
+    },paymentWay :{
+        type : String
     },
     payment: {
         type: String,
@@ -58,7 +59,6 @@ const OrderSchema = new Schema({
             default:false
         }
     },
-    
 },{
     timestamps : true,
 })

@@ -3,17 +3,14 @@ import '../css/Home.css'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import { useNavigate } from 'react-router-dom'
+import { useSelector} from 'react-redux'
 
 export default function Home() {
   const navigate = useNavigate()
   const handleClick = () => {
     navigate('/RestroDetails')
   }
-  const images = [
-    'https://images.pexels.com/photos/1058277/pexels-photo-1058277.jpeg?auto=compress&cs=tinysrgb&w=600',
-    'https://images.pexels.com/photos/45853/grey-crowned-crane-bird-crane-animal-45853.jpeg?auto=compress&cs=tinysrgb&w=600',
-    'https://images.pexels.com/photos/1308881/pexels-photo-1308881.jpeg?auto=compress&cs=tinysrgb&w=600',
-  ];
+  const images  = useSelector(state => state.restaurant.RestaurantInfo.img)
 
   // State to keep track of the current image index
   // const [currentImageIndex, setCurrentImageIndex] = useState(0);

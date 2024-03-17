@@ -60,17 +60,17 @@ export default function Navbar() {
             </p>
           </div>
           <div className='d-flex '>
-            <Link to='/Home' className='text-dark text-decoration-none'>
+            <Link to='/Search' className='text-dark text-decoration-none'>
               <li className='p-2 rounded rounded-3 mx-3' id='Home' onClick={() => changeBgColor("Home")}>Search</li>
             </Link>
             <Link to='/OrderList' className='text-dark text-decoration-none'>
               <li className='p-2 rounded rounded-3 mx-3' id='OrderList' onClick={() => changeBgColor("OrderList")}>Offers</li>
             </Link>
-            <Link to='/OrderList' className='text-dark text-decoration-none'>
-              <li className='p-2 rounded rounded-3 mx-3' id='OrderList' onClick={() => changeBgColor("OrderList")}>Help</li>
+            <Link to='/Favourite' className='text-dark text-decoration-none'>
+              <li className='p-2 rounded rounded-3 mx-3' id='ContactUs' onClick={changeBgColor}>Favourite</li>
             </Link>
             <Link to='/ContactUs' className='text-dark text-decoration-none'>
-              <li className='p-2 rounded rounded-3 mx-3' id='ContactUs' onClick={changeBgColor}>Sign In</li>
+              <li className='p-2 rounded rounded-3 mx-3' id='OrderList' onClick={() => changeBgColor("OrderList")}>Help</li>
             </Link>
             <Link to='/Profile' className='text-dark text-decoration-none'>
               <li className='p-2 rounded rounded-3 mx-3' id='Profile' onClick={changeBgColor}>Cart</li>

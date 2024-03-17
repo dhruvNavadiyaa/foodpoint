@@ -22,7 +22,7 @@ const Login = () => {
     const sendData = async () => {
         try {
             const response = await axios.post('http://localhost:5000/api/user/signup',data);
-            console.log(response.data)
+            // console.log(response.data)
         } catch (error) {
             console.log('Error fetching data:');
         }
@@ -32,7 +32,7 @@ const Login = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         sendData()
-        navigate('/login')    
+        navigate('/')    
     };
 
     return (

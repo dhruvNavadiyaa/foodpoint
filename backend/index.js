@@ -28,5 +28,3 @@ app.use("/api/category",category)
 app.listen(process.env.PORT , ()=>{
     console.log(`runing on ${process.env.PORT}` )
 })
-
-

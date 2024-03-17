@@ -24,7 +24,6 @@ const LoginAdmin = async (req, res) => {
   const loginAdmin = await Admin.findOne({
     email: req?.body?.email,
   });
-  console.log(loginAdmin);
 
   if (!loginAdmin) {
     return res.send({

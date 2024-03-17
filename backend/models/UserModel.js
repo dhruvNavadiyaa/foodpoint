@@ -25,7 +25,7 @@ const userSchema = mongoose.Schema({
             ref: 'Order'
         }
     ],
-    efreshToken :{
+    refreshToken :{
         type: String,
         default :""
     }
@@ -70,4 +70,4 @@ userSchema.methods.generateRefreshToken = async function(){
 }
 
 
-export default mongoose.model('student',userSchema)
+export default mongoose.model('user',userSchema)
