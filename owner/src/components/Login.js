@@ -23,8 +23,13 @@ const Login = () => {
             const response = await axios.post('http://localhost:5000/api/Restaurant/signin', data,{withCredentials:true});
             // console.log(response.data)
             if (response.data.login === true) {
-                dispatch(setRestroDetails(response.data))
-                navigate('/Home')
+                if(!response.data.RestaurantInfo.bankDetail){
+                    navigate('RestroDetails')
+                }
+                else{
+                    dispatch(setRestroDetails(response.data))
+                    navigate('/Home')
+                }
             }
             else {
                 alert("Your Email Id and Password are incorrect!")

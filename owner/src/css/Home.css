@@ -21,8 +21,7 @@
     left: 0;
     transform: translateY(-50%);
     font-size: 24px;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.5);
+    color: black;
     border: none;
     padding: 10px 15px;
     transition: all 0.5s ease-in-out;
@@ -35,8 +34,7 @@
     right: 0;
     transform: translateY(-50%);
     font-size: 24px;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.5);
+    color: black;
     border: none;
     padding: 10px 15px;
     transition: all 0.5s ease-in-out;

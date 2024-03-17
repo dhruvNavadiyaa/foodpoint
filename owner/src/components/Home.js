@@ -73,7 +73,7 @@ export default function Home() {
 
       <div className='row front-img m-0'>
 
-        <div className="col mb-5 border r mb-5" style={{ marginTop: '100px' }}>
+        <div className="col mb-5  r mb-5" style={{ marginTop: '100px' }}>
 
 
           {/* <div>
@@ -89,13 +89,13 @@ export default function Home() {
           </div> */}
           <div>
             <div className='carouselStyle'>
-              <button onClick={prevImage} className='arrowStyleL'>&lt;</button>
+              <button onClick={prevImage} className='arrowStyleL btn btn-light'>&lt;</button>
               <img
                 src={images[currentImageIndex]}
                 alt="carousel"
                 className={`imageStyle w-75 rounded rounded-3 box-shadow ${isTransitioning ? 'carousel-image-exit' : ''}`} // Add your transitioning class here
               />
-              <button onClick={nextImage} className='arrowStyleR'>&gt;</button>
+              <button onClick={nextImage} className='arrowStyleR btn btn-light'>&gt;</button>
             </div>
           </div>
 
