@@ -1,21 +1,63 @@
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Route, Routes, useNavigate } from 'react-router-dom'
+import { setUserDetails } from './redux/features/userSlice';
+import axios from 'axios'
 import Login from './component/Login'
 import SignUp from './component/SignUp'
 import Home from './component/Home'
 import React from 'react';
 import Restaurant from './component/Restaurant';
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Search from './component/Search';
+import ContactUs from './component/ContactUs';
+import Favourite from './component/Favourite';
+
 function App() {
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  // const login = useSelector(state => state.user.userinfo.login)
+  const login = useSelector(state => state.user.login)
+  // const login = false
+
+  const refresh = async () => {
+    try {
+      const response = await axios.post('http://localhost:5000/api/user/refresh', {}, { withCredentials: true });
+      console.log(response)
+      if (response.data.login === true) {
+        // console.log(response.data)
+        dispatch(setUserDetails(response.data))
+        // navigate('/Home')
+      }
+      else {
+        navigate('/')
+      }
+    } catch (error) {
+      console.log('Error fetching data:', error);
+    }
+  }
+  useEffect(() => {
+    refresh()
+     console.log(login)
+  }, [])
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/Login' element={<Login />} />
-          <Route path='/SignUp' element={<SignUp />} />
-          <Route path='/Restaurant' element={<Restaurant />} />
-
-          <Route path='/' element={<Home />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        {!login ?
+          <>
+            <Route path='/' element={<Login />} />
+            <Route path='/SignUp' element={<SignUp />} />
+          </>
+          :
+          <>
+            <Route path='/Home' element={<Home />} />
+            <Route path='/Restaurant' element={<Restaurant />} />
+            <Route path='/Search' element={<Search />} />
+            <Route path='/ContactUs' element={<ContactUs />} />
+            <Route path='/Favourite' element={<Favourite />} />
+          </>
+        }
+      </Routes>
     </>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { UseDispatch, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import '../css/Login.css';
@@ -21,25 +21,21 @@ const Login = () => {
     const getdata = async () => {
         try {
             const response = await axios.post('http://localhost:5000/api/user/signin', data);
-            // console.log(details)
-            if (!response.data.loginUser) {
-                alert("Pleas Enter valid detail!")
-            }
-            else {
-                setDetails(response.data.loginUser)
-                console.log(details);
-                dispatch(setUserDetails(response.data.loginUser))
-                navigate('/')
+            // console.log(response.data)
+            if (response.data.login === true) {
+                dispatch(setUserDetails(response.data))
+                navigate('/Home')
             }
         } catch (error) {
-            console.error('Error fetching data:' ,error);
+            console.error('Error login !', error);
         }
     }
-
-    const handleSubmit = (event) => {
+    const useinfo = useSelector(state => state.user)
+    const handleSubmit = async (event) => {
         event.preventDefault();
         getdata()
-    };
+        // console.log(useinfo)
+    }
 
     return (
         <div className="login-page">

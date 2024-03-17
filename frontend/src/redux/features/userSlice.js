@@ -3,14 +3,17 @@ import { createSlice } from '@reduxjs/toolkit';
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
-    userinfo: null
+    login: false,
+    userInfo: {}
   },
   reducers: {
     setUserDetails: (state, action) => {
-      state.userinfo = action.payload;
+      // console.log('Updating user details with:', action.payload);
+      state.userInfo = action.payload;
+      state.login = action.payload.login;
     },
     clearUserDetails: (state) => {
-      state.userinfo = null
+      state.userInfo = null
     },
   },
 });

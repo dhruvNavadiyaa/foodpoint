@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
+import { useSelector} from 'react-redux'
 
 export default function Profile() {
+  const RestaurantInfo  = useSelector(state => state.restaurant.RestaurantInfo)
 
   const [changeDetail, setChageDetail] = useState(true)
 
@@ -40,7 +42,7 @@ export default function Profile() {
                 <div className='row py-1  m-0 rounded-bottom rounded-bottom-4' style={{ backgroundColor: 'rgb(226, 232, 240)' }}>
                   <div className="row mt-2 m-0">
                     <div className="col-2 "><p className='fs-5  m-0 py-2'>Name</p></div>
-                    <div className="col-7  rounded rounded-2 fw-bold text-secondary" style={{ backgroundColor: 'rgb(231, 236, 242)' }}><p className=' m-0 py-2' >dhruv</p></div>
+                    <div className="col-7  rounded rounded-2 fw-bold text-secondary" style={{ backgroundColor: 'rgb(231, 236, 242)' }}><p className=' m-0 py-2' >{RestaurantInfo.name}</p></div>
                   </div>
                   <div className="row  m-0 mt-3">
                     <div className="col-2 "><p className='fs-5  m-0 py-2'>Mobile No.</p></div>
