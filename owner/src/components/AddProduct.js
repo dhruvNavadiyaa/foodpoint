@@ -172,7 +172,7 @@ export default function AddProduct() {
                                                 categories.map((items, index) => {
                                                     return (
                                                         <>
-                                                            <option value={items._id}>{items.name}</option>
+                                                            <option key={index} value={items._id}>{items.name}</option>
                                                         </>
                                                     )
                                                 })

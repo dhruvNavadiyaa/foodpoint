@@ -1,4 +1,5 @@
 import Product from "../models/ProductModel.js";
+import uploadCloudinary from "../utils/cloudinary.js";
 
 //Add Product and Also id push in to the Category And Restaurant models
 const CreateProduct = async(req,res)=>{
