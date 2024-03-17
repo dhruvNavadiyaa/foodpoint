@@ -27,7 +27,7 @@ const CreateProduct = async(req,res)=>{
 const CatagoryProuct = async(req,res)=>{
     // console.log(req.query)
     const AllFeatch = await Product.find({
-        category : req?.query?.category_id
+        category : req?.body?.category_id
     })
     res.send({
         AllProduct : AllFeatch

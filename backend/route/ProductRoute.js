@@ -9,7 +9,7 @@ router.route('/create').post(upload.fields([
         maxCount : 2
     }
 ]),CreateProduct)
-router.route('/catagory').get(CatagoryProuct)
+router.route('/catagory').post(CatagoryProuct)
 router.route('/resturent').get(ResturentProuct)
 router.route('/update').get(upload.fields([
     {
