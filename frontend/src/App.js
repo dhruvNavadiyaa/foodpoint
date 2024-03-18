@@ -11,6 +11,7 @@ import Restaurant from './component/Restaurant';
 import Search from './component/Search';
 import ContactUs from './component/ContactUs';
 import Favourite from './component/Favourite';
+import OrderList from './component/OrderList';
 
 function App() {
 
@@ -55,6 +56,9 @@ function App() {
             <Route path='/Search' element={<Search />} />
             <Route path='/ContactUs' element={<ContactUs />} />
             <Route path='/Favourite' element={<Favourite />} />
+            <Route path='/ContactUs' element={<ContactUs />} />
+            <Route path='/OrderList' element={<OrderList />} />
+            <Route path='/Restaurant' element={<Restaurant />} />
           </>
         }
       </Routes>

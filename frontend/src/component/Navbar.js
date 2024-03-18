@@ -9,11 +9,11 @@ export default function Navbar() {
   const path = location.pathname
   const changeBgColor = () => {
     // console.log(path)
-    if (path === '/Home') {
+    if(path === '/Home') {
       let cComponent = document.querySelector("#Home")
       cComponent.classList.add('bg-navitem')
     }
-    else if (path === '/OrderList') {
+    else if(path === '/OrderList') {
       let cComponent = document.querySelector("#OrderList")
       cComponent.classList.add('bg-navitem')
     }
@@ -21,8 +21,16 @@ export default function Navbar() {
       let cComponent = document.querySelector("#ContactUs")
       cComponent.classList.add('bg-navitem')
     }
-    else if (path === '/Profile') {
-      let cComponent = document.querySelector("#Profile")
+    else if (path === '/Favourite') {
+      let cComponent = document.querySelector("#Favourite")
+      cComponent.classList.add('bg-navitem')
+    }
+    else if (path === '/Search') {
+      let cComponent = document.querySelector("#Search")
+      cComponent.classList.add('bg-navitem')
+    }
+    else if (path === '/OrderList') {
+      let cComponent = document.querySelector("#OrderList")
       cComponent.classList.add('bg-navitem')
     }
   }
@@ -60,20 +68,20 @@ export default function Navbar() {
             </p>
           </div>
           <div className='d-flex '>
-            <Link to='/Search' className='text-dark text-decoration-none'>
-              <li className='p-2 rounded rounded-3 mx-3' id='Home' onClick={() => changeBgColor("Home")}>Search</li>
+            <Link to='/Home' className='text-dark text-decoration-none'>
+              <li className='p-2 rounded rounded-3 mx-3' id='Home' onClick={() => changeBgColor("OrderList")}>Home</li>
             </Link>
-            <Link to='/OrderList' className='text-dark text-decoration-none'>
-              <li className='p-2 rounded rounded-3 mx-3' id='OrderList' onClick={() => changeBgColor("OrderList")}>Offers</li>
+            <Link to='/Search' className='text-dark text-decoration-none'>
+              <li className='p-2 rounded rounded-3 mx-3' id='Search' onClick={() => changeBgColor("Search")}>Search</li>
             </Link>
             <Link to='/Favourite' className='text-dark text-decoration-none'>
-              <li className='p-2 rounded rounded-3 mx-3' id='ContactUs' onClick={changeBgColor}>Favourite</li>
+              <li className='p-2 rounded rounded-3 mx-3' id='Favourite' onClick={changeBgColor}>Favourite</li>
+            </Link>
+            <Link to='/OrderList' className='text-dark text-decoration-none'>
+              <li className='p-2 rounded rounded-3 mx-3' id='OrderList' onClick={changeBgColor}>Order List</li>
             </Link>
             <Link to='/ContactUs' className='text-dark text-decoration-none'>
-              <li className='p-2 rounded rounded-3 mx-3' id='OrderList' onClick={() => changeBgColor("OrderList")}>Help</li>
-            </Link>
-            <Link to='/Profile' className='text-dark text-decoration-none'>
-              <li className='p-2 rounded rounded-3 mx-3' id='Profile' onClick={changeBgColor}>Cart</li>
+              <li className='p-2 rounded rounded-3 mx-3' id='ContactUs' onClick={() => changeBgColor("ContactUs")}>Help</li>
             </Link>
           </div>
         </div>
