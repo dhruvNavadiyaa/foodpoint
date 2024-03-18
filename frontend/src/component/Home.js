@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Footer from './Footer';
 import '../css/Home.css'; // Make sure to create and import the CSS file
 import Navbar from './Navbar';
 import { Navigate, useNavigate } from 'react-router-dom';
+import axios from 'axios'
+
 const Home = () => {
+
   const navigate = useNavigate()
+  const [topRestaurant, setTopRestaurant] = useState([])
+
+  const getTopRestaurent = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/api/Restaurant/toprestaurant');
+      console.log(response.data.Restaurant)
+      setTopRestaurant(response.data.Restaurant)
+    } catch (error) {
+      console.log('Error fetching data:', error);
+    }
+  }
+  useEffect(() => {
+    getTopRestaurent()
+  }, [])
+
   return (
     <>
       <Navbar />
@@ -83,98 +101,27 @@ const Home = () => {
               <div className="col d-flex justify-content-around flex-wrap">
 
                 {/* <div className="row d-flex justify-content-around mt-3 mb-5 m-0 " > */}
+                {topRestaurant.map((item, index) => {
+                  return (
+                    <div className='d-inline mb-3' onClick={() => { navigate('/Restaurant') }} key={index}>
+                      <div className="card p-0 rounded rounded-4 box-shadow" >
+                        <img src="https://images.pexels.com/photos/1603901/pexels-photo-1603901.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""
+                          className='card-img rounded rounded-4 box-shadow'
+                        />
+                        <div className="card-img-overlay">
+                          {/* <p className='text-light'>Dominos</p> */}
+                        </div>
+                      </div>
+                      <div className='px-3 mt-1'>
+                        <p className='fs-5 mb-0 fw-bold text-secondary text-nowrap overflow-hidden'>{item.name}</p>
+                        <small className='fw-bold text-secondary mt-1 mb-0'><i className="bi bi-star-fill p-1 py-0 text-light bg-warning rounded rounded-circle" /> {item.rating}/5 &#x2022; 20-25 mins</small><br />
+                        <small className='mt-1 fw-bold text-secondary'>{item.fulladdress} , {item.address.street} </small>
+                      </div>
+                    </div>
+                  )
+                })
 
-                <div className='d-inline mb-3' onClick={()=>{navigate('/Restaurant')}}>
-                  <div className="card p-0 rounded rounded-4 box-shadow" >
-                    <img src="https://images.pexels.com/photos/1603901/pexels-photo-1603901.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""
-                      className='card-img rounded rounded-4 box-shadow'
-                    />
-                    <div className="card-img-overlay">
-                      <p className='text-light'>Dominos</p>
-                    </div>
-                  </div>
-                  <div className='px-3 mt-1'>
-                    <p className='fs-5 mb-0 fw-bold text-secondary text-nowrap overflow-hidden'>Restaurant Name</p>
-                    <small className='fw-bold text-secondary mt-1 mb-0'><i className="bi bi-star-fill p-1 py-0 text-light bg-warning rounded rounded-circle" /> 4/5 &#x2022; 20-25 mins</small><br />
-                    <small className='mt-1 fw-bold text-secondary'>Biryani, North IndianChowk Bazar1.8 km.</small>
-                  </div>
-                </div>
-                <div className='d-inline mb-3'>
-                  <div className="card p-0 rounded rounded-4 box-shadow" >
-                    <img src="https://images.pexels.com/photos/1603901/pexels-photo-1603901.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""
-                      className='card-img rounded rounded-4 box-shadow'
-                    />
-                    <div className="card-img-overlay">
-                      <p className='text-light'>Dominos</p>
-                    </div>
-                  </div>
-                  <div className='px-3 mt-1'>
-                    <p className='fs-5 mb-0 fw-bold text-secondary text-nowrap overflow-hidden'>Restaurant Name</p>
-                    <small className='fw-bold text-secondary mt-1 mb-0'><i className="bi bi-star-fill p-1 py-0 text-light bg-warning rounded rounded-circle" /> 4/5 &#x2022; 20-25 mins</small><br />
-                    <small className='mt-1 fw-bold text-secondary'>Biryani, North IndianChowk Bazar1.8 km.</small>
-                  </div>
-                </div>
-                <div className='d-inline mb-3'>
-                  <div className="card p-0 rounded rounded-4 box-shadow" >
-                    <img src="https://images.pexels.com/photos/1603901/pexels-photo-1603901.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""
-                      className='card-img rounded rounded-4 box-shadow'
-                    />
-                    <div className="card-img-overlay">
-                      <p className='text-light'>Dominos</p>
-                    </div>
-                  </div>
-                  <div className='px-3 mt-1'>
-                    <p className='fs-5 mb-0 fw-bold text-secondary text-nowrap overflow-hidden'>Restaurant Name</p>
-                    <small className='fw-bold text-secondary mt-1 mb-0'><i className="bi bi-star-fill p-1 py-0 text-light bg-warning rounded rounded-circle" /> 4/5 &#x2022; 20-25 mins</small><br />
-                    <small className='mt-1 fw-bold text-secondary'>Biryani, North IndianChowk Bazar1.8 km.</small>
-                  </div>
-                </div>
-                <div className='d-inline mb-3'>
-                  <div className="card p-0 rounded rounded-4 box-shadow" >
-                    <img src="https://images.pexels.com/photos/1603901/pexels-photo-1603901.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""
-                      className='card-img rounded rounded-4 box-shadow'
-                    />
-                    <div className="card-img-overlay">
-                      <p className='text-light'>Dominos</p>
-                    </div>
-                  </div>
-                  <div className='px-3 mt-1'>
-                    <p className='fs-5 mb-0 fw-bold text-secondary text-nowrap overflow-hidden'>Restaurant Name</p>
-                    <small className='fw-bold text-secondary mt-1 mb-0'><i className="bi bi-star-fill p-1 py-0 text-light bg-warning rounded rounded-circle" /> 4/5 &#x2022; 20-25 mins</small><br />
-                    <small className='mt-1 fw-bold text-secondary'>Biryani, North IndianChowk Bazar1.8 km.</small>
-                  </div>
-                </div>
-                <div className='d-inline mb-3'>
-                  <div className="card p-0 rounded rounded-4 box-shadow" >
-                    <img src="https://images.pexels.com/photos/1603901/pexels-photo-1603901.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""
-                      className='card-img rounded rounded-4 box-shadow'
-                    />
-                    <div className="card-img-overlay">
-                      <p className='text-light'>Dominos</p>
-                    </div>
-                  </div>
-                  <div className='px-3 mt-1'>
-                    <p className='fs-5 mb-0 fw-bold text-secondary text-nowrap overflow-hidden'>Restaurant Name</p>
-                    <small className='fw-bold text-secondary mt-1 mb-0'><i className="bi bi-star-fill p-1 py-0 text-light bg-warning rounded rounded-circle" /> 4/5 &#x2022; 20-25 mins</small><br />
-                    <small className='mt-1 fw-bold text-secondary'>Biryani, North IndianChowk Bazar1.8 km.</small>
-                  </div>
-                </div>
-                <div className='d-inline mb-3'>
-                  <div className="card p-0 rounded rounded-4 box-shadow" >
-                    <img src="https://images.pexels.com/photos/1603901/pexels-photo-1603901.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""
-                      className='card-img rounded rounded-4 box-shadow'
-                    />
-                    <div className="card-img-overlay">
-                      <p className='text-light'>Dominos</p>
-                    </div>
-                  </div>
-                  <div className='px-3 mt-1'>
-                    <p className='fs-5 mb-0 fw-bold text-secondary text-nowrap overflow-hidden'>Restaurant Name</p>
-                    <small className='fw-bold text-secondary mt-1 mb-0'><i className="bi bi-star-fill p-1 py-0 text-light bg-warning rounded rounded-circle" /> 4/5 &#x2022; 20-25 mins</small><br />
-                    <small className='mt-1 fw-bold text-secondary'>Biryani, North IndianChowk Bazar1.8 km.</small>
-                  </div>
-                </div>
-
+                }
 
               </div>
 

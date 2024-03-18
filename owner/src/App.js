@@ -50,12 +50,13 @@ function App() {
           <>
             <Route path='/' element={<Login />} />
             <Route path='/SignUp' element={<SignUp />} />
+            <Route path='/RestroDetails' element={<RestroDetails />} />
           </>
           :
           // isApproved === "Pending"
           <>
             <Route path='/' element={<Login />} />
-          <Route path='/SignUp' element={<SignUp />} />
+            <Route path='/SignUp' element={<SignUp />} />
             <Route path='/Home' element={<Home />} />
             <Route path='/OrderList' element={<OrderList />} />
             <Route path='/AddProduct' element={<AddProduct />} />
