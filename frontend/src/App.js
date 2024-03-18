@@ -64,7 +64,7 @@ function App() {
             <Route path='/Restaurant' element={<Restaurant />} />
           </>
         }
-      </Routes>
+      </Routes>   
     </>
   );
 }

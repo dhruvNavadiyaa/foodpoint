@@ -65,4 +65,23 @@ const deleteProduct = async (req, res) => {
     
     }
     
-export  { CreateProduct , CatagoryProuct ,ResturentProuct,updateProduct,deleteProduct}
+
+    const searchProduct = async (req, res) => {
+        const search = await Product.aggregate([
+            {
+              "$match": {
+                "name": { "$regex": `.*${req?.body?.name}.*` }
+              }
+            },
+            {
+              "$sort": {
+                "rating": 1  
+              }
+            }
+          ])
+          return res.send({
+            "success": true,
+            "product" : search
+        })
+    }
+export  { CreateProduct , CatagoryProuct ,ResturentProuct,updateProduct,deleteProduct,searchProduct}
