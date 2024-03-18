@@ -44,22 +44,10 @@ const ResturentProuct = async(req,res)=>{
     })
 }
 const updateProduct = async (req, res) => {
-    const fileimg = req?.files?.product
-    if(!fileimg){
-        const find =  await Product.findById(req?.body?.product_id)
-        const img = find?.img
-    }
-    else{
-        const img =await uploadCloudinary(`./temp/img/${fileimg[0]?.filename}`)
-    }
 const updatedproduct = await Product.findByIdAndUpdate(req?.body?.product_id , {
-
         name  : req?.body?.name,
         price : req?.body?.price,
-        category  : req?.body?.category_id,
-        restaurant  : req?.body?.restaurant_id,
-        description  : req?.body?.description,
-        img
+        description  : req?.body?.description
 })
 
 return res.send({
@@ -68,4 +56,13 @@ return res.send({
 
 }
 
-export  { CreateProduct , CatagoryProuct ,ResturentProuct,updateProduct}
+const deleteProduct = async (req, res) => {
+    const deleteWithId = await Product.findByIdAndDelete(req?.body?.product_id)
+    
+    return res.send({
+        "success": true,
+    })
+    
+    }
+    
+export  { CreateProduct , CatagoryProuct ,ResturentProuct,updateProduct,deleteProduct}
