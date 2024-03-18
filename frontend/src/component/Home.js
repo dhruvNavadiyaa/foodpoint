@@ -105,7 +105,7 @@ const Home = () => {
                   return (
                     <div className='d-inline mb-3' onClick={() => { navigate('/Restaurant') }} key={index}>
                       <div className="card p-0 rounded rounded-4 box-shadow" >
-                        <img src="https://images.pexels.com/photos/1603901/pexels-photo-1603901.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""
+                        <img src={item?.img[0] ||"https://images.pexels.com/photos/1603901/pexels-photo-1603901.jpeg?auto=compress&cs=tinysrgb&w=600"} alt=""
                           className='card-img rounded rounded-4 box-shadow'
                         />
                         <div className="card-img-overlay">
@@ -115,7 +115,7 @@ const Home = () => {
                       <div className='px-3 mt-1'>
                         <p className='fs-5 mb-0 fw-bold text-secondary text-nowrap overflow-hidden'>{item.name}</p>
                         <small className='fw-bold text-secondary mt-1 mb-0'><i className="bi bi-star-fill p-1 py-0 text-light bg-warning rounded rounded-circle" /> {item.rating}/5 &#x2022; 20-25 mins</small><br />
-                        <small className='mt-1 fw-bold text-secondary'>{item.fulladdress} , {item.address.street} </small>
+                        <small className='mt-1 fw-bold text-secondary'>{item.address.street},{item.address.street} </small>
                       </div>
                     </div>
                   )
