@@ -18,6 +18,7 @@ export default function Search() {
 
                     </div>
 
+                    {/* PUPULAR PRODUCT IN HORIZONTAL SCROLL BAR */}
                     <div className="container px-5 popular mt-4">
                         <p className='mb-0 mt-5 fw-bold'>Popular Cuisines</p>
                         <div className="row m-0">
@@ -38,6 +39,7 @@ export default function Search() {
                     <div className="container-md px-md-5 mt-4" >
                         <div className="row m-0 mb-5">
 
+                            {/* ITEM CARDS */}
                             <div className="col-sm-6 px-5-md mb-5">
                                 <div className="item p-3 rounded rounded-4 box-shadow">
                                     <div className='row m-0'>
