@@ -1,12 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import axios from 'axios'
 import { setRestroDetails } from '../redux/features/RestaurantSlice'
 
 export default function RestroDetails() {
+
+    const location = useLocation();
+    const id = location.state?.id;
+    
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -56,6 +60,11 @@ export default function RestroDetails() {
         navigate('/')
 
     }
+    
+    useEffect(() => {
+        console.log(id)
+    }, [])
+    
 
     return (
         <>

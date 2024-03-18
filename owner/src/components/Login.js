@@ -21,14 +21,15 @@ const Login = () => {
     const getdata = async () => {
         try {
             const response = await axios.post('http://localhost:5000/api/Restaurant/signin', data,{withCredentials:true});
-            // console.log(response.data)
+            console.log(response.data)
+            // const id = response.data.RestaurantInfo._id;
             if (response.data.login === true) {
                 if(!response.data.RestaurantInfo.bankDetail){
-                    navigate('RestroDetails')
+                    navigate('RestroDetails',{ state: { id: response.data.RestaurantInfo._id } })
                 }
                 else{
                     dispatch(setRestroDetails(response.data))
-                    navigate('/Home')
+                    navigate('/Home');
                 }
             }
             else {

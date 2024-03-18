@@ -14,6 +14,7 @@ const Home = () => {
   const getTopRestaurent = async () => {
     try {
       const response = await axios.get('http://localhost:5000/api/Restaurant/toprestaurant');
+      console.log(response.data)
       setTopRestaurant(response.data.Restaurant)
     } catch (error) {
       console.log('Error fetching data:', error);
@@ -22,7 +23,7 @@ const Home = () => {
   const getTopProduct = async () => {
     try {
       const response = await axios.get('http://localhost:5000/api/product/top');
-      console.log(response.data)
+      // console.log(response.data)
       setTopProduct(response.data.product)
     } catch (error) {
       console.log('Error fetching data:', error);
@@ -81,7 +82,7 @@ const Home = () => {
                       <div className='px-3 mt-1'>
                         <p className='fs-5 mb-0 fw-bold text-secondary text-nowrap overflow-hidden'>{item.name}</p>
                         <small className='fw-bold text-secondary mt-1 mb-0'><i className="bi bi-star-fill p-1 py-0 text-light bg-warning rounded rounded-circle" /> {item.rating}/5 &#x2022; 20-25 mins</small><br />
-                        <small className='mt-1 fw-bold text-secondary'>{item.address.street},{item.address.street} </small>
+                        {/* <small className='mt-1 fw-bold text-secondary'>{item.address.street},{item.address.street} </small> */}
                       </div>
                     </div>
                   )

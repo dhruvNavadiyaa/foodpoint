@@ -74,9 +74,9 @@ export default function Navbar() {
             <Link to='/Search' className='text-dark text-decoration-none'>
               <li className='p-2 rounded rounded-3 mx-3' id='Search' onClick={() => changeBgColor("Search")}>Search</li>
             </Link>
-            <Link to='/Favourite' className='text-dark text-decoration-none'>
+            {/* <Link to='/Favourite' className='text-dark text-decoration-none'>
               <li className='p-2 rounded rounded-3 mx-3' id='Favourite' onClick={changeBgColor}>Favourite</li>
-            </Link>
+            </Link> */}
             <Link to='/OrderList' className='text-dark text-decoration-none'>
               <li className='p-2 rounded rounded-3 mx-3' id='OrderList' onClick={changeBgColor}>Order List</li>
             </Link>

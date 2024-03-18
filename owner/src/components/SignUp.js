@@ -24,7 +24,7 @@ const Login = () => {
         try {
             const response = await axios.post('http://localhost:5000/api/Restaurant/signup', data);
             console.log(response.data)
-            navigate('/RestroDetails')    
+            navigate('/')    
         } catch (error) {
             console.log('Error fetching data:',error);
         }

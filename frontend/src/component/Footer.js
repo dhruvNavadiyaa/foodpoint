@@ -23,33 +23,30 @@ export default function Footer() {
                                 <small>foodpoint01@gmail.com</small>
                             </div>
                         </div>
-                        <div className="col-4">
+                        <div className="col-4 ">
                             <h5 className="mb-3">Usefull Links</h5>
                             <small>Lorem ipsum dolor</small><br />
                             <small>Lorem ipsum dolor</small><br />
                         </div>
-                        <div className="col-4">
-                            <form action="">
-                                <p>any problems!</p>
-                                <input type="text" className='form-control bg-transparent' />
-                                <button className='btn btn-outline-secondary'> Submit</button>
-                            </form>
+                        <div className="col-4 d-flex align-items-center">
+                           <img src="https://www.svgrepo.com/show/251521/food-pin.svg" className='img-fluid w-50' alt="" />
+                           <p className='fw-bold fs-3'>Food Point</p>
                         </div>
                     </div>
                     <hr />
                     <div className="row">
                         <div className="col-6">
                             <strong>Follow Us</strong>
-                            <div className='mt-1'>
-                                <i className="bi bi-instagram"></i>
-                                <i className="bi bi-facebook"></i>
-                                <i className="bi bi-twitter"></i>
-                                <i className="bi bi-linkedin"></i>
+                            <div className='mt-1 mb-5'>
+                                <i className="bi bi-instagram mx-1 fs-4"></i>
+                                <i className="bi bi-facebook mx-1 fs-4"></i>
+                                <i className="bi bi-twitter mx-1 fs-4"></i>
+                                <i className="bi bi-linkedin mx-1 fs-4"></i>
                             </div>
                         </div>
                         <div className="col-6"></div>
                     </div>
-                    <hr />
+                    {/* <hr /> */}
                     <div className="row"></div>
                 </div>
             </div>
