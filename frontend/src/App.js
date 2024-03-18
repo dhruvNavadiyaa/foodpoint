@@ -32,9 +32,9 @@ function App() {
         dispatch(setUserDetails(response.data))
         // navigate('/Home')
       }
-      else {
-        navigate('/')
-      }
+      // else {
+      //   navigate('/')
+      // }
     } catch (error) {
       console.log('Error fetching data:', error);
     }
@@ -48,7 +48,7 @@ function App() {
       <Routes>
         {!login ?
           <>
-            <Route path='/login' element={<Login />} />
+            <Route path='/' element={<Login />} />
             <Route path='/SignUp' element={<SignUp />} />
           </>
           :
