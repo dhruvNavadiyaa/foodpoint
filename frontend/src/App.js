@@ -23,16 +23,18 @@ function App() {
 
   const refresh = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/api/user/refresh', {}, { withCredentials: true });
-      // console.log(response)
+      console.log(localStorage.getItem("isLogin"));
+      const response = await axios.post('http://localhost:5000/api/user/refresh',{},{ withCredentials: true});
+
+      console.log(response)
       if (response.data.login === true) {
         // console.log(response.data)
         dispatch(setUserDetails(response.data))
         // navigate('/Home')
       }
-      // else {
-      //   navigate('/')
-      // }
+      else {
+        navigate('/')
+      }
     } catch (error) {
       console.log('Error fetching data:', error);
     }
@@ -46,11 +48,12 @@ function App() {
       <Routes>
         {!login ?
           <>
-            <Route path='/' element={<Login />} />
+            <Route path='/login' element={<Login />} />
             <Route path='/SignUp' element={<SignUp />} />
           </>
           :
           <>
+            <Route path='/' element={<Home />} />
             <Route path='/Home' element={<Home />} />
             <Route path='/Restaurant' element={<Restaurant />} />
             <Route path='/Search' element={<Search />} />

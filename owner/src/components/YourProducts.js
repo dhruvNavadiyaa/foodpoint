@@ -24,6 +24,7 @@ export default function YourProducts() {
     try {
       const response = await axios.post('http://localhost:5000/api/category/fetchid', data);
       setCategory(response.data.AllProduct)
+      setCatagoryUpdateId({_id:response?.data?.AllProduct[0]._id})
     } catch (error) {
       console.log('Error fetching data:', error);
     }
@@ -99,9 +100,9 @@ export default function YourProducts() {
             <div className="row p-0 d-flex justify-content-evenly">
 
               {
-              product.map( (item) =>{
-                return(<div className="col-3 p-0  rounded rounded-5 category-cards">
-                <img src="https://images.pexels.com/photos/718742/pexels-photo-718742.jpeg?auto=compress&cs=tinysrgb&w=600" className='item-img rounded rounded-5' alt="" />
+              product.map( (item,index) =>{
+                return(<div key={index} className="col-3 p-0  rounded rounded-5 category-cards">
+                <img src={item?.img[0] || "https://images.pexels.com/photos/718742/pexels-photo-718742.jpeg?auto=compress&cs=tinysrgb&w=600"} className='item-img rounded rounded-5' alt="" />
 
                 <div className='items-details p-3'>
                   <div className='p-3 border rounded rounded-5 box-shadow' style={{ backgroundColor: 'white' }}>

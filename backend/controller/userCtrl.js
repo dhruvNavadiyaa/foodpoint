@@ -51,9 +51,9 @@ const LoginUser = async(req,res)=>{
          httpOnly : true,
          secure : true
        }
-       return res
-       .cookie("accessToken", accessToken ,options )
-       .cookie("refreshToken", refreshToken ,options )
+        res
+       .cookie("accessToken", accessToken  )
+       .cookie("refreshToken", refreshToken )
        .json({
          login : true,
          userInfo ,
@@ -92,7 +92,8 @@ const RefreshTokenEndPoint  = async (req, res) => {
     }
     const veriftoken = jwt.verify(refreshToken , process.env.REFRESH_TOKEN_SECRET)
 
-    const userFind = await User.findById(veriftoken._id).select("-password")
+    const userFind = await User.findById(veriftoken._id)
+
     if (!userFind) {
       return res.send({
         login : false,

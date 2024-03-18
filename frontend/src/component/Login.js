@@ -20,9 +20,10 @@ const Login = () => {
 
     const getdata = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/api/user/signin', data);
+            const response = await axios.post('http://localhost:5000/api/user/signin', data,{ withCredentials: true});
             // console.log(response.data)
             if (response.data.login === true) {
+                localStorage.setItem('resfreshToken', response.data.refreshToken);
                 dispatch(setUserDetails(response.data))
                 navigate('/Home')
             }
