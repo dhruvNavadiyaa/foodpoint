@@ -129,6 +129,8 @@ const UpdateRestaurant= async (req, res) => {
         img.push(url);
         }
     }
+    console.log(img)
+    try{
     const updatedResturent = await Restaurant.findByIdAndUpdate(req?.body?.Restaurant_id , {
         img ,
         name  : req?.body?.name,
@@ -158,6 +160,13 @@ const UpdateRestaurant= async (req, res) => {
         isApproved : req?.body?.isApproved
     },{new : true})
     
+}
+catch (err) {
+    console.log(err)
+    return res.send({
+        "RestaurantInfo": updatedResturent
+    })
+}
     res.send({
         "RestaurantInfo": updatedResturent
     })
