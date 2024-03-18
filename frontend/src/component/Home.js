@@ -9,18 +9,28 @@ const Home = () => {
 
   const navigate = useNavigate()
   const [topRestaurant, setTopRestaurant] = useState([])
+  const [topProduct, setTopProduct] = useState([])
 
   const getTopRestaurent = async () => {
     try {
       const response = await axios.get('http://localhost:5000/api/Restaurant/toprestaurant');
-      console.log(response.data.Restaurant)
       setTopRestaurant(response.data.Restaurant)
+    } catch (error) {
+      console.log('Error fetching data:', error);
+    }
+  }
+  const getTopProduct = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/api/product/top');
+      console.log(response.data)
+      setTopProduct(response.data.product)
     } catch (error) {
       console.log('Error fetching data:', error);
     }
   }
   useEffect(() => {
     getTopRestaurent()
+    getTopProduct()
   }, [])
 
   return (
@@ -38,56 +48,12 @@ const Home = () => {
 
               <div className="col d-flex mt-3 scroll-bar py-2" >
 
-                <div className="product ms-3 me-5 text-center  ">
-                  <img src="https://images.pexels.com/photos/1262302/pexels-photo-1262302.jpeg?auto=compress&cs=tinysrgb&w=600"
+                {topProduct.map((item,index) =><div  key={index} className="product ms-3 me-5 text-center  ">
+                  <img src={item.img || "https://images.pexels.com/photos/1262302/pexels-photo-1262302.jpeg?auto=compress&cs=tinysrgb&w=600"}
                     className='border rounded rounded-circle product-image box-shadow' alt="" />
-                  <p className='fs-5 mt-2 text-secondary fw-bold'>Ice-creame</p>
-                </div>
-                <div className="product ms-3 me-5 text-center  ">
-                  <img src="https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    className='image-fluid border rounded rounded-circle product-image box-shadow' alt="" />
-                  <p className='fs-5 mt-2 text-secondary fw-bold'>Ice-creame</p>
-                </div>
-                <div className="product ms-3 me-5 text-center  ">
-                  <img src="https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    className='image-fluid border rounded rounded-circle product-image box-shadow' alt="" />
-                  <p className='fs-5 mt-2 text-secondary fw-bold'>Ice-creame</p>
-                </div>
-                <div className="product ms-3 me-5 text-center  ">
-                  <img src="https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    className='image-fluid border rounded rounded-circle product-image box-shadow' alt="" />
-                  <p className='fs-5 mt-2 text-secondary fw-bold'>Ice-creame</p>
-                </div>
-                <div className="product ms-3 me-5 text-center  ">
-                  <img src="https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    className='image-fluid border rounded rounded-circle product-image box-shadow' alt="" />
-                  <p className='fs-5 mt-2 text-secondary fw-bold'>Ice-creame</p>
-                </div>
-                <div className="product ms-3 me-5 text-center  ">
-                  <img src="https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    className='image-fluid border rounded rounded-circle product-image box-shadow' alt="" />
-                  <p className='fs-5 mt-2 text-secondary fw-bold'>Ice-creame</p>
-                </div>
-                <div className="product ms-3 me-5 text-center  ">
-                  <img src="https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    className='image-fluid border rounded rounded-circle product-image box-shadow' alt="" />
-                  <p className='fs-5 mt-2 text-secondary fw-bold'>Ice-creame</p>
-                </div>
-                <div className="product ms-3 me-5 text-center  ">
-                  <img src="https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    className='image-fluid border rounded rounded-circle product-image box-shadow' alt="" />
-                  <p className='fs-5 mt-2 text-secondary fw-bold'>Ice-creame</p>
-                </div>
-                <div className="product ms-3 me-5 text-center  ">
-                  <img src="https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    className='image-fluid border rounded rounded-circle product-image box-shadow' alt="" />
-                  <p className='fs-5 mt-2 text-secondary fw-bold'>Ice-creame</p>
-                </div>
-                <div className="product ms-3 me-5 text-center  ">
-                  <img src="https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    className='image-fluid border rounded rounded-circle product-image box-shadow' alt="" />
-                  <p className='fs-5 mt-2 text-secondary fw-bold'>Ice-creame</p>
-                </div>
+                  <p className='fs-5 mt-2 text-secondary fw-bold'>{item.name}</p>
+                </div>)
+                }
 
 
               </div>

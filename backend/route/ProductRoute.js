@@ -14,7 +14,7 @@ router.route('/resturent').get(ResturentProuct)
 router.route('/update').post(updateProduct)
 router.route('/delete').post(deleteProduct)
 router.route('/search').post(searchProduct)
-router.route('/top').post(top10Product)
+router.route('/top').get(top10Product)
 
 
 export default router
