@@ -12,6 +12,9 @@ export default function YourProducts() {
   const [editModal, setEditModal] = useState(false)
   const [category, setCategory] = useState([])
   const [product, setProduct] = useState([])
+  const [catagoryUpdateId, setCatagoryUpdateId] = useState({})
+  const [productDetail, setProductDetail] = useState({})
+  const [deleteProduct, setDeleteProduct] = useState("")
   const restroId = useSelector(state => state.restaurant.RestaurantInfo._id)
   // const categoryId = useSelector(state => state.)
   const data = {
@@ -27,19 +30,13 @@ export default function YourProducts() {
   }
 
   const chageCategory = async(id)=>{
-    console.log(id)
     const categoryId = {
       category_id : id
     }
     try {
-<<<<<<< HEAD
       const response = await axios.post('http://localhost:5000/api/product/catagory', categoryId);
       setProduct(response.data.AllProduct)
-=======
-      const response = await axios.post('http://localhost:5000/api/product/catagory', {categoryId});
-      console.log(response)
-      // setProduct(response.data)
->>>>>>> f0271b9593da956c0a85e90e516e62415de848be
+      
     } catch (error) {
       console.log('Error fetching data:', error);
     }
@@ -47,9 +44,32 @@ export default function YourProducts() {
 
   useEffect(() => {
     getCategory()
-    // console.log(category)
   }, [])
+  useEffect(() => {
+    chageCategory(catagoryUpdateId._id)
+  },[catagoryUpdateId])
 
+
+
+  const UpdateProduct = async()=>{
+
+    const data = {
+      name : productDetail.name,
+      price :productDetail.price,
+      description : productDetail.description,
+      product_id : productDetail._id
+    }
+    try{
+    const response = await axios.post('http://localhost:5000/api/product/update' , data);
+    }
+    catch(e){
+      console.log(e)
+    }
+  }
+  const deleteProductById = async()=>{
+    const response = await axios.post('http://localhost:5000/api/product/delete' , {product_id :deleteProduct});
+
+  }
   return (
     <>
       <Navbar />
@@ -67,7 +87,7 @@ export default function YourProducts() {
                 category.map((item,index) => {
                   return (
                     <p className='py-2 ps-3 fw-medium border rounded rounded-4' style={{ backgroundColor: 'rgb(226, 232, 240)' }} 
-                    key={index} onClick={()=>chageCategory(item._id)}>{item.name}</p>
+                    key={index} onClick={()=>{setCatagoryUpdateId({_id:item._id})}}>{item.name}</p>
                   )
                 })
               }
@@ -86,12 +106,13 @@ export default function YourProducts() {
                 <div className='items-details p-3'>
                   <div className='p-3 border rounded rounded-5 box-shadow' style={{ backgroundColor: 'white' }}>
                     <small className='font-light-thick'>&#x2022; STREET FOOD</small>
-                    <p className='mb-0'>Pani Puri</p>
-                    <p className='mb-0'>Ratings</p>
-                    <p className='mb-0'>&#8377;100 /price</p>
+                    <p className='mb-0'>{item.name}</p>
+                    <p className='mb-0'>{item.rating}</p>
+                    <p className='mb-0'>&#8377;{item.price}/price</p>
                     <div className='d-flex'>
-                      <button className='btn btn-success btn-sm ms-auto me-2' onClick={() => setEditModal(true)}><i className="bi bi-pencil-fill"></i></button>
-                      <button className='btn btn-danger btn-sm me-2' onClick={() => setDeleteModal(true)}><i className="bi bi-x-circle"></i></button>
+                      <button className='btn btn-success btn-sm ms-auto me-2' onClick={() => {setEditModal(true);
+                         setProductDetail({_id:item._id,name:item.name,price :item.price , description:item.description})}}><i className="bi bi-pencil-fill"></i></button>
+                      <button className='btn btn-danger btn-sm me-2' onClick={() => {setDeleteModal(true); setDeleteProduct(item._id) }}><i className="bi bi-x-circle"></i></button>
                     </div>
                   </div>
                 </div>
@@ -110,8 +131,8 @@ export default function YourProducts() {
               <p className='font-light-thick'>You want to delete this Product?</p>
             </div>
             <div className="modal-actions d-flex ms-auto mt-auto">
-              <button className='btn btn-secondary me-2 px-3' onClick={() => setDeleteModal(false)}>Cancel</button>
-              <button className='btn btn-danger px-3'>Ok</button>
+              <button className='btn btn-secondary me-2 px-3' onClick={() => {setDeleteModal(false)}}>Cancel</button>
+              <button onClick={()=>{setDeleteModal(false);deleteProductById();setCatagoryUpdateId({...catagoryUpdateId})}} className='btn btn-danger px-3'>Ok</button>
             </div>
           </div>
         </div>
@@ -121,14 +142,14 @@ export default function YourProducts() {
             <p className='fs-5 fw-bold d-flex border-bottom border-2 pb-2 align-items-center'>Update Product <button className='ms-auto btn btn-light' onClick={() => setEditModal(false)}><i className="bi bi-x-lg " ></i></button></p>
             <div>
               <p className='mb-0 fw-medium'>Name</p>
-              <input type="text" className='w-100 border py-1 px-3 rounded' placeholder='Enter Product name' />
+              <input type="text" value={productDetail.name} onChange={(e)=>setProductDetail({...productDetail,name: e.target.value})} className='w-100 border py-1 px-3 rounded' placeholder='Enter Product name' />
               <p className='mb-0 mt-2 fw-medium'>Price</p>
-              <input type="text" className='w-100 border py-1 px-3 rounded' placeholder='Enter Price' />
+              <input type="text" value={productDetail.price} onChange={(e)=>setProductDetail({...productDetail,price: e.target.value})}  className='w-100 border py-1 px-3 rounded' placeholder='Enter Price' />
               <p className='mb-0 mt-2 fw-medium'>Description</p>
-              <textarea className='w-100 py-1 px-3 border rounded ' placeholder='Write the product description here!'></textarea>
+              <textarea value={productDetail.description} onChange={(e)=>setProductDetail({...productDetail,description: e.target.value})} className='w-100 py-1 px-3 border rounded ' placeholder='Write the product description here!'></textarea>
             </div>
             <div className='mt-3 text-center'>
-              <button className='btn btn-dark px-4'>Save</button>
+              <button className='btn btn-dark px-4' onClick={()=>{UpdateProduct();setEditModal(false);setCatagoryUpdateId({...catagoryUpdateId})}}>Save</button>
             </div>
           </div>
         </div>
