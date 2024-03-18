@@ -1,4 +1,4 @@
-import {CreateProduct,updateProduct,CatagoryProuct,searchProduct,ResturentProuct,deleteProduct} from '../controller/ProductCtrl.js';
+import {CreateProduct,updateProduct,CatagoryProuct,top10Product,searchProduct,ResturentProuct,deleteProduct} from '../controller/ProductCtrl.js';
 import { upload} from '../middleware/multerMiddleware.js'
 import { Router } from 'express';
 
@@ -14,6 +14,7 @@ router.route('/resturent').get(ResturentProuct)
 router.route('/update').post(updateProduct)
 router.route('/delete').post(deleteProduct)
 router.route('/search').post(searchProduct)
+router.route('/top').post(top10Product)
 
 
 export default router

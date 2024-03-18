@@ -84,4 +84,12 @@ const searchProduct = async (req, res) => {
             "product" : search
         })
     }
-export  { CreateProduct , CatagoryProuct ,ResturentProuct,updateProduct,deleteProduct,searchProduct}
+
+    const top10Product = async (req, res) => {
+      const top = await Product.findById().sort( { "borough": 1 } ).limit(10)
+      return res.send({
+        "success": true,
+        "product" : top10Product
+    })
+    }
+export  { CreateProduct , CatagoryProuct ,ResturentProuct,updateProduct,top10Product,deleteProduct,searchProduct}
