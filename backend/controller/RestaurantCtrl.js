@@ -103,7 +103,7 @@ const LoginRestaurant = async(req,res)=>{
 const topRestaurant = async (req ,res) => {
     const  featchAll = await Restaurant.find().sort({rating:-1}).limit(8)
     return res.send({
-        "All Restaurant": featchAll
+        "Restaurant": featchAll
     })
 }
 

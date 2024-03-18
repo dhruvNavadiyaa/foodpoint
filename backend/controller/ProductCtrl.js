@@ -66,7 +66,7 @@ const deleteProduct = async (req, res) => {
     }
     
 
-    const searchProduct = async (req, res) => {
+const searchProduct = async (req, res) => {
         const search = await Product.aggregate([
             {
               "$match": {
