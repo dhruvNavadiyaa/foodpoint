@@ -33,7 +33,7 @@ function App() {
         // navigate('/Home')
       }
       else {
-        navigate('/')
+        navigate('/login')
       }
     } catch (error) {
       console.log('Error fetching data:', error);
@@ -64,7 +64,7 @@ function App() {
             <Route path='/Restaurant' element={<Restaurant />} />
           </>
         }
-      </Routes>
+      </Routes>   
     </>
   );
 }
