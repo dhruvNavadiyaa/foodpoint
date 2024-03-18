@@ -110,7 +110,7 @@ const topRestaurant = async (req ,res) => {
 const FetchAll = async (req, res) => {
     const  featchAll = await Restaurant.find()
     return res.send({
-        "All Restaurant": featchAll
+        "Restaurant": featchAll
     })
 }
 const UpdateRestaurant= async (req, res) => {
