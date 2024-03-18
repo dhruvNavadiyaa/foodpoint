@@ -28,12 +28,12 @@ export default function YourProducts() {
   }
 
   const chageCategory = async(id)=>{
-    // console.log(id)
+    console.log(id)
     const categoryId = {
       category_id : id
     }
     try {
-      const response = await axios.post('http://localhost:5000/api/product/catagory', categoryId);
+      const response = await axios.post('http://localhost:5000/api/product/catagory', {categoryId});
       console.log(response)
       // setProduct(response.data)
     } catch (error) {
@@ -62,7 +62,8 @@ export default function YourProducts() {
               {
                 category.map((item,index) => {
                   return (
-                    <p className='py-2 ps-3 fw-medium border rounded rounded-4' style={{ backgroundColor: 'rgb(226, 232, 240)' }} key={index} onClick={()=>chageCategory(item._id)}>{item.name}</p>
+                    <p className='py-2 ps-3 fw-medium border rounded rounded-4' style={{ backgroundColor: 'rgb(226, 232, 240)' }} 
+                    key={index} onClick={()=>chageCategory(item._id)}>{item.name}</p>
                   )
                 })
               }
