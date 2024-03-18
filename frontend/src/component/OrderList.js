@@ -35,8 +35,8 @@ export default function OrderList() {
                                                     <small className='fw-medium'>Total payment amount : &#x20B9; 99</small><br />
                                                     <div className='mt-3 border'>
                                                         <p className='fw-bold text-secondary'>Track Your Order</p>
+                                                        <p className='fw-bold text-secondary'>Status : <span className='text-dark'>On way</span></p>
                                                     </div>
-                                                    <button className='btn'>asd</button>
                                                 </div>
                                                 <div className="col-4 ">
                                                     <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnVyZ2VyfGVufDB8fDB8fHww"

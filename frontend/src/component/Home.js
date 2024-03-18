@@ -2,7 +2,9 @@ import React from 'react';
 import Footer from './Footer';
 import '../css/Home.css'; // Make sure to create and import the CSS file
 import Navbar from './Navbar';
+import { Navigate, useNavigate } from 'react-router-dom';
 const Home = () => {
+  const navigate = useNavigate()
   return (
     <>
       <Navbar />
@@ -82,7 +84,7 @@ const Home = () => {
 
                 {/* <div className="row d-flex justify-content-around mt-3 mb-5 m-0 " > */}
 
-                <div className='d-inline mb-3'>
+                <div className='d-inline mb-3' onClick={()=>{navigate('/Restaurant')}}>
                   <div className="card p-0 rounded rounded-4 box-shadow" >
                     <img src="https://images.pexels.com/photos/1603901/pexels-photo-1603901.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""
                       className='card-img rounded rounded-4 box-shadow'
@@ -172,9 +174,9 @@ const Home = () => {
                     <small className='mt-1 fw-bold text-secondary'>Biryani, North IndianChowk Bazar1.8 km.</small>
                   </div>
                 </div>
-                
 
-                </div>
+
+              </div>
 
               {/* </div> */}
 
