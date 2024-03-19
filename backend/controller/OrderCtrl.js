@@ -8,17 +8,25 @@ import crypto from 'crypto'
 const CreateOrder = async(req,res)=>{
 
     const create = await Order.create({
-        products  :req?.body?.products_id,
-        customer  : req?.body?.customer,
+        products  :{
+            product: req?.body?.products_id,
+            quantity:req?.body?.qty
+        },
+        user  : req?.body?.user,
         Restaurant : req?.body?.Restaurant_id,
-        paymentWay : req?.body?.paymentWay,
-        payment : req?.body?.payment,
-        total : req?.body?.total,
         address:req?.body?.address,
+        payment:{
+            razorpay_payment_id:req?.body?.razorpay_payment_id,
+            razorpay_order_id:req?.body?.razorpay_order_id,
+            razorpay_signature:req?.body?.razorpay_signature,
+        },
+        total : req?.body?.total,
+
     })
-    const findRestaurant = await Restaurant.findById(Restaurant_id)
-    Message("You Have New Order , Please Check Ypur Order List" , findRestaurant.number)
+    // const findRestaurant = await Restaurant.findById(Restaurant_id)
+    // Message("You Have New Order , Please Check Ypur Order List" , findRestaurant.number)
     res.send({
+        success: true,
         Orderinformation : create
     })
 }

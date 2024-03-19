@@ -12,16 +12,12 @@ const OrderSchema = new Schema({
                   min:1
             },
           },
-    customer: {
+    user: {
         type: mongoose.Types.ObjectId,
         ref:'User'
     },
-    payment: {
-        type: String,
-    },
-    total: {
-        type:Number,
-    },
+   
+    
     Restaurant: {
         type: mongoose.Types.ObjectId,
         ref:'Restaurant'
@@ -35,9 +31,26 @@ const OrderSchema = new Schema({
         ref:'DeliverBoy'
     },
     address: 
-        {    fulladdress: {
-                type: String,
-            },
+        {    
+            type : String,
+    },
+    payment: {
+        razorpay_payment_id:{
+            type : String
+        },
+        razorpay_order_id:{
+            type : String
+        },       
+         razorpay_signature:{
+            type : String
+        },
+        payment :{
+            type : Boolean,
+            default : true
+        }
+    },
+    total: {
+        type:Number,
     },
     RestaurantReview: {
         type: mongoose.Types.ObjectId,

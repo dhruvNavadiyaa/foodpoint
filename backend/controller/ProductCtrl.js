@@ -117,4 +117,11 @@ const searchProduct = async (req, res) => {
       })
     }
   
-export  { CreateProduct , CatagoryProuct ,ResturentProuct,updateProduct,top10Product,deleteProduct,searchProduct}
+
+
+    const searchProductWithId = async (req, res) => {
+        // const findProduct = await Product.findById(req.body.product_id)
+        const findProduct = await Product.findById(req.body.product_id)
+        return res.send({ success:"true", product:findProduct})
+    }
+export  { CreateProduct,searchProductWithId , CatagoryProuct ,ResturentProuct,updateProduct,top10Product,deleteProduct,searchProduct}
