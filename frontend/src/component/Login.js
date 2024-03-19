@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import axios from 'axios'
 import '../css/Login.css';
 import { setUserDetails } from '../redux/features/userSlice'
@@ -64,6 +64,7 @@ const Login = () => {
                         />
                     </div>
                     <button type="submit">Log In</button>
+                    <small className=''>Don't have account? <Link to={'/SignUp'}>Create One</Link></small>
                 </form>
             </div>
         </div>

@@ -12,6 +12,7 @@ import Search from './component/Search';
 import ContactUs from './component/ContactUs';
 import Favourite from './component/Favourite';
 import OrderList from './component/OrderList';
+import PlaceOrder from './component/PlaceOrder';
 
 function App() {
 
@@ -62,6 +63,7 @@ function App() {
             <Route path='/ContactUs' element={<ContactUs />} />
             <Route path='/OrderList' element={<OrderList />} />
             <Route path='/Restaurant' element={<Restaurant />} />
+            <Route path='/PlaceOrder' element={<PlaceOrder />} />
           </>
         }
       </Routes>   

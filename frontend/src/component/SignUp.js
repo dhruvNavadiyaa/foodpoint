@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import axios from 'axios'
 import '../css/Login.css';
 
@@ -80,7 +80,8 @@ const Login = () => {
                             required
                         />
                     </div>
-                    <button type="submit">Log In</button>
+                    <button type="submit">SIgn Up</button>
+                    <small>If you have account! <Link to={'/'}>Login</Link></small>
                 </form>
             </div>
         </div>
