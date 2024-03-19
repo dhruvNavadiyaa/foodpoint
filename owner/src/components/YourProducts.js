@@ -25,6 +25,7 @@ export default function YourProducts() {
       const response = await axios.post('http://localhost:5000/api/category/fetchid', data);
       setCategory(response.data.AllProduct)
       setCatagoryUpdateId({_id:response?.data?.AllProduct[0]._id})
+      console.log(response.data.AllProduct.name)
     } catch (error) {
       console.log('Error fetching data:', error);
     }
@@ -37,6 +38,7 @@ export default function YourProducts() {
     try {
       const response = await axios.post('http://localhost:5000/api/product/catagory', categoryId);
       setProduct(response.data.AllProduct)
+      // console.log(response.data.AllProduct)
       
     } catch (error) {
       console.log('Error fetching data:', error);
@@ -102,7 +104,7 @@ export default function YourProducts() {
               {
               product.map( (item,index) =>{
                 return(<div key={index} className="col-3 p-0  rounded rounded-5 category-cards">
-                <img src={item?.img[0] || "https://images.pexels.com/photos/718742/pexels-photo-718742.jpeg?auto=compress&cs=tinysrgb&w=600"} className='item-img rounded rounded-5' alt="" />
+                <img src={item?.img || "https://images.pexels.com/photos/718742/pexels-photo-718742.jpeg?auto=compress&cs=tinysrgb&w=600"} className='item-img rounded rounded-5' alt="" />
 
                 <div className='items-details p-3'>
                   <div className='p-3 border rounded rounded-5 box-shadow' style={{ backgroundColor: 'white' }}>
