@@ -11,6 +11,7 @@ export default function YourProducts() {
   const [deleteModal, setDeleteModal] = useState(false)
   const [editModal, setEditModal] = useState(false)
   const [category, setCategory] = useState([])
+  const [categoryName, setCategoryName] = useState([])
   const [product, setProduct] = useState([])
   const [catagoryUpdateId, setCatagoryUpdateId] = useState({})
   const [productDetail, setProductDetail] = useState({})
@@ -25,7 +26,7 @@ export default function YourProducts() {
       const response = await axios.post('http://localhost:5000/api/category/fetchid', data);
       setCategory(response.data.AllProduct)
       setCatagoryUpdateId({_id:response?.data?.AllProduct[0]._id})
-      console.log(response.data.AllProduct.name)
+      // console.log(response.data.AllProduct.name)
     } catch (error) {
       console.log('Error fetching data:', error);
     }
@@ -90,7 +91,7 @@ export default function YourProducts() {
                 category.map((item,index) => {
                   return (
                     <p className='py-2 ps-3 fw-medium border rounded rounded-4' style={{ backgroundColor: 'rgb(226, 232, 240)' }} 
-                    key={index} onClick={()=>{setCatagoryUpdateId({_id:item._id})}}>{item.name}</p>
+                    key={index} onClick={()=>{setCatagoryUpdateId({_id:item._id});setCategoryName(item.name)}}>{item.name}</p>
                   )
                 })
               }
@@ -108,7 +109,7 @@ export default function YourProducts() {
 
                 <div className='items-details p-3'>
                   <div className='p-3 border rounded rounded-5 box-shadow' style={{ backgroundColor: 'white' }}>
-                    <small className='font-light-thick'>&#x2022; STREET FOOD</small>
+                    <small className='font-light-thick'>&#x2022; {categoryName || ""}</small>
                     <p className='mb-0'>{item.name}</p>
                     <p className='mb-0'>{item.rating}</p>
                     <p className='mb-0'>&#8377;{item.price}/price</p>
