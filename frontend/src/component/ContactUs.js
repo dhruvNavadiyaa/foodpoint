@@ -1,9 +1,29 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
-
+import axios from 'axios'
 export default function ContactUs() {
-    return (
+    const [name , setName] = useState("")
+    const [email , setEmail] = useState("")
+    const [num , setNum] = useState("")
+    const [message , setMessage] = useState("")
+    const  sendContactUs = async () =>{
+        const data = {
+            name,
+            email,
+            number:num,
+            message
+        }
+        const response = await axios.post('http://localhost:5000/api/contactus/create', data,{withCredentials:true});
+        console.log(response.data);
+            if(response.data.success === true){
+                setName("")
+                setEmail("")
+                setNum("")
+                setMessage("")
+            }
+    }
+        return (
         <>
             <Navbar />
             <div className='row m-0'>
@@ -53,11 +73,11 @@ export default function ContactUs() {
                             <div className='px-4'>
                                 <div className="  p-5 box-shadow">
 
-                                    <input type="text" placeholder='Your Name' className='fs-6 w-100 py-2 px-3' />
-                                    <input type="email" placeholder='Your Email' className='fs-6 mt-4 w-100 py-2 px-3' />
-                                    <input type="Number" placeholder='Your Phone' className='fs-6 mt-4 w-100 py-2 px-3' />
-                                    <textarea name="" id="" rows="5" placeholder='Your Massage' className='fs-6 mt-4 w-100 py-2 px-3'></textarea>
-                                    <button className='btn btn-primary mt-4 w-100 py-2 rounded rounded-3'>Send Message</button>
+                                <input type="text" value={name} onChange={(e)=>setName(e.target.value)}  placeholder='Your Name ' className='fs-6 w-100 py-2 px-3' />
+                                    <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder='Your Email' className='fs-6 mt-4 w-100 py-2 px-3' />
+                                    <input type="Number" value={num} onChange={(e)=>setNum(e.target.value)} placeholder='Your Phone' className='fs-6 mt-4 w-100 py-2 px-3' />
+                                    <textarea  value={message} onChange={(e)=>setMessage(e.target.value)}  id="" rows="5" placeholder='Your Massage' className='fs-6 mt-4 w-100 py-2 px-3'></textarea>
+                                    <button onClick={sendContactUs} className='btn btn-primary mt-4 w-100 py-2 rounded rounded-3'>Send Message</button>
                                 </div>
                             </div>
                         </div>
