@@ -37,7 +37,7 @@ const OrderSchema = new Schema({
         ref:'DeliverBoy'
     },
     address: 
-        {    area: {
+        {    fulladdress: {
                 type: String,
             },
     },
