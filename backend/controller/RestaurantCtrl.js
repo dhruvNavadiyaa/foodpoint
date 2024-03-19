@@ -115,8 +115,6 @@ const FetchAll = async (req, res) => {
 }
 const UpdateRestaurant= async (req, res) => {
     const fileimg = req?.files?.restaurant
-    console.log(fileimg)
-    console.log(req.body)
     let img =[]
     let url
     if(!fileimg){
@@ -129,7 +127,8 @@ const UpdateRestaurant= async (req, res) => {
         img.push(url);
         }
     }
-    const updatedResturent = await Restaurant.findByIdAndUpdate(req?.body?.Restaurant_id , {
+    try{
+    const updatedRestaurant = await Restaurant.findByIdAndUpdate(req?.body?.Restaurant_id , {
         img ,
         name  : req?.body?.name,
         ownerName : req?.body?.ownerName,
@@ -157,10 +156,17 @@ const UpdateRestaurant= async (req, res) => {
         },
         isApproved : req?.body?.isApproved
     },{new : true})
-    
     res.send({
-        "RestaurantInfo": updatedResturent
+        "RestaurantInfo": updatedRestaurant
     })
+}
+catch (err) {
+    console.log(err)
+    return res.send({
+        "RestaurantInfo": updatedRestaurant
+    })
+}
+    
 }
 
 

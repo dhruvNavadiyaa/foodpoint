@@ -167,7 +167,7 @@ export default function AddProduct() {
                                 <div className="row m-0 mt-2" >
                                     <div className="col ">
                                         <small className='label-text'>FOOD TYPE</small><br />
-                                        <select  value={category} onChange={(e)=>setCategory(e.target.value)} className='w-100 mt-1 py-2 px-3 form-input text-secondary'>
+                                        <select  value={category} onClick={(e)=>setCategory(e.target.value)} onChange={(e)=>setCategory(e.target.value)} className='w-100 mt-1 py-2 px-3 form-input text-secondary'>
                                             {
                                                 categories.map((items, index) => {
                                                     return (
