@@ -9,7 +9,7 @@ import Restaurant from './route/RestaurantRoute.js'
 import product from './route/ProductRoute.js'
 import admin from './route/AdminRoute.js'
 import category from './route/CategoryRoute.js'
-import contactUs from './route/CategoryRoute.js'
+import contactUs from './route/ContactUsRoute.js'
 dotenv.config()
 const app = express();
 app.use(express.json())

@@ -15,8 +15,6 @@ const OrderSchema = new Schema({
     customer: {
         type: mongoose.Types.ObjectId,
         ref:'User'
-    },paymentWay :{
-        type : String
     },
     payment: {
         type: String,
@@ -37,7 +35,7 @@ const OrderSchema = new Schema({
         ref:'DeliverBoy'
     },
     address: 
-        {    area: {
+        {    fulladdress: {
                 type: String,
             },
     },

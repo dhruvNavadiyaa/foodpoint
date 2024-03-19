@@ -21,4 +21,4 @@ const ContactusSchema = new Schema({
 })
 
 
-export default mongoose.model('Contactus',DeliveryBoySchema)
+export default mongoose.model('Contactus',ContactusSchema)
