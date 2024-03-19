@@ -1,6 +1,10 @@
 import Order from "../models/OrderModel.js";
 import Restaurant from '../models/RestaurantModel.js'
 import Message from '../utils/MessageUtils.js'
+import razerpay from 'razorpay'
+import {instance} from '../utils/razerpayUtils.js'
+import crypto from 'crypto'
+// import {sha256} from 'crypto-js';
 const CreateOrder = async(req,res)=>{
 
     const create = await Order.create({
@@ -45,4 +49,34 @@ const updateOrderStatus = async(req,res)=>{
 }
 
 
-export  { CreateOrder , allOrder }
+const paymentWay = async(req,res)=>{
+    var options = {
+        amount: (Number(req.body.money )* 100),  // amount in the smallest currency unit
+        currency: "INR",
+        receipt: "order_rcptid_11"
+      };
+      const order = await instance.orders.create(options)
+      res.send({order})
+}
+
+const paymentVerify = async(req,res)=>{
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
+    req.body;
+    const body = await razorpay_order_id + "|" + razorpay_payment_id;
+    const expectedSignature = await  crypto
+    .createHmac("sha256", "5nUk3fO1Om6ZN9k5Kgqu5R81")
+    .update(body.toString())
+    .digest("hex");
+
+    const isAuthentic = expectedSignature === razorpay_signature;
+    if (isAuthentic){
+
+        return res.send({
+            "success" : true
+        })
+    }
+    return res.send({
+        "success" : false
+    })
+}
+export  { CreateOrder , allOrder ,paymentWay ,paymentVerify}
