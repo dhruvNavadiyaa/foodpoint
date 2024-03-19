@@ -70,7 +70,9 @@ const paymentVerify = async(req,res)=>{
 
     const isAuthentic = expectedSignature === razorpay_signature;
     if (isAuthentic){
-
+        // res.redirect(
+        //     `http://localhost:3000/paymentsuccess?reference=${razorpay_payment_id}`
+        //   );
         return res.send({
             "success" : true
         })
