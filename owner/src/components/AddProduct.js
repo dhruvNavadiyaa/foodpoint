@@ -24,6 +24,9 @@ export default function AddProduct() {
         try {
             const response = await axios.post('http://localhost:5000/api/category/create', categoryData);
             console.log(response)
+            await fetchCategory()
+            setCategoryName("")
+            setCategoryDesc("")
         } catch (error) {
             console.log('Error adding data:', error);
         }
@@ -60,6 +63,11 @@ export default function AddProduct() {
             }
           })
             console.log(response)
+            setCategory("")
+            setPimg("")
+            setDesc("")
+            setPrice("")
+            setProductName("")
         // console.log(data)
     }
 
