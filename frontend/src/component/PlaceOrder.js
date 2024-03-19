@@ -79,7 +79,7 @@ export default function PlaceOrder() {
                                                 <div className='d-flex align-items-center' >
                                                     <p className='mb-0 d-flex  align-items-center'>items: </p>
                                                     <div className=' d-flex align-items-center ms-2' >
-                                                    <button className='btn btn-sm btn-light border my-2'>-</button><span className='mx-1'>1X</span><button className='btn btn-sm btn-light border my-2'>+</button>
+                                                    <button className='btn btn-sm btn-light border my-2 py-0'>-</button><span className='mx-1 fw-medium'>1X</span><button className='btn btn-sm btn-light border my-2 py-0'>+</button>
                                                     </div>
                                                     <p className='mb-0 ms-auto'>&#8377; 1499</p>
                                                 </div>
