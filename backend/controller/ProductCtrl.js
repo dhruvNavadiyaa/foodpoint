@@ -92,11 +92,29 @@ const searchProduct = async (req, res) => {
     }
 
     const top10Product = async (req, res) => {
-      const top = await Product.find().sort( { "rating": 1 } ).limit(10)
-      // console.log(top)
-      return res.send({
-        "success": true,
-        "product" : top
-    })
+      const top = await Product.aggregate([
+        { $sort: { "rating": 1 } },
+        { $limit: 10 },
+        {
+          $lookup: {
+            from: "restaurants", 
+            localField: "restaurant",
+            foreignField: "_id", 
+            as: "restaurantDetails" 
+          }
+        },
+  {
+    $addFields: {
+      "restaurantDetails":{
+        $first : "$restaurantDetails"
+      } 
     }
+  }
+      ])
+      res.send({
+        success : true,
+        product :top
+      })
+    }
+  
 export  { CreateProduct , CatagoryProuct ,ResturentProuct,updateProduct,top10Product,deleteProduct,searchProduct}

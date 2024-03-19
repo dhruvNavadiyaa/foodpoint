@@ -9,7 +9,6 @@ import { useSelector } from 'react-redux'
 export default function AddProduct() {
 
     const [changeForm, setChangeForm] = useState(true)
-    const restroInfo = useSelector(state => state.restaurant.RestaurantInfo)
     
     //category details adding
     const [categoryName, setCategoryName] = useState('')
