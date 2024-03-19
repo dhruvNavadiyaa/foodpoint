@@ -25,6 +25,7 @@ const Login = () => {
             // const id = response.data.RestaurantInfo._id;
             if (response.data.login === true) {
                 if(!response.data.RestaurantInfo.bankDetail){
+                    dispatch(setRestroDetails(response.data))
                     navigate('RestroDetails',{ state: { id: response.data.RestaurantInfo._id } })
                 }
                 else{

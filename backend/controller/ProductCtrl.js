@@ -4,11 +4,13 @@ import uploadCloudinary from "../utils/cloudinary.js";
 //Add Product and Also id push in to the Category And Restaurant models
 const CreateProduct = async(req,res)=>{
     const fileimg = req?.files?.product
+    console.log(fileimg)
+    console.log(req.body)
     let  img = ""
     if(fileimg){
       img =await uploadCloudinary(`./temp/img/${fileimg[0]?.filename}`)
     }
-    
+    try{
     const create = await Product.create({
         name  : req?.body?.name,
         price : req?.body?.price,
@@ -20,6 +22,10 @@ const CreateProduct = async(req,res)=>{
     res.send({
         Productinformation : create
     })
+  }
+  catch(e){
+    console.log(e)
+  }
 }
 
 
