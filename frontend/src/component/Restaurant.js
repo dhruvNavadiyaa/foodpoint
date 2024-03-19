@@ -26,19 +26,19 @@ const Restaurent = () => {
                                 </div>
                                 <div className=''>
                                     <div className="border p-2 text-center rounded rounded-3" >
-                                        <p className='mb-0 border-bottom border-2 pb-2 fw-bold' ><i class="bi bi-star-fill text-success"></i> 4.6</p>
+                                        <p className='mb-0 border-bottom border-2 pb-2 fw-bold' ><i className="bi bi-star-fill text-success"></i> 4.6</p>
                                         <small className='fw-medium'>500+ ratings</small>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-12 mt-2">
-                                <p className='fw-bold'><i class="bi bi-hourglass-split"></i> 20-25 MINS</p>
+                                <p className='fw-bold'><i className="bi bi-hourglass-split"></i> 20-25 MINS</p>
                             </div>
                         </div>
 
                         {/* CATEGORY */}
                         <div className="row m-0 ">
-                        <p className='fw-bold text-center'><i class="bi bi-star"> </i> CATEGORIES <i class="bi bi-star"> </i></p>
+                        <p className='fw-bold text-center'><i className="bi bi-star"> </i> CATEGORIES <i className="bi bi-star"> </i></p>
                             <div className="col d-flex py-2 scroll-bar">
 
                                 <div className="me-4 text-center mx-2" style={{ width: '100px' }}>
@@ -75,15 +75,15 @@ const Restaurent = () => {
                                         <div className="col d-flex align-items-center">
                                             <div>
                                                 <p className='mb-0 fw-bold text-secondary'>By McDonald's</p>
-                                                <small className='fw-medium text-secondary'><i class="bi bi-star-fill text-secondary"> </i> 4/5 &#8226; 20-25 min</small>
+                                                <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> 4/5 &#8226; 20-25 min</small>
                                             </div>
-                                            <i class="bi bi-heart-fill fs-4 me-3 ms-auto text-secondary"></i>
+                                            <i className="bi bi-heart-fill fs-4 me-3 ms-auto text-secondary"></i>
                                         </div>
                                     </div>
                                     <hr className='mb-3' />
                                     <div className="row m-0">
                                         <div className="col-8 ">
-                                            <small className='text-warning'><i class="bi bi-star-fill text-warning"> </i>BESTSELLER</small>
+                                            <small className='text-warning'><i className="bi bi-star-fill text-warning"> </i>BESTSELLER</small>
                                             <p className='fw-bold mb-0'>McVeggie Burger</p>
                                             <small className='fw-medium'>&#x20B9; 99</small><br />
                                             <small className='fw-medium text-secondary'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam voluptas vitae porro ipsum.</small>
@@ -102,15 +102,15 @@ const Restaurent = () => {
                                         <div className="col d-flex align-items-center">
                                             <div>
                                                 <p className='mb-0 fw-bold text-secondary'>By McDonald's</p>
-                                                <small className='fw-medium text-secondary'><i class="bi bi-star-fill text-secondary"> </i> 4/5 &#8226; 20-25 min</small>
+                                                <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> 4/5 &#8226; 20-25 min</small>
                                             </div>
-                                            <i class="bi bi-heart-fill fs-4 me-3 ms-auto text-secondary"></i>
+                                            <i className="bi bi-heart-fill fs-4 me-3 ms-auto text-secondary"></i>
                                         </div>
                                     </div>
                                     <hr className='mb-3' />
                                     <div className="row m-0">
                                         <div className="col-8 ">
-                                            <small className='text-warning'><i class="bi bi-star-fill text-warning"> </i>BESTSELLER</small>
+                                            <small className='text-warning'><i className="bi bi-star-fill text-warning"> </i>BESTSELLER</small>
                                             <p className='fw-bold mb-0'>McVeggie Burger</p>
                                             <small className='fw-medium'>&#x20B9; 99</small><br />
                                             <small className='fw-medium text-secondary'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam voluptas vitae porro ipsum.</small>
