@@ -90,19 +90,21 @@ export default function Category() {
                                                 <tbody>
                                                     {
                                                         details.map((item) => {
-                                                            if(item.from=="user"){
-                                                            return (
-                                                                <tr>
-                                                                    <td >1</td>
-                                                                    <td>{item.name}</td>
-                                                                    <td>{item.email}</td>
-                                                                    <td>{item.message}</td>
-                                                                    <td className='d-flex'>
-                                                                        <button className='btn btn-outline-success btn-sm me-2'>Response</button>
-                                                                        <button className='btn btn-outline-danger btn-sm'>Delete</button>
-                                                                    </td>
-                                                                </tr>
-                                                            )
+                                                            if (item.from == "user") {
+                                                                return (
+                                                                    <tr>
+                                                                        <td >1</td>
+                                                                        <td>{item.name}</td>
+                                                                        <td>{item.email}</td>
+                                                                        <td>{item.message}</td>
+                                                                        <td className=''>
+                                                                            <div className='d-flex'>
+                                                                                <button className='btn btn-outline-success btn-sm me-2'>Response</button>
+                                                                                <button className='btn btn-outline-danger btn-sm'>Delete</button>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                )
                                                             }
                                                         })
                                                     }
@@ -127,21 +129,23 @@ export default function Category() {
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                {
+                                                    {
                                                         details.map((item) => {
-                                                            if(item.from=="restaurant"){
-                                                            return (
-                                                                <tr>
-                                                                    <td >1</td>
-                                                                    <td>{item.name}</td>
-                                                                    <td>{item.email}</td>
-                                                                    <td>{item.message}</td>
-                                                                    <td className='d-flex'>
-                                                                        <button className='btn btn-outline-success btn-sm me-2'>Response</button>
-                                                                        <button className='btn btn-outline-danger btn-sm'>Delete</button>
-                                                                    </td>
-                                                                </tr>
-                                                            )
+                                                            if (item.from == "restaurant") {
+                                                                return (
+                                                                    <tr>
+                                                                        <td >1</td>
+                                                                        <td>{item.name}</td>
+                                                                        <td>{item.email}</td>
+                                                                        <td>{item.message}</td>
+                                                                        <td className=''>
+                                                                            <div className='d-flex'>
+                                                                            <button className='btn btn-outline-success btn-sm me-2'>Response</button>
+                                                                            <button className='btn btn-outline-danger btn-sm'>Delete</button>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                )
                                                             }
                                                         })
                                                     }
@@ -166,21 +170,23 @@ export default function Category() {
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                {
+                                                    {
                                                         details.map((item) => {
-                                                            if(item.from=="delivery"){
-                                                            return (
-                                                                <tr>
-                                                                    <td >1</td>
-                                                                    <td>{item.name}</td>
-                                                                    <td>{item.email}</td>
-                                                                    <td>{item.message}</td>
-                                                                    <td className='d-flex'>
-                                                                        <button className='btn btn-outline-success btn-sm me-2'>Response</button>
-                                                                        <button className='btn btn-outline-danger btn-sm'>Delete</button>
-                                                                    </td>
-                                                                </tr>
-                                                            )
+                                                            if (item.from == "delivery") {
+                                                                return (
+                                                                    <tr>
+                                                                        <td >1</td>
+                                                                        <td>{item.name}</td>
+                                                                        <td>{item.email}</td>
+                                                                        <td>{item.message}</td>
+                                                                        <td className=''>
+                                                                            <div className="d-flex">
+                                                                            <button className='btn btn-outline-success btn-sm me-2'>Response</button>
+                                                                            <button className='btn btn-outline-danger btn-sm'>Delete</button>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                )
                                                             }
                                                         })
                                                     }

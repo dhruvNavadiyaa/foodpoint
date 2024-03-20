@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import '../css/Restaurant.css';
 import Footer from './Footer';
 import Navbar from './Navbar';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios'
 
 const Restaurent = () => {
 
+    const navigate = useNavigate()
     const location = useLocation();
     const { restroId } = useParams()
     const [restaurantDetails, setRestaurantDetails] = useState({})
@@ -87,7 +88,6 @@ const Restaurent = () => {
                             {/* ITEM CARDS */}
                             {
                                 categoryData[categoryId]?.data.map((item, index) => {
-                                    
                                         return (
                                             <div className="col-sm-6 px-5-md mb-5" key={index}>
                                                 <div className="item p-3 rounded rounded-4 box-shadow">
@@ -111,7 +111,7 @@ const Restaurent = () => {
                                                         <div className="col-4 ">
                                                             <img src={item.img || "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnVyZ2VyfGVufDB8fDB8fHww"}
                                                                 className='img-fluid rounded rounded box-shadow' alt="" />
-                                                            <button className='btn btn-outline-success btn-sm'>ADD</button>
+                                                            <button className='btn btn-outline-success btn-sm' onClick={()=>navigate(`/PlaceOrder/${item._id}`)}>ADD</button>
                                                         </div>
                                                     </div>
                                                 </div>
