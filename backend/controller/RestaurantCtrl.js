@@ -220,4 +220,9 @@ const RefreshTokenEndPoint  = async (req, res) => {
       accessToken
     });
 }
+
+
+const allDetailAboutRestaurants = async (req, res) => {
+
+}
 export  { CreateRestaurant,topRestaurant , LoginRestaurant  ,FetchAll,UpdateRestaurant,FeatchRestaurant , DeleteRestaurant ,RefreshTokenEndPoint}

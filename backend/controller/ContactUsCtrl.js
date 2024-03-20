@@ -14,6 +14,16 @@ const createContactUs = async(req, res) => {
     })
 }
 
+const alldata = async(req, res) => {
+    const all = await ContactUs.find().sort({"createdAt" : -1})
+
+    res.send({
+        "success":true,
+        all
+    })
+}
 
 
-export {createContactUs}
+
+
+export {createContactUs,alldata}
