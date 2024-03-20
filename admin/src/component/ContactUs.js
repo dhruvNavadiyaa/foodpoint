@@ -42,23 +42,14 @@ export default function Category() {
     }
 
     const adminName = useSelector(state => state.admin.adminInfo.name)
-    const [details, setDetails] = useState([])
-    const [userDetails, setUserDetails] = useState([])
-    const [restaurantDetails, setRestaurantDetails] = useState([])
-    const [deliveryDetails, setDeliveryDetails] = useState([])
-    
-    setUserDetails(details.filter((item) => item.from == 'user'))
-    setRestaurantDetails(details.filter((item) => item.from == 'restaurant'))
-    setRestaurantDetails(details.filter((item) => item.from == 'deliveryBoy'))
+    const [details, seDetails] = useState([])
 
     const contactUsDetails = async () => {
         const response = await axios.get('http://localhost:5000/api/contactus/all')
-        await setDetails(response.data.all)
-        // console.log(response.data.all[0].from)
+        seDetails(response.data.all)
     }
     useEffect(() => {
         contactUsDetails()
-        console.log(userDetails)
     }, [])
 
     return (
@@ -98,7 +89,8 @@ export default function Category() {
                                                 </thead>
                                                 <tbody>
                                                     {
-                                                        userDetails.map((item) => {
+                                                        details.map((item) => {
+                                                            if(item.from=="user"){
                                                             return (
                                                                 <tr>
                                                                     <td >1</td>
@@ -111,6 +103,7 @@ export default function Category() {
                                                                     </td>
                                                                 </tr>
                                                             )
+                                                            }
                                                         })
                                                     }
                                                 </tbody>
@@ -134,20 +127,24 @@ export default function Category() {
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td >1</td>
-                                                        <td>Mark</td>
-                                                        <td>Active</td>
-                                                        <td>@mdo</td>
-                                                        <td>@mdo</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td >2</td>
-                                                        <td>Jacob</td>
-                                                        <td>Thornton</td>
-                                                        <td>@fat</td>
-                                                        <td>@fat</td>
-                                                    </tr>
+                                                {
+                                                        details.map((item) => {
+                                                            if(item.from=="restaurant"){
+                                                            return (
+                                                                <tr>
+                                                                    <td >1</td>
+                                                                    <td>{item.name}</td>
+                                                                    <td>{item.email}</td>
+                                                                    <td>{item.message}</td>
+                                                                    <td className='d-flex'>
+                                                                        <button className='btn btn-outline-success btn-sm me-2'>Response</button>
+                                                                        <button className='btn btn-outline-danger btn-sm'>Delete</button>
+                                                                    </td>
+                                                                </tr>
+                                                            )
+                                                            }
+                                                        })
+                                                    }
                                                 </tbody>
                                             </table>
                                         </div>
