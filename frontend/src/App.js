@@ -24,7 +24,7 @@ function App() {
 
   const refresh = async () => {
     try {
-      console.log(localStorage.getItem("isLogin"));
+      // console.log(localStorage.getItem("isLogin"));
       const response = await axios.post('http://localhost:5000/api/user/refresh', {}, { withCredentials: true });
 
       // console.log(response)
@@ -42,7 +42,7 @@ function App() {
   }
   useEffect(() => {
     refresh()
-    console.log(login)
+    // console.log(login)
   }, [])
   return (
     <>
@@ -62,7 +62,7 @@ function App() {
             <Route path='/Favourite' element={<Favourite />} />
             <Route path='/ContactUs' element={<ContactUs />} />
             <Route path='/OrderList' element={<OrderList />} />
-            <Route path='/Restaurant' element={<Restaurant />} />
+            <Route path='/Restaurant/:restroId' element={<Restaurant />} />
             <Route path='/PlaceOrder' element={<PlaceOrder />} />
           </>
         }

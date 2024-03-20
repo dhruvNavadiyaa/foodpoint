@@ -71,7 +71,7 @@ const Home = () => {
 
                 {topRestaurant.map((item, index) => {
                   return (
-                    <div className='col-md-4 col-6  mb-3  m-auto' onClick={() => { navigate('/Restaurant', { state: { restroId: item._id } }) }} key={index}>
+                    <div className='col-md-4 col-6  mb-3  m-auto' onClick={() => { navigate(`/Restaurant/${item._id}`)}} key={index}>
                       <div className=' m-0 mx-3'>
                         <div className=" p-0 rounded rounded-4 overflow-hidden w-100" >
                           <img src={item?.img[0] || "https://images.pexels.com/photos/1603901/pexels-photo-1603901.jpeg?auto=compress&cs=tinysrgb&w=600"} alt=""
