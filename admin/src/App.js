@@ -54,7 +54,7 @@ function App() {
             <Route path='/Category' element={<Category />} />
             <Route path='/Request' element={<Request />} />
             <Route path='/Restaurant' element={<Restaurant />} />
-            <Route path='/Restaurantdetails' element={<Restaurantdetails />} />
+            <Route path='/Restaurantdetails/:restroId' element={<Restaurantdetails />} />
             <Route path='/ContactUs' element={<ContactUs />} />
             <Route path='/Createadmin' element={<Createadmin />} />
             <Route path='/Login' element={<Login />} />

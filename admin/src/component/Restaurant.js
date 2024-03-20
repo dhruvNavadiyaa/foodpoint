@@ -1,14 +1,14 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import '../css/Util.css'
 import '../css/Restaurant.css'
 import '../css/MainContent.css'
 import SideBar from './SideBar'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import axios from 'axios'
 
 export default function Restaurant() {
 
-    const adminName = useSelector(state => state.admin.adminInfo.name)
     const hide = () => {
         if (window.innerWidth <= 750) {
             let sidebar, slide, main, title
@@ -42,10 +42,24 @@ export default function Restaurant() {
         title = document.querySelector(".header")
         title.classList.toggle("headerMove")
     }
-    const navigation = useNavigate()
-    const getoRestautantdetails = ()=>{
-        navigation('/Restaurantdetails')
+
+    const adminName = useSelector(state => state.admin.adminInfo.name)
+    const navigate = useNavigate()
+
+    const [restaurantDetails, setRestaurantDetails] = useState([])
+    const getAllDetail = async () => {
+        try {
+            const response = await axios.get('http://localhost:5000/api/Restaurant/fetchall');
+            console.log(response.data.Restaurant)
+            setRestaurantDetails(response.data.Restaurant)
+            // setCategoryData(response.data.allproductWithCategories)
+        } catch (error) {
+            console.log('Error fetching data:', error);
+        }
     }
+    useEffect(() => {
+        getAllDetail()
+    }, [])
     return (
         <>
             <SideBar />
@@ -60,7 +74,7 @@ export default function Restaurant() {
                         </div>
                     </div >
 
-                    <div className="row row2 ">
+                    <div className="row row2">
                         <div className="container-fluid m-0 p-0">
 
                             <div className='container-fluid px-3 py-2 me-5'>
@@ -71,15 +85,23 @@ export default function Restaurant() {
                                     <div className='row mb-5'>
 
                                         {/* RESTAURENT CARDS */}
-                                        <div className='restro rounded box-shadow mb-5' onClick={()=>getoRestautantdetails()}>
-                                            <div className='restro-detail bg-light rounded box-shadow p-2'>
-                                                <small className='bg-success rounded px-2'>NEW</small>
-                                                <div className="overflow-hidden mt-1" style={{whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}} >
-                                                    <p className='fs-6 fw-bold text-uppercase'>Malhar aaaaaaaaaaaaaa</p>
-                                                </div>
-                                                <small className='text-success text-sm'>2/5 ratings</small> <small className='text-sm'>&#40;based on NO. reviews&#41;</small>
-                                            </div>
-                                        </div>
+                                        {
+                                            restaurantDetails.map((item, index) => {
+                                                return (
+                                                    <div className='restro rounded box-shadow mb-5 p-0' onClick={() => navigate(`/Restaurantdetails/${item._id}`)} key={index}>
+                                                        <img src={item.img[0] || "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=600"} className='img-fluid m-0 h-100 rounded rounded-3' alt="" />
+                                                        <div className='restro-detail bg-light rounded box-shadow p-2 mx-3'>
+                                                            <small className='bg-success rounded px-2'>NEW</small>
+                                                            <div className="overflow-hidden mt-1" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} >
+                                                                <p className='fs-6 fw-bold text-uppercase'>{item.name}</p>
+                                                            </div>
+                                                            <small className='text-success text-sm'>{item.rating}/5 ratings</small><br />
+                                                            <small className='text-sm fw-bold text-secondary'>Status : {item.isApproved}</small>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            })
+                                        }
 
                                     </div>
 

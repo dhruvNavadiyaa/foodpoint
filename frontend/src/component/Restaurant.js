@@ -25,9 +25,6 @@ const Restaurent = () => {
             console.log('Error fetching data:', error);
         }
     }
-    const changeCategory = () => {
-
-    }
     useEffect(() => {
         getAllDetail()
         // console.log(restroId)
@@ -129,6 +126,7 @@ const Restaurent = () => {
 
                     </div>
                 </div>
+
             </div>
             {/* <Footer /> */}
         </>

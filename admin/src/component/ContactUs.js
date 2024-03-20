@@ -150,6 +150,46 @@ export default function Category() {
                                         </div>
                                     </div>
                                 </div>
+                                <div className="orders border mt-4 p-3 box-shadow rounded" >
+
+                                    <div className="row">
+                                        <div className="col">
+                                            <p className='fs-5 fw-medium '>Delivery Boy Requests</p>
+                                            <table className="table table-hover mt-3">
+                                                <thead>
+                                                    <tr className='table-active'>
+                                                        <th scope="col">NO.</th>
+                                                        <th scope="col">NAME</th>
+                                                        <th scope="col">EMAIL</th>
+                                                        <th scope="col">MESSAGE</th>
+                                                        <th scope="col">ACTION</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                {
+                                                        details.map((item) => {
+                                                            if(item.from=="delivery"){
+                                                            return (
+                                                                <tr>
+                                                                    <td >1</td>
+                                                                    <td>{item.name}</td>
+                                                                    <td>{item.email}</td>
+                                                                    <td>{item.message}</td>
+                                                                    <td className='d-flex'>
+                                                                        <button className='btn btn-outline-success btn-sm me-2'>Response</button>
+                                                                        <button className='btn btn-outline-danger btn-sm'>Delete</button>
+                                                                    </td>
+                                                                </tr>
+                                                            )
+                                                            }
+                                                        })
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>

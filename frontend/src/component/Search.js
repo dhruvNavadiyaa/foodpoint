@@ -6,7 +6,7 @@ import '../css/Home.css';
 export default function Search() {
     const [topProduct, setTopProduct] = useState([])
     const [name, setName] = useState('')
-    const [searchProduct, setSearchProduct] = useState([])
+    const [searchProduct, setSearchProduct] = useState('')
 
     const getTopProduct = async () => {
         try {
@@ -41,17 +41,17 @@ export default function Search() {
 
                 <div className="" style={{ marginTop: '90px' }}>
 
-                    <form action="" onSubmit={(e)=>e.preventDefault()}>
+                    <form action="" onSubmit={(e) => {e.preventDefault();getSearchProduct()}}>
                         <div className="container mt-4 px-5  d-flex align-items-center" >
 
-                            <input type="text" className='w-75 py-2 px-3 rounded border border-secondary'
+                            <input type="text" className='w-100 py-2 px-3 rounded border border-secondary text-center'
                                 placeholder='Search category or product'
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                             />
-                            <div className='ms-auto'>
+                            {/* <div className='ms-auto'>
                                 <button className='btn btn-outline-dark m-0 py-2' onClick={getSearchProduct}>Search</button>
-                            </div>
+                            </div> */}
                         </div>
                     </form>
 
@@ -79,7 +79,8 @@ export default function Search() {
                                 <p className='fs-5 mb-0 mt-3 fw-bold'>Searched Items</p>
                                 <div className="row m-0 mb-5 mt-3">
 
-                                    {/* ITEM CARDS */}
+                                    {/* SEARCH ITEM CARDS */}
+
                                     {
                                         searchProduct.map((item, index) => {
 
@@ -111,6 +112,8 @@ export default function Search() {
                                                 </div>
                                             </div>
                                         }
+
+
                                         )
                                     }
                                 </div>
