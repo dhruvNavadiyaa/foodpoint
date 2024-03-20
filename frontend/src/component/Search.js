@@ -67,7 +67,8 @@ export default function Search() {
  */}
 
                     <div className="container-md px-md-5 mt-4" >
-                        <div className="row m-0 mb-5">
+                    <p className='fs-5 mb-0 mt-3 fw-bold'>Popular Cuisines</p>
+                        <div className="row m-0 mb-5 mt-3">
 
                             {/* ITEM CARDS */}
                             {
