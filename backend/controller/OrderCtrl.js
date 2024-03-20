@@ -53,19 +53,23 @@ const orderInfo = async (req, res) => {
       },
     },
 
-    {
-      $addFields: {
-        productDetail: {
-          $first: "$productDetail",
-        },
-      },
-    },
+   
     {
       $lookup: {
         from: "restaurants",
         localField: "productDetail.restaurant",
         foreignField: "_id",
         as: "restaurantDetail",
+      },
+    },
+    {
+      $addFields: {
+        productDetail: {
+          $first: "$productDetail",
+        }, 
+        restaurantDetail: {
+          $first: "$restaurantDetail",
+        },
       },
     },
     {
