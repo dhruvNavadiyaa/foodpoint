@@ -12,7 +12,8 @@ export default function ContactUs() {
             name,
             email,
             number:num,
-            message
+            message,
+            from:"user"
         }
         const response = await axios.post('http://localhost:5000/api/contactus/create', data,{withCredentials:true});
         console.log(response.data);

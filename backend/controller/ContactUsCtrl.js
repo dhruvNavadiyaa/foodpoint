@@ -7,6 +7,7 @@ const createContactUs = async(req, res) => {
         email: req?.body?.email,
         number: req?.body?.number,
         message: req?.body?.message,
+        from : req?.body?.from
     })
     return res.send({
         "success":true

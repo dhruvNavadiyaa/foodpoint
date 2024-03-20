@@ -15,6 +15,9 @@ const ContactusSchema = new Schema({
     },
     message: {
         type:String
+    },
+    from :{
+        type:String
     }
 },{
     timestamps : true,
