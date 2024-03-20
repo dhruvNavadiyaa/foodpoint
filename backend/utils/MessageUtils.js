@@ -1,18 +1,17 @@
-const accountSid = process.env.TWILIO_ACCOUNT_SID
-const authToken = process.env.TWILIO_ACCOUNT_TOKEN
 
 import twilio from 'twilio';
 
-// const client = twilio(process.env.TWILIO_ACCOUNT_SID,process.env.TWILIO_ACCOUNT_TOKEN);
+const client = twilio("AC1287ac4686e2b592929588917f935552","7f60ab59c6ff0654ae4fe45ae1f53361");
 
-const sendMessage = async (body,number)=>{
-        // let msgOptions = {
-        //     from : process.env.TWILIO_ACCOUNT_NUMBER,
-        //     to : "+91"+number,
-        //     body 
-        // }
-        // const message = await client.messages.create(msgOptions);
-        // console.log(message);
+const sendMessage = async (body,num)=>{
+        const toNum = "+91"+num.toString()
+        let msgOptions = {
+            from : "+14432965436",
+            to : toNum,
+            body
+        }
+        const message = await client.messages.create(msgOptions);
+        console.log(message);
 }
 
 

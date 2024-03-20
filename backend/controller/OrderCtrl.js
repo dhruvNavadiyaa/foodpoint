@@ -6,6 +6,7 @@ import { instance } from "../utils/razerpayUtils.js";
 import crypto from "crypto";
 import mongoose from "mongoose";
 const CreateOrder = async (req, res) => {
+  console.log(req?.body?.Restaurant_id)
   const create = await Order.create({
     products: {
       product: req?.body?.products_id,
@@ -21,8 +22,8 @@ const CreateOrder = async (req, res) => {
     },
     total: req?.body?.total,
   });
-  // const findRestaurant = await Restaurant.findById(Restaurant_id)
-  // Message("You Have New Order , Please Check Ypur Order List" , findRestaurant.number)
+  // const findRestaurant = await Restaurant.findById(req?.body?.Restaurant_id)
+  // await Message("You Have New Order , Please Check Ypur Order List" , "8140974832")
   res.send({
     success: true,
     Orderinformation: create,

@@ -78,10 +78,11 @@ export default function AddProduct() {
     // FETCH ALL CATEGORY
     const [categories, setCategories] = useState([])
     const fetchCategory = async () => {
-        const response = await axios.get('http://localhost:5000/api/category/fetch')
+        const response = await axios.post('http://localhost:5000/api/category/fetchid',{Restaurant_id:restroId})
         setCategories(response.data.AllProduct)
         console.log(categories)
     }
+
 
     useEffect(() => {
         fetchCategory()

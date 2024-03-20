@@ -11,6 +11,7 @@ import admin from './route/AdminRoute.js'
 import category from './route/CategoryRoute.js'
 import ContactUs from './route/ContactUsRoute.js'
 import Order from './route/OrderRoute.js'
+import message from './utils/MessageUtils.js'
 dotenv.config()
 const app = express();
 app.use(express.json())
@@ -19,6 +20,7 @@ const corsOptions = {
     origin : true,
     credentials : true
 }
+// message("hello Yash",8140974832)
 app.use(cors(corsOptions))
 app.use(cookieParser())
 app.use("/api/user",user)

@@ -12,9 +12,12 @@ export default function PlaceOrder() {
     const [ fullDetail , setFullDetail] = useState({})
     const [total , setTotal] = useState()
   const clickHadler = async()=>{
+    try{
     const response = await axios.post('http://localhost:5000/api/order/checkout',{money : total})
     console.log(response.data)
     const orderHere = response.data.order
+    
+    
     var options = {
         key: "rzp_test_tqYz4ebJLClrKM", // Enter the Key ID generated from the Dashboard
         amount: orderHere.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
@@ -41,10 +44,16 @@ export default function PlaceOrder() {
       }
       const razer = new window.Razorpay(options);
       razer.open()
+    }
+      catch(e){
+        console.log(e)
+    }
   }
+
     const productDetail = async () =>{
-    const response = await axios.post('http://localhost:5000/api/product/detail',{product_id:"65f95896c83fea71c635ad72"})
+    const response = await axios.post('http://localhost:5000/api/product/detail',{product_id:"65f9594cc83fea71c635ad7a"})
     setFullDetail(response.data.product)
+    console.log(response.data.product)
     console.log(fullDetail)
     setTotal(response.data.product.price)
     }
@@ -65,10 +74,10 @@ export default function PlaceOrder() {
             razorpay_payment_id ,
             razorpay_order_id,
             razorpay_signature,
-            products_id:fullDetail._id,
+            product:fullDetail._id,
             qty :qty,
             user :userId,
-            Restaurant:fullDetail.restaurant,
+            Restaurant_id:fullDetail.restaurant,
             address:add,
             total:total
         } 

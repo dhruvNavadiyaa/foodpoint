@@ -132,6 +132,7 @@ const searchProduct = async (req, res) => {
 
 
     const searchProductWithId = async (req, res) => {
+      console.log(req.body)
         // const findProduct = await Product.findById(req.body.product_id)
         const findProduct = await Product.findById(req.body.product_id)
         return res.send({ success:"true", product:findProduct})
