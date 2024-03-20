@@ -3,14 +3,24 @@ import '../css/Restaurant.css';
 import Footer from './Footer';
 import Navbar from './Navbar';
 import { useLocation } from 'react-router-dom';
+import axios from 'axios'
 
 const Restaurent = () => {
 
     const location = useLocation();
     const restroId = location.state.restroId;
-
+    const getAllDetail = async () => {
+        try {
+            const response = await axios.post('http://localhost:5000/api/Restaurant/alldetail',{restaurant_id:restroId});
+            console.log(response.data)
+            // setSearchProduct(response.data.product)
+        } catch (error) {
+            console.log('Error fetching data:', error);
+        }
+    }
     useEffect(()=>{
-        // console.log(restroId)
+        getAllDetail()
+        console.log(restroId)
     },[])
 
     return (
