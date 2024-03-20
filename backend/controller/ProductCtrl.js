@@ -82,6 +82,19 @@ const searchProduct = async (req, res) => {
                 $options: "i"
               }
             }
+          },{
+            $lookup: {
+              from: "restaurants", 
+              localField: "restaurant",
+              foreignField: "_id", 
+              as: "restaurantDetails" 
+            }
+          },{
+            $addFields: {
+              "restaurantDetails":{
+                $first : "$restaurantDetails"
+              } 
+            }
           }
         ])
           return res.send({

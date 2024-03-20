@@ -4,7 +4,6 @@ import Message from '../utils/MessageUtils.js'
 import razerpay from 'razorpay'
 import {instance} from '../utils/razerpayUtils.js'
 import crypto from 'crypto'
-// import {sha256} from 'crypto-js';
 const CreateOrder = async(req,res)=>{
 
     const create = await Order.create({
