@@ -73,18 +73,17 @@ const deleteProduct = async (req, res) => {
     
 
 const searchProduct = async (req, res) => {
+  console.log(req.body)
         const search = await Product.aggregate([
-            {
-              "$match": {
-                "name": { "$regex": `.*${req?.body?.name}.*` }
-              }
-            },
-            {
-              "$sort": {
-                "rating": 1  
+          {
+            $match: {
+              name : {
+                $regex :`.*${req.body.name}.*`,
+                $options: "i"
               }
             }
-          ])
+          }
+        ])
           return res.send({
             "success": true,
             "product" : search

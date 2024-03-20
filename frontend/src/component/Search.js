@@ -19,7 +19,7 @@ export default function Search() {
     }
     const getSearchProduct = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/api/product/search',name);
+            const response = await axios.post('http://localhost:5000/api/product/search',{name});
             console.log(response.data)
             // setSearchProduct(response.data.product)
         } catch (error) {
