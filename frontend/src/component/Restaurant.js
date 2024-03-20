@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../css/Restaurant.css';
 import Footer from './Footer';
 import Navbar from './Navbar';
+import { useLocation } from 'react-router-dom';
+
 const Restaurent = () => {
+
+    const location = useLocation();
+    const restroId = location.state.restroId;
+
+    useEffect(()=>{
+        // console.log(restroId)
+    },[])
+
     return (
         <>
             <Navbar />

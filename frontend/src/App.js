@@ -25,9 +25,9 @@ function App() {
   const refresh = async () => {
     try {
       console.log(localStorage.getItem("isLogin"));
-      const response = await axios.post('http://localhost:5000/api/user/refresh',{},{ withCredentials: true});
+      const response = await axios.post('http://localhost:5000/api/user/refresh', {}, { withCredentials: true });
 
-      console.log(response)
+      // console.log(response)
       if (response.data.login === true) {
         // console.log(response.data)
         dispatch(setUserDetails(response.data))
@@ -42,7 +42,7 @@ function App() {
   }
   useEffect(() => {
     refresh()
-     console.log(login)
+    console.log(login)
   }, [])
   return (
     <>
@@ -66,7 +66,7 @@ function App() {
             <Route path='/PlaceOrder' element={<PlaceOrder />} />
           </>
         }
-      </Routes>   
+      </Routes>
     </>
   );
 }
