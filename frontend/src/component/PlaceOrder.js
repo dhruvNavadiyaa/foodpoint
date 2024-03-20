@@ -45,6 +45,7 @@ export default function PlaceOrder() {
     const productDetail = async () =>{
     const response = await axios.post('http://localhost:5000/api/product/detail',{product_id:"65f95896c83fea71c635ad72"})
     setFullDetail(response.data.product)
+    console.log(fullDetail)
     setTotal(response.data.product.price)
     }
 
@@ -64,7 +65,7 @@ export default function PlaceOrder() {
             razorpay_payment_id ,
             razorpay_order_id,
             razorpay_signature,
-            product:fullDetail._id,
+            products_id:fullDetail._id,
             qty :qty,
             user :userId,
             Restaurant:fullDetail.restaurant,

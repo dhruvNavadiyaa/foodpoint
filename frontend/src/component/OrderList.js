@@ -1,7 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar'
-
+import axios from 'axios'
+import {useSelector} from 'react-redux'
 export default function OrderList() {
+    // http://localhost:5000/api/order/orderinfo
+    const user_id    = useSelector(state => state.user.userInfo.userInfo._id )
+    const [orderPending ,setOrderPending ] = useState([])
+    const [orderDone ,setOrderDone ] = useState([])
+    const getallOrder =async () =>{
+    const response = await axios.post('http://localhost:5000/api/order/orderinfo',{user_id})
+        const arr =  response.data.orderInfo
+        arr.map(item =>{
+            if(item._id === "group2"){
+                setOrderPending(item.orders)
+            }
+            else if(item._id === "group1"){
+                setOrderDone(item.orders)
+            }
+        })
+
+    }
+
+    useEffect(() =>{
+        getallOrder()
+    },[])
     return (
         <>
             <Navbar />
