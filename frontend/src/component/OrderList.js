@@ -37,8 +37,6 @@ export default function OrderList() {
 
                             <div className="container-md px-md-5 mt-4" >
                                 {orderPending.map((item ,index ) =>{
-                                console.log(item)
-
                                     return (<div key={index} className="row m-0 mb-5">
 
                                     <div className="col px-5-md mb-5">
@@ -88,7 +86,6 @@ export default function OrderList() {
 
                             <div className="container-md px-md-5 mt-4" >
                             {orderDone.map((item ,index )=>{
-                                console.log(item)
                                     return (<div key={index} className="row m-0 mb-5">
 
                                     <div className="col px-5-md mb-5">
