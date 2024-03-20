@@ -1,4 +1,4 @@
-import React ,{useState}from 'react'
+import React,{useState} from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import axios from 'axios'
@@ -12,7 +12,8 @@ export default function ContactUs() {
             name,
             email,
             number:num,
-            message
+            message,
+            from:"restaurant"
         }
         const response = await axios.post('http://localhost:5000/api/contactus/create', data,{withCredentials:true});
         console.log(response.data);
@@ -23,7 +24,7 @@ export default function ContactUs() {
                 setMessage("")
             }
     }
-    return (
+        return (
         <>
             <Navbar />
             <div className='row m-0'>
@@ -73,7 +74,7 @@ export default function ContactUs() {
                             <div className='px-4'>
                                 <div className="  p-5 box-shadow">
 
-                                    <input type="text" value={name} onChange={(e)=>setName(e.target.value)}  placeholder='Your Name ' className='fs-6 w-100 py-2 px-3' />
+                                <input type="text" value={name} onChange={(e)=>setName(e.target.value)}  placeholder='Your Name ' className='fs-6 w-100 py-2 px-3' />
                                     <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder='Your Email' className='fs-6 mt-4 w-100 py-2 px-3' />
                                     <input type="Number" value={num} onChange={(e)=>setNum(e.target.value)} placeholder='Your Phone' className='fs-6 mt-4 w-100 py-2 px-3' />
                                     <textarea  value={message} onChange={(e)=>setMessage(e.target.value)}  id="" rows="5" placeholder='Your Massage' className='fs-6 mt-4 w-100 py-2 px-3'></textarea>
