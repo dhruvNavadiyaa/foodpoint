@@ -9,11 +9,11 @@ const CreateOrder = async (req, res) => {
   console.log(req?.body?.Restaurant_id)
   const create = await Order.create({
     products: {
-      product: req?.body?.products_id,
+      product: req?.body?.product,
       quantity: req?.body?.qty,
     },
     user: req?.body?.user,
-    Restaurant: req?.body?.Restaurant_id,
+    restaurant: req?.body?.Restaurant_id,
     address: req?.body?.address,
     payment: {
       razorpay_payment_id: req?.body?.razorpay_payment_id,
@@ -22,6 +22,8 @@ const CreateOrder = async (req, res) => {
     },
     total: req?.body?.total,
   });
+  console.log(create)
+
   // const findRestaurant = await Restaurant.findById(req?.body?.Restaurant_id)
   // await Message("You Have New Order , Please Check Ypur Order List" , "8140974832")
   res.send({
