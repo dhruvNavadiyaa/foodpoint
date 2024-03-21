@@ -125,14 +125,17 @@ export default function PlaceOrder() {
                                                     <hr className='my-3' />
 
                                                     <div className="col-12 ">
-                                                        <div className="row m-0 border d-flex  border">
+                                                        <div className="row m-0 d-flex">
                                                             <div className="col">
                                                                 <p className='fs-5 fw-bold'>Items and Delivery </p>
                                                                 <small className=' mb-0 fw-medium text-secondary'>By    {fullDetail.restaurantDetails.name}</small><br />
+                                                                <p className='fs-5 fw-bold mb-2'>Items and Delivery </p>
+                                                                <small className='text-warning mt-0'><i className="bi bi-star-fill text-warning"> </i>BESTSELLER</small><br />
+                                                                <small className=' mb-0 fw-bold text-secondary text-uppercase'>by {fullDetail.restaurant}</small><br />
                                                                 <p className='mt-1 fw-bold mb-0 text-success'>{fullDetail.name}</p>
                                                                 <small className='fw-medium text-secondary'>&#x2022; <i className="bi bi-star-fill text-secondary"> </i> {fullDetail.rating}/5 &#8226; 20-25 min</small><br />
-                                                                <small className='fw-medium text-secondary'></small><br />
-                                                                <small>&#x2022;{fullDetail.description}</small>
+                                                                {/* <small className='fw-medium text-secondary'></small><br /> */}
+                                                                <small className='fw-medium text-secondary'>&#x2022;{fullDetail.description} </small>
                                                             </div>
                                                             <div className="col text-center">
                                                                 <img src={fullDetail.img || "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=600"} className='img-fluid rounded rounded-3 box-shadow' alt="" />
