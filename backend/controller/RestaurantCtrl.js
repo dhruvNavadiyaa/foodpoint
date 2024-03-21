@@ -185,7 +185,7 @@ const DeleteRestaurant = async (req, res) => {
     _id: req?.body?.Restaurant_id,
   });
   return res.send({
-    RestaurantDelete: "successfull",
+    success: true
   });
 };
 
