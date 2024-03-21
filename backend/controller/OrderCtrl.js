@@ -22,7 +22,6 @@ const CreateOrder = async (req, res) => {
     },
     total: req?.body?.total,
   });
-  console.log(create)
 
   // const findRestaurant = await Restaurant.findById(req?.body?.Restaurant_id)
   // await Message("You Have New Order , Please Check Ypur Order List" , "8140974832")

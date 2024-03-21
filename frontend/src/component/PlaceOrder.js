@@ -86,7 +86,6 @@ export default function PlaceOrder() {
                 total: total
             }
             const orderCreate = await axios.post('http://localhost:5000/api/order/create', payload)
-            console.log(orderCreate.data)
         }
 
     }
