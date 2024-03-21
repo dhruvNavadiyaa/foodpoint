@@ -183,4 +183,57 @@ const paymentVerify = async (req, res) => {
     success: false,
   });
 };
-export { CreateOrder,OrderWithId, orderInfo, allOrder, paymentWay, paymentVerify };
+
+
+
+const orderInfoWithRestaurant = async (req, res) => {
+  const find = await Order.aggregate([
+    {
+      $match: {
+        restaurant: new mongoose.Types.ObjectId(req.body.Restaurant_id),
+      },
+    },
+    {
+      $lookup: {
+        from: "products",
+        localField: "products.product",
+        foreignField: "_id",
+        as: "productDetail",
+      },
+    },
+    {
+      $lookup: {
+        from: "restaurants",
+        localField: "restaurant",
+        foreignField: "_id",
+        as: "restaurantDetail",
+      },
+    },
+    {
+      $addFields: {
+        productDetail: {
+          $first: "$productDetail",
+        }, 
+        restaurantDetail: {
+          $first: "$restaurantDetail",
+        },
+      },
+    },
+    {
+        $group: {
+          _id: {
+            $cond: {
+              if: { $in: ["$status", ["cancel", "done"]] }, 
+              then: "group1", 
+              else: "group2", 
+            },
+          },
+          orders: { $push: "$$ROOT" }, 
+        },
+      },
+  ]);
+  return res.send({
+    orderInfo: find,
+  });
+};
+export {orderInfoWithRestaurant, CreateOrder,OrderWithId, orderInfo, allOrder, paymentWay, paymentVerify };
