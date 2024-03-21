@@ -9,10 +9,11 @@ export default function OrderList() {
     const user_id = useSelector(state => state.user.userInfo.userInfo._id)
     const [orderPending, setOrderPending] = useState([])
     const [orderDone, setOrderDone] = useState([])
-    
+
     const getallOrder = async () => {
         const response = await axios.post('http://localhost:5000/api/order/orderinfo', { user_id })
         const arr = response.data.orderInfo
+        console.log(response.data.orderInfo)
         arr.map(item => {
             if (item._id === "group2") {
                 setOrderPending(item.orders)
@@ -39,8 +40,9 @@ export default function OrderList() {
                         <div className="row m-0">
 
                             <div className="container-md px-md-5 mt-4" >
+
                                 {orderPending.map((item, index) => {
-                                    return (<div key={index} className="row m-0 mb-5">
+                                    return (<div key={index} className="row m-0 ">
 
                                         <div className="col px-5-md mb-5">
                                             <div className="item p-3 rounded rounded-4 box-shadow">
@@ -77,6 +79,7 @@ export default function OrderList() {
                                         </div>
                                     </div>)
                                 })}
+
                                 {orderPending.length === 0 ? <div>There Is No Order Runnig To You Right Now.</div> : ""}
                             </div>
                         </div>
