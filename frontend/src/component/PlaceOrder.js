@@ -173,7 +173,7 @@ export default function PlaceOrder() {
                                                     <p className='mb-0 fs-5 fw-bold text-danger '>Order Total </p>
                                                     <p className='mb-0 ms-auto fw-bold'>&#8377; {total}</p>
                                                 </div>
-                                                <button onClick={clickHadler} className='btn btn-outline-success'>PAY NOW <i className="bi bi-credit-card-2-front"></i></button>
+                                                <button onClick={clickHadler} disabled={add===''} className='btn btn-outline-success'>PAY NOW <i className="bi bi-credit-card-2-front"></i></button>
                                             </div>
 
                                         </div>
