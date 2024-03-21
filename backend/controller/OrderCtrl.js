@@ -30,13 +30,60 @@ const CreateOrder = async (req, res) => {
     Orderinformation: create,
   });
 };
+const allOrder = async (req, res) => {}
+const OrderWithId = async (req, res) => {
+  
+  const find = await Order.aggregate([
+    {
+      $match: {
+        _id: new mongoose.Type.ObjectId(req?.body?.order_id)
+      }
+    },
+    {
+      $lookup: {
+        from: "products",
+        localField: "products.product",
+        foreignField: "_id",
+        as: "productDetail",
+      },
+    },
+    {
+      $lookup: {
+        from: "restaurants",
+        localField: "productDetail.restaurant",
+        foreignField: "_id",
+        as: "restaurantDetail",
+      },
+    },
+    {
+      $lookup: {
+        from: "users",
+        localField: "user",
+        foreignField: "_id",
+        as: "userDetail",
+      },
+    },
+    {
+      $addFields: {
+        productDetail: {
+          $first: "$productDetail",
+        }, 
+        restaurantDetail: {
+          $first: "$restaurantDetail",
+        }, 
+        userDetail: {
+          $first: "$userDetail",
+        },
+      },
+    }
+  ]);
 
-const allOrder = async (req, res) => {
-  const finde = await Order.find().sort({ createdAt: 1 });
-
-  res.send({
-    Orderinformation: create,
-  });
+  if(find.length > 0){
+    res.send({
+      success: true,
+      Orderinformation: find[0],
+    });
+  }
 };
 
 const orderInfo = async (req, res) => {
@@ -54,8 +101,6 @@ const orderInfo = async (req, res) => {
         as: "productDetail",
       },
     },
-
-   
     {
       $lookup: {
         from: "restaurants",
@@ -132,4 +177,4 @@ const paymentVerify = async (req, res) => {
     success: false,
   });
 };
-export { CreateOrder, orderInfo, allOrder, paymentWay, paymentVerify };
+export { CreateOrder,OrderWithId, orderInfo, allOrder, paymentWay, paymentVerify };
