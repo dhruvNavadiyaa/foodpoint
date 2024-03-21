@@ -147,6 +147,7 @@ const updateOrderStatus = async (req, res) => {
     status: req?.body?.status,
   });
   return req.send({
+    success: true,
     orderInfo: find,
   });
 };
@@ -236,4 +237,5 @@ const orderInfoWithRestaurant = async (req, res) => {
     orderInfo: find,
   });
 };
-export {orderInfoWithRestaurant, CreateOrder,OrderWithId, orderInfo, allOrder, paymentWay, paymentVerify };
+
+export {orderInfoWithRestaurant, updateOrderStatus,CreateOrder,OrderWithId, orderInfo, allOrder, paymentWay, paymentVerify };
