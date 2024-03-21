@@ -5,6 +5,7 @@
     margin: 0px 2px;
     border-radius: 15px;
     background-color: rgb(241 245 249);
+    overflow: hidden;
 }
 .order-img{
     height: 100px;
