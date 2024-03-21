@@ -42,7 +42,7 @@ const OrderWithId = async (req, res) => {
   const find = await Order.aggregate([
     {
       $match: {
-        _id: new mongoose.Types.ObjectId(req.body.order_id)
+        _id: new mongoose.Types.ObjectId(req?.body?.order_id)
       }
     },
     {

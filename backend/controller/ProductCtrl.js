@@ -160,4 +160,30 @@ const searchProduct = async (req, res) => {
         }
         return res.send({ success:"true", product:findProduct[0]})
     }
-export  { CreateProduct,searchProductWithId , CatagoryProuct ,ResturentProuct,updateProduct,top10Product,deleteProduct,searchProduct}
+
+
+    const allProduct = async (req, res) => {
+      const top = await Product.aggregate([
+        { $sort: { "rating": 1 } },
+        {
+          $lookup: {
+            from: "restaurants", 
+            localField: "restaurant",
+            foreignField: "_id", 
+            as: "restaurantDetails" 
+          }
+        },
+  {
+    $addFields: {
+      "restaurantDetails":{
+        $first : "$restaurantDetails"
+      } 
+    }
+  }
+      ])
+      res.send({
+        success : true,
+        product :top
+      })
+    }
+export  { allProduct,CreateProduct,searchProductWithId , CatagoryProuct ,ResturentProuct,updateProduct,top10Product,deleteProduct,searchProduct}
