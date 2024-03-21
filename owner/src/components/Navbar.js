@@ -6,7 +6,7 @@ import '../css/Navbar.css'
 
 export default function Navbar() {
 
-  const isApproved = useSelector(state => state.restaurant.isApproved)
+  const isApproved = useSelector(state => state.restaurant.RestaurantInfo.isApproved)
   const location = useLocation()
   const path = location.pathname
 
@@ -77,7 +77,7 @@ export default function Navbar() {
               <li className='p-2 rounded rounded-3' id='Home' onClick={() => changeBgColor("Home")}>Home</li>
             </Link>
 
-            {!isApproved === 'Pending' &&<>
+            {!(isApproved === 'Pending') &&<>
             <Link to='/OrderList' className='text-dark text-decoration-none'>
               <li className='p-2 rounded rounded-3' id='OrderList' onClick={() => changeBgColor("OrderList")}>Order List</li>
             </Link>
