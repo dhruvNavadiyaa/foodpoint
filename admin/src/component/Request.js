@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 
 export default function Request() {
 
-    const adminName = useSelector(state => state.admin.adminInfo.name)
+    
     const hide = () => {
         if (window.innerWidth <= 750) {
             let sidebar, slide, main, title
@@ -40,6 +40,9 @@ export default function Request() {
         title = document.querySelector(".header")
         title.classList.toggle("headerMove")
     }
+
+    const adminName = useSelector(state => state.admin.adminInfo.name)
+
     return (
         <>
             <SideBar />
@@ -69,8 +72,8 @@ export default function Request() {
                                                     <tr className='table-active'>
                                                         <th scope="col">NO.</th>
                                                         <th scope="col">NAME</th>
-                                                        <th scope="col">EMAIL</th>
-                                                        <th scope="col">MESSAGE</th>
+                                                        <th scope="col">NUMBER</th>
+                                                        <th scope="col">STATUS</th>
                                                         <th scope="col">ACTION</th>
                                                     </tr>
                                                 </thead>
