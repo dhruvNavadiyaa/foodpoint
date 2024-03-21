@@ -59,7 +59,6 @@ export default function PlaceOrder() {
         const response = await axios.post('http://localhost:5000/api/product/detail', { product_id: productId })
         setFullDetail(response.data.product)
         console.log(response.data.product)
-        console.log(fullDetail)
         setTotal(response.data.product.price)
     }
 
@@ -129,7 +128,7 @@ export default function PlaceOrder() {
                                                         <div className="row m-0 border d-flex  border">
                                                             <div className="col">
                                                                 <p className='fs-5 fw-bold'>Items and Delivery </p>
-                                                                <small className=' mb-0 fw-medium text-secondary'>{fullDetail.restaurant}</small><br />
+                                                                <small className=' mb-0 fw-medium text-secondary'>By    {fullDetail.restaurantDetails.name}</small><br />
                                                                 <p className='mt-1 fw-bold mb-0 text-success'>{fullDetail.name}</p>
                                                                 <small className='fw-medium text-secondary'>&#x2022; <i className="bi bi-star-fill text-secondary"> </i> {fullDetail.rating}/5 &#8226; 20-25 min</small><br />
                                                                 <small className='fw-medium text-secondary'></small><br />

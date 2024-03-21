@@ -1,6 +1,6 @@
 import Product from "../models/ProductModel.js";
 import uploadCloudinary from "../utils/cloudinary.js";
-
+import mongoose  from "mongoose";
 //Add Product and Also id push in to the Category And Restaurant models
 const CreateProduct = async(req,res)=>{
     const fileimg = req?.files?.product
@@ -132,9 +132,32 @@ const searchProduct = async (req, res) => {
 
 
     const searchProductWithId = async (req, res) => {
-      console.log(req.body)
         // const findProduct = await Product.findById(req.body.product_id)
-        const findProduct = await Product.findById(req.body.product_id)
-        return res.send({ success:"true", product:findProduct})
+        const findProduct = await Product.aggregate([
+          {
+            $match:{
+              _id : new mongoose.Types.ObjectId(req.body.product_id)
+            }
+          }
+          ,{
+            $lookup: {
+              from: "restaurants", 
+              localField: "restaurant",
+              foreignField: "_id", 
+              as: "restaurantDetails" 
+            }
+          },
+          {
+            $addFields: {
+              "restaurantDetails":{
+                $first : "$restaurantDetails"
+              } 
+            }
+          }
+        ])
+        if(findProduct.length == 0 ){
+          return res.send({ success:"false", product:findProduct})  
+        }
+        return res.send({ success:"true", product:findProduct[0]})
     }
 export  { CreateProduct,searchProductWithId , CatagoryProuct ,ResturentProuct,updateProduct,top10Product,deleteProduct,searchProduct}
