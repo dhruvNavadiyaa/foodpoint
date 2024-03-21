@@ -9,7 +9,7 @@ export default function PlaceOrder() {
     const navigate = useNavigate()
     const {productId} = useParams()
     const [qty, setQty] = useState(1)
-    const [add, setAdd] = useState()
+    const [add, setAdd] = useState('')
     const no = useSelector(state => state.user.userInfo.userInfo.number)
     const userId = useSelector(state => state.user.userInfo.userInfo._id)
     const [num, setNum] = useState(no)
