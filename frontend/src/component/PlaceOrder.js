@@ -128,7 +128,7 @@ export default function PlaceOrder() {
                                                         <div className="row m-0 d-flex">
                                                             <div className="col">
                                                                 <p className='fs-5 fw-bold'>Items and Delivery </p>
-                                                                <small className=' mb-0 fw-medium text-secondary'>By    {fullDetail.restaurantDetails.name}</small><br />
+                                                                <small className=' mb-0 fw-medium text-secondary'>By {fullDetail?.restaurantDetails?.name}</small><br />
                                                                 <p className='fs-5 fw-bold mb-2'>Items and Delivery </p>
                                                                 <small className='text-warning mt-0'><i className="bi bi-star-fill text-warning"> </i>BESTSELLER</small><br />
                                                                 <small className=' mb-0 fw-bold text-secondary text-uppercase'>by {fullDetail.restaurant}</small><br />
