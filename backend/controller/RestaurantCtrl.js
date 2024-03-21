@@ -102,7 +102,7 @@ const LoginRestaurant = async (req, res) => {
 };
 
 const topRestaurant = async (req, res) => {
-  const featchAll = await Restaurant.find().sort({ rating: -1 }).limit(8);
+  const featchAll = await Restaurant.find({isApproved:"Approved"}).sort({ rating: -1 }).limit(8);
   return res.send({
     Restaurant: featchAll,
   });
@@ -176,7 +176,7 @@ const FeatchRestaurant = async (req, res) => {
     isApproved: "Approved",
   });
   return res.send({
-    "All Restaurant": featchAll,
+    "AllRestaurant": featchAll,
   });
 };
 
@@ -235,6 +235,7 @@ const allDetailAboutRestaurants = async (req, res) => {
     {
       $match: {
         restaurant: new mongoose.Types.ObjectId(req.body.restaurant_id),
+        isApproved: "Approved"
       },
     },
 
@@ -267,6 +268,16 @@ const allDetailAboutRestaurants = async (req, res) => {
     allproductWithCategories,
   });
 };
+
+const approvedRestaurant = async(req, res) => {
+const approve = await Restaurant.findByIdAndUpdate(req.body.Restaurant_id,{
+  isApproved : "Approved"
+})
+res.send({
+  success: true,
+})
+}
+
 export {
   CreateRestaurant,
   topRestaurant,
@@ -277,4 +288,5 @@ export {
   FeatchRestaurant,
   DeleteRestaurant,
   RefreshTokenEndPoint,
+  approvedRestaurant
 };
