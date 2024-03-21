@@ -22,7 +22,7 @@ const OrderSchema = new Schema({
     },
     status: {
         type: String,
-        default:'process'
+        default:'pending'
     },
     deliveryBoy: {
         type: mongoose.Types.ObjectId,
