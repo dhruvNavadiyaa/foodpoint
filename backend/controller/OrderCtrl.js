@@ -34,7 +34,7 @@ const allOrder = async (req, res) => {
   const find = await Order.find().sort({"createdAt": -1})
   res.send({
     success: true,
-    Orderinformation: find[0],
+    Orderinformation: find,
   });
 }
 const OrderWithId = async (req, res) => {
