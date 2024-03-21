@@ -30,7 +30,13 @@ const CreateOrder = async (req, res) => {
     Orderinformation: create,
   });
 };
-const allOrder = async (req, res) => {}
+const allOrder = async (req, res) => {
+  const find = await Order.find().sort({"createdAt": -1})
+  res.send({
+    success: true,
+    Orderinformation: find[0],
+  });
+}
 const OrderWithId = async (req, res) => {
   
   const find = await Order.aggregate([
