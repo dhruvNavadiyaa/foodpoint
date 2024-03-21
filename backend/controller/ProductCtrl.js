@@ -53,7 +53,8 @@ const updateProduct = async (req, res) => {
 const updatedproduct = await Product.findByIdAndUpdate(req?.body?.product_id , {
         name  : req?.body?.name,
         price : req?.body?.price,
-        description  : req?.body?.description
+        description  : req?.body?.description,
+        isActive : req?.body?.isActive
 })
 
 return res.send({

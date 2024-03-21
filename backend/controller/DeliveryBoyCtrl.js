@@ -90,7 +90,7 @@ const DeleteDeliveryBoy =async (req, res) => {
 }
 
 const UpdateDeliveryBoy =async (req, res) => {
-    const deleteUser = await DeliveryBoy.findByIdAndUpdate(req?.body?.DeliveryBoy_id , {isApproved:req?.body?.isApproved })
+    const deleteUser = await DeliveryBoy.findByIdAndUpdate(req?.body?.DeliveryBoy_id , {isApproved:"Approved" })
     res.send({
         "user": "User Updated"
     })
