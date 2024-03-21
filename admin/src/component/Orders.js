@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import '../css/Util.css'
 import '../css/MainContent.css'
@@ -44,20 +44,16 @@ export default function Orders() {
   }
 
   const adminName = useSelector(state => state.admin.adminInfo.name)
-  const [orderId, setOrderId] = useState('642fc2cb9486d312d9e1f5ae')
-  const [orderDetails,setOrderDetails] = useState()
+  const [orderDetails, setOrderDetails] = useState([])
   const navigate = useNavigate();
-  // const passdata = () => {
-  //   navigate('/Orderdetails', { state: orderId })
-  // }
 
-  const getOrderDetails = async () => {
+  const getAllOrder = async () => {
     const response = await axios.get('http://localhost:5000/api/order/allorder')
-    console.log(response.data)
-    setOrderDetails(response.data)
+    // console.log(response.data.Orderinformation)
+    setOrderDetails(response.data.Orderinformation)
   }
   useEffect(() => {
-    getOrderDetails()
+    getAllOrder()
   }, [])
 
   return (
@@ -102,13 +98,19 @@ export default function Orders() {
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <th scope="row"><i className="bi bi-person-circle text-logo fs-2 me-2"></i></th>
-                            <td>642fc2cb9486d312d9e1f5ae</td>
-                            <td>450</td>
-                            <td>@mdo</td>
-                            <td ><button className='btn btn-outline-dark btn-sm px-3'>view</button></td>
-                          </tr>
+                          {
+                            orderDetails.map((item, index) => {
+                              return (
+                                <tr key={index}>
+                                  <th scope="row"><i className="bi bi-person-circle text-logo fs-2 me-2"></i></th>
+                                  <td>{item._id}</td>
+                                  <td>&#x20B9; {item.total}</td>
+                                  <td>{item.status}</td>
+                                  <td onClick={() => navigate(`/Orderdetails/${item._id}`)}><button className='btn btn-outline-dark btn-sm px-3'>view</button></td>
+                                </tr>
+                              )
+                            })
+                          }
                         </tbody>
                       </table>
                     </div>
