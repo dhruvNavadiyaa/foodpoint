@@ -48,7 +48,7 @@ export default function Orderdetails() {
     const orderId  = location.state || {};
     
     useState(()=>{
-        console.log(orderId)
+        // console.log(orderId)
     },[])
 
     return (
