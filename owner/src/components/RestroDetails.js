@@ -70,22 +70,21 @@ export default function RestroDetails() {
         <>
             {/* <Navbar /> */}
             <h2 className='py-3 text-center box-shadow position-fixed top-0 w-100' style={{ backdropFilter: 'blur(5px)' }}>Fill Bank Account Details</h2>
-            <div className='row m-0 px-4 my-5' style={{ marginTop: '100px' }}>
+            <div className='row m-0 px-4 my-5 w-125 ' style={{ marginTop: '100px' }}>
                 {/* <hr className='my-1 mb-3 text-dark border border-2 border-dark ' /> */}
 
                 <div className="row mt-5">
-                    <div className="col-3">
+                    <div className="col-md-3">
 
-                        <div className=' px-4'>
-                            <p className='py-2 ps-3 fw-medium border border-2 border-dark rounded rounded-5' onClick={() => setChageDetail(false)}>Restaurant Information</p><hr className='border border-2 border-dark' />
-
-                            <p className='py-2 ps-3 fw-medium border rounded rounded-5' style={{ backgroundColor: 'rgb(226, 232, 240)' }} onClick={() => setChageDetail(true)}>Restaurant Details</p>
-                            <p className='py-2 ps-3 fw-medium border rounded rounded-5' style={{ backgroundColor: 'rgb(226, 232, 240)' }} onClick={() => setChageDetail(false)}>Other Details</p>
-                            <p className='py-2 ps-3 fw-medium border rounded rounded-5' style={{ backgroundColor: 'rgb(226, 232, 240)' }} onClick={() => { navigation('/') }}>Cancel</p>
+                        <div className=' px-md-4 d-flex d-md-block justify-content-between'>
+                            <p className='py-2 px-3 ps-3 fw-medium border border-2 border-dark rounded rounded-5' onClick={() => setChageDetail(false)}>Restaurant Information</p><hr className='border border-2 border-dark' />
+                            <p className='py-2 px-3 ps-3 fw-medium border rounded rounded-5' style={{ backgroundColor: 'rgb(226, 232, 240)' }} onClick={() => setChageDetail(true)}>Restaurant Details</p>
+                            <p className='py-2 px-3 ps-3 fw-medium border rounded rounded-5' style={{ backgroundColor: 'rgb(226, 232, 240)' }} onClick={() => setChageDetail(false)}>Other Details</p>
+                            <p className='py-2 px-3 ps-3 fw-medium border rounded rounded-5' style={{ backgroundColor: 'rgb(226, 232, 240)' }} onClick={() => { navigation('/') }}>Cancel</p>
                         </div>
                     </div>
 
-                    <div className="col-9 px-4">
+                    <div className="col-md-9 px-md-4">
 
                         {/* RESTAURANT DETAILS */}
                         {changeDetail &&

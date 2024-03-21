@@ -59,12 +59,12 @@ export default function OrderList() {
                                                             <hr className='my-2' />
                                                             <small className='text-warning'><i className="bi bi-star-fill text-warning"> </i>BESTSELLER</small>
                                                             <p className='fw-bold mb-0'>{item?.productDetail?.name}</p>
-                                                            <small className='fw-medium text-secondary'>{item?.productDetail?.description}</small><br /><br />
-                                                            <small className='fw-medium text-secondary'>Total Quantity : {item?.products?.quantity}</small><br />
+                                                            <small className='fw-medium text-secondary'>&#8226; {item?.productDetail?.description}</small><br />
+                                                            <small className='fw-medium text-secondary'>&#8226; Total Quantity : {item?.products?.quantity}</small><br />
                                                             <small className='fw-medium'>Total payment amount : &#x20B9;{item.total} </small><br />
-                                                            <div className='mt-3 border'>
-                                                                <p className='fw-bold text-secondary'>Track Your Order</p>
-                                                                <p className='fw-bold text-secondary'>Status : <span className='text-dark'>{item.status}</span></p>
+                                                            <div className='mt-3'>
+                                                                {/* <p className='fw-bold text-secondary'>Track Your Order</p> */}
+                                                                <p className='fw-bold text-secondary'>Order Status : <span className='text-dark'>{item.status}</span></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -110,12 +110,12 @@ export default function OrderList() {
                                                             <hr className='my-2' />
                                                             <small className='text-warning'><i className="bi bi-star-fill text-warning"> </i>BESTSELLER</small>
                                                             <p className='fw-bold mb-0'>{item.productDetail.name}</p>
-                                                            <small className='fw-medium text-secondary'>{item.productDetail.description}</small><br /><br />
-                                                            <small className='fw-medium text-secondary'>Total Quantity : {item.products.quantity}</small><br />
+                                                            <small className='fw-medium text-secondary'>&#8226; {item.productDetail.description}</small><br />
+                                                            <small className='fw-medium text-secondary'>&#8226; Total Quantity : {item.products.quantity}</small><br />
                                                             <small className='fw-medium'>Total payment amount : &#x20B9;{item.total} </small><br />
-                                                            <div className='mt-3 border'>
-                                                                <p className='fw-bold text-secondary'>Track Your Order</p>
-                                                                <p className='fw-bold text-secondary'>Status : <span className='text-dark'>{item.status}</span></p>
+                                                            <div className='mt-3'>
+                                                                {/* <p className='fw-bold text-secondary'>Track Your Order</p> */}
+                                                                <p className='fw-bold text-secondary'>Order Status : <span className='text-dark'>{item.status}</span></p>
                                                             </div>
                                                         </div>
                                                     </div>

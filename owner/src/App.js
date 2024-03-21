@@ -62,6 +62,7 @@ function App() {
                   <Route path='/ContactUs' element={<ContactUs />} />
                   <Route path='/Profile' element={<Profile />} />
                   <Route path='/Information' element={<Sorry />} />
+                  <Route path='/RestroDetails' element={<RestroDetails />} />
                 </> : <>
                   <Route path='/' element={<Login />} />
                   <Route path='/SignUp' element={<SignUp />} />
@@ -71,7 +72,7 @@ function App() {
                   <Route path='/YourProducts' element={<YourProducts />} />
                   <Route path='/ContactUs' element={<ContactUs />} />
                   <Route path='/Profile' element={<Profile />} />
-                  <Route path='/RestroDetails' element={<RestroDetails />} />
+                  {/* <Route path='/RestroDetails' element={<RestroDetails />} /> */}
                 </>
             }
           </>
