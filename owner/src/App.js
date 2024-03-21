@@ -51,19 +51,29 @@ function App() {
             <Route path='/' element={<Login />} />
             <Route path='/SignUp' element={<SignUp />} />
             <Route path='/RestroDetails' element={<RestroDetails />} />
-          </>
-          :
-          // isApproved === "Pending"
+          </> :
           <>
-            <Route path='/' element={<Login />} />
-            <Route path='/SignUp' element={<SignUp />} />
-            <Route path='/Home' element={<Home />} />
-            <Route path='/OrderList' element={<OrderList />} />
-            <Route path='/AddProduct' element={<AddProduct />} />
-            <Route path='/YourProducts' element={<YourProducts />} />
-            <Route path='/ContactUs' element={<ContactUs />} />
-            <Route path='/Profile' element={<Profile />} />
-            <Route path='/RestroDetails' element={<RestroDetails />} />
+            {
+              isApproved === "Pending" ?
+                <>
+                  <Route path='/' element={<Login />} />
+                  <Route path='/SignUp' element={<SignUp />} />
+                  <Route path='/Home' element={<Home />} />
+                  <Route path='/ContactUs' element={<ContactUs />} />
+                  <Route path='/Profile' element={<Profile />} />
+                  <Route path='/Information' element={<Sorry />} />
+                </> : <>
+                  <Route path='/' element={<Login />} />
+                  <Route path='/SignUp' element={<SignUp />} />
+                  <Route path='/Home' element={<Home />} />
+                  <Route path='/OrderList' element={<OrderList />} />
+                  <Route path='/AddProduct' element={<AddProduct />} />
+                  <Route path='/YourProducts' element={<YourProducts />} />
+                  <Route path='/ContactUs' element={<ContactUs />} />
+                  <Route path='/Profile' element={<Profile />} />
+                  <Route path='/RestroDetails' element={<RestroDetails />} />
+                </>
+            }
           </>
         }
       </Routes>
