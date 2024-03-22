@@ -43,7 +43,7 @@ export default function OrderList() {
             <div className='row m-0 p-3'>
                 <div className="col p-3 border box-shadow" style={{ marginTop: '100px', marginBottom: '50vh' }}>
 
-                    <h3 className='fw-bold'>&#x2022; Order Summary</h3>
+                    <h3 className='fw-bold'>&#x2022; Current Order Summary</h3>
 
                     <table className="table table-hover">
                         <thead>
@@ -70,7 +70,7 @@ export default function OrderList() {
                             {
                                 orders.map((item, index) => {
                                     return (
-                                        <tr className=''>
+                                        <tr className='' key={index}>
                                             <td>{item._id}</td>
                                             <td>{item.name}</td>
                                             <td>{item?.products?.quantity}</td>
