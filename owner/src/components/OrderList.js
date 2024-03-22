@@ -3,9 +3,11 @@ import Navbar from './Navbar'
 import '../css/Util.css'
 import Footer from './Footer';
 import axios from 'axios'
+import { useSelector } from 'react-redux';
 
 export default function OrderList() {
 
+    const Restaurant_id = useSelector(state=>state.restaurant.RestaurantInfo._id)
     const [orders, setOrders] = useState([])
     const [modalState, setModalState] = useState({
         isVisible: false,
@@ -15,9 +17,9 @@ export default function OrderList() {
 
     const getOrderDetail = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/order/allorder');
-            // console.log(response.data.Orderinformation)
-            setOrders(response.data.Orderinformation)
+            const response = await axios.post('http://localhost:5000/api/order/orderRestaurant',{Restaurant_id});
+            console.log(response.data)
+            // setOrders(response.data.Orderinformation)
         } catch (error) {
             console.log('Error fetching data:', error);
         }

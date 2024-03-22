@@ -17,7 +17,7 @@ const Restaurent = () => {
 
     const getAllDetail = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/api/Restaurant/allorder', { restaurant_id: restroId });
+            const response = await axios.post('http://localhost:5000/api/Restaurant/alldetail', { restaurant_id: restroId });
             // console.log(response.data.restaurantDetails)
             // console.log(response.data.allproductWithCategories)
             setRestaurantDetails(response.data.restaurantDetails)
