@@ -24,4 +24,6 @@ const sendEmail = async(subject,reciverEmail,text) => {
   // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
 }
 
+
+export default sendEmail;
 sendEmail ("hello" ,"ktalaviya123@gmail.com,ktalaviya568@gmail.com" , "hello There" )

@@ -1,10 +1,9 @@
 import Order from "../models/OrderModel.js";
 import Restaurant from "../models/RestaurantModel.js";
-import Message from "../utils/MessageUtils.js";
-import razerpay from "razorpay";
 import { instance } from "../utils/razerpayUtils.js";
 import crypto from "crypto";
 import mongoose from "mongoose";
+
 const CreateOrder = async (req, res) => {
   console.log(req?.body?.Restaurant_id)
   const create = await Order.create({
@@ -238,4 +237,14 @@ const orderInfoWithRestaurant = async (req, res) => {
   });
 };
 
-export {orderInfoWithRestaurant, updateOrderStatus,CreateOrder,OrderWithId, orderInfo, allOrder, paymentWay, paymentVerify };
+
+
+const updateDeliveryBoy = async(req, res) => {
+  const find = await Order.findByIdAndUpdate(req?.body?.Order_id, {
+    deliveryBoy: req?.body?.DeliveryBoy_id,
+  });
+  res.send({ 
+    success : true,
+  })
+}
+export {orderInfoWithRestaurant,updateDeliveryBoy, updateOrderStatus,CreateOrder,OrderWithId, orderInfo, allOrder, paymentWay, paymentVerify };
