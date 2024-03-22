@@ -23,7 +23,7 @@ const DeliveryBoySchema = new Schema({
         type: String,
         default:'pending'
     },
-    review: 
+    review:
         [
             {
                 type: mongoose.Types.ObjectId,

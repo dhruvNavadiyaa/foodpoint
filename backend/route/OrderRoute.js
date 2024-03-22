@@ -9,7 +9,7 @@ router.route('/allorder').get(allOrder)
 router.route('/orderwithid').post(OrderWithId)
 router.route('/orderRestaurant').post(orderInfoWithRestaurant)
 router.route('/updateOrderStatus').post(updateOrderStatus)
-router.route('/updateDeliveryBoy').post(updateDeliveryBoy)
+router.route('/acceptOrder').post(updateDeliveryBoy)
 router.route('/orderpending').get(orderPendingForDelivery)
 router.route('/deliveryboyHistory').post(orderHistoryForDelivery)
 
