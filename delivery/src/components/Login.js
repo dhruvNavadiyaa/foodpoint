@@ -21,7 +21,7 @@ const Login = () => {
     const getdata = async () => {
         try {
             const response = await axios.post('http://localhost:5000/api/delivery/signin', data,{withCredentials:true});
-            console.log(response.data)
+            // console.log(response.data)
             if (response.data.login === true) {
                 dispatch(setdeliverDetails(response.data))
                 navigate('/Home')

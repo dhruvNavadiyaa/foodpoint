@@ -10,18 +10,12 @@ import Navbar from './Navbar'
 export default function Orderdetails() {
 
 
-
+    const {id} = useParams()
     const navigate = useNavigate()
-    const [orderDetails, setOrderDetails] = useState([])
 
-    // const getOrderDetails = async () => {
-    //     const response = await axios.post('http://localhost:5000/api/order/orderwithid', { order_id: orderId })
-    //     // console.log(response.data.Orderinformation)
-    //     setOrderDetails(response.data.Orderinformation)
-    // }
-    // useEffect(() => {
-    //     getOrderDetails()
-    // }, [])
+    useEffect(() => {
+        console.log(id)
+    }, [])
 
     return (
         <>

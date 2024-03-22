@@ -31,7 +31,7 @@ export default function OrderList() {
                                 <td>
                                     <div className="d-flex">
                                         <button className='btn btn-sm btn-outline-success me-1'>Accept</button>
-                                        <button className='btn btn-sm btn-outline-warning' onClick={()=>navigate('/Orderdetails')}>View</button>
+                                        <button className='btn btn-sm btn-outline-warning' onClick={()=>navigate('/Orderdetails/123123')}>View</button>
                                     </div>
                                 </td>
                             </tr>

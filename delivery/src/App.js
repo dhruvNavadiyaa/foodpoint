@@ -25,7 +25,7 @@ function App() {
       if (response.data.login === true) {
         // console.log(response.data)
         dispatch(setdeliverDetails(response.data))
-        navigate('/Home')
+        // navigate('/Home')
       }
     } catch (error) {
       console.log('Error fetching data:', error);
@@ -54,7 +54,7 @@ function App() {
             <Route path='/ContactUs' element={<ContactUs />} />
             <Route path='/Profile' element={<Profile />} />
             <Route path='/OrderHistory' element={<OrderHistory />} />
-            <Route path='/Orderdetails' element={<Orderdetails />} />
+            <Route path='/Orderdetails/:id' element={<Orderdetails />} />
           </>
         }
       </Routes>
