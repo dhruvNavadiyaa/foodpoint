@@ -55,7 +55,7 @@ export default function DeliveryPartner() {
     const allDeliveryBoy = async () => {
         const response = await axios.get('http://localhost:5000/api/delivery/allfetch')
         setDeliveryBoys(response.data)
-        // console.log(deliveryBoys)
+        console.log(response.data)
     }
     
     useEffect(() => {
