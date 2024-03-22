@@ -235,7 +235,6 @@ const allDetailAboutRestaurants = async (req, res) => {
     {
       $match: {
         restaurant: new mongoose.Types.ObjectId(req.body.restaurant_id),
-        // isApproved: "Approved"
       },
     },
     {
@@ -276,6 +275,8 @@ res.send({
   success: true,
 })
 }
+
+
 
 export {
   CreateRestaurant,

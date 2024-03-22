@@ -242,9 +242,34 @@ const orderInfoWithRestaurant = async (req, res) => {
 const updateDeliveryBoy = async(req, res) => {
   const find = await Order.findByIdAndUpdate(req?.body?.Order_id, {
     deliveryBoy: req?.body?.DeliveryBoy_id,
+    status: req?.body?.status,
   });
   res.send({ 
     success : true,
   })
 }
-export {orderInfoWithRestaurant,updateDeliveryBoy, updateOrderStatus,CreateOrder,OrderWithId, orderInfo, allOrder, paymentWay, paymentVerify };
+
+
+const orderPendingForDelivery = async(req, res) => {
+  const find = await Order.find( {
+    status: "processing",
+  });
+  res.send({ 
+    success : true,
+    orderInfo : find,
+  })
+}
+
+
+const orderHistoryForDelivery = async(req, res) => {
+  const find = await Order.find( {
+    deliveryBoy:req.body.DeliveryBoy_id,
+    status: "done",
+  });
+  res.send({ 
+    success : true,
+    orderInfo : find,
+  })
+}
+
+export {orderHistoryForDelivery,orderPendingForDelivery,orderInfoWithRestaurant,updateDeliveryBoy, updateOrderStatus,CreateOrder,OrderWithId, orderInfo, allOrder, paymentWay, paymentVerify };
