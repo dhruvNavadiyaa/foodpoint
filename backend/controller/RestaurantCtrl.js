@@ -235,10 +235,9 @@ const allDetailAboutRestaurants = async (req, res) => {
     {
       $match: {
         restaurant: new mongoose.Types.ObjectId(req.body.restaurant_id),
-        isApproved: "Approved"
+        // isApproved: "Approved"
       },
     },
-
     {
       $group: {
         _id: "$category",
