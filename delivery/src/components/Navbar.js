@@ -17,6 +17,10 @@ export default function Navbar() {
       let cComponent = document.querySelector("#OrderList")
       cComponent.classList.add('bg-navitem')
     }
+    else if (path === '/OrderHistory') {
+      let cComponent = document.querySelector("#OrderHistory")
+      cComponent.classList.add('bg-navitem')
+    }
     else if (path === '/ContactUs') {
       let cComponent = document.querySelector("#ContactUs")
       cComponent.classList.add('bg-navitem')
@@ -64,6 +68,9 @@ export default function Navbar() {
             {/* <li className='p-2 rounded rounded-3'>Search</li> */}
             <Link to='/OrderList' className='text-dark text-decoration-none'>
               <li className='p-2 rounded rounded-3 mx-3' id='OrderList' onClick={() => changeBgColor("OrderList")}>Order List</li>
+            </Link>
+            <Link to='/OrderHistory' className='text-dark text-decoration-none'>
+              <li className='p-2 rounded rounded-3 mx-3' id='OrderHistory' onClick={() => changeBgColor("OrderHistory")}>Order History</li>
             </Link>
             <Link to='/ContactUs' className='text-dark text-decoration-none'>
               <li className='p-2 rounded rounded-3 mx-3' id='ContactUs' onClick={changeBgColor}>Contact Us</li>

@@ -9,6 +9,7 @@ import Home from './components/Home';
 import OrderList from './components/OrderList';
 import ContactUs from './components/ContactUs';
 import Profile from './components/Profile';
+import OrderHistory from './components/OrderHistory';
 
 function App() {
 
@@ -17,37 +18,33 @@ function App() {
   const login = useSelector(state => state.deliver.login)
   // const isApproved = useSelector(state => state.deliver.isApproved)
 
-  // const refresh = async () => {
-  //   try {
-  //     const response = await axios.post('http://localhost:5000/api/resturant/refresh', {}, { withCredentials: true });
-  //     if (response.data.login === true) {
-  //       // console.log(response)
-  //       // console.log(response.data)
-  //       dispatch(setRestroDetails(response.data))
-  //       // navigate('/Home')
-  //     }
-  //     else {
-  //       navigate('/Login')
-  //     }
-  //   } catch (error) {
-  //     console.log('Error fetching data:');
-  //   }
-  // }
+  const refresh = async () => {
+    try {
+      const response = await axios.post('http://localhost:5000/api/delivery/refresh', {}, { withCredentials: true });
+      if (response.data.login === true) {
+        // console.log(response.data)
+        dispatch(setdeliverDetails(response.data))
+        navigate('/Home')
+      }
+    } catch (error) {
+      console.log('Error fetching data:', error);
+    }
+  }
 
-  // useEffect(() => {
-  //   refresh()
-  //   console.log(login)
-  //   console.log(isApproved)
-  // }, [])
+  useEffect(() => {
+    refresh()
+    // console.log(login)
+    // console.log(isApproved)
+  }, [])
   return (
     <>
       <Routes>
-        {/* {!login ? */}
+        {!login ?
           <>
             <Route path='/' element={<Login />} />
             <Route path='/SignUp' element={<SignUp />} />
           </>
-          {/* : */}
+          :
           // isApproved === "Pending"
           <>
             {/* <Route path='/' element={<Login />} /> */}
@@ -55,8 +52,9 @@ function App() {
             <Route path='/OrderList' element={<OrderList />} />
             <Route path='/ContactUs' element={<ContactUs />} />
             <Route path='/Profile' element={<Profile />} />
+            <Route path='/OrderHistory' element={<OrderHistory />} />
           </>
-        {/* } */}
+        }
       </Routes>
     </>
   );

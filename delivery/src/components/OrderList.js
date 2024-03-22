@@ -10,7 +10,7 @@ export default function OrderList() {
             <Navbar />
             <div className='row m-0 p-3'>
                 <div className="col p-3 border box-shadow" style={{ marginTop: '100px', marginBottom:'50vh' }}>
-                    <h3 className='fw-bold'>&#x2022; Order Summary</h3>
+                    <h3 className='fw-bold'>&#x2022; All Order</h3>
                     <table className="table table-hover">
                         <thead>
                             <tr className='fs-6'>
