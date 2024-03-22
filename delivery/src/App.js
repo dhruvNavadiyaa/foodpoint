@@ -10,6 +10,7 @@ import OrderList from './components/OrderList';
 import ContactUs from './components/ContactUs';
 import Profile from './components/Profile';
 import OrderHistory from './components/OrderHistory';
+import Orderdetails from './components/Orderdetails';
 
 function App() {
 
@@ -53,6 +54,7 @@ function App() {
             <Route path='/ContactUs' element={<ContactUs />} />
             <Route path='/Profile' element={<Profile />} />
             <Route path='/OrderHistory' element={<OrderHistory />} />
+            <Route path='/Orderdetails' element={<Orderdetails />} />
           </>
         }
       </Routes>
