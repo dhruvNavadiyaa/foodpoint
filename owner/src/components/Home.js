@@ -8,9 +8,7 @@ import { useSelector } from 'react-redux'
 export default function Home() {
 
   const navigate = useNavigate()
-  const handleClick = () => {
-    navigate('/RestroDetails')
-  }
+  const restrodata = useSelector(state => state.restaurant.RestaurantInfo)
   const images = useSelector(state => state.restaurant.RestaurantInfo.img)
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -42,6 +40,9 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [currentImageIndex]);
 
+  useEffect(() => {
+    console.log(restrodata)
+  }, [])
 
   return (
     <>
@@ -51,11 +52,19 @@ export default function Home() {
 
         <div className="col mb-5 r mb-5" style={{ marginTop: '100px' }}>
 
+          {/* RESTAURANT INFORMATION ROW */}
           <div className='row  d-flex align-items-center justify-content-between'>
             <div className='col-6  px-5'>
-              <p className='fs-2 fw-bold text-secondary mb-5'>Welcom to MalharDhosa</p>
-              <p className='font-monospace text-secondary'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio excepturi quibusdam reiciendis autem accusamus itaque, quasi veritatis sequi minima sapiente similique! Et optio dolore expedita doloribus excepturi laborum, ducimus iusto?</p>
+              <p className='fs-2 fw-bold text-secondary mb-5'>Welcom to <span className='text-warning border-bottom border-2 border-secondary text-uppercase'>{restrodata.name}</span></p>
+              <div className='fw-medium'>
+                <p className='font-monospace'>Thank you for joining our online delivery platform! We're excited to partner with you and look forward to driving more customers to your delicious dishes.</p>
+                <p className='mb-0 text-secondary'><i className="bi bi-star text-dark"> </i>{restrodata.rating}/5 Overall Ratings</p>
+                <p className='mb-0 text-secondary'><i class="bi bi-clock text-dark"> </i> {restrodata?.timing?.openAt} to {restrodata?.timing?.closeAt}</p>
+                <p className='mb-0 text-secondary'><i class="bi bi-geo-alt text-dark"> </i> {restrodata?.address?.street}, {restrodata?.address?.area}</p>
+                <p className='mb-0 text-secondary'><i class="bi bi-envelope text-dark"> </i> {restrodata?.email}</p>
+              </div>
             </div>
+            {/* RESTAURANT PHOTO CROUSEL */}
             <div className='col-6'>
               <div className='carouselStyle'>
                 <button onClick={prevImage} className='arrowStyleL btn btn-outline-light'>&lt;</button>
@@ -69,10 +78,11 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="container px-5 mt-5">
+          {/* RESTAURANT TOP RATED PRODUCT */}
+          <div className="container px-5 mt-5 ">
 
             <div className="row px-5">
-              <p className='fs-2 fw-bold text-secondary text-center mb-5'><i class="bi bi-star pe-2"></i> Your top rated Products <i class="bi bi-star ps-2"></i></p>
+              <p className='fs-2 fw-bold text-secondary text-center mb-5'><i className="bi bi-star pe-2"></i> Your top rated Products <i className="bi bi-star ps-2"></i></p>
 
               {/* RESTAURANT BEST ITEM CARD */}
               <div className="col-sm-6 px-5-md mb-5" >
