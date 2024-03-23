@@ -53,6 +53,7 @@ export default function DeliveryPartner() {
         const response = await axios.get('http://localhost:5000/api/delivery/allfetch')
         setDeliveryBoys(response.data)
         setCurrentData(response.data.approved)
+        setbButtonstate(true)
         console.log(response.data)
     }
     const approveDeliveryBoy = async (id) => {
@@ -62,7 +63,8 @@ export default function DeliveryPartner() {
         }
         const response = await axios.post('http://localhost:5000/api/delivery/approvel',data)
         // setDeliveryBoys(response.data)
-        console.log(response.data)
+        // console.log(response.data)
+        allDeliveryBoy()
     }
     const deleteDeliveryBoy = async (id) => {
         const data ={
@@ -70,7 +72,8 @@ export default function DeliveryPartner() {
         }
         const response = await axios.post('http://localhost:5000/api/delivery/delete',data)
         // setDeliveryBoys(response.data)
-        console.log(response.data)
+        // console.log(response.data)
+        allDeliveryBoy()
     }
 
     useEffect(() => {
@@ -106,7 +109,8 @@ export default function DeliveryPartner() {
                                     </div>
                                 </h2>
 
-                                <div className="orders mt-4 p-3" >
+                                <div className="orders p-3" >
+                                    {/* <p className='mb-5 fs-3 fw-bold text-secondary'>&#8226; Approved Delivery Boys</p> */}
 
                                     {
                                         currentData.map((item, index) => {

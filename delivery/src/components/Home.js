@@ -15,16 +15,13 @@ export default function Home() {
     <>
       <Navbar />
 
-      <div className='row front-img m-0'>
+      <div className='row front-img m-0 mb-5'>
 
-        <div className="col mb-5 r mb-5" style={{ marginTop: '100px' }}>
-
-
+        <div className="col mb-5 r mb-5" style={{ marginTop: '30vh', marginBottom: '500px' }}>
 
           <div className=' text-center'>
-             <h2 className='text-dark fw-bold mt-4'>Register your Id on "FoodPoint" and get Orders to deliver!</h2>
+            <h2 className='text-dark fw-bold mt-4'>Register your Id on "FoodPoint" and get Orders to deliver!</h2>
           </div>
-
 
         </div>
 
