@@ -7,7 +7,8 @@ import { useSelector } from 'react-redux';
 
 export default function OrderList() {
 
-    const Restaurant_id = useSelector(state=>state.restaurant.RestaurantInfo._id)
+    const Restaurant_id = useSelector(state => state.restaurant.RestaurantInfo._id)
+    const [changeTables, setChangeTables] = useState(true)
     const [orders, setOrders] = useState([])
     const [modalState, setModalState] = useState({
         isVisible: false,
@@ -17,7 +18,7 @@ export default function OrderList() {
 
     const getOrderDetail = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/api/order/orderRestaurant',{Restaurant_id});
+            const response = await axios.post('http://localhost:5000/api/order/orderRestaurant', { Restaurant_id });
             // console.log(response.data.orderInfo[0].orders                )
             setOrders(response.data.orderInfo[0].orders)
         } catch (error) {
@@ -27,11 +28,11 @@ export default function OrderList() {
 
     const acceptOrder = async (id) => {
         console.log(id)
-        const response = await axios.post('http://localhost:5000/api/order/updateOrderStatus', { Order_id: id,status:"procces" })
+        const response = await axios.post('http://localhost:5000/api/order/updateOrderStatus', { Order_id: id, status: "procces" })
     }
     const cancelOrder = async (id) => {
         console.log(id)
-        const response = await axios.post('http://localhost:5000/api/order/updateOrderStatus', { Order_id: id,status:"cancel" })
+        const response = await axios.post('http://localhost:5000/api/order/updateOrderStatus', { Order_id: id, status: "cancel" })
     }
 
     useEffect(() => {
@@ -43,88 +44,147 @@ export default function OrderList() {
         <>
             <Navbar />
             <div className='row m-0 p-3'>
-                <div className="col-12 p-3 border box-shadow" style={{ marginTop: '100px'}}>
 
-                    <h3 className='fw-bold'>&#x2022; Current Orders</h3>
-
-                    <table className="table table-hover">
-                        <thead>
-                            <tr className='fs-6'>
-                                <th scope="col">Order Id</th>
-                                <th scope="col">Product Name</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Total Price</th>
-                                <th scope="col">Actions</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            {/* ORDER DETAILS */}
-                            {
-                                orders.map((item, index) => {
-                                    return (
-                                        <tr className='' key={index}>
-                                            <td>{item._id}</td>
-                                            <td>{item.productDetail.name}</td>
-                                            <td>{item?.products?.quantity}</td>
-                                            <td>{item.total}</td>
-                                            <td>
-                                                <div className="d-flex">
-                                                    <button className='btn btn-sm btn-outline-success me-1' onClick={() => setModalState({ isVisible: true, type: 'accept', data: item._id })}>Accept</button>
-                                                    <button className='btn btn-sm btn-outline-danger' onClick={() => setModalState({ isVisible: true, type: 'cancel', data: item._id })}>Cancel</button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    )
-                                })
-                            }
-                        </tbody>
-
-                    </table>
-
+                <div className="row m-0" >
+                    <div className="col" style={{ marginTop: '80px' }}>
+                        <button className={`btn  ${!changeTables ? 'btn-outline-dark' : 'btn-dark'} me-2`} onClick={() => setChangeTables(true)}>Current Orders</button>
+                        <button className={`btn ${changeTables ? 'btn-outline-dark' : 'btn-dark'}`} onClick={() => setChangeTables(false)}>Past Orders</button>
+                    </div>
                 </div>
 
-                {/* THE TABLE OF ORDER HISTORY */}
-                <div className="col-12 p-3 border box-shadow mt-5" style={{marginBottom: '50vh' }}>
 
-                    <h3 className='fw-bold'>&#x2022; Orders History</h3>
+                {/* PENDING ORDERS && ACCEPTED ORDERS TABLES */}
+                {changeTables&&
+                    <>
+                        <div className="col-12 mt-5 p-3 border box-shadow ">
 
-                    <table className="table table-hover">
-                        <thead>
-                            <tr className='fs-6'>
-                                <th scope="col">Order Id</th>
-                                <th scope="col">Product Name</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Total Price</th>
-                                <th scope="col">Actions</th>
-                            </tr>
-                        </thead>
+                            <p className='fs-4 fw-bold text-secondary'>&#x2022; Pending Orders</p>
 
-                        <tbody>
-                            {/* ORDER DETAILS */}
-                            {
-                                orders.map((item, index) => {
-                                    return (
-                                        <tr className='' key={index}>
-                                            <td>{item._id}</td>
-                                            <td>{item.productDetail.name}</td>
-                                            <td>{item?.products?.quantity}</td>
-                                            <td>{item.total}</td>
-                                            <td>
-                                                <div className="d-flex">
-                                                    <button className='btn btn-sm btn-outline-success me-1' onClick={() => setModalState({ isVisible: true, type: 'accept', data: item._id })}>Accept</button>
-                                                    <button className='btn btn-sm btn-outline-danger' onClick={() => setModalState({ isVisible: true, type: 'cancel', data: item._id })}>Cancel</button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    )
-                                })
-                            }
-                        </tbody>
+                            <table className="table table-hover">
+                                <thead>
+                                    <tr className='fs-6'>
+                                        <th scope="col">Order Id</th>
+                                        <th scope="col">Product Name</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Total Price</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
 
-                    </table>
+                                <tbody>
 
-                </div>
+                                    {
+                                        orders.map((item, index) => {
+                                            return (
+                                                <tr className='' key={index}>
+                                                    <td>{item._id}</td>
+                                                    <td>{item.productDetail.name}</td>
+                                                    <td>{item?.products?.quantity}</td>
+                                                    <td>{item.total}</td>
+                                                    <td>
+                                                        <div className="d-flex">
+                                                            <button className='btn btn-sm btn-outline-success me-1' onClick={() => setModalState({ isVisible: true, type: 'accept', data: item._id })}>Accept</button>
+                                                            <button className='btn btn-sm btn-outline-danger' onClick={() => setModalState({ isVisible: true, type: 'cancel', data: item._id })}>Cancel</button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })
+                                    }
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                        <div className="col-12 p-3 border box-shadow mt-5" style={{ marginBottom: '50vh' }}>
+
+                            <p className='fs-4 fw-bold text-secondary'>&#x2022; Accepted Orders</p>
+
+                            <table className="table table-hover">
+                                <thead>
+                                    <tr className='fs-6'>
+                                        <th scope="col">Order Id</th>
+                                        <th scope="col">Product Name</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Total Price</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    {
+                                        orders.map((item, index) => {
+                                            return (
+                                                <tr className='' key={index}>
+                                                    <td>{item._id}</td>
+                                                    <td>{item.productDetail.name}</td>
+                                                    <td>{item?.products?.quantity}</td>
+                                                    <td>{item.total}</td>
+                                                    <td>
+                                                        <div className="d-flex">
+                                                            <button className='btn btn-sm btn-outline-success me-1' onClick={() => setModalState({ isVisible: true, type: 'accept', data: item._id })}>Accept</button>
+                                                            <button className='btn btn-sm btn-outline-danger' onClick={() => setModalState({ isVisible: true, type: 'cancel', data: item._id })}>Cancel</button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })
+                                    }
+                                </tbody>
+
+                            </table>
+
+                        </div>
+                    </>
+                }
+                {!changeTables&&
+                    <>
+                        <div className="col-12 mt-5 p-3 border box-shadow " style={{marginBottom: '50vh'}}>
+
+                            <p className='fs-4 fw-bold text-secondary'>&#x2022; Order History</p>
+
+                            <table className="table table-hover">
+                                <thead>
+                                    <tr className='fs-6'>
+                                        <th scope="col">Order Id</th>
+                                        <th scope="col">Product Name</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Total Price</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    {
+                                        orders.map((item, index) => {
+                                            return (
+                                                <tr className='' key={index}>
+                                                    <td>{item._id}</td>
+                                                    <td>{item.productDetail.name}</td>
+                                                    <td>{item?.products?.quantity}</td>
+                                                    <td>{item.total}</td>
+                                                    <td>
+                                                        <div className="d-flex">
+                                                            <button className='btn btn-sm btn-outline-success me-1' onClick={() => setModalState({ isVisible: true, type: 'accept', data: item._id })}>Accept</button>
+                                                            <button className='btn btn-sm btn-outline-danger' onClick={() => setModalState({ isVisible: true, type: 'cancel', data: item._id })}>Cancel</button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })
+                                    }
+                                </tbody>
+
+                            </table>
+
+                        </div>
+                    </>
+                }
+
+
 
                 {/* MODAL */}
                 <div className="modal-overlay" hidden={!modalState.isVisible}>
@@ -150,7 +210,7 @@ export default function OrderList() {
                     </div>
                 </div>
 
-            </div>
+            </div >
             <Footer />
         </>
     )

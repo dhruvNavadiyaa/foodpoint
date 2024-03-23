@@ -38,7 +38,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    const interval = setInterval(changeImage, 1000); // Continuously cycle images every 4 seconds
+    const interval = setInterval(changeImage, 1000); // Continuously cycle images every 1 seconds
     return () => clearInterval(interval);
   }, [currentImageIndex]);
 
@@ -47,31 +47,33 @@ export default function Home() {
     <>
       <Navbar />
 
-      <div className='row front-img m-0'>
+      <div className='row front-img m-0 border'>
 
         <div className="col mb-5 r mb-5" style={{ marginTop: '100px' }}>
 
-          <div>
-            <div className='carouselStyle'>
-              <button onClick={prevImage} className='arrowStyleL btn btn-light'>&lt;</button>
-              <img
-                src={images[currentImageIndex]}
-                alt="carousel"
-                className={`imageStyle w-75 rounded rounded-3 box-shadow ${isTransitioning ? 'carousel-image-exit' : ''}`} // Add your transitioning class here
-              />
-              <button onClick={nextImage} className='arrowStyleR btn btn-light'>&gt;</button>
+          <div className='row border d-flex align-items-center justify-content-between'>
+            <div className='col-6 border px-5'>
+              <p className='fs-2 fw-bold text-secondary mb-5'>Welcom to MalharDhosa</p>
+              <p className='font-monospace text-secondary'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio excepturi quibusdam reiciendis autem accusamus itaque, quasi veritatis sequi minima sapiente similique! Et optio dolore expedita doloribus excepturi laborum, ducimus iusto?</p>
+            </div>
+            <div className='col-6'>
+              <div className='carouselStyle'>
+                <button onClick={prevImage} className='arrowStyleL btn btn-outline-light'>&lt;</button>
+                <img
+                  src={images[currentImageIndex]}
+                  alt="carousel"
+                  className={`imageStyle w-75 rounded rounded-3 box-shadow ${isTransitioning ? 'carousel-image-exit' : ''}`} // Add your transitioning class here
+                />
+                <button onClick={nextImage} className='arrowStyleR btn btn-outline-light'>&gt;</button>
+              </div>
             </div>
           </div>
 
-          {/* <div className=' text-center'>
-            <h2 className='text-dark fw-bold mt-4'>Register your restaurant on "FoodPoint" and get more customers!</h2>
-            <button className='btn btn-dark fs-5 mt-4 py-2 fw-bold' onClick={handleClick}>Register Your Restaurant</button>
-          </div> */}
           <div className="container px-5 mt-5">
 
             <div className="row px-5">
               <p className='fs-2 fw-bold text-secondary text-center mb-5'><i class="bi bi-star pe-2"></i> Your top rated Products <i class="bi bi-star ps-2"></i></p>
-              
+
               {/* RESTAURANT BEST ITEM CARD */}
               <div className="col-sm-6 px-5-md mb-5" >
                 <div className="item p-3 rounded rounded-4 box-shadow">
