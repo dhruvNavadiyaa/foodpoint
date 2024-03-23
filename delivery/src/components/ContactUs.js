@@ -13,7 +13,7 @@ export default function ContactUs() {
             email,
             number:num,
             message,
-            from:"deliveryBoy"
+            from:"delivery"
         }
         const response = await axios.post('http://localhost:5000/api/contactus/create', data,{withCredentials:true});
         console.log(response.data);

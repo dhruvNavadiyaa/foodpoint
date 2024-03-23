@@ -1,10 +1,21 @@
-import React from 'react'
 import Navbar from './Navbar'
 import '../css/Util.css'
 import Footer from './Footer';
+import axios from 'axios'
+import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 
 export default function OrderHistory() {
-    
+    const DeliveryBoy_id = useSelector(state => state?.deliver?.deliverInfo?.deliveryBoyInfo?._id)
+        const [orderHistory , setOrderHistory] = useState([])
+        const orderInfo =async ()=>{
+        const response = await axios.post('http://localhost:5000/api/order/deliveryboyHistory',{DeliveryBoy_id});
+        setOrderHistory(response.data.orderInfo)
+        console.log(response.data.orderInfo)
+    }
+    useEffect(()=>{
+        orderInfo()
+    },[])
     return (
         <>
             <Navbar />
@@ -41,17 +52,22 @@ export default function OrderHistory() {
                             <tr className='fs-6'>
                                 <th scope="col">ORDER ID</th>
                                 <th scope="col">CUSTOMER NAME</th>
+                                <th scope="col">QUANTITY</th>
                                 <th scope="col">TOTAL PRICE</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr className=''>
-                                <td>1</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
+                            {orderHistory.map((item,index)=>{
+                                return (
+                            <tr key={index} className=''>
+                                <td>{item._id}</td>
+                                <td>{item.user}</td>
+                                <td>{item.products.quantity}</td>
+                                <td>{item.total}</td>
+                                <td>{item.status}</td>
+                            </tr>)})
+                            }
                         </tbody>
                     </table>
                 </div>
