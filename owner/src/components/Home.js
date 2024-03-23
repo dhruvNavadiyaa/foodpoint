@@ -51,8 +51,8 @@ export default function Home() {
 
         <div className="col mb-5 r mb-5" style={{ marginTop: '100px' }}>
 
-          <div className='row border d-flex align-items-center justify-content-between'>
-            <div className='col-6 border px-5'>
+          <div className='row  d-flex align-items-center justify-content-between'>
+            <div className='col-6  px-5'>
               <p className='fs-2 fw-bold text-secondary mb-5'>Welcom to MalharDhosa</p>
               <p className='font-monospace text-secondary'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio excepturi quibusdam reiciendis autem accusamus itaque, quasi veritatis sequi minima sapiente similique! Et optio dolore expedita doloribus excepturi laborum, ducimus iusto?</p>
             </div>
