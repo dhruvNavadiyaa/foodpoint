@@ -43,9 +43,51 @@ export default function OrderList() {
         <>
             <Navbar />
             <div className='row m-0 p-3'>
-                <div className="col p-3 border box-shadow" style={{ marginTop: '100px', marginBottom: '50vh' }}>
+                <div className="col-12 p-3 border box-shadow" style={{ marginTop: '100px'}}>
 
                     <h3 className='fw-bold'>&#x2022; Current Orders</h3>
+
+                    <table className="table table-hover">
+                        <thead>
+                            <tr className='fs-6'>
+                                <th scope="col">Order Id</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Total Price</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {/* ORDER DETAILS */}
+                            {
+                                orders.map((item, index) => {
+                                    return (
+                                        <tr className='' key={index}>
+                                            <td>{item._id}</td>
+                                            <td>{item.productDetail.name}</td>
+                                            <td>{item?.products?.quantity}</td>
+                                            <td>{item.total}</td>
+                                            <td>
+                                                <div className="d-flex">
+                                                    <button className='btn btn-sm btn-outline-success me-1' onClick={() => setModalState({ isVisible: true, type: 'accept', data: item._id })}>Accept</button>
+                                                    <button className='btn btn-sm btn-outline-danger' onClick={() => setModalState({ isVisible: true, type: 'cancel', data: item._id })}>Cancel</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                {/* THE TABLE OF ORDER HISTORY */}
+                <div className="col-12 p-3 border box-shadow mt-5" style={{marginBottom: '50vh' }}>
+
+                    <h3 className='fw-bold'>&#x2022; Orders History</h3>
 
                     <table className="table table-hover">
                         <thead>
