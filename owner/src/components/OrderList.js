@@ -45,7 +45,7 @@ export default function OrderList() {
             <div className='row m-0 p-3'>
                 <div className="col p-3 border box-shadow" style={{ marginTop: '100px', marginBottom: '50vh' }}>
 
-                    <h3 className='fw-bold'>&#x2022; Current Order Summary</h3>
+                    <h3 className='fw-bold'>&#x2022; Current Orders</h3>
 
                     <table className="table table-hover">
                         <thead>
@@ -54,16 +54,7 @@ export default function OrderList() {
                                 <th scope="col">Product Name</th>
                                 <th scope="col">Quantity</th>
                                 <th scope="col">Total Price</th>
-                                <th scope="col">
-                                    <div className="dropdown">
-                                        <button className="btn btn-sm dropdown-toggle fs-6 fw-bold m-0 p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">Action</button>
-                                        <ul className="dropdown-menu">
-                                            <li><a className="dropdown-item" href="/" onClick={(event) => { event.preventDefault(); console.log('hello') }}>Action</a></li>
-                                            <li><a className="dropdown-item" href="/">Another action</a></li>
-                                            <li><a className="dropdown-item" href="/">Something else here</a></li>
-                                        </ul>
-                                    </div>
-                                </th>
+                                <th scope="col">Actions</th>
                             </tr>
                         </thead>
 
