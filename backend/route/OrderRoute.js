@@ -12,6 +12,6 @@ router.route('/updateOrderStatus').post(updateOrderStatus)
 router.route('/acceptOrder').post(updateDeliveryBoy)
 router.route('/orderpending').get(orderPendingForDelivery)
 router.route('/deliveryboyHistory').post(orderHistoryForDelivery)
-router.route('/acceptedPOrder').post(orderOnTheWayForDelivery)
+router.route('/acceptedForOrder').post(orderOnTheWayForDelivery)
 
 export default router

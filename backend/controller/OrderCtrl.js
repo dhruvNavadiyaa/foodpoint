@@ -253,7 +253,7 @@ const updateDeliveryBoy = async(req, res) => {
 
 const orderPendingForDelivery = async(req, res) => {
   const find = await Order.find( {
-    status: "process",
+    status: "procces",
   });
   res.send({ 
     success : true,
@@ -267,6 +267,10 @@ const orderHistoryForDelivery = async(req, res) => {
     deliveryBoy:req.body.DeliveryBoy_id,
     status: "done",
   });
+  const find1 = await Order.find( {
+    deliveryBoy:req.body.DeliveryBoy_id,
+    status: "cancel",
+  });
   res.send({ 
     success : true,
     orderInfo : find,
@@ -276,7 +280,6 @@ const orderHistoryForDelivery = async(req, res) => {
 const orderOnTheWayForDelivery = async(req, res) => {
   const find = await Order.find( {
     deliveryBoy:req?.body?.DeliveryBoy_id,
-    status: "One the way",
   });
   res.send({ 
     success : true,

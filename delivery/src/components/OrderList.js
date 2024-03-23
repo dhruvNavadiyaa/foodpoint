@@ -22,7 +22,7 @@ export default function OrderList() {
         const response = await axios.post('http://localhost:5000/api/order/acceptOrder',{
             Order_id:id,
             delivery_id,
-            status:"One the way"
+            status:"on the way"
         });
         processOrder()
     }   

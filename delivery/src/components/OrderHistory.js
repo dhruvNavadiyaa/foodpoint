@@ -14,7 +14,7 @@ export default function OrderHistory() {
 
   const acceptedOrder = async () => {
     const response = await axios.post(
-      "http://localhost:5000/api/order/acceptedPOrder",
+      "http://localhost:5000/api/order/acceptedForOrder",
       { DeliveryBoy_id }
     );
     setOrderAccept(response.data.orderInfo);
@@ -22,7 +22,7 @@ export default function OrderHistory() {
   };
   const orderInfo = async () => {
     const response = await axios.post(
-      "http://localhost:5000/api/order/deliveryboyHistory",
+      "http://localhost:5000/api/order/acceptedForOrder",
       { DeliveryBoy_id }
     );
     setOrderHistory(response.data.orderInfo);
@@ -30,13 +30,15 @@ export default function OrderHistory() {
   };
   const doneOrder = async (id) => {
     const response = await axios.post(
-        "http://localhost:5000/api/order/deliveryboyHistory",
-        { id }
+        "http://localhost:5000/api/order/updateOrderStatus",
+        { Order_id:id , status: "done" }
       );
+      orderInfo()
+      console.log(response.data);
   }
   useEffect(() => {
     orderInfo();
-    acceptedOrder();
+    // acceptedOrder();
   }, []);
   return (
     <>
@@ -62,7 +64,8 @@ export default function OrderHistory() {
               </tr>
             </thead>
             <tbody>
-              {orderAccept.map((item, index) => {
+              {orderHistory.map((item, index) => {
+                if(!(item.status === "done") && !(item.status === "cancel") ){
                 return (
                   <tr key={index} className="">
                     <td>{item._id}</td>
@@ -79,6 +82,7 @@ export default function OrderHistory() {
                     </td    >
                   </tr>
                 );
+                }
               })}
             </tbody>
           </table>
@@ -104,6 +108,7 @@ export default function OrderHistory() {
             </thead>
             <tbody>
               {orderHistory.map((item, index) => {
+                if(item.status === "done" || item.status === "cancel" ){
                 return (
                   <tr key={index} className="">
                     <td>{item._id}</td>
@@ -112,7 +117,7 @@ export default function OrderHistory() {
                     <td>{item.total}</td>
                     <td>{item.status}</td>
                   </tr>
-                );
+                );}
               })}
             </tbody>
           </table>

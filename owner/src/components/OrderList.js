@@ -19,7 +19,7 @@ export default function OrderList() {
     const getOrderDetail = async () => {
         try {
             const response = await axios.post('http://localhost:5000/api/order/orderRestaurant', { Restaurant_id });
-            // console.log(response.data.orderInfo[0].orders                )
+            console.log(response.data.orderInfo[0].orders)
             setOrders(response.data.orderInfo[0].orders)
         } catch (error) {
             console.log('Error fetching data:', error);
@@ -28,11 +28,13 @@ export default function OrderList() {
 
     const acceptOrder = async (id) => {
         console.log(id)
-        const response = await axios.post('http://localhost:5000/api/order/updateOrderStatus', { Order_id: id, status: "procces" })
+        const response = await axios.post('http://localhost:5000/api/order/updateOrderStatus', { Order_id: id, status: "process" })
+        getOrderDetail()
     }
     const cancelOrder = async (id) => {
         console.log(id)
         const response = await axios.post('http://localhost:5000/api/order/updateOrderStatus', { Order_id: id, status: "cancel" })
+        getOrderDetail()
     }
 
     useEffect(() => {
@@ -75,6 +77,7 @@ export default function OrderList() {
 
                                     {
                                         orders.map((item, index) => {
+                                            if(item.status == "pending"){
                                             return (
                                                 <tr className='' key={index}>
                                                     <td>{item._id}</td>
@@ -89,7 +92,7 @@ export default function OrderList() {
                                                     </td>
                                                 </tr>
                                             )
-                                        })
+                                        }})
                                     }
                                 </tbody>
 
@@ -108,7 +111,7 @@ export default function OrderList() {
                                         <th scope="col">Product Name</th>
                                         <th scope="col">Quantity</th>
                                         <th scope="col">Total Price</th>
-                                        <th scope="col">Actions</th>
+                                        <th scope="col">Status</th>
                                     </tr>
                                 </thead>
 
@@ -116,21 +119,17 @@ export default function OrderList() {
 
                                     {
                                         orders.map((item, index) => {
+                                            if((item.status === "procces") ||(item.status === "on the way") ){
                                             return (
                                                 <tr className='' key={index}>
                                                     <td>{item._id}</td>
                                                     <td>{item.productDetail.name}</td>
                                                     <td>{item?.products?.quantity}</td>
                                                     <td>{item.total}</td>
-                                                    <td>
-                                                        <div className="d-flex">
-                                                            <button className='btn btn-sm btn-outline-success me-1' onClick={() => setModalState({ isVisible: true, type: 'accept', data: item._id })}>Accept</button>
-                                                            <button className='btn btn-sm btn-outline-danger' onClick={() => setModalState({ isVisible: true, type: 'cancel', data: item._id })}>Cancel</button>
-                                                        </div>
-                                                    </td>
+                                                    <td>{item.status}</td>
                                                 </tr>
                                             )
-                                        })
+                                        }})
                                     }
                                 </tbody>
 
@@ -152,7 +151,7 @@ export default function OrderList() {
                                         <th scope="col">Product Name</th>
                                         <th scope="col">Quantity</th>
                                         <th scope="col">Total Price</th>
-                                        <th scope="col">Actions</th>
+                                        <th scope="col">Status</th>
                                     </tr>
                                 </thead>
 
@@ -160,6 +159,8 @@ export default function OrderList() {
 
                                     {
                                         orders.map((item, index) => {
+                                            if((item.status === "done") ||(item.status === "cancel") ){
+
                                             return (
                                                 <tr className='' key={index}>
                                                     <td>{item._id}</td>
@@ -168,13 +169,12 @@ export default function OrderList() {
                                                     <td>{item.total}</td>
                                                     <td>
                                                         <div className="d-flex">
-                                                            <button className='btn btn-sm btn-outline-success me-1' onClick={() => setModalState({ isVisible: true, type: 'accept', data: item._id })}>Accept</button>
-                                                            <button className='btn btn-sm btn-outline-danger' onClick={() => setModalState({ isVisible: true, type: 'cancel', data: item._id })}>Cancel</button>
+                                                            {item.status}
                                                         </div>
                                                     </td>
                                                 </tr>
                                             )
-                                        })
+                                        }})
                                     }
                                 </tbody>
 
