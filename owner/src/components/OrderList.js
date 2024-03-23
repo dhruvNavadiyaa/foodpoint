@@ -18,8 +18,8 @@ export default function OrderList() {
     const getOrderDetail = async () => {
         try {
             const response = await axios.post('http://localhost:5000/api/order/orderRestaurant',{Restaurant_id});
-            console.log(response.data)
-            // setOrders(response.data.Orderinformation)
+            // console.log(response.data.orderInfo[0].orders                )
+            setOrders(response.data.orderInfo[0].orders)
         } catch (error) {
             console.log('Error fetching data:', error);
         }
@@ -27,11 +27,11 @@ export default function OrderList() {
 
     const acceptOrder = async (id) => {
         console.log(id)
-        // const response = await axios.post('http://localhost:5000/api/order/updateOrderStatus', { Order_id: id,status:"Accept" })
+        const response = await axios.post('http://localhost:5000/api/order/updateOrderStatus', { Order_id: id,status:"procces" })
     }
     const cancelOrder = async (id) => {
         console.log(id)
-        // const response = await axios.post('http://localhost:5000/api/order/updateOrderStatus', { Order_id: id,status:"Cancel" })
+        const response = await axios.post('http://localhost:5000/api/order/updateOrderStatus', { Order_id: id,status:"cancel" })
     }
 
     useEffect(() => {
@@ -74,7 +74,7 @@ export default function OrderList() {
                                     return (
                                         <tr className='' key={index}>
                                             <td>{item._id}</td>
-                                            <td>{item.name}</td>
+                                            <td>{item.productDetail.name}</td>
                                             <td>{item?.products?.quantity}</td>
                                             <td>{item.total}</td>
                                             <td>

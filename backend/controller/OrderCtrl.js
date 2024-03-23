@@ -145,7 +145,8 @@ const updateOrderStatus = async (req, res) => {
   const find = await Order.findByIdAndUpdate(req?.body?.Order_id, {
     status: req?.body?.status,
   });
-  return req.send({
+  console.log(find)
+  return res.send({
     success: true,
     orderInfo: find,
   });

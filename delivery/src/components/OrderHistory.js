@@ -28,6 +28,12 @@ export default function OrderHistory() {
     setOrderHistory(response.data.orderInfo);
     console.log(response.data.orderInfo);
   };
+  const doneOrder = async (id) => {
+    const response = await axios.post(
+        "http://localhost:5000/api/order/deliveryboyHistory",
+        { id }
+      );
+  }
   useEffect(() => {
     orderInfo();
     acceptedOrder();
@@ -67,7 +73,7 @@ export default function OrderHistory() {
                     <td>
                       <div className="d-flex">
                     
-                        <button  className='btn btn-sm btn-outline-success me-1'>Done</button>
+                        <button onClick={()=> doneOrder(item._id)}  className='btn btn-sm btn-outline-success me-1'>Done</button>
                         <button className='btn btn-sm btn-outline-dark' onClick={()=>navigate(`/Orderdetails/${item._id}`)}>View</button>
                       </div>
                     </td    >
