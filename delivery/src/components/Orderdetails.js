@@ -69,17 +69,17 @@ export default function Orderdetails() {
                                         <div className="orderCard box-shadow p-3 mb-2">
                                             <div className="col d-flex align-items-center">
                                                 <div>
-                                                    <p className='mb-0 fw-bold text-secondary'>By {detailOrder?.restaurantDetail.name}</p>
-                                                    <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {detailOrder?.restaurantDetail.rating}/5</small>
+                                                    <p className='mb-0 fw-bold text-secondary'>By {detailOrder?.restaurantDetail?.name}</p>
+                                                    <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {detailOrder?.restaurantDetail?.rating}/5</small>
                                                 </div>
                                             </div>
                                             <div className='d-flex '>
                                                 <div className=' my-auto'>
-                                                    <p className='fs-5 fw-medium '>{detailOrder?.productDetail?.name}</p>
+                                                    <p className='fs-5 fw-medium '>{detailOrder?.productDetail?.name}</p>   
                                                     <small className=''>&#8226; ₹{detailOrder?.productDetail?.price} Price</small><br />
                                                     <small className=''>&#8226;{detailOrder?.products?.quantity}/Quantity</small>
                                                 </div>
-                                                <div className='order-img ms-auto'><img src={detailOrder?.productDetail.img||"https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJ1cmdlcnxlbnwwfHwwfHx8MA%3D%3D"} alt="" className='order-img rounded-circle' /></div>
+                                                <div className='order-img ms-auto'><img src={detailOrder?.productDetail?.img||"https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJ1cmdlcnxlbnwwfHwwfHx8MA%3D%3D"} alt="" className='order-img rounded-circle' /></div>
                                             </div>
                                             <div className=''><small>{detailOrder?.productDetail?.description}</small></div>
                                         </div>

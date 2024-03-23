@@ -274,8 +274,8 @@ const orderHistoryForDelivery = async(req, res) => {
 
 const orderOnTheWayForDelivery = async(req, res) => {
   const find = await Order.find( {
-    _id:req?.body?.DeliveryBoy_id,
-    status: "on the way",
+    deliveryBoy:req?.body?.DeliveryBoy_id,
+    status: "One the way",
   });
   res.send({ 
     success : true,
