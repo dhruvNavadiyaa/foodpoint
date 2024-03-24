@@ -1,5 +1,5 @@
 import ContactUs from "../models/ContactUsModel.js";
-import sendEmail from "../utils/emailSend.js"
+// import sendEmail from "../utils/emailSend.js"
 const createContactUs = async(req, res) => {
     const create  = await ContactUs.create({
         name: req?.body?.name,

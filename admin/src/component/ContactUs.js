@@ -42,17 +42,24 @@ export default function Category() {
     }
 
     const adminName = useSelector(state => state.admin.adminInfo.name)
-    const [deleteModal, setDeleteModal] = useState(false)
-    const [responseModal, setResponseModal] = useState(false)
+    const [deleteModal, setDeleteModal] = useState({
+        isvisible: false,
+        id: null,
+        data: {}
+    })
+    const [responseModal, setResponseModal] = useState({
+        isvisible: false,
+        id: null
+    })
     const [details, seDetails] = useState([])
-    
+
     const contactUsDetails = async () => {
         const response = await axios.get('http://localhost:5000/api/contactus/all')
         seDetails(response.data.all)
     }
-    const deleteMsg = async () => {
 
-    }
+
+
     useEffect(() => {
         contactUsDetails()
     }, [])
@@ -94,18 +101,18 @@ export default function Category() {
                                                 </thead>
                                                 <tbody>
                                                     {
-                                                        details.map((item) => {
+                                                        details.map((item, index) => {
                                                             if (item.from == "user") {
                                                                 return (
-                                                                    <tr>
-                                                                        <td >1</td>
+                                                                    <tr key={index}>
+                                                                        <td >{index}</td>
                                                                         <td>{item.name}</td>
                                                                         <td>{item.email}</td>
                                                                         <td>{item.message}</td>
                                                                         <td className=''>
                                                                             <div className='d-flex'>
-                                                                                <button className='btn btn-outline-success btn-sm me-2' onClick={()=>setResponseModal(true)}>Response</button>
-                                                                                <button className='btn btn-outline-danger btn-sm' onClick={() => setDeleteModal(true)}>Delete</button>
+                                                                                <button className='btn btn-outline-success btn-sm me-2' onClick={() => setResponseModal({ isvisible: true, id: item._id, data: { email: item.email, msg: item.message } })}>Response</button>
+                                                                                <button className='btn btn-outline-danger btn-sm' onClick={() => setDeleteModal({ isvisible: true, id: item._id })}>Delete</button>
                                                                             </div>
                                                                         </td>
                                                                     </tr>
@@ -135,18 +142,18 @@ export default function Category() {
                                                 </thead>
                                                 <tbody>
                                                     {
-                                                        details.map((item) => {
+                                                        details.map((item, index) => {
                                                             if (item.from == "restaurant") {
                                                                 return (
-                                                                    <tr>
-                                                                        <td >1</td>
+                                                                    <tr key={index}>
+                                                                        <td >{index}</td>
                                                                         <td>{item.name}</td>
                                                                         <td>{item.email}</td>
                                                                         <td>{item.message}</td>
                                                                         <td className=''>
                                                                             <div className='d-flex'>
-                                                                                <button className='btn btn-outline-success btn-sm me-2' onClick={()=>setResponseModal(true)}>Response</button>
-                                                                                <button className='btn btn-outline-danger btn-sm' onClick={() => setDeleteModal(true)}>Delete</button>
+                                                                                <button className='btn btn-outline-success btn-sm me-2' onClick={() => setResponseModal({ isvisible: true, id: item._id, data: { email: item.email, msg: item.message } })}>Response</button>
+                                                                                <button className='btn btn-outline-danger btn-sm' onClick={() => setDeleteModal({ isvisible: true, id: item._id })}>Delete</button>
                                                                             </div>
                                                                         </td>
                                                                     </tr>
@@ -176,18 +183,18 @@ export default function Category() {
                                                 </thead>
                                                 <tbody>
                                                     {
-                                                        details.map((item) => {
+                                                        details.map((item, index) => {
                                                             if (item.from == "delivery") {
                                                                 return (
-                                                                    <tr>
-                                                                        <td >1</td>
+                                                                    <tr key={index}>
+                                                                        <td >{index + 1}</td>
                                                                         <td>{item.name}</td>
                                                                         <td>{item.email}</td>
                                                                         <td>{item.message}</td>
                                                                         <td className=''>
                                                                             <div className="d-flex">
-                                                                                <button className='btn btn-outline-success btn-sm me-2' onClick={()=>setResponseModal(true)}>Response</button>
-                                                                                <button className='btn btn-outline-danger btn-sm' onClick={() => setDeleteModal(true)}>Delete</button>
+                                                                                <button className='btn btn-outline-success btn-sm me-2' onClick={() => setResponseModal({ isvisible: true, id: item._id, data: { email: item.email, msg: item.message } })}>Response</button>
+                                                                                <button className='btn btn-outline-danger btn-sm' onClick={() => setDeleteModal({ isvisible: true, id: item._id })}>Delete</button>
                                                                             </div>
                                                                         </td>
                                                                     </tr>
@@ -207,7 +214,7 @@ export default function Category() {
                 </div>
             </div>
             {/* DELETE MODAL */}
-            <div className="modal-overlay" hidden={!deleteModal}>
+            <div className="modal-overlay" hidden={!deleteModal.isvisible}>
                 <div className="modal-content bg-light p-4 box-shadow">
                     <div className='text-center'>
                         <img src="https://www.svgrepo.com/show/527338/question-circle.svg" alt="" className='w-25' />
@@ -215,22 +222,22 @@ export default function Category() {
                         <p className='font-light-thick'>You want to delete this Massage?</p>
                     </div>
                     <div className="modal-actions d-flex ms-auto mt-auto">
-                        <button className='btn btn-secondary me-2 px-3' onClick={() => setDeleteModal(false)}>Cancel</button>
-                        <button className='btn btn-danger px-3' onClick={() =>{deleteMsg(); setDeleteModal(false)}}>Ok</button>
+                        <button className='btn btn-secondary me-2 px-3' onClick={() => setDeleteModal({ isvisible: false, id: null })}>Cancel</button>
+                        <button className='btn btn-danger px-3'>Ok</button>
                     </div>
                 </div>
             </div>
             {/* RESPONSE MODAL */}
-            <div className="modal-overlay" hidden={!responseModal}>
+            <div className="modal-overlay" hidden={!responseModal.isvisible}>
                 <div className="model-content-edit bg-light px-4 py-3 box-shadow rounded">
-                    <p className='fs-5 fw-bold d-flex border-bottom border-2 pb-2 align-items-center'>Respond to Message <button className='ms-auto btn btn-light' onClick={() => setResponseModal(false)}><i className="bi bi-x-lg " ></i></button></p>
+                    <p className='fs-5 fw-bold d-flex border-bottom border-2 pb-2 align-items-center'>Respond to Message <button className='ms-auto btn btn-light' onClick={() => setResponseModal({ isvisible: false, id: null, data: null })}><i className="bi bi-x-lg " ></i></button></p>
                     <div className='mt-2'>
                         <p className='mb-0 fw-medium'>Email</p>
-                        <input type="text" className='w-100 border py-1 px-3 rounded' value={"dhruv"} disabled/>
+                        <input type="text" className='w-100 border py-1 px-3 rounded' placeholder={responseModal?.data?.email} disabled />
                         <p className='mb-0 mt-2 fw-medium'>Message</p>
-                        <textarea  className='w-100 py-1 px-3 border rounded ' value={"hello there"} disabled></textarea>
+                        <textarea className='w-100 py-1 px-3 border rounded ' placeholder={responseModal?.data?.msg} disabled></textarea>
                         <p className='mb-0 mt-0 fw-medium'>Your Response</p>
-                        <textarea  className='w-100 py-1 px-3 border rounded ' placeholder='Write the product description here!'></textarea>
+                        <textarea className='w-100 py-1 px-3 border rounded ' placeholder='Write the product description here!'></textarea>
                     </div>
                     <div className='mt-3 text-center'>
                         <button className='btn btn-dark px-4'>Send</button>
