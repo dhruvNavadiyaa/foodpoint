@@ -57,13 +57,15 @@ export default function Request() {
     }
 
     const isApproved = async (id) => {
-        // console.log(id)
         const response = await axios.post('http://localhost:5000/api/Restaurant/approve', { Restaurant_id: id })
+        console.log(response.data)
+        getAllRestro()
     }
 
     const deleteRestaurant = async (id) => {
-        // console.log(id)
         const response = await axios.post('http://localhost:5000/api/Restaurant/delete', { Restaurant_id: id })
+        console.log(response.data)
+        getAllRestro()
     }
 
     useEffect(() => {

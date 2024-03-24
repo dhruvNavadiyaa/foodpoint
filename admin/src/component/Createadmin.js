@@ -50,14 +50,16 @@ export default function Createadmin() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const data = {
-    name: name,
-    number: number,
-    email: email,
-    password: password
-  }
+  
   const sendData = async () => {
+
     try {
+      const data = {
+        name: name,
+        number: number,
+        email: email,
+        password: password
+      }
       const response = await axios.post('http://localhost:5000/api/admin/signup', data);
       console.log(response.data)
     } catch (error) {
@@ -65,9 +67,9 @@ export default function Createadmin() {
     }
     // console.log(data)
   }
-  const handleSubmit = (event) => {
+  const handleSubmit =async (event) => {
     event.preventDefault();
-    sendData()
+     sendData()
     setShowModal(true)
     setName('')
     setNumber('')
