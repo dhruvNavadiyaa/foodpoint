@@ -42,18 +42,20 @@ const Home = () => {
         <div className="home-page container-fluid" style={{ marginTop: '90px' }}>
 
           {/* TOP PRODUCTS */}
-          <div className="container">
+          <div className="container-md">
             <p className='fs-4 fw-bold'>What's on your mind?</p>
 
-            <div className="row  m-0">
+            <div className="row m-0">
 
               <div className="col d-flex mt-3 scroll-bar py-2" >
 
-                {topProduct.map((item, index) => <div key={index} className="product ms-3 me-5 text-center  ">
-                  <img src={item.img || "https://images.pexels.com/photos/1262302/pexels-photo-1262302.jpeg?auto=compress&cs=tinysrgb&w=600"}
-                    className='border rounded rounded-circle product-image box-shadow' alt="" />
-                  <p className='fs-6 mt-2 text-secondary fw-medium'>{item.name}</p>
-                </div>)
+                {topProduct.map((item, index) =>
+                  <div key={index} className="product ms-3 me-md-5 me-3 text-center  ">
+                    <img src={item.img || "https://images.pexels.com/photos/1262302/pexels-photo-1262302.jpeg?auto=compress&cs=tinysrgb&w=600"}
+                      className='border rounded rounded-circle product-image box-shadow' alt="" />
+                    <p className='fs-6 mt-2 text-secondary fw-medium'>{item.name}</p>
+                  </div>
+                )
                 }
 
 
@@ -71,7 +73,7 @@ const Home = () => {
 
                 {topRestaurant.map((item, index) => {
                   return (
-                    <div className='col-md-4 col-6  mb-3  m-auto' onClick={() => { navigate(`/Restaurant/${item._id}`)}} key={index}>
+                    <div className='col-md-4 col-sm-6 col-xs-8 col-12  mb-3  m-auto' onClick={() => { navigate(`/Restaurant/${item._id}`) }} key={index}>
                       <div className=' m-0 mx-3'>
                         <div className=" p-0 rounded rounded-4 overflow-hidden w-100" >
                           <img src={item?.img[0] || "https://images.pexels.com/photos/1603901/pexels-photo-1603901.jpeg?auto=compress&cs=tinysrgb&w=600"} alt=""

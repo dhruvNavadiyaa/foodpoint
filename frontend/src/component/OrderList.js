@@ -34,16 +34,16 @@ export default function OrderList() {
 
                 <div className="" style={{ marginTop: '90px' }}>
 
-                    <div className="container px-5 popular mt-4">
-                        <p className='fs-5 mb-0 mt-5 fw-bold'>Order Items</p>
+                    <div className="container-md  p-0 px-md-5 px-sm-3 popular mt-1">
+                        <p className='fs-5 mb-0 mt-3 fw-bold'>Order Items</p>
                         <div className="row m-0">
 
-                            <div className="container-md px-md-5 mt-4" >
+                            <div className="container-md px-md-3 p-0 mt-4 " >
 
                                 {orderPending.map((item, index) => {
-                                    return (<div key={index} className="row m-0 ">
+                                    return (<div key={index} className="row m-0">
 
-                                        <div className="col px-5-md mb-5">
+                                        <div className="col px-md-5 mb-5">
                                             <div className="item p-3 rounded rounded-4 box-shadow">
 
                                                 <div className="row m-0">
@@ -84,17 +84,19 @@ export default function OrderList() {
                         </div>
                     </div>
                 </div>
+
+                {/* ORDER HISTORY */}
                 <div className="" style={{ marginTop: '10px' }}>
 
-                    <div className="container px-5 popular mt-4">
-                        <p className='fs-5 mb-0 mt-5 fw-bold'>Order History</p>
+                    <div className="container-md  p-0 px-md-5 px-sm-3 popular mt-2">
+                        <p className='fs-5 mb-0 mt-3 fw-bold'>Order History</p>
                         <div className="row m-0">
 
-                            <div className="container-md px-md-5 mt-4" >
+                            <div className="container-md px-md-3 p-0 mt-4" >
                                 {orderDone.map((item, index) => {
                                     return (<div key={index} className="row m-0 mb-5">
 
-                                        <div className="col px-5-md mb-5">
+                                        <div className="col px-md-5 mb-5">
                                             <div className="item p-3 rounded rounded-4 box-shadow">
 
                                                 <div className="row m-0">

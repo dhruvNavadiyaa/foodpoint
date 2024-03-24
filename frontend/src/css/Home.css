@@ -1,17 +1,36 @@
-.product-image{
+.product-image {
   height: 110px;
   width: 110px;
 }
-.scroll-bar{
+
+.scroll-bar {
   overflow-x: auto;
 }
-.scroll-bar::-webkit-scrollbar{
-  /* background-color: black; */
+
+.scroll-bar::-webkit-scrollbar {
+  background-color: white;
+  color: red;
   width: 10px;
   height: 3px;
 }
+.scroll-bar::-webkit-scrollbar-thumb{
+  background-color: white;
+}
 
-.card{
+.card {
   height: 200px;
   width: 300px;
+}
+
+@media only screen and (max-width: 768px) {
+  .product-image {
+    height: 90px;
+    width: 90px;
+  }
+}
+@media only screen and (max-width: 426px) {
+  .product-image {
+    height: 70px;
+    width: 70px;
+  }
 }

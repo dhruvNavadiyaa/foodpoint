@@ -1,55 +1,45 @@
-import React from 'react'
+import React from 'react';
 
-export default function Footer() {
-    return (
-        <div style={{backgroundColor:" rgba(255, 166, 0, 0.100)"}}>
-            <div className="">
-                <div className="container">
+const Footer = () => {
+  return (
+    <footer className="" style={{backgroundColor:" rgba(255, 166, 0, 0.100)"}}>
+      <div className="container py-4">
+        <div className="row text-center mt-3">
 
-                    <div className="row align-content-center" style={{ height: "300px" }}>
-                        <div className="col-4">
-                            <h5 className="mb-3">Contact Us</h5>
-                            <small>Lorem ipsum dolor sit amet consectetur </small>
-                            <div className="mt-4">
-                                <i className="bi bi-geo-alt-fill"> </i>
-                                <small>41°24'12.2"N 2°10'26.5"E</small>
-                            </div>
-                            <div>
-                                <i className="bi bi-telephone-fill"> </i>
-                                <small>+91 810 999 888</small>
-                            </div>
-                            <div>
-                                <i className="bi bi-envelope"> </i>
-                                <small>foodpoint01@gmail.com</small>
-                            </div>
-                        </div>
-                        <div className="col-4 ">
-                            <h5 className="mb-3">Usefull Links</h5>
-                            <small>Lorem ipsum dolor</small><br />
-                            <small>Lorem ipsum dolor</small><br />
-                        </div>
-                        <div className="col-4 d-flex align-items-center">
-                           <img src="https://www.svgrepo.com/show/251521/food-pin.svg" className='img-fluid w-50' alt="" />
-                           <p className='fw-bold fs-3'>Food Point</p>
-                        </div>
-                    </div>
-                    <hr />
-                    <div className="row">
-                        <div className="col-6">
-                            <strong>Follow Us</strong>
-                            <div className='mt-1 mb-5'>
-                                <i className="bi bi-instagram mx-1 fs-4"></i>
-                                <i className="bi bi-facebook mx-1 fs-4"></i>
-                                <i className="bi bi-twitter mx-1 fs-4"></i>
-                                <i className="bi bi-linkedin mx-1 fs-4"></i>
-                            </div>
-                        </div>
-                        <div className="col-6"></div>
-                    </div>
-                    {/* <hr /> */}
-                    <div className="row"></div>
-                </div>
-            </div>
+          <div className="col-md-4 col-6 mb-3 ">
+            <h5 className="text-uppercase mb-4">Contact</h5>
+            <ul className="list-unstyled">
+              <li><p className="mb-1">123 Food Street, Flavor Town</p></li>
+              <li><p className=" mb-1">Email: food.point@gmail.com</p></li>
+              <li><p className=" mb-0">Phone: (123) 456-7890</p></li>
+            </ul>
+          </div>
+
+          <div className="col-md-4 col-6 mb-3 ">
+            <h5 className="text-uppercase mb-4">Follow Us</h5>
+            <ul className="list-unstyled d-flex justify-content-evenly">
+              <i className="bi bi-facebook fs-2"></i>
+              <i className="bi bi-twitter-x fs-2"></i>
+              <i className="bi bi-instagram fs-2"></i>
+              <i className="bi bi-threads fs-2"></i>
+            </ul>
+          </div>
+
+          <div className="col-md-4 col-6 mb-3 " >
+            <ul className="list-unstyled d-flex align-items-center">
+              <img src="https://www.svgrepo.com/show/251613/food-location.svg" alt="" className='w-50'/>
+              <p className='fs-1 fw-bold' style={{color:'rgb(253, 117, 85)'}}>Food Point</p>
+            </ul>
+          </div>
+
         </div>
-    )
-}
+
+        <div className="text-center border-top pt-3">
+          <p className="mb-0">© 2024 Food Delivery, Inc. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
