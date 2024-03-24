@@ -154,7 +154,7 @@ export default function Restaurantdetails() {
                                                             <div className="col">{item.price} INR</div>
                                                             <div className="col">{item.isActive ? "Active" : "UnActive"}</div>
                                                         </div>
-                                                        <button className='mt-3 btn btn-dark w-50 py-1'>Deative</button>
+                                                        {/* <button className='mt-3 btn btn-dark w-50 py-1'>Deative</button> */}
                                                     </div>
                                                 </div>
                                             </div>
