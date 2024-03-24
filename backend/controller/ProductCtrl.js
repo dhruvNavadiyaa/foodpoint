@@ -42,10 +42,15 @@ const CatagoryProuct = async(req,res)=>{
 const ResturentProuct = async(req,res)=>{
     const AllFeatch = await Product.aggregate([{
         $match: {
-          restaurant : req?.body?.restaurant_id
+          restaurant : new mongoose.Types.ObjectId(req.body.restaurant_id)
+        }
+      },
+      {
+        "$sort": {
+          "rating": -1
         }
       }])
-      res.send({
+      return res.send({
         AllProduct : AllFeatch
     })
 }

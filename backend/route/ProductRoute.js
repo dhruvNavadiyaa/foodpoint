@@ -11,7 +11,7 @@ router.route('/create').post(upload.fields([
     }
 ]),CreateProduct)
 router.route('/catagory').post(CatagoryProuct)
-router.route('/resturent').get(ResturentProuct)
+router.route('/resturent').post(ResturentProuct)
 router.route('/update').post(updateProduct)
 router.route('/delete').post(deleteProduct)
 router.route('/search').post(searchProduct)

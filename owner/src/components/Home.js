@@ -4,7 +4,7 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-
+import  axios from 'axios'
 export default function Home() {
 
   const navigate = useNavigate()
@@ -13,7 +13,7 @@ export default function Home() {
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-
+  const [productDetail, setProductDetail] = useState([])
   const changeImage = () => {
     const newIndex = (currentImageIndex + 1) % images.length;
     setIsTransitioning(true);
@@ -40,8 +40,12 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [currentImageIndex]);
 
+  const getProduct = async() =>{
+    const response = await axios.post('http://localhost:5000/api/product/resturent', { restaurant_id:restrodata._id });
+    setProductDetail(response?.data?.AllProduct)
+  }
   useEffect(() => {
-    console.log(restrodata)
+    getProduct()
   }, [])
 
   return (
@@ -85,16 +89,18 @@ export default function Home() {
               <p className='fs-2 fw-bold text-secondary text-center mb-5'><i className="bi bi-star pe-2"></i> Your top rated Products <i className="bi bi-star ps-2"></i></p>
 
               {/* RESTAURANT BEST ITEM CARD */}
-              <div className="col-sm-6 px-5-md mb-5" >
+              {productDetail.map((item , index )=>
+              {
+                return(<div key={index} className="col-sm-6 px-5-md mb-5" >
                 <div className="item p-3 rounded rounded-4 box-shadow">
                   <div className='row m-0'>
                     <div className="col d-flex align-items-center">
                       <div>
-                        <p className='mb-0 fw-bold text-secondary'>By Mc'Donald</p>
+                        <p className='mb-0 fw-bold text-secondary'>By {restrodata?.name}</p>
                         <small className='text-warning'><i className="bi bi-star-fill text-warning"> </i>BESTSELLER</small>
                       </div>
                       <div className='p-1 border rounded text-center ms-auto'>
-                        <small className='fw-medium '><i className="bi bi-star-fill text-success"> </i>3/5</small><br />
+                        <small className='fw-medium '><i className="bi bi-star-fill text-success"> </i>{item.rating}/5</small><br />
                         <hr className='border border-dark border-1 my-0 mt-1' />
                         <small className=''>Ratings</small>
                       </div>
@@ -103,9 +109,9 @@ export default function Home() {
                   <hr className='mb-3' />
                   <div className="row m-0">
                     <div className="col-8 ">
-                      <p className='fw-bold mb-0'>Mc Vaggie Burgur</p>
-                      <small className='fw-medium'>&#x20B9; 199</small><br />
-                      <small className='fw-medium text-secondary'>item.descriptio Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, corrupti?</small>
+                      <p className='fw-bold mb-0'>{item.name}</p>
+                      <small className='fw-medium'>&#x20B9; {item.price}</small><br />
+                      <small className='fw-medium text-secondary'>{item.description}</small>
                     </div>
                     <div className="col-4 ">
                       <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnVyZ2VyfGVufDB8fDB8fHww"
@@ -113,7 +119,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div>)})}
 
             </div>
 
