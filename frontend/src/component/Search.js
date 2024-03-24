@@ -21,9 +21,9 @@ export default function Search() {
         }
     }
     const getSearchProduct = async () => {
-        if (name !== '') {
+        if (name.trim() !== '') {
             try {
-                const response = await axios.post('http://localhost:5000/api/product/search', { name });
+                const response = await axios.post('http://localhost:5000/api/product/search', { name:name.trim() });
                 console.log(response.data.product)
                 setSearchProduct(response.data.product)
             } catch (error) {
