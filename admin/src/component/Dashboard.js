@@ -124,28 +124,23 @@ export default function Dashboard() {
                                     <p className='ms-4 font-light-thick'>Categories</p>
                                 </div>
 
-                                <div className='card text-start'>
-                                    <img src="https://www.svgrepo.com/show/451289/select-category.svg" className='img-logo mt-4 ms-3' alt="" style={{ backgroundColor: 'rgb(255, 252, 224)' }} />
-                                    <p className='mt-3 ms-4 fw-bold'>{details.ActiveCategory}</p>
-                                    <p className='ms-4 font-light-thick'>Active Categories</p>
-                                </div>
-
-                                <div className='card text-start'>
-                                    <img src="https://www.svgrepo.com/show/496037/category-2.svg" className='img-logo mt-4 ms-3' alt="" style={{ backgroundColor: 'rgb(235, 250, 242)' }} />
-                                    <p className='mt-3 ms-4 fw-bold'>{details.InActiveCategory}</p>
-                                    <p className='ms-4 font-light-thick'>Inctive Categories</p>
-                                </div>
+                                
 
                                 <div className='card text-start'>
                                     <img src="https://www.svgrepo.com/show/422038/product.svg" className='img-logo mt-4 ms-3' alt="" style={{ backgroundColor: 'rgb(234, 242, 254)' }} />
                                     <p className='mt-3 ms-4 fw-bold'>{details.ExistsProduct}</p>
                                     <p className='ms-4 font-light-thick'>Total Products</p>
                                 </div>
+                                <div className='card text-start'>
+                                    <img src="https://www.svgrepo.com/show/451289/select-category.svg" className='img-logo mt-4 ms-3' alt="" style={{ backgroundColor: 'rgb(255, 252, 224)' }} />
+                                    <p className='mt-3 ms-4 fw-bold'>{details.ActiveProduct}</p>
+                                    <p className='ms-4 font-light-thick'>Active Products</p>
+                                </div>
 
                                 <div className='card text-start'>
-                                    <img src="https://www.svgrepo.com/show/433697/product-so.svg" className='img-logo mt-4 ms-3' alt="" style={{ backgroundColor: 'rgb(222 220 221)' }} />
-                                    <p className='mt-3 ms-4 fw-bold'>{details.ActiveProduct}</p>
-                                    <p className='ms-4 font-light-thick'>Deactive Products</p>
+                                    <img src="https://www.svgrepo.com/show/496037/category-2.svg" className='img-logo mt-4 ms-3' alt="" style={{ backgroundColor: 'rgb(235, 250, 242)' }} />
+                                    <p className='mt-3 ms-4 fw-bold'>{details.ExistsProduct - details.ActiveProduct}</p>
+                                    <p className='ms-4 font-light-thick'>Inctive Products</p>
                                 </div>
                                 
                             </div>

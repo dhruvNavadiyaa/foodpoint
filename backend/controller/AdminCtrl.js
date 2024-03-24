@@ -9,26 +9,19 @@ const AllUser = async(req , res)=>{
     const ExistsUser = await User.find().count()
     const ExistsRestaurant = await Restaurant.find().count()
     const ActiveRestaurant = await Restaurant.find({
-        isActive : true
+        isApproved : "Approved"
     }).count()
     const InActiveRestaurant = await Restaurant.find({
-        isActive : false
+        isApproved : "Pending"
     }).count()
     const ExistsDeliveryBoy = await DeliveryBoy.find().count()
     const ActiveDeliveryBoy = await DeliveryBoy.find({
-        isAvilable : true
+        isApproved : "approved"
     }).count()
     const InActiveDeliveryBoy = await DeliveryBoy.find({
-        isAvilable : false
+        isApproved : "pending"
     }).count()
-    const ExistsCategory = await Category.find().count()
-    const ActiveCategory = await Category.find({
-        isActive : true
-    }).count()
-    const InActiveCategory = await Category.find({
-        isActive : false
-    }).count()
-   
+    const ExistsCategory = await Category.find().count()   
     const ExistsProduct = await Product.find().count()
     const ActiveProduct = await Product.find({
         isActive : true
@@ -45,12 +38,9 @@ const AllUser = async(req , res)=>{
         ActiveDeliveryBoy,
         InActiveDeliveryBoy,
         ExistsCategory,
-        ActiveCategory,
-        InActiveCategory,
         ExistsProduct,
         ActiveProduct,
-        InActiveCategory,
-        ActiveProduct
+        InActiveProduct
     })
 }
 

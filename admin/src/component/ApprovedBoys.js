@@ -17,7 +17,7 @@ export default function ApprovedBoys() {
 
     const allDeliveryBoy = async () => {
         const response = await axios.get('http://localhost:5000/api/delivery/allfetch')
-        // console.log(response.data.pending)
+        // console.log(response.data)
         setApprovedBoys(response.data.approved)
     }
 
@@ -25,8 +25,9 @@ export default function ApprovedBoys() {
         const data = {
             DeliveryBoy_id: id
         }
+        console.log(data)
         const response = await axios.post('http://localhost:5000/api/delivery/delete', data)
-        // allDeliveryBoy()
+        allDeliveryBoy()
     }
 
     useEffect(() => {
@@ -71,7 +72,7 @@ export default function ApprovedBoys() {
                     </div>
                     <div className="modal-actions d-flex ms-auto mt-auto">
                         <button className='btn btn-secondary me-2 px-3' onClick={() => setDeleteModal({ isvisible: false, id: null })}>Cancel</button>
-                        <button className='btn btn-danger px-3' onClick={()=>{setDeleteModal({ isvisible: false, id: null })}}>Ok</button>
+                        <button className='btn btn-danger px-3' onClick={()=>{deleteDeliveryBoy(deleteModal.id);setDeleteModal({ isvisible: false, id: null })}}>Ok</button>
                     </div>
                 </div>
             </div>

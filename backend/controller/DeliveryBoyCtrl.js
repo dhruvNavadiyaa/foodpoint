@@ -81,9 +81,9 @@ const allDeliveryBoy =async (req, res) => {
 
 const DeleteDeliveryBoy =async (req, res) => {
     const deleteDeliveryBoy = await DeliveryBoy.deleteOne({_id : req?.body?.DeliveryBoy_id})
-    res.send({
+    return res.send({
       success : true,
-        "user": "User deleted"
+        "deliveryBoy": "deliveryBoy deleted"
     })
 }
 

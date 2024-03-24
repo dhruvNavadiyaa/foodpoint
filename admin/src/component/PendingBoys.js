@@ -21,7 +21,6 @@ export default function PendingBoys() {
 
     const allDeliveryBoy = async () => {
         const response = await axios.get('http://localhost:5000/api/delivery/allfetch')
-        // console.log(response.data.pending)
         setPendingBoys(response.data.pending)
     }
     const approveDeliveryBoy = async (id) => {
@@ -30,14 +29,15 @@ export default function PendingBoys() {
             status: "approved"
         }
         const response = await axios.post('http://localhost:5000/api/delivery/approvel', data)
-        // allDeliveryBoy()
+        allDeliveryBoy()
     }
     const deleteDeliveryBoy = async (id) => {
+        console.log(id)
         const data = {
             DeliveryBoy_id: id
         }
-        const response = await axios.post('http://localhost:5000/api/delivery/delete', data)
-        // allDeliveryBoy()
+        const responsxe = await axios.post('http://localhost:5000/api/delivery/delete', data)
+        allDeliveryBoy()
     }
 
     useEffect(() => {
@@ -82,7 +82,7 @@ export default function PendingBoys() {
                     </div>
                     <div className="modal-actions d-flex ms-auto mt-auto">
                         <button className='btn btn-secondary me-2 px-3' onClick={() => setApproveModal({ isvisible: false, id: null })}>Cancel</button>
-                        <button className='btn btn-danger px-3' onClick={()=>{setApproveModal({ isvisible: false, id: null })}}>Ok</button>
+                        <button className='btn btn-danger px-3' onClick={()=>{approveDeliveryBoy(approveModal.id);setApproveModal({ isvisible: false, id: null })}}>Ok</button>
                     </div>
                 </div>
             </div>
@@ -95,8 +95,8 @@ export default function PendingBoys() {
                         <p className='font-light-thick'>You want to Delete this Delivery Boy ?</p>
                     </div>
                     <div className="modal-actions d-flex ms-auto mt-auto">
-                        <button className='btn btn-secondary me-2 px-3' onClick={() => setDeleteModal({ isvisible: false, id: null })}>Cancel</button>
-                        <button className='btn btn-danger px-3' onClick={()=>{setDeleteModal({ isvisible: false, id: null })}}>Ok</button>
+                        <button className='btn btn-secondary me-2 px-3' onClick={()=>{setDeleteModal({ isvisible: false, id: null })}}>Cancel</button>
+                        <button className='btn btn-danger px-3' onClick={() => {deleteDeliveryBoy(deleteModal.id);setDeleteModal({ isvisible: false, id: null })}}>Ok</button>
                     </div>
                 </div>
             </div>
