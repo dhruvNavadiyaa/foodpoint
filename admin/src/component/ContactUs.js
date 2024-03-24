@@ -66,7 +66,6 @@ export default function Category() {
     }
 
     const sendEmail = async (email)=>{
-        console.log(email,sendEmailMsg)
         setSendEmailMsg("")
         const response = await axios.post('http://localhost:5000/api/contactus/email',{email,msg:sendEmailMsg})
         console.log(response.data)

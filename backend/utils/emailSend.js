@@ -11,13 +11,13 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendEmail = async(subject,reciverEmail,text) => {
+
   // send mail with defined transport object
   const info = await transporter.sendMail({
     from: "yashtalaviya654@gmail.com", // sender address
     to: reciverEmail, // list of receivers
     subject: subject, // Subject line
     text: text, // plain text body
-    html: "<b>Hello world?</b>", // html body
   });
 
   console.log("Message sent: %s", info.messageId);
