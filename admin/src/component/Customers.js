@@ -62,10 +62,11 @@ export default function Customer() {
 
   const deleteUser = async () => {
     const User_id = currentId
-    const response = await axios.post('http://localhost:5000/api/user/delete', User_id)
-    console.log(response.data)
-    console.log(User_id)
+    const response = await axios.post('http://localhost:5000/api/user/delete', {User_id})
+    // console.log(response.data)
+    // console.log(User_id)
     setShowModal(true)
+    getCustomers()
   }
   return (
     <>
@@ -95,9 +96,9 @@ export default function Customer() {
                         <option value="">Order</option>
                         <option value="">Rupee</option>
                       </select> */}
-                      <input type="text"
+                      {/* <input type="text"
                         placeholder='Search for User!'
-                        className='btn btn-light d-inline border ms-auto ' />
+                        className='btn btn-light d-inline border ms-auto ' /> */}
                     </div>
 
                   </div>
