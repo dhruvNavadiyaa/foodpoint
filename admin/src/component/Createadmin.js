@@ -102,7 +102,7 @@ export default function Createadmin() {
 
                   <div className="row w-75">
                     <div className="col border rounded-4 bg-light box-shadow p-3"  >
-                      {/* <form action=""> */}
+                      <form onSubmit={(e)=>{e.preventDefault();setShowModal(false)}}>
                       <div className="row mt-3">
                         <div className="col-3 ps-4  fs-5 d-flex align-items-center">Name</div>
                         <div className="col-8 border bg-order d-flex align-items-center rounded  bg-order p-0">
@@ -153,11 +153,11 @@ export default function Createadmin() {
                       </div>
                       <div className="row d-flex justify-content-center">
                         <button type="submit" className='w-25 mt-2 py-2 btn btn-outline-success' 
-                        onClick={()=>setShowModal(false)} disabled={name==='' || number==='' || email==='' || password===''}>
+                         disabled={name==='' || number==='' || email==='' || password===''}>
                           Create Admin
                         </button>
                       </div>
-                      {/* </form> */}
+                      </form>
                     </div>
                   </div>
 
