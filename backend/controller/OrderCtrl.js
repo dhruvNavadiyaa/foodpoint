@@ -283,7 +283,7 @@ const updateDeliveryBoy = async(req, res) => {
 
 const orderPendingForDelivery = async(req, res) => {
   const find = await Order.find( {
-    status: "procces",
+    status: "process",
   });
   res.send({ 
     success : true,
