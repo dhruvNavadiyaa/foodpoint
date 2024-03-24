@@ -14,10 +14,10 @@ export default function OrderList() {
     return (
         <>
             <Navbar />
-            <div className='row m-0 p-3'>
+            <div className='row m-0 p-3 ' style={{width:'fit-content'}}>
 
-                <div className="row m-0" >
-                    <div className="col" style={{ marginTop: '80px' }}>
+                <div className="row m-0 p-0" >
+                    <div className="col p-0" style={{ marginTop: '80px' }}>
                         <button className={`btn  ${!changeTables ? 'btn-outline-dark' : 'btn-dark'} me-2`} onClick={() => setChangeTables(true)}>Current Orders</button>
                         <button className={`btn ${changeTables ? 'btn-outline-dark' : 'btn-dark'}`} onClick={() => setChangeTables(false)}>Past Orders</button>
                     </div>
@@ -28,7 +28,7 @@ export default function OrderList() {
                 }
 
             </div >
-            <Footer />
+            <Footer/>
         </>
     )
 }

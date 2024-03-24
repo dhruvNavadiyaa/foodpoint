@@ -21,19 +21,19 @@ useEffect(()=>{
         <hr className='my-1 mb-3 text-dark border border-2 border-dark ' />
 
         <div className="row mt-3">
-          <div className="col-3 ">
+          <div className="col-md-3 col-12 ">
 
-            <div className=' px-4'>
-              <p className='py-2 ps-3 fw-medium border border-2 border-dark rounded rounded-5' onClick={()=>setChageDetail(true)}>Profile</p>
-              <p className='py-2 ps-3 fw-medium border border-2 border-dark rounded rounded-5' onClick={()=>setChageDetail(false)}>Restaurant</p><hr className='border border-2 border-dark' />
+            <div className=' px-4 d-md-block d-flex justify-content-evenly'>
+              <p className='py-2 ps-3 pe-3 fw-medium border border-2 border-dark rounded rounded-5' onClick={()=>setChageDetail(true)}>Profile</p>
+              <p className='py-2 ps-3 pe-3 fw-medium border border-2 border-dark rounded rounded-5' onClick={()=>setChageDetail(false)}>Restaurant</p><hr className='border border-2 border-dark' />
 
               {/* <p className='py-2 ps-3 fw-medium border rounded rounded-5' style={{ backgroundColor: 'rgb(226, 232, 240)' }}>Update Profile</p>
               <p className='py-2 ps-3 fw-medium border rounded rounded-5' style={{ backgroundColor: 'rgb(226, 232, 240)' }}>Change Password</p> */}
-              <p className='py-2 ps-3 fw-medium border rounded rounded-5' style={{ backgroundColor: 'rgb(226, 232, 240)' }}>Logout</p>
+              <p className='py-2 ps-3 pe-3 fw-medium border rounded rounded-5' style={{ backgroundColor: 'rgb(226, 232, 240)' }}>Logout</p>
             </div>
           </div>
 
-          <div className="col-9 ">
+          <div className="col-md-9 col-12">
 
             {/* PERSONAL DETAILS */}
             {changeDetail &&
@@ -57,53 +57,6 @@ useEffect(()=>{
                   </div>
                 </div>
 
-                <div className="row">
-
-                  {/* BANK DETAILS */}
-                  {/* <div className="col-6 mt-3">
-                    <div className="row m-0 py-3 border-bottom border-3 border-warning rounded-top rounded-top-4 " style={{ backgroundColor: 'rgb(173, 179, 187)' }}>
-                      <h3>Bank details</h3>
-                    </div>
-
-                    <div className='row py-1 m-0 rounded-bottom rounded-bottom-4' style={{ backgroundColor: 'rgb(226, 232, 240)' }}>
-                      <div className="row mt-2 m-0">
-                        <div className="col-3 "><p className='fs-5  m-0 py-1'>Ac. No.</p></div>
-                        <div className="col-7  rounded rounded-2 fw-bold text-secondary" style={{ backgroundColor: 'rgb(231, 236, 242)' }}><p className=' m-0 py-2' >3247457383757</p></div>
-                      </div>
-                      <div className="row  m-0 mt-3">
-                        <div className="col-3 "><p className='fs-5  m-0 py-1'>IFSC Code</p></div>
-                        <div className="col-7  rounded rounded-2 fw-bold text-secondary" style={{ backgroundColor: 'rgb(231, 236, 242)' }}><p className=' m-0 py-2' >SBIN0032K</p></div>
-                      </div>
-                      <div className="row  m-0 mt-3">
-                        <div className="col-3 "><p className='fs-5  m-0 py-1'>Ac. type</p></div>
-                        <div className="col-7  rounded rounded-2 fw-bold text-secondary" style={{ backgroundColor: 'rgb(231, 236, 242)' }}><p className=' m-0 py-2' >Current</p></div>
-                      </div>
-                    </div>
-                  </div> */}
-
-                  {/* PAN CARD DETAILS */}
-                  {/* <div className="col-6 mt-3">
-                    <div className="row m-0 py-3 border-bottom border-3 border-warning rounded-top rounded-top-4 " style={{ backgroundColor: 'rgb(173, 179, 187)' }}>
-                      <h3>Pan Card details</h3>
-                    </div>
-
-                    <div className='row py-1  m-0 rounded-bottom rounded-bottom-4' style={{ backgroundColor: 'rgb(226, 232, 240)' }}>
-                      <div className="row mt-2 m-0">
-                        <div className="col-3 "><p className='fs-5  m-0 py-1'>Name</p></div>
-                        <div className="col-7  rounded rounded-2 fw-bold text-secondary" style={{ backgroundColor: 'rgb(231, 236, 242)' }}><p className=' m-0 py-2' >dhruv</p></div>
-                      </div>
-                      <div className="row m-0 mt-3">
-                        <div className="col-3 "><p className='fs-5  m-0 py-1'>Pan No.</p></div>
-                        <div className="col-7  rounded rounded-2 fw-bold text-secondary" style={{ backgroundColor: 'rgb(231, 236, 242)' }}><p className=' m-0 py-2' >LAREF2343K</p></div>
-                      </div>
-                      <div className="row  m-0 mt-3">
-                        <div className="col-3 "><p className='fs-5  m-0 py-1'>Pan Status</p></div>
-                        <div className="col-7  rounded rounded-2 fw-bold text-secondary" style={{ backgroundColor: 'rgb(231, 236, 242)' }}><p className=' m-0 py-2' >ACTIVE</p></div>
-                      </div>
-                    </div>
-                  </div> */}
-
-                </div>
               </>
             }
 

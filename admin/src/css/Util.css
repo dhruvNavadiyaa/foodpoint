@@ -40,3 +40,6 @@
 .addAdminForm:active{
     border: none;
 }
+.bg-navitem{
+    background-color: rgb(56, 65, 98);
+}

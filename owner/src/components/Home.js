@@ -52,24 +52,25 @@ export default function Home() {
     <>
       <Navbar />
 
-      <div className='row front-img m-0 border'>
+      <div className='row front-img m-0 '>
 
-        <div className="col mb-5 r mb-5" style={{ marginTop: '100px' }}>
+        <div className="col mb-5 r mb-5 " style={{ marginTop: '100px' }}>
 
           {/* RESTAURANT INFORMATION ROW */}
           <div className='row  d-flex align-items-center justify-content-between'>
-            <div className='col-6  px-5'>
+
+            <div className='col-sm-6 px-md-5 px-5 '>
               <p className='fs-2 fw-bold text-secondary mb-5'>Welcom to <span className='text-warning border-bottom border-2 border-secondary text-uppercase'>{restrodata.name}</span></p>
               <div className='fw-medium'>
                 <p className='font-monospace'>Thank you for joining our online delivery platform! We're excited to partner with you and look forward to driving more customers to your delicious dishes.</p>
                 <p className='mb-0 text-secondary'><i className="bi bi-star text-dark"> </i>{restrodata.rating}/5 Overall Ratings</p>
-                <p className='mb-0 text-secondary'><i class="bi bi-clock text-dark"> </i> {restrodata?.timing?.openAt} to {restrodata?.timing?.closeAt}</p>
-                <p className='mb-0 text-secondary'><i class="bi bi-geo-alt text-dark"> </i> {restrodata?.address?.street}, {restrodata?.address?.area}</p>
-                <p className='mb-0 text-secondary'><i class="bi bi-envelope text-dark"> </i> {restrodata?.email}</p>
+                <p className='mb-0 text-secondary'><i className="bi bi-clock text-dark"> </i> {restrodata?.timing?.openAt} to {restrodata?.timing?.closeAt}</p>
+                <p className='mb-0 text-secondary'><i className="bi bi-geo-alt text-dark"> </i> {restrodata?.address?.street}, {restrodata?.address?.area}</p>
+                <p className='mb-0 text-secondary'><i className="bi bi-envelope text-dark"> </i> {restrodata?.email}</p>
               </div>
             </div>
             {/* RESTAURANT PHOTO CROUSEL */}
-            <div className='col-6'>
+            <div className='col-sm-6 border p-0' >
               <div className='carouselStyle'>
                 <button onClick={prevImage} className='arrowStyleL btn btn-outline-light'>&lt;</button>
                 <img
@@ -80,13 +81,15 @@ export default function Home() {
                 <button onClick={nextImage} className='arrowStyleR btn btn-outline-light'>&gt;</button>
               </div>
             </div>
+
           </div>
 
           {/* RESTAURANT TOP RATED PRODUCT */}
-          <div className="container px-5 mt-5 ">
+          <div className="container-md px-5 mt-5 ">
 
-            <div className="row px-5">
-              <p className='fs-2 fw-bold text-secondary text-center mb-5'><i className="bi bi-star pe-2"></i> Your top rated Products <i className="bi bi-star ps-2"></i></p>
+            <div className="row px-md-5 ">
+              <p className='fs-2 d-none d-sm-block fw-bold text-secondary text-center mb-5'><i className="bi bi-star pe-2"></i> Your top rated Products <i className="bi bi-star ps-2"></i></p>
+              <p className='fs-6 d-sm-none d-block fw-bold text-secondary text-center mb-5'><i className="bi bi-star pe-2"></i>Top rated Products<i className="bi bi-star ps-2"></i></p>
 
               {/* RESTAURANT BEST ITEM CARD */}
               {productDetail.map((item , index )=>

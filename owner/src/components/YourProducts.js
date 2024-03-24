@@ -83,36 +83,33 @@ export default function YourProducts() {
 
         <div className="row m-0 mt-5 mb-5" >
 
-          <div className="col-3  px-3">
-
-            <div className=' px-4'>
-              <p className='fs-5 py-2 ps-3 fw-medium border border-2 border-dark rounded rounded-4'>Categories</p><hr className='border border-2 border-dark' />
+          <div className="col-md-3 col-12  px-3">
+            <div className='px-md-4 d-flex d-md-block'>
+              <p className='fs-5 py-2 px-2 fw-medium border border-2 border-dark rounded rounded-4 me-2'>Categories</p><hr className='border border-2 border-dark' />
               {
                 category.map((item, index) => {
                   return (
-                    <p className='py-2 ps-3 fw-medium border rounded rounded-4' style={{ backgroundColor: 'rgb(226, 232, 240)' }}
+                    <p className='py-2 ps-md-3 px-2 ms-1 fw-medium border rounded rounded-4 d-flex align-items-center' style={{ backgroundColor: 'rgb(226, 232, 240)' }}
                       key={index} onClick={() => { setCatagoryUpdateId({ _id: item._id }); setCategoryName(item.name) }}>{item.name}</p>
                   )
                 })
               }
             </div>
-
           </div>
 
-          <div className="col-9 ">
+          <div className="col-md-9 col-12">
             <div className="row p-0 d-flex justify-content-evenly">
-
               {/* CATEGORY WISE   PRODUCT */}
               {
                 product.map((item, index) => {
-                  return (<div key={index} className="col-lg-3 col-md-4 col-6 p-0  rounded rounded-5 category-cards">
+                  return (<div key={index} className="col-lg-3 col-md-4 col-sm-5 col-12 p-0  rounded rounded-5 category-cards">
                     <img src={item?.img || "https://images.pexels.com/photos/718742/pexels-photo-718742.jpeg?auto=compress&cs=tinysrgb&w=600"} className='item-img rounded rounded-5' alt="" />
 
                     <div className='items-details p-3'>
                       <div className='p-3 border rounded rounded-5 box-shadow' style={{ backgroundColor: 'white' }}>
                         <small className='font-light-thick'>&#x2022; {categoryName || "Street Food"}</small>
                         <p className='mb-0 text-success text-uppercase'>{item.name}</p>
-                        <p className='mb-0 text-warning'><i class="bi bi-star-fill "></i> {item.rating}/5</p>
+                        <p className='mb-0 text-warning'><i className="bi bi-star-fill "></i> {item.rating}/5</p>
                         <p className='mb-0 text-secondary'>&#8377;{item.price}/price</p>
                         <div className='d-flex align-items-center'>
                           <small className='text-danger fw-bold'>{item.isActive?"Active":"InActive"}</small>
@@ -126,10 +123,9 @@ export default function YourProducts() {
                     </div>
                   </div>)
                 })}
-
-
             </div>
           </div>
+
         </div>
         {/* DELETE MODAL */}
         <div className="modal-overlay" hidden={!deleteModal}>

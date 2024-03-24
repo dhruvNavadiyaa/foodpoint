@@ -93,7 +93,7 @@ export default function AddProduct() {
             <div className='' style={{ background: 'linear-gradient(45deg, rgb(253, 244, 181),rgb(206, 219, 252),rgb(251, 214, 212)' }}>
 
                 <Navbar />
-                <div className='row  p-5 py-3 m-0' >
+                <div className='row  p-md-5 py-3 m-0' >
 
                     <div className="row m-0" >
                         <div className="col" style={{ marginTop: '80px' }}>
@@ -104,7 +104,7 @@ export default function AddProduct() {
 
                     {!changeForm &&
                         <div className="row m-0">
-                            <div className="col px-5 py-4 mb-5   rounded rounded-5 box-shadow" style={{ backgroundColor: 'rgb(226, 232, 240)', marginTop: '30px' }}>
+                            <div className="col px-sm-5 py-4 mb-5   rounded rounded-5 box-shadow" style={{ backgroundColor: 'rgb(226, 232, 240)', marginTop: '30px' }}>
                                 <h1 className='fs-4 fw-bold'>&#x2022; Add Category</h1>
 
                                 <div className="row m-0 mt-4">
@@ -138,11 +138,11 @@ export default function AddProduct() {
                     }
                     {changeForm &&
                         <div className="row m-0">
-                            <div className="col px-5 py-4 mb-5   rounded rounded-5 box-shadow" style={{ backgroundColor: 'rgb(226, 232, 240)', marginTop: '30px' }}>
+                            <div className="col px-sm-5 py-4 mb-5   rounded rounded-5 box-shadow" style={{ backgroundColor: 'rgb(226, 232, 240)', marginTop: '30px' }}>
                                 <h1 className='fs-4 fw-bold'>&#x2022; Add Product</h1>
 
                                 <div className="row m-0 mt-4">
-                                    <div className="col ">
+                                    <div className="col-sm col-12 ">
                                         <small className='label-text'>PRODUCT NAME</small><br />
                                         <input type="text" className='w-100 mt-1 py-2 px-3 form-input' placeholder='Enter product name'
                                             value={productName}
@@ -150,7 +150,7 @@ export default function AddProduct() {
                                             required
                                         />
                                     </div>
-                                    <div className="col ">
+                                    <div className="col-sm col-12 ">
                                         <small className='label-text'>PRICE</small><br />
                                         <input type="text" className='w-100 mt-1 py-2 px-3 form-input' placeholder='0'
                                             value={price}

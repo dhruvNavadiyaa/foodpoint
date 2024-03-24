@@ -11,3 +11,6 @@
 .box-shadow{
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.200);
 }
+.bg-navitem{
+    background-color: rgb(56, 65, 98);
+}
