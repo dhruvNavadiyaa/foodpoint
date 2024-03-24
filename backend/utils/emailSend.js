@@ -26,4 +26,4 @@ const sendEmail = async(subject,reciverEmail,text) => {
 
 
 export default sendEmail;
-sendEmail ("hello" ,"ktalaviya123@gmail.com,ktalaviya568@gmail.com" , "hello There" )
+// sendEmail ("hello" ,"ktalaviya123@gmail.com,ktalaviya568@gmail.com" , "hello There" )

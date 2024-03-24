@@ -45,10 +45,13 @@ export default function Category() {
     const [deleteModal, setDeleteModal] = useState(false)
     const [responseModal, setResponseModal] = useState(false)
     const [details, seDetails] = useState([])
-
+    
     const contactUsDetails = async () => {
         const response = await axios.get('http://localhost:5000/api/contactus/all')
         seDetails(response.data.all)
+    }
+    const deleteMsg = async () => {
+
     }
     useEffect(() => {
         contactUsDetails()
@@ -213,7 +216,7 @@ export default function Category() {
                     </div>
                     <div className="modal-actions d-flex ms-auto mt-auto">
                         <button className='btn btn-secondary me-2 px-3' onClick={() => setDeleteModal(false)}>Cancel</button>
-                        <button className='btn btn-danger px-3' >Ok</button>
+                        <button className='btn btn-danger px-3' onClick={() =>{deleteMsg(); setDeleteModal(false)}}>Ok</button>
                     </div>
                 </div>
             </div>
