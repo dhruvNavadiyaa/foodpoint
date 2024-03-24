@@ -36,6 +36,8 @@ export default function OrderList() {
             <Navbar />
             <div className='row m-0 p-3'>
                 <div className="col p-3 border box-shadow" style={{ marginTop: '100px', marginBottom:'50vh' }}>
+                    {!(processOrderInfo.length===0)?
+                    <>
                     <h3 className='fs-5 fw-bold text-secondary'>&#x2022; All Order</h3>
                     <table className="table table-hover">
                         <thead>
@@ -63,6 +65,9 @@ export default function OrderList() {
                             })}
                         </tbody>
                     </table>
+                    </>:<>
+                    <h1 className='text-center'>There Is No Order Avaliable</h1></>
+}
                 </div>
             </div>
             <Footer/>

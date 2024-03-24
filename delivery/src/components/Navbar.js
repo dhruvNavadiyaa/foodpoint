@@ -94,16 +94,16 @@ export default function Navbar() {
         </div>
 
         <div className='col-2  d-flex justify-content-center'>
-          <div className="dropdown d-inline">
-            <button className="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i className="bi bi-person px-1 fs-3 text-dark rounded rounded-circle" style={{ backgroundColor: 'rgb(255, 241, 107)' }}></i>
-            </button>
-            <ul className="dropdown-menu">
+          {/* <div className="dropdown d-inline"> */}
+            {/* <button className="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"> */}
+              <Link to='/Profile'><i className="bi bi-person px-1 fs-3 text-dark rounded rounded-circle" style={{ backgroundColor: 'rgb(255, 241, 107)' }}></i></Link>
+            {/* </button> */}
+            {/* <ul className="dropdown-menu">
               <li><a className="dropdown-item" href="/">Action</a></li>
               <li><a className="dropdown-item" href="/">Another action</a></li>
               <li><a className="dropdown-item" href="/">Something else here</a></li>
-            </ul>
-          </div>
+            </ul> */}
+          {/* </div> */}
         </div>
 
       </div>

@@ -23,8 +23,12 @@ const Login = () => {
     const sendData = async () => {
         try {
             const response = await axios.post('http://localhost:5000/api/delivery/signup', data);
-            console.log(response.data)
-            navigate('/')    
+            if(response.data.success) {
+                navigate('/')    
+            }
+            else{
+                setValid('Email alredy exist!')
+            }
         } catch (error) {
             console.log('Error fetching data:',error);
         }
@@ -33,7 +37,7 @@ const Login = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (password.length < 3) {
+        if (password.length < 4) {
             setValid('Password should be more than 3 letters!')
         }
         else {

@@ -21,6 +21,7 @@ const CreateRestaurant = async (req, res) => {
   if (exists) {
     return res.send({
       email: "exists",
+      success : false,
     });
   }
   const fileimg = req?.files?.restaurant;
@@ -72,11 +73,13 @@ const LoginRestaurant = async (req, res) => {
   if (!loginRestaurant) {
     return res.send({
       login: false,
-    });
+      success : false,
+        });
   }
   const password = await loginRestaurant.isPasswordCorrect(req?.body?.password);
   if (!password) {
     return res.send({
+      success : false,
       login: false,
     });
   }
@@ -94,6 +97,7 @@ const LoginRestaurant = async (req, res) => {
     .cookie("accessToken", accessToken, options)
     .cookie("refreshToken", refreshToken, options)
     .json({
+      success : true,
       login: true,
       RestaurantInfo,
       accessToken,
@@ -105,6 +109,7 @@ const topRestaurant = async (req, res) => {
   const featchAll = await Restaurant.find({isApproved:"Approved"}).sort({ rating: -1 }).limit(8);
   return res.send({
     Restaurant: featchAll,
+    success : false,
   });
 };
 
@@ -112,6 +117,7 @@ const FetchAll = async (req, res) => {
   const featchAll = await Restaurant.find();
   return res.send({
     Restaurant: featchAll,
+    success : false,
   });
 };
 const UpdateRestaurant = async (req, res) => {
@@ -167,6 +173,7 @@ const UpdateRestaurant = async (req, res) => {
     console.log(err);
     return res.send({
       RestaurantInfo: updatedRestaurant,
+      success : false,
     });
   }
 };
@@ -176,12 +183,14 @@ const FeatchRestaurant = async (req, res) => {
     isApproved: "Approved",
   });
   return res.send({
-    "AllRestaurant": featchAll,
+    AllRestaurant: featchAll,
+    success : false,
+
   });
 };
 
 const DeleteRestaurant = async (req, res) => {
-  const delteRest = await Restaurant.deleteOne({
+  const deleteRest = await Restaurant.deleteOne({
     _id: req?.body?.Restaurant_id,
   });
   return res.send({
@@ -197,6 +206,7 @@ const RefreshTokenEndPoint = async (req, res) => {
   if (!refreshToken) {
     return res.send({
       login: false,
+      success : false,
       Token: "UnAuthorized",
     });
   }
@@ -207,12 +217,14 @@ const RefreshTokenEndPoint = async (req, res) => {
   );
   if (!RestaurantFind) {
     return res.send({
+      success : false,
       login: false,
       Token: "UnAuthorized",
     });
   }
   if (!refreshToken == RestaurantFind.refreshToken) {
     return res.send({
+      success : false,
       login: false,
       Token: "UnAuthorized",
     });
@@ -225,7 +237,8 @@ const RefreshTokenEndPoint = async (req, res) => {
   return res.send({
     login: true,
     RestaurantInfo,
-    accessToken,
+      success : true,
+      accessToken,
   });
 };
 

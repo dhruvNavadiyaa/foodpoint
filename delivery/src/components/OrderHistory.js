@@ -75,7 +75,6 @@ export default function OrderHistory() {
                     <td>{item.status}</td>
                     <td>
                       <div className="d-flex">
-                    
                         <button onClick={()=> doneOrder(item._id)}  className='btn btn-sm btn-outline-success me-1'>Done</button>
                         <button className='btn btn-sm btn-outline-dark' onClick={()=>navigate(`/Orderdetails/${item._id}`)}>View</button>
                       </div>
