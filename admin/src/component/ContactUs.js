@@ -47,6 +47,7 @@ export default function Category() {
         id: null,
         data: {}
     })
+    const [sendEmailMsg,setSendEmailMsg] = useState("")
     const [responseModal, setResponseModal] = useState({
         isvisible: false,
         id: null
@@ -58,7 +59,19 @@ export default function Category() {
         seDetails(response.data.all)
     }
 
+    const deleteMsg = async (id) => {
+        const response = await axios.post('http://localhost:5000/api/contactus/delete',{id})
+        console.log(response.data)
+        contactUsDetails()
+    }
 
+    const sendEmail = async (email)=>{
+        console.log(email,sendEmailMsg)
+        setSendEmailMsg("")
+        const response = await axios.post('http://localhost:5000/api/contactus/email',{email,msg:sendEmailMsg})
+        console.log(response.data)
+        setSendEmailMsg("")
+    }
 
     useEffect(() => {
         contactUsDetails()
@@ -223,7 +236,7 @@ export default function Category() {
                     </div>
                     <div className="modal-actions d-flex ms-auto mt-auto">
                         <button className='btn btn-secondary me-2 px-3' onClick={() => setDeleteModal({ isvisible: false, id: null })}>Cancel</button>
-                        <button className='btn btn-danger px-3'>Ok</button>
+                        <button className='btn btn-danger px-3' onClick={()=>{deleteMsg(deleteModal.id);setDeleteModal({ isvisible: false, id: null })}}>Ok</button>
                     </div>
                 </div>
             </div>
@@ -237,10 +250,10 @@ export default function Category() {
                         <p className='mb-0 mt-2 fw-medium'>Message</p>
                         <textarea className='w-100 py-1 px-3 border rounded ' placeholder={responseModal?.data?.msg} disabled></textarea>
                         <p className='mb-0 mt-0 fw-medium'>Your Response</p>
-                        <textarea className='w-100 py-1 px-3 border rounded ' placeholder='Write the product description here!'></textarea>
+                        <textarea value={sendEmailMsg} onChange={(e)=>setSendEmailMsg(e.target.value)} className='w-100 py-1 px-3 border rounded ' placeholder='Write the product description here!'></textarea>
                     </div>
                     <div className='mt-3 text-center'>
-                        <button className='btn btn-dark px-4'>Send</button>
+                        <button className='btn btn-dark px-4' onClick={()=>{sendEmail(responseModal?.data?.email);setResponseModal({ isvisible: false, id: null, data: null })}}>Send</button>
                     </div>
                 </div>
             </div>

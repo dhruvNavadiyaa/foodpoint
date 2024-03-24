@@ -1,5 +1,5 @@
 import ContactUs from "../models/ContactUsModel.js";
-// import sendEmail from "../utils/emailSend.js"
+import sendEmail from "../utils/emailSend.js"
 const createContactUs = async(req, res) => {
     const create  = await ContactUs.create({
         name: req?.body?.name,
@@ -28,6 +28,12 @@ const deleteMsg = async(req, res) => {
         "success":true,
     })
 }
+const emailSendMsg = async(req, res) => {
+    await sendEmail("Regarding your issue in food point",req?.body?.email,req?.body?.msg)
+    res.send({
+        success:true,
+    })
+}
 
 
-export {createContactUs,deleteMsg,alldata}
+export {createContactUs,deleteMsg,alldata,emailSendMsg}
