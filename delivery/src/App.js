@@ -11,9 +11,11 @@ import ContactUs from './components/ContactUs';
 import Profile from './components/Profile';
 import OrderHistory from './components/OrderHistory';
 import Orderdetails from './components/Orderdetails';
+import Sorry from './components/Sorry'
 
 function App() {
 
+  const isApproved = useSelector(state => state?.deliver?.deliverInfo?.deliveryBoyInfo?.isApproved)
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const login = useSelector(state => state.deliver.login)
@@ -46,15 +48,26 @@ function App() {
             <Route path='/SignUp' element={<SignUp />} />
           </>
           :
-          // isApproved === "Pending"
-          <>
-            {/* <Route path='/' element={<Login />} /> */}
-            <Route path='/Home' element={<Home />} />
-            <Route path='/OrderList' element={<OrderList />} />
-            <Route path='/ContactUs' element={<ContactUs />} />
-            <Route path='/Profile' element={<Profile />} />
-            <Route path='/OrderHistory' element={<OrderHistory />} />
-            <Route path='/Orderdetails/:id' element={<Orderdetails />} />
+          <>{
+            isApproved === "pending" ?
+              <>
+                <Route path='/' element={<Login />} />
+                <Route path='/SignUp' element={<SignUp />} />
+                <Route path='/Home' element={<Home />} />
+                <Route path='/Profile' element={<Profile />} />
+                <Route path='/ContactUs' element={<ContactUs />} />
+                <Route path='/Information' element={<Sorry />} />
+              </> : <>
+                <Route path='/' element={<Login />} />
+                <Route path='/SignUp' element={<SignUp />} />
+                <Route path='/Home' element={<Home />} />
+                <Route path='/OrderList' element={<OrderList />} />
+                <Route path='/ContactUs' element={<ContactUs />} />
+                <Route path='/Profile' element={<Profile />} />
+                <Route path='/OrderHistory' element={<OrderHistory />} />
+                <Route path='/Orderdetails/:id' element={<Orderdetails />} />
+              </>
+          }
           </>
         }
       </Routes>

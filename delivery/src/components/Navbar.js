@@ -1,12 +1,15 @@
 import { Link, useLocation } from 'react-router-dom'
 import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import '../css/Util.css'
 import '../css/Navbar.css'
 
 export default function Navbar() {
 
+  const isApproved = useSelector(state => state.deliver.deliverInfo.deliveryBoyInfo.isApproved)
   const location = useLocation()
   const path = location.pathname
+
   const changeBgColor = () => {
     // console.log(path)
     if (path === '/Home') {
@@ -29,10 +32,15 @@ export default function Navbar() {
       let cComponent = document.querySelector("#Profile")
       cComponent.classList.add('bg-navitem')
     }
+    else if (path === '/Information') {
+      let cComponent = document.querySelector("#Information")
+      cComponent.classList.add('bg-navitem')
+    }
   }
-  
+
   useEffect(() => {
     changeBgColor()
+    // console.log(isApproved) 
   }, [path])
 
   return (
@@ -65,13 +73,17 @@ export default function Navbar() {
             <Link to='/Home' className='text-dark text-decoration-none'>
               <li className='p-2 rounded rounded-3 mx-3' id='Home' onClick={() => changeBgColor("Home")}>Home</li>
             </Link>
-            {/* <li className='p-2 rounded rounded-3'>Search</li> */}
-            <Link to='/OrderList' className='text-dark text-decoration-none'>
-              <li className='p-2 rounded rounded-3 mx-3' id='OrderList' onClick={() => changeBgColor("OrderList")}>Order List</li>
-            </Link>
-            <Link to='/OrderHistory' className='text-dark text-decoration-none'>
-              <li className='p-2 rounded rounded-3 mx-3' id='OrderHistory' onClick={() => changeBgColor("OrderHistory")}>Order History</li>
-            </Link>
+            {(isApproved !== 'pending') && <>
+              <Link to='/OrderList' className='text-dark text-decoration-none'>
+                <li className='p-2 rounded rounded-3 mx-3' id='OrderList' onClick={() => changeBgColor("OrderList")}>Order List</li>
+              </Link>
+              <Link to='/OrderHistory' className='text-dark text-decoration-none'>
+                <li className='p-2 rounded rounded-3 mx-3' id='OrderHistory' onClick={() => changeBgColor("OrderHistory")}>Order History</li>
+              </Link>
+            </>}
+            {isApproved==='pending' && <Link to='/Information' className='text-dark text-decoration-none'>
+              <li className='p-2 rounded rounded-3' id='Information' onClick={changeBgColor}>Information</li>
+            </Link>}
             <Link to='/ContactUs' className='text-dark text-decoration-none'>
               <li className='p-2 rounded rounded-3 mx-3' id='ContactUs' onClick={changeBgColor}>Contact Us</li>
             </Link>

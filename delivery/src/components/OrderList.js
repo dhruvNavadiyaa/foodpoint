@@ -14,7 +14,7 @@ export default function OrderList() {
     const processOrder = async() => {
         const response = await axios.get('http://localhost:5000/api/order/orderpending');
         setProcessOrderInfo(response.data.orderInfo)
-        console.log(response.data)
+        // console.log(response.data)
     }
 
     const acceptOrder = async(id) => {
