@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Footer from './Footer';
 import '../css/Home.css'; // Make sure to create and import the CSS file
 import Navbar from './Navbar';
-import { Navigate, useNavigate ,Link} from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 const Home = () => {
@@ -20,6 +20,7 @@ const Home = () => {
       console.log('Error fetching data:', error);
     }
   }
+  
   const getTopProduct = async () => {
     try {
       const response = await axios.get('http://localhost:5000/api/product/top');
