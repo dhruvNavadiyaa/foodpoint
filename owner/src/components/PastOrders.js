@@ -18,9 +18,8 @@ export default function PastOrders() {
 
     const getOrderDetail = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/api/order/orderRestaurant', { Restaurant_id });
-            console.log(response.data.orderInfo[0].orders)
-            setOrders(response.data.orderInfo[0].orders)
+            const response = await axios.post('http://localhost:5000/api/order/historyRestaurants', { Restaurant_id });
+            setOrders(response.data.orderInfo)
         } catch (error) {
             console.log('Error fetching data:', error);
         }
@@ -30,7 +29,10 @@ export default function PastOrders() {
         getOrderDetail()
         // console.log(restroId)
     }, [])
-
+    useEffect(() => {
+        
+        console.log(orders)
+    }, [orders])
     return (
         <>
 
@@ -54,23 +56,16 @@ export default function PastOrders() {
                         <tbody>
 
                             {
-                                orders.map((item, index) => {
-                                    if ((item.status === "done") || (item.status === "cancel")) {
-
-                                        return (
-                                            <tr className='' key={index}>
-                                                <td>{item._id}</td>
-                                                <td>{item.productDetail.name}</td>
-                                                <td>{item?.products?.quantity}</td>
-                                                <td>{item.total}</td>
-                                                <td>
-                                                    <div className="d-flex">
-                                                        {item.status}
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        )
-                                    }
+                                orders.map((item) =>{
+                                    return(
+                                        <>
+                                        <td>{item._id}</td>
+                                        <td>{item?.products.product}</td>
+                                        <td>{item?.products.quantity}</td>
+                                        <td>{item?.total}</td>
+                                        <td>{item?.status}</td>
+                                        </>
+                                    )
                                 })
                             }
                         </tbody>

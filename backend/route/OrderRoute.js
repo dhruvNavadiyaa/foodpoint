@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import {CreateOrder,orderOnTheWayForDelivery,orderHistoryForDelivery,orderPendingForDelivery,updateDeliveryBoy,updateOrderStatus ,OrderWithId,orderInfoWithRestaurant,paymentWay,orderInfo,paymentVerify, allOrder} from '../controller/OrderCtrl.js'
+import {CreateOrder,orderHistoryForRestaurant,orderOnTheWayForDelivery,findeOrderRestaurants,orderHistoryForDelivery,orderPendingForDelivery,updateDeliveryBoy,updateOrderStatus ,OrderWithId,orderInfoWithRestaurant,paymentWay,orderInfo,paymentVerify, allOrder} from '../controller/OrderCtrl.js'
 const router = Router();
 router.route('/create').post(CreateOrder)
 router.route('/checkout').post(paymentWay)
@@ -13,5 +13,7 @@ router.route('/acceptOrder').post(updateDeliveryBoy)
 router.route('/orderpending').get(orderPendingForDelivery)
 router.route('/deliveryboyHistory').post(orderHistoryForDelivery)
 router.route('/acceptedForOrder').post(orderOnTheWayForDelivery)
+router.route('/orderprocess').post(findeOrderRestaurants)
+router.route('/historyRestaurants').post(orderHistoryForRestaurant)
 
 export default router

@@ -152,6 +152,36 @@ const updateOrderStatus = async (req, res) => {
   });
 };
 
+const findeOrderRestaurants = async (req, res) => {
+  console.log(req.body)
+  const find = await Order.aggregate([
+    {
+      $match: {
+        restaurant: new mongoose.Types.ObjectId(req?.body?.Restaurant_id),
+        status: { $in: ["process", "on the way"] }
+      }
+    },
+    {
+      $lookup: {
+        from: "products",
+        localField: "products.product",
+        foreignField: "_id",
+        as: "productDetail",
+      },
+    },
+    {
+      $addFields: {
+        productDetail: {
+          $first: "$productDetail",
+        }, 
+      },
+    },
+  ])
+  res.send({
+    success: true,
+    orderInfo: find,
+  })
+}
 const paymentWay = async (req, res) => {
   var options = {
     amount: Number(req.body.money) * 100, // amount in the smallest currency unit
@@ -277,6 +307,21 @@ const orderHistoryForDelivery = async(req, res) => {
   })
 }
 
+const orderHistoryForRestaurant  = async(req, res) => {
+  const find = await Order.aggregate( [
+    {
+      $match: {
+        restaurant: new mongoose.Types.ObjectId(req?.body?.Restaurant_id),
+        status: { $in: ["done", "cancel"] }
+      }
+    },
+  ]);
+  res.send({ 
+    success : true,
+    orderInfo : find,
+  })
+}
+
 const orderOnTheWayForDelivery = async(req, res) => {
   const find = await Order.find( {
     deliveryBoy:req?.body?.DeliveryBoy_id,
@@ -286,4 +331,4 @@ const orderOnTheWayForDelivery = async(req, res) => {
     orderInfo : find,
   })
 }
-export {orderOnTheWayForDelivery,orderHistoryForDelivery,orderPendingForDelivery,orderInfoWithRestaurant,updateDeliveryBoy, updateOrderStatus,CreateOrder,OrderWithId, orderInfo, allOrder, paymentWay, paymentVerify };
+export {orderHistoryForRestaurant,findeOrderRestaurants,orderOnTheWayForDelivery,orderHistoryForDelivery,orderPendingForDelivery,orderInfoWithRestaurant,updateDeliveryBoy, updateOrderStatus,CreateOrder,OrderWithId, orderInfo, allOrder, paymentWay, paymentVerify };

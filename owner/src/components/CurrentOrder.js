@@ -9,6 +9,7 @@ export default function CurrentOrder() {
 
     const Restaurant_id = useSelector(state => state.restaurant.RestaurantInfo._id)
     const [orders,setOrders] = useState([])
+    const [ordersAccepted,setOrdersAccepted] = useState([])
 
     const [modalState, setModalState] = useState({
         isVisible: false,
@@ -19,16 +20,23 @@ export default function CurrentOrder() {
     const getOrderDetail = async () => {
         try {
             const response = await axios.post('http://localhost:5000/api/order/orderRestaurant', { Restaurant_id });
-            console.log(response.data.orderInfo[0].orders)
+            const user = await axios.post('http://localhost:5000/api/order//orderprocess', { Restaurant_id :Restaurant_id});
+            console.log(user.data.orderInfo);
+            setOrdersAccepted(user.data.orderInfo)
+            // console.log(response.data.orderInfo[0].orders)
             setOrders(response.data.orderInfo[0].orders)
         } catch (error) {
             console.log('Error fetching data:', error);
         }
     }
 
+        const updateStatus = async (id) => {
+            const response = await axios.post('http://localhost:5000/api/order/updateOrderStatus', { Order_id:id,status:"process" });
+            console.log(response.data)
+            getOrderDetail()
+        }
     useEffect(() => {
         getOrderDetail()
-        // console.log(restroId)
     }, [])
 
     return (
@@ -96,18 +104,18 @@ export default function CurrentOrder() {
                                 <tbody>
 
                                     {
-                                        orders.map((item, index) => {
-                                            if((item.status === "procces") ||(item.status === "on the way") ){
+                                        ordersAccepted.map((item, index) => {
+                                            console.log()
                                             return (
                                                 <tr className='' key={index}>
-                                                    <td>{item._id}</td>
-                                                    <td>{item.productDetail.name}</td>
+                                                    <td>{item?._id}</td>
+                                                    <td>{item?.productDetail?.name}</td>
                                                     <td>{item?.products?.quantity}</td>
                                                     <td>{item.total}</td>
                                                     <td>{item.status}</td>
                                                 </tr>
                                             )
-                                        }})
+                                        })
                                     }
                                 </tbody>
 
@@ -129,7 +137,7 @@ export default function CurrentOrder() {
                             <button className='btn btn-danger px-3'
                                 onClick={() => {
                                     if (modalState.type == 'accept') {
-                                        // acceptOrder(modalState.data);
+                                        updateStatus(modalState.data);
                                     } else if (modalState.type == 'cancel') {
                                         // cancelOrder(modalState.data);
                                     };
