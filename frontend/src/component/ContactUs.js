@@ -84,7 +84,7 @@ export default function ContactUs() {
                                     <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Your Email' className='fs-6 mt-4 w-100 py-2 px-3' />
                                     <input type="Number" value={num} onChange={(e) => setNum(e.target.value)} placeholder='Your Phone' className='fs-6 mt-4 w-100 py-2 px-3' />
                                     <textarea value={message} onChange={(e) => setMessage(e.target.value)} id="" rows="5" placeholder='Your Massage' className='fs-6 mt-4 w-100 py-2 px-3'></textarea>
-                                    <button onClick={sendContactUs} className='btn btn-primary mt-4 w-100 py-2 rounded rounded-3'>Send Message</button>
+                                    <button onClick={sendContactUs} className='btn btn-primary mt-4 w-100 py-2 rounded rounded-3' disabled={name===''||email===''||num===''||message===''}>Send Message</button>
                                 </div>
                             </div>
                         </div>
