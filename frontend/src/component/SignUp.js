@@ -11,7 +11,7 @@ const Login = () => {
     const [number, setNumber] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    const [emailExist , setEmailExist] = useState('');
     const data = {
         name: name,
         email: email,
@@ -21,8 +21,16 @@ const Login = () => {
 
     const sendData = async () => {
         try {
+            setEmailExist('')
             const response = await axios.post('http://localhost:5000/api/user/signup',data);
-            // console.log(response.data)
+            console.log(response.data)
+            if(response.data.success){
+                navigate('/')    
+            }
+            else{
+                setEmailExist("email is already in exist")
+            }
+
         } catch (error) {
             console.log('Error fetching data:');
         }
@@ -32,7 +40,6 @@ const Login = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         sendData()
-        navigate('/')    
     };
 
     return (
@@ -70,6 +77,7 @@ const Login = () => {
                             required
                         />
                     </div>
+                    <p className='text-danger'>{emailExist}</p>
                     <div className="input-group">
                         <label htmlFor="password">Password</label>
                         <input

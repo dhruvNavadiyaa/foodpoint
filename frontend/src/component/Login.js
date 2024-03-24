@@ -11,8 +11,7 @@ const Login = () => {
     const dispatch = useDispatch()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [details, setDetails] = useState({});
-
+    const [showError, setShowError] = useState("")
     const data = {
         email: email,
         password: password,
@@ -27,6 +26,10 @@ const Login = () => {
                 dispatch(setUserDetails(response.data))
                 navigate('/Home')
             }
+            else{
+                setShowError("Email or Password is incorrect.")
+            }
+
         } catch (error) {
             console.error('Error login !', error);
         }
@@ -63,6 +66,7 @@ const Login = () => {
                             required
                         />
                     </div>
+                    <p className='text-danger'>{showError}</p>
                     <button type="submit">Log In</button>
                     <small className=''>Don't have account? <Link to={'/SignUp'}>Create One</Link></small>
                 </form>

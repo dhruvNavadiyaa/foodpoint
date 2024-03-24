@@ -16,6 +16,8 @@ const CreateUser = async(req,res)=>{
     })
     if (exists){
         return res.send({
+          login : false,
+          success: false,
             "email":"change email"
         })
     }
@@ -27,6 +29,7 @@ const CreateUser = async(req,res)=>{
         number  : req?.body?.number,
     })
     res.send({
+      success : true,
         userinformation : create
     })
 }
@@ -36,13 +39,15 @@ const LoginUser = async(req,res)=>{
     })
     if(!loginUser) {
         return res.send({
-            login: false,
+      success : false,
+      login: false,
         })
     }
     const password = await loginUser.isPasswordCorrect(req?.body?.password)
     if (!password) {
         return res.send({
-          login: false
+      success : false,
+      login: false,
         });
       }
       const { accessToken , refreshToken} = await generateAccesssAndRefreshToken(loginUser._id)
@@ -57,6 +62,7 @@ const LoginUser = async(req,res)=>{
        .json({
          login : true,
          userInfo ,
+         success: true,
          accessToken,
          refreshToken
        });
