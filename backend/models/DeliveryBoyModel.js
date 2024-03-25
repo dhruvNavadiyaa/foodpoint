@@ -42,6 +42,7 @@ const DeliveryBoySchema = new Schema({
     ],
     refreshToken:{
         type: String,
+        default:""
     }
 },{
     timestamps : true,
