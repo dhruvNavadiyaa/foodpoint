@@ -14,11 +14,11 @@ export default function OrderList() {
         const response = await axios.post('http://localhost:5000/api/order/orderinfo', { user_id })
         const arr = response.data.orderInfo
         arr.map(item => {
-            if (item._id === "group2") {
-                setOrderPending(item.orders)
+            if (item?._id === "group2") {
+                setOrderPending(item?.orders)
             }
-            else if (item._id === "group1") {
-                setOrderDone(item.orders)
+            else if (item?._id === "group1") {
+                setOrderDone(item?.orders)
             }
         })
 
@@ -61,10 +61,10 @@ export default function OrderList() {
                                                             <p className='fw-bold mb-0'>{item?.productDetail?.name}</p>
                                                             <small className='fw-medium text-secondary'>&#8226; {item?.productDetail?.description}</small><br />
                                                             <small className='fw-medium text-secondary'>&#8226; Total Quantity : {item?.products?.quantity}</small><br />
-                                                            <small className='fw-medium'>Total payment amount : &#x20B9;{item.total} </small><br />
+                                                            <small className='fw-medium'>Total payment amount : &#x20B9;{item?.total} </small><br />
                                                             <div className='mt-3'>
                                                                 {/* <p className='fw-bold text-secondary'>Track Your Order</p> */}
-                                                                <p className='fw-bold text-secondary'>Order Status : <span className='text-dark'>{item.status}</span></p>
+                                                                <p className='fw-bold text-secondary'>Order Status : <span className='text-dark'>{item?.status}</span></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -104,25 +104,25 @@ export default function OrderList() {
                                                         <div className='row m-0'>
                                                             <div className="col d-flex align-items-center">
                                                                 <div>
-                                                                    <p className='mb-0 fw-bold text-secondary'>By {item.restaurantDetail.name}'s</p>
-                                                                    <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {item.restaurantDetail.rating}/5 &#8226; 20-25 min</small>
+                                                                    <p className='mb-0 fw-bold text-secondary'>By {item?.restaurantDetail?.name}'s</p>
+                                                                    <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {item?.restaurantDetail?.rating}/5 &#8226; 20-25 min</small>
                                                                 </div>
                                                                 <i className="bi bi-heart-fill fs-4 me-3 ms-auto text-secondary"></i>
                                                             </div>
                                                             <hr className='my-2' />
                                                             <small className='text-warning'><i className="bi bi-star-fill text-warning"> </i>BESTSELLER</small>
-                                                            <p className='fw-bold mb-0'>{item.productDetail.name}</p>
-                                                            <small className='fw-medium text-secondary'>&#8226; {item.productDetail.description}</small><br />
-                                                            <small className='fw-medium text-secondary'>&#8226; Total Quantity : {item.products.quantity}</small><br />
-                                                            <small className='fw-medium'>Total payment amount : &#x20B9;{item.total} </small><br />
+                                                            <p className='fw-bold mb-0'>{item?.productDetail?.name}</p>
+                                                            <small className='fw-medium text-secondary'>&#8226; {item?.productDetail.description}</small><br />
+                                                            <small className='fw-medium text-secondary'>&#8226; Total Quantity : {item?.products.quantity}</small><br />
+                                                            <small className='fw-medium'>Total payment amount : &#x20B9;{item?.total} </small><br />
                                                             <div className='mt-3'>
                                                                 {/* <p className='fw-bold text-secondary'>Track Your Order</p> */}
-                                                                <p className='fw-bold text-secondary'>Order Status : <span className='text-dark'>{item.status}</span></p>
+                                                                <p className='fw-bold text-secondary'>Order Status : <span className='text-dark'>{item?.status}</span></p>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div className="col-4 ">
-                                                        <img src={item.productDetail.img || "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnVyZ2VyfGVufDB8fDB8fHww"}
+                                                        <img src={item?.productDetail.img || "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnVyZ2VyfGVufDB8fDB8fHww"}
                                                             className='img-fluid rounded rounded box-shadow' alt="" />
                                                         {/* <button className='btn btn-outline-danger btn-sm'>Cancel</button> */}
                                                     </div>

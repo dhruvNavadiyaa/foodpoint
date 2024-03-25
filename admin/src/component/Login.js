@@ -13,12 +13,13 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [details, setDetails] = useState("");
 
-    const data = {
-        email: email,
-        password: password,
-    }
+   
 
     const getdata = async () => {
+        const data = {
+            email: email,
+            password: password,
+        }
         try {
             setDetails('')
             const response = await axios.post('http://localhost:5000/api/admin/signin', data,{withCredentials:true});

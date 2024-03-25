@@ -92,8 +92,8 @@ export default function Search() {
                                                     <div className='row m-0'>
                                                         <div className="col d-flex align-items-center">
                                                             <div>
-                                                                <p className='mb-0 fw-bold text-secondary'>By {item.restaurantDetails.name}</p>
-                                                                <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {item.rating}/5 &#8226; 20-25 min</small>
+                                                                <p className='mb-0 fw-bold text-secondary'>By {item?.restaurantDetails?.name}</p>
+                                                                <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {item?.rating}/5 &#8226; 20-25 min</small>
                                                             </div>
                                                             <i className="bi bi-heart-fill fs-4 me-3 ms-auto text-secondary"></i>
                                                         </div>
@@ -102,14 +102,14 @@ export default function Search() {
                                                     <div className="row m-0">
                                                         <div className="col-8 ">
                                                             <small className='text-warning'><i className="bi bi-star-fill text-warning"> </i>BESTSELLER</small>
-                                                            <p className='fw-bold mb-0'>{item.name}</p>
-                                                            <small className='fw-medium'>&#x20B9; {item.price}</small><br />
-                                                            <small className='fw-medium text-secondary'>{item.description}.</small>
+                                                            <p className='fw-bold mb-0'>{item?.name}</p>
+                                                            <small className='fw-medium'>&#x20B9; {item?.price}</small><br />
+                                                            <small className='fw-medium text-secondary'>{item?.description}.</small>
                                                         </div>
                                                         <div className="col-4 ">
                                                             <img src={item?.img || "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnVyZ2VyfGVufDB8fDB8fHww"}
                                                                 className='img-fluid rounded rounded box-shadow' alt="" />
-                                                            <button onClick={()=>navigate(`/PlaceOrder/${item._id}`)} className='btn btn-outline-success btn-sm'>BUY NOW</button>
+                                                            <button onClick={()=>navigate(`/PlaceOrder/${item?._id}`)} className='btn btn-outline-success btn-sm'>BUY NOW</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -137,8 +137,8 @@ export default function Search() {
                                             <div className='row m-0'>
                                                 <div className="col d-flex align-items-center">
                                                     <div>
-                                                        <p className='mb-0 fw-bold text-secondary'>By {item.restaurantDetails.name}</p>
-                                                        <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {item.rating}/5 &#8226; 20-25 min</small>
+                                                        <p className='mb-0 fw-bold text-secondary'>By {item?.restaurantDetails?.name}</p>
+                                                        <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {item?.rating}/5 &#8226; 20-25 min</small>
                                                     </div>
                                                     <i className="bi bi-heart-fill fs-4 me-3 ms-auto text-secondary"></i>
                                                 </div>
@@ -147,14 +147,14 @@ export default function Search() {
                                             <div className="row m-0">
                                                 <div className="col-8 ">
                                                     <small className='text-warning'><i className="bi bi-star-fill text-warning"> </i>BESTSELLER</small>
-                                                    <p className='fw-bold mb-0'>{item.name}</p>
-                                                    <small className='fw-medium'>&#x20B9; {item.price}</small><br />
-                                                    <small className='fw-medium text-secondary'>{item.description}.</small>
+                                                    <p className='fw-bold mb-0'>{item?.name}</p>
+                                                    <small className='fw-medium'>&#x20B9; {item?.price}</small><br />
+                                                    <small className='fw-medium text-secondary'>{item?.description}.</small>
                                                 </div>
                                                 <div className="col-4 ">
                                                     <img src={item?.img || "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnVyZ2VyfGVufDB8fDB8fHww"}
                                                         className='img-fluid rounded rounded box-shadow' alt="" />
-                                                    <button onClick={()=>navigate(`/PlaceOrder/${item._id}`)} className='btn btn-outline-success btn-sm'>BUY NOW</button>
+                                                    <button onClick={()=>navigate(`/PlaceOrder/${item?._id}`)} className='btn btn-outline-success btn-sm'>BUY NOW</button>
                                                 </div>
                                             </div>
                                         </div>

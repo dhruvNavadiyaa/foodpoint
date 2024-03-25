@@ -40,7 +40,6 @@ export default function YourProducts() {
     try {
       const response = await axios.post('http://localhost:5000/api/product/catagory', categoryId);
       setProduct(response.data.AllProduct)
-      console.log(response.data.AllProduct)
 
     } catch (error) {
       console.log('Error fetching data:', error);
@@ -64,14 +63,14 @@ export default function YourProducts() {
       isActive : productStatus
     }
     try {
-      const response = await axios.post('http://localhost:5000/api/product/update', data);
-    }
+       await axios.post('http://localhost:5000/api/product/update', data);
+    } 
     catch (e) {
       console.log(e)
     }
   }
   const deleteProductById = async () => {
-    const response = await axios.post('http://localhost:5000/api/product/delete', { product_id: deleteProduct });
+    await axios.post('http://localhost:5000/api/product/delete', { product_id: deleteProduct });
 
   }
   return (
