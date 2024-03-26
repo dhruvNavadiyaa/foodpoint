@@ -23,23 +23,6 @@ const DeliveryBoySchema = new Schema({
         type: String,
         default:'pending'
     },
-    review:
-        [
-            {
-                type: mongoose.Types.ObjectId,
-                ref:'Review'
-            }    
-        ]
-    ,
-    isAvilable: {
-        type: Boolean,
-        default:true
-    },
-    order: [{
-        type: mongoose.Types.ObjectId,
-        ref:'Order'
-    }
-    ],
     refreshToken:{
         type: String,
         default:""

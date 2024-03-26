@@ -19,12 +19,6 @@ const userSchema = mongoose.Schema({
     ,number: {
         type: String,
     },
-    order: [
-        {
-            type: mongoose.Types.ObjectId,
-            ref: 'Order'
-        }
-    ],
     refreshToken :{
         type: String,
         default :""
