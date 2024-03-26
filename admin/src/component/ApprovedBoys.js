@@ -61,7 +61,7 @@ export default function ApprovedBoys() {
                     )
                 })
             }
-            <h1>approved</h1>
+            {/* <h1>approved</h1> */}
             {/* DELETE MODAL */}
             <div className="modal-overlay" hidden={!deleteModal.isvisible}>
                 <div className="modal-content bg-light p-4 box-shadow">

@@ -71,7 +71,7 @@ export default function PendingBoys() {
                     )
                 })
             }
-            <h1>pending</h1>
+            {/* <h1>pending</h1> */}
             {/* APPROVE MODAL */}
             <div className="modal-overlay" hidden={!approveModal.isvisible}>
                 <div className="modal-content bg-light p-4 box-shadow">
