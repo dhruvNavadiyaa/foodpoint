@@ -70,7 +70,7 @@ export default function Home() {
               </div>
             </div>
             {/* RESTAURANT PHOTO CROUSEL */}
-            <div className='col-sm-6 border p-0' >
+            <div className='col-sm-6  p-0' >
               <div className='carouselStyle'>
                 <button onClick={prevImage} className='arrowStyleL btn btn-outline-light'>&lt;</button>
                 <img
