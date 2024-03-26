@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Navbar from './Navbar'
 import '../css/Util.css'
-import Footer from './Footer';
 import axios from 'axios'
 import { useSelector } from 'react-redux';
 
@@ -44,7 +42,7 @@ export default function PastOrders() {
                         <thead>
                             <tr className='fs-6'>
                                 <th scope="col">Order Id</th>
-                                <th scope="col">Product Name</th>
+                                <th scope="col">Product Id</th>
                                 <th scope="col">Quantity</th>
                                 <th scope="col">Total Price</th>
                                 <th scope="col">Status</th>
@@ -84,9 +82,9 @@ export default function PastOrders() {
                             <button className='btn btn-secondary me-2 px-3' onClick={() => setModalState({ isVisible: false, type: null, data: null })}>Cancel</button>
                             <button className='btn btn-danger px-3'
                                 onClick={() => {
-                                    if (modalState.type == 'accept') {
+                                    if (modalState.type === 'accept') {
                                         // acceptOrder(modalState.data);
-                                    } else if (modalState.type == 'cancel') {
+                                    } else if (modalState.type === 'cancel') {
                                         // cancelOrder(modalState.data);
                                     };
                                     setModalState({ isVisible: false, type: null, data: null })
