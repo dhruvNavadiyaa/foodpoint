@@ -20,7 +20,7 @@ export default function Profile() {
 
             <div className=' px-4'>
               <p className='py-2 ps-3 fw-medium border border-2 border-dark rounded rounded-5' onClick={()=>setChageDetail(true)}>Profile</p>
-              <p className='py-2 ps-3 fw-medium border border-2 border-dark rounded rounded-5' onClick={()=>setChageDetail(false)}>Restaurant</p><hr className='border border-2 border-dark' />
+              <p className='py-2 ps-3 fw-medium border border-2 border-dark rounded rounded-5' onClick={()=>setChageDetail(false)}>Deivery Boy</p><hr className='border border-2 border-dark' />
 
               {/* <p className='py-2 ps-3 fw-medium border rounded rounded-5' style={{ backgroundColor: 'rgb(226, 232, 240)' }}>Update Profile</p>
               <p className='py-2 ps-3 fw-medium border rounded rounded-5' style={{ backgroundColor: 'rgb(226, 232, 240)' }}>Change Password</p> */}
