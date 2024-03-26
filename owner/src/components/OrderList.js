@@ -14,7 +14,7 @@ export default function OrderList() {
     return (
         <>
             <Navbar />
-            <div className='row m-0 p-3 ' style={{width:'fit-content'}}>
+            <div className='row m-0 p-3 ' >
 
                 <div className="row m-0 p-0" >
                     <div className="col p-0" style={{ marginTop: '80px' }}>

@@ -124,7 +124,7 @@ export default function OrderList() {
                                                     <div className="col-4 ">
                                                         <img src={item?.productDetail.img || "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnVyZ2VyfGVufDB8fDB8fHww"}
                                                             className='img-fluid rounded rounded box-shadow' alt="" />
-                                                        {/* <button className='btn btn-outline-danger btn-sm'>Cancel</button> */}
+                                                        {/* <button className='btn btn-outline-primary btn-sm'>Give Riview</button> */}
                                                     </div>
                                                 </div>
                                             </div>

@@ -36,9 +36,7 @@ export default function PastOrders() {
     return (
         <>
 
-           
-
-                <div className="col-12 mt-5 p-3 border box-shadow " style={{ marginBottom: '50vh' }}>
+                <div className="col-12 mt-5 p-3 border box-shadow w-100" style={{ marginBottom: '50vh' }}>
 
                     <p className='fs-4 fw-bold text-secondary'>&#x2022; Order History</p>
 
@@ -73,10 +71,6 @@ export default function PastOrders() {
                     </table>
 
                 </div>
-
-
-
-
 
                 {/* MODAL */}
                 <div className="modal-overlay" hidden={!modalState.isVisible}>
