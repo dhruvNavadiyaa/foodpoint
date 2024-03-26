@@ -50,23 +50,9 @@ const OrderSchema = new Schema({
     total: {
         type:Number,
     },
-    RestaurantReview: {
-        type: mongoose.Types.ObjectId,
-        ref:"Review"
-    },
-    deliveryBoyReview: {
-        type: mongoose.Types.ObjectId,
-        ref:'Review'
-    },
       isreviewGiven:{
-        forRestaurant:{
-            type:Boolean,
-            default:false
-        },
-        forDeliveryBoy:{
-            type:Boolean,
-            default:false
-        }
+        type : Boolean,
+        default : false
     },
 },{
     timestamps : true,

@@ -78,6 +78,10 @@ const RestaurantSchema = mongoose.Schema({
         type: String,
         default:0
     },
+    totlaReview:{
+        type:Number,
+        default:0
+    },
     refreshToken :{
         type: String,
         default :""
