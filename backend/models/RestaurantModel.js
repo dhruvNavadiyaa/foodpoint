@@ -18,16 +18,10 @@ const RestaurantSchema = mongoose.Schema({
     number:{
         type:Number,
     },
-    isActive : {
-        type : Boolean
-    },
     img:[
         {type:String}
     ]
     ,
-    RestaurantType:{
-        type:String,
-    },
     timing:{
        openAt:{
             type:String
@@ -66,10 +60,6 @@ const RestaurantSchema = mongoose.Schema({
             type:String
         }
     },
-    order: [{
-        type: mongoose.Types.ObjectId,
-        ref: 'Order'
-    }],
     isApproved: {
         type: String,
         default:'Pending'
