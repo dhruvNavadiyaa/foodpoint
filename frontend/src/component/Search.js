@@ -95,7 +95,7 @@ export default function Search() {
                                                                 <p className='mb-0 fw-bold text-secondary'>By {item?.restaurantDetails?.name}</p>
                                                                 <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {item?.rating}/5 &#8226; 20-25 min</small>
                                                             </div>
-                                                            <i className="bi bi-heart-fill fs-4 me-3 ms-auto text-secondary"></i>
+                                                            {/* <i className="bi bi-heart-fill fs-4 me-3 ms-auto text-secondary"></i> */}
                                                         </div>
                                                     </div>
                                                     <hr className='mb-3' />
@@ -140,7 +140,7 @@ export default function Search() {
                                                         <p className='mb-0 fw-bold text-secondary'>By {item?.restaurantDetails?.name}</p>
                                                         <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {item?.rating}/5 &#8226; 20-25 min</small>
                                                     </div>
-                                                    <i className="bi bi-heart-fill fs-4 me-3 ms-auto text-secondary"></i>
+                                                    {/* <i className="bi bi-heart-fill fs-4 me-3 ms-auto text-secondary"></i> */}
                                                 </div>
                                             </div>
                                             <hr className='mb-3' />
@@ -153,7 +153,8 @@ export default function Search() {
                                                 </div>
                                                 <div className="col-4 ">
                                                     <img src={item?.img || "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnVyZ2VyfGVufDB8fDB8fHww"}
-                                                        className='img-fluid rounded rounded box-shadow' alt="" />
+                                                        className='img-fluid rounded rounded box-shadow w-100' alt="" 
+                                                        style={{height:'100px',objectFit:"cover"}}/>
                                                     <button onClick={()=>navigate(`/PlaceOrder/${item?._id}`)} className='btn btn-outline-success btn-sm'>BUY NOW</button>
                                                 </div>
                                             </div>

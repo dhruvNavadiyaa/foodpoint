@@ -1,6 +1,7 @@
 .product-image {
   height: 110px;
   width: 110px;
+  object-fit: cover;
 }
 
 .scroll-bar {

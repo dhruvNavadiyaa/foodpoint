@@ -67,7 +67,7 @@ export default function OrderList() {
                                                                     <p className='mb-0 fw-bold text-secondary'>By {item?.restaurantDetail?.name}</p>
                                                                     <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {item?.restaurantDetail?.rating}/5 &#8226; 20-25 min</small>
                                                                 </div>
-                                                                <i className="bi bi-heart-fill fs-4 me-3 ms-auto text-secondary"></i>
+                                                                {/* <i className="bi bi-heart-fill fs-4 me-3 ms-auto text-secondary"></i> */}
                                                             </div>
                                                             <hr className='my-2' />
                                                             <small className='text-warning'><i className="bi bi-star-fill text-warning"> </i>BESTSELLER</small>
@@ -120,7 +120,7 @@ export default function OrderList() {
                                                                     <p className='mb-0 fw-bold text-secondary'>By {item?.restaurantDetail?.name}'s</p>
                                                                     <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {item?.restaurantDetail?.rating}/5 &#8226; 20-25 min</small>
                                                                 </div>
-                                                                <i className="bi bi-heart-fill fs-4 me-3 ms-auto text-secondary"></i>
+                                                                {/* <i className="bi bi-heart-fill fs-4 me-3 ms-auto text-secondary"></i> */}
                                                             </div>
                                                             <hr className='my-2' />
                                                             <small className='text-warning'><i className="bi bi-star-fill text-warning"> </i>BESTSELLER</small>
