@@ -12,8 +12,8 @@ export default function OrderList() {
     const [orderDone, setOrderDone] = useState([])
     const [modalState, setModalState] = useState({
         isVisible: false,
-        type: null, // Could be 'approve' or 'reject'
-        id: null, // Data you want to pass to the modal
+        type: null,
+        id: null,
     });
     const [rating, setRating] = useState(0);
 

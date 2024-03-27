@@ -37,6 +37,7 @@ export default function Navbar() {
 
   useEffect(() => {
     changeBgColor()
+    // console.log(path)
   }, [path])
 
   return (
@@ -74,10 +75,10 @@ export default function Navbar() {
               </button>
               <ul className="dropdown-menu">
                 <Link to='/Home' className='text-dark text-decoration-none'>
-                  <li className='p-2 rounded rounded-3 mx-3' id='Home' onClick={() => changeBgColor("OrderList")}>Home</li>
+                  <li className='p-2 rounded rounded-3 mx-3' id='Home' onClick={() => changeBgColor()}>Home</li>
                 </Link>
                 <Link to='/Search' className='text-dark text-decoration-none'>
-                  <li className='p-2 rounded rounded-3 mx-3' id='Search' onClick={() => changeBgColor("Search")}>Search</li>
+                  <li className='p-2 rounded rounded-3 mx-3' id='Search' onClick={() => changeBgColor()}>Search</li>
                 </Link>
                 {/* <Link to='/Favourite' className='text-dark text-decoration-none'>
               <li className='p-2 rounded rounded-3 mx-3' id='Favourite' onClick={changeBgColor}>Favourite</li>
@@ -86,17 +87,17 @@ export default function Navbar() {
                   <li className='p-2 rounded rounded-3 mx-3' id='OrderList' onClick={changeBgColor}>Order List</li>
                 </Link>
                 <Link to='/ContactUs' className='text-dark text-decoration-none'>
-                  <li className='p-2 rounded rounded-3 mx-3' id='ContactUs' onClick={() => changeBgColor("ContactUs")}>Help</li>
+                  <li className='p-2 rounded rounded-3 mx-3' id='ContactUs' onClick={() => changeBgColor()}>Help</li>
                 </Link>
               </ul>
             </div>
           </div>
           <div className='d-none d-sm-flex'>
             <Link to='/Home' className='text-dark text-decoration-none'>
-              <li className='p-2 rounded rounded-3 mx-3' id='Home' onClick={() => changeBgColor("OrderList")}>Home</li>
+              <li className='p-2 rounded rounded-3 mx-3' id='Home' onClick={() => changeBgColor()}>Home</li>
             </Link>
             <Link to='/Search' className='text-dark text-decoration-none'>
-              <li className='p-2 rounded rounded-3 mx-3' id='Search' onClick={() => changeBgColor("Search")}>Search</li>
+              <li className='p-2 rounded rounded-3 mx-3' id='Search' onClick={() => changeBgColor()}>Search</li>
             </Link>
             {/* <Link to='/Favourite' className='text-dark text-decoration-none'>
               <li className='p-2 rounded rounded-3 mx-3' id='Favourite' onClick={changeBgColor}>Favourite</li>
@@ -105,7 +106,7 @@ export default function Navbar() {
               <li className='p-2 rounded rounded-3 mx-3' id='OrderList' onClick={changeBgColor}>Order List</li>
             </Link>
             <Link to='/ContactUs' className='text-dark text-decoration-none'>
-              <li className='p-2 rounded rounded-3 mx-3' id='ContactUs' onClick={() => changeBgColor("ContactUs")}>Help</li>
+              <li className='p-2 rounded rounded-3 mx-3' id='ContactUs' onClick={() => changeBgColor()}>Help</li>
             </Link>
           </div>
         </div>

@@ -71,7 +71,7 @@ export default function Dashboard() {
                         </div>
                     </div >
 
-                    <div className="row row2 ">
+                    <div className="row row2 mb-5">
                         <div className="container-fluid mt-5 m-0 p-0 ">
 
                             <div className='container-fluid mt-4 px-3 py-3 m-auto cards'>
@@ -145,7 +145,7 @@ export default function Dashboard() {
                                 
                             </div>
 
-                            <div className='customers w-50 border ms-4 p-4 mt-4 mb-5 rounded box-shadow'>
+                            {/* <div className='customers w-50 border ms-4 p-4 mt-4 mb-5 rounded box-shadow'>
                                 <div className="row">
                                     <h4>Latest Customers</h4>
                                 </div>
@@ -198,7 +198,7 @@ export default function Dashboard() {
                                         <p>dhruv09@gmail.com</p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
