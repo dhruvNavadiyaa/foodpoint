@@ -137,7 +137,7 @@ export default function OrderList() {
                                                     <div className="col-4 text-center">
                                                         <img src={item?.productDetail.img || "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnVyZ2VyfGVufDB8fDB8fHww"}
                                                             className='img-fluid rounded rounded box-shadow w-100' alt="" style={{ height: '200px', objectFit: "cover" }} />
-                                                        <button className='btn btn-outline-primary btn-sm' onClick={() => { setModalState({ isVisible: true, id: item._id }) }}>Give Riview</button>
+                                                        {/* <button className='btn btn-outline-primary btn-sm' onClick={() => { setModalState({ isVisible: true, id: item._id }) }}>Give Riview</button> */}
                                                     </div>
                                                 </div>
                                             </div>
