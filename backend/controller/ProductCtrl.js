@@ -32,6 +32,7 @@ const CreateProduct = async(req,res)=>{
 // Featch all products within catagory
 const CatagoryProuct = async(req,res)=>{
     // console.log(req.query)
+    console.log(req?.body?.category_id)
     const AllFeatch = await Product.find({
         category : req?.body?.category_id
     })

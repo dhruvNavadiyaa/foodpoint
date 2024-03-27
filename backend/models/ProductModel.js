@@ -22,6 +22,10 @@ const ProductSchema = new mongoose.Schema({
         type: Number,
         default:0
     },
+     totlaReview:{
+        type:Number,
+        default:0
+    },
     description: {
         type:String
     },

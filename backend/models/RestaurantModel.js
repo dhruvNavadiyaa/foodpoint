@@ -65,7 +65,7 @@ const RestaurantSchema = mongoose.Schema({
         default:'Pending'
     },
     rating: {
-        type: String,
+        type: Number,
         default:0
     },
     totlaReview:{
