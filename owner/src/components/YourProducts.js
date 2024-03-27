@@ -26,7 +26,7 @@ export default function YourProducts() {
     try {
       const response = await axios.post('http://localhost:5000/api/category/fetchid', data);
       setCategory(response.data.AllProduct)
-      setCatagoryUpdateId({ _id: response?.data?.AllProduct[0]._id })
+      // setCatagoryUpdateId({ _id: response?.data?.AllProduct[0]._id })
     getCategory()
     // console.log(response.data.AllProduct.name)
     } catch (error) {
@@ -41,6 +41,7 @@ export default function YourProducts() {
     try {
       const response = await axios.post('http://localhost:5000/api/product/catagory', categoryId);
       setProduct(response.data.AllProduct)
+      console.log(response.data)
 
     } catch (error) {
       console.log('Error fetching data:', error);
