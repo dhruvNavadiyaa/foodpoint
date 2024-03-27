@@ -40,6 +40,7 @@ export default function YourProducts() {
     }
     try {
       const response = await axios.post('http://localhost:5000/api/product/catagory', categoryId);
+      // console.log(response.data)
       setProduct(response.data.AllProduct)
 
     } catch (error) {

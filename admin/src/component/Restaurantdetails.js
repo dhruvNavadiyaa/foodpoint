@@ -138,7 +138,8 @@ export default function Restaurantdetails() {
                                         return (
                                             <div className="col-md-4 col-5 p-0 " >
                                                 <div className='border mx-3 pb-3 border box-shadow rounded rounded-3 bg-light'>
-                                                    <img src={item.img || 'https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=600'} alt="" className='img-fluid w-100 box-shadow rounded rounded-3' />
+                                                    <img src={item.img || 'https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=600'} alt="" className='img-fluid w-100 box-shadow rounded rounded-3' 
+                                                    style={{height:'200px',objectFit:'cover'}}/>
                                                     <div className='px-3 mt-2'>
                                                         <div className='px-2'>
                                                             <p className='fs-md-4 fw-bold text-uppercase'>{item.name}</p>
