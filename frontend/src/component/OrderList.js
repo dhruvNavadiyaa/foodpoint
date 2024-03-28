@@ -32,14 +32,15 @@ export default function OrderList() {
     }
 
     const giveReview = async () => {
-        const data={
-            OrderId: modalState.id, 
+        const data = {
+            OrderId: modalState.id,
             Rating: rating
         }
         try {
             const response = await axios.post('http://localhost:5000/api/review/add', data)
-            console.log(response.data)
-            console.log(rating)
+            // console.log(response.data)
+            // console.log(rating)
+            setModalState({ isVisible: false, id: null})
         }
         catch (e) {
             console.log(e)
@@ -152,8 +153,9 @@ export default function OrderList() {
                                                     <div className="col-4 text-center">
                                                         <img src={item?.productDetail.img || "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnVyZ2VyfGVufDB8fDB8fHww"}
                                                             className='img-fluid rounded rounded box-shadow w-100' alt="" style={{ height: '200px', objectFit: "cover" }} />
-                                                        {!item.isreviewGiven ? <button className='btn btn-outline-primary btn-sm' onClick={() => { setModalState({ isVisible: true, id: item._id }) }}>Give Riview</button> : <p>{Math.floor(item?.productDetail?.rating)}/5</p>}
-                                                        {item.isreviewGiven ? <button className='btn btn-outline-primary btn-sm' onClick={() => { setModalState({ isVisible: true, id: item._id }) }}>Give Riview</button> : <p>{Math.floor(item?.productDetail?.rating)}/5</p>}
+                                                        <p className='mt-2 mb-0 fw-bold text-secondary'>Thank you for your feedback.</p>
+                                                        {!item.isreviewGiven ? <button className='btn btn-outline-primary btn-sm' onClick={() => { setModalState({ isVisible: true, id: item._id }) }}>Give Riview</button> : <p className='fw-bold text-secondary mb-0'><i className="bi bi-star-fill text-warning"></i> {item?.rating}/5</p>}
+                                                        {/* {item.isreviewGiven ? <button className='btn btn-outline-primary btn-sm' onClick={() => { setModalState({ isVisible: true, id: item._id }) }}>Give Riview</button> : <p>{item?.rating}/5</p>} */}
                                                     </div>
                                                 </div>
                                             </div>
@@ -188,7 +190,7 @@ export default function OrderList() {
                         </div>
                     </div>
                     <div className="modal-actions d-flex ms-auto mt-auto">
-                        <button className='btn btn-secondary me-2 px-3' onClick={() => { setModalState({ isVisible: false, type: null, data: null }); setRating(0) }}>Cancel</button>
+                        <button className='btn btn-secondary me-2 px-3' onClick={() => { setModalState({ isVisible: false, id: null}); setRating(0) }}>Cancel</button>
                         <button className='btn btn-danger px-3' onClick={() => { giveReview() }}>Submit</button>
                     </div>
                 </div>
