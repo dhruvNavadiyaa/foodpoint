@@ -4,6 +4,7 @@ import Restaurant from '../models/RestaurantModel.js'
 
 
 const addReview = async( req, res) => {
+    console.log(req?.body?.Rating)
     const findOrder = await Order.findById(req?.body?.OrderId)
     const findProduct = await Product.findById(findOrder?.products?.product)
     const findRestaurant = await Restaurant.findById(findOrder?.restaurant)
