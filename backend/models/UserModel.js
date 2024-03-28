@@ -18,6 +18,12 @@ const userSchema = mongoose.Schema({
     }
     ,number: {
         type: String,
+    },isVerified: {
+        type : Boolean,
+        default : false
+    },
+    varifiedCode :{
+        type: Number,
     },
     refreshToken :{
         type: String,
