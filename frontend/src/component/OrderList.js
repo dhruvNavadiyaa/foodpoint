@@ -12,8 +12,7 @@ export default function OrderList() {
     const [orderDone, setOrderDone] = useState([])
     const [modalState, setModalState] = useState({
         isVisible: false,
-        type: null,
-        id: null,
+        id: null
     });
     const [rating, setRating] = useState(0);
 
@@ -32,13 +31,29 @@ export default function OrderList() {
 
     }
 
-    useEffect(() => {
-        getallOrder()
-    }, [])
+    const giveReview = async () => {
+        const data={
+            OrderId: modalState.id, 
+            Rating: rating
+        }
+        try {
+            const response = await axios.post('http://localhost:5000/api/review/add', data)
+            console.log(response.data)
+            console.log(rating)
+        }
+        catch (e) {
+            console.log(e)
+        }
+    }
 
     const handleStarClick = (index) => {
         setRating(index);
     };
+
+    useEffect(() => {
+        getallOrder()
+    }, [])
+
 
     return (
         <>
@@ -137,7 +152,8 @@ export default function OrderList() {
                                                     <div className="col-4 text-center">
                                                         <img src={item?.productDetail.img || "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnVyZ2VyfGVufDB8fDB8fHww"}
                                                             className='img-fluid rounded rounded box-shadow w-100' alt="" style={{ height: '200px', objectFit: "cover" }} />
-                                                        {/* <button className='btn btn-outline-primary btn-sm' onClick={() => { setModalState({ isVisible: true, id: item._id }) }}>Give Riview</button> */}
+                                                        {!item.isreviewGiven ? <button className='btn btn-outline-primary btn-sm' onClick={() => { setModalState({ isVisible: true, id: item._id }) }}>Give Riview</button> : <p>{Math.floor(item?.productDetail?.rating)}/5</p>}
+                                                        {item.isreviewGiven ? <button className='btn btn-outline-primary btn-sm' onClick={() => { setModalState({ isVisible: true, id: item._id }) }}>Give Riview</button> : <p>{Math.floor(item?.productDetail?.rating)}/5</p>}
                                                     </div>
                                                 </div>
                                             </div>
@@ -172,8 +188,8 @@ export default function OrderList() {
                         </div>
                     </div>
                     <div className="modal-actions d-flex ms-auto mt-auto">
-                        <button className='btn btn-secondary me-2 px-3' onClick={() => setModalState({ isVisible: false, type: null, data: null })}>Cancel</button>
-                        <button className='btn btn-danger px-3'>Submit</button>
+                        <button className='btn btn-secondary me-2 px-3' onClick={() => { setModalState({ isVisible: false, type: null, data: null }); setRating(0) }}>Cancel</button>
+                        <button className='btn btn-danger px-3' onClick={() => { giveReview() }}>Submit</button>
                     </div>
                 </div>
             </div>
