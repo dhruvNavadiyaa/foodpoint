@@ -13,6 +13,7 @@ import ContactUs from './component/ContactUs';
 import Favourite from './component/Favourite';
 import OrderList from './component/OrderList';
 import PlaceOrder from './component/PlaceOrder';
+import OtpVerification from './component/OtpVerification';
 
 function App() {
 
@@ -51,6 +52,7 @@ function App() {
           <>
             <Route path='/' element={<Login />} />
             <Route path='/SignUp' element={<SignUp />} />
+            <Route path='/OtpVerification' element={<OtpVerification />} />
           </>
           :
           <>
