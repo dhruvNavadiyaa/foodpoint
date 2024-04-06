@@ -4,6 +4,7 @@ import fs from "fs";
 import uploadCloudinary from "../utils/cloudinary.js";
 import mongoose from "mongoose";
 import Product from "../models/ProductModel.js";
+import sendEmail from "../utils/emailSend.js";
 const generateAccesssAndRefreshToken = async (_id) => {
   const RestaurantFind = await Restaurant.findById(_id);
   const accessToken = await RestaurantFind.generateAccessToken();
@@ -291,6 +292,58 @@ res.send({
 
 
 
+const otpGenerate = async (req, res) => {
+  function generateOTP() {
+    let digits = "0123456789";
+    let OTP = "";
+    let len = digits.length;
+    for (let i = 0; i < 4; i++) {
+      OTP += digits[Math.floor(Math.random() * len)];
+    }
+
+    return Number(OTP);
+  }
+  // console.log(typeof(generateOTP()))
+  const updateRestaurant = await Restaurant.findByIdAndUpdate(
+    req?.body?.RestaurantId,
+    {
+      varifiedCode: generateOTP(),
+    },
+    { new: true }
+  );
+  await sendEmail("OTP VERIFICATION" ,updateRestaurant.email , `Your OTP verification code is ${updateRestaurant.varifiedCode} `) ;
+
+  return res.send({
+    success: true,
+  });
+};
+
+
+const verifyOtp = async (req , res) =>{
+
+  const user =await Restaurant.findById(req?.body.RestaurantId);
+  const otp = req?.body?.otp
+  if(otp == user?.varifiedCode){
+    const updateRestaurant =await Restaurant.findByIdAndUpdate(
+      req?.body?.RestaurantId,
+      {
+        isVerified: true,
+      }
+    );
+    const RestaurantInfo = await Restaurant.findById(req?.body?.RestaurantId).select(
+      "-password -refreshToken"
+    );
+    return res.send({
+      login: true,
+      RestaurantInfo,
+      success: true,
+    })
+  }
+  return res.send({
+    success: false,
+  })
+}
+
 export {
   CreateRestaurant,
   topRestaurant,
@@ -301,5 +354,7 @@ export {
   FeatchRestaurant,
   DeleteRestaurant,
   RefreshTokenEndPoint,
-  approvedRestaurant
+  approvedRestaurant,
+  otpGenerate,
+  verifyOtp
 };
