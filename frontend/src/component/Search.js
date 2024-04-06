@@ -93,7 +93,7 @@ export default function Search() {
                                                         <div className="col d-flex align-items-center">
                                                             <div>
                                                                 <p className='mb-0 fw-bold text-secondary'>By {item?.restaurantDetails?.name}</p>
-                                                                <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {item?.rating}/5 &#8226; 20-25 min</small>
+                                                                <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {(String(item?.rating)).slice(0, 3)}/5 &#8226; 20-25 min</small>
                                                             </div>
                                                             {/* <i className="bi bi-heart-fill fs-4 me-3 ms-auto text-secondary"></i> */}
                                                         </div>
@@ -138,7 +138,7 @@ export default function Search() {
                                                 <div className="col d-flex align-items-center">
                                                     <div>
                                                         <p className='mb-0 fw-bold text-secondary'>By {item?.restaurantDetails?.name}</p>
-                                                        <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {item?.rating}/5 &#8226; 20-25 min</small>
+                                                        <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {(String(item?.rating)).slice(0, 3)}/5 &#8226; 20-25 min</small>
                                                     </div>
                                                     {/* <i className="bi bi-heart-fill fs-4 me-3 ms-auto text-secondary"></i> */}
                                                 </div>

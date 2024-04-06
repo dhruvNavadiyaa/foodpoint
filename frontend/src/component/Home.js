@@ -84,7 +84,7 @@ const Home = () => {
                         </div>
                         <div className='px-3 mt-2  w-100'>
                           <p className='fs-5 mb-0 fw-medium text-nowrap overflow-hidden'>{item?.name}</p>
-                          <small className='fw-bold text-secondary mt-1 mb-0'><i className="bi bi-star-fill p-1 py-0 text-light bg-warning rounded rounded-circle" /> {item.rating}/5 &#x2022; 20-25 mins</small><br />
+                          <small className='fw-bold text-secondary mt-1 mb-0'><i className="bi bi-star-fill p-1 py-0 text-light bg-warning rounded rounded-circle" /> {(String(item.rating)).slice(0, 3)}/5 &#x2022; 20-25 mins</small><br />
                           <p className='fw-medium text-secondary text-nowrap overflow-hidden'>&#x2022; {item?.address?.street}, {item?.address?.area}</p>
                         </div>
                       </div>
@@ -118,7 +118,7 @@ const Home = () => {
                     <div className="col d-flex align-items-center">
                       <div>
                         <p className='mb-0 fw-bold text-secondary'>By {item.restaurantDetails?.name}</p>
-                        <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {item.rating}/5 &#8226; 20-25 min</small>
+                        <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {(String(item?.rating)).slice(0, 3)}/5 &#8226; 20-25 min</small>
                       </div>
                       {/* <i className="bi bi-heart-fill fs-4 me-3 ms-auto text-secondary"></i> */}
                     </div>

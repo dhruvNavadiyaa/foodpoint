@@ -131,7 +131,7 @@ export default function PlaceOrder() {
                                                                 <small className='text-warning mt-0'><i className="bi bi-star-fill text-warning"> </i>BESTSELLER</small><br />
                                                                 <small className=' mb-0 fw-bold text-secondary text-uppercase'>by {fullDetail?.restaurantDetails?.name}</small><br />
                                                                 <p className='mt-1 fw-bold mb-0 text-success'>{fullDetail.name}</p>
-                                                                <small className='fw-medium text-secondary'>&#x2022; <i className="bi bi-star-fill text-secondary"> </i> {fullDetail.rating}/5 &#8226; 20-25 min</small><br />
+                                                                <small className='fw-medium text-secondary'>&#x2022; <i className="bi bi-star-fill text-secondary"> </i> { (String(fullDetail?.rating)).slice(0, 3)}/5 &#8226; 20-25 min</small><br />
                                                                 {/* <small className='fw-medium text-secondary'></small><br /> */}
                                                                 <small className='fw-medium text-secondary'>&#x2022;{fullDetail.description} </small>
                                                             </div>

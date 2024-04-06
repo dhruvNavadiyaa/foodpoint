@@ -81,7 +81,7 @@ export default function OrderList() {
                                                             <div className="col d-flex align-items-center">
                                                                 <div>
                                                                     <p className='mb-0 fw-bold text-secondary'>By {item?.restaurantDetail?.name}</p>
-                                                                    <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {item?.restaurantDetail?.rating}/5 &#8226; 20-25 min</small>
+                                                                    <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> { (String(item?.restaurantDetail?.rating)).slice(0, 3)}/5 &#8226; 20-25 min</small>
                                                                 </div>
                                                                 {/* <i className="bi bi-heart-fill fs-4 me-3 ms-auto text-secondary"></i> */}
                                                             </div>
@@ -134,7 +134,7 @@ export default function OrderList() {
                                                             <div className="col d-flex align-items-center">
                                                                 <div>
                                                                     <p className='mb-0 fw-bold text-secondary'>By {item?.restaurantDetail?.name}'s</p>
-                                                                    <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {item?.restaurantDetail?.rating}/5 &#8226; 20-25 min</small>
+                                                                    <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> { (String(item?.restaurantDetail?.rating)).slice(0, 3)}/5 &#8226; 20-25 min</small>
                                                                 </div>
                                                                 {/* <i className="bi bi-heart-fill fs-4 me-3 ms-auto text-secondary"></i> */}
                                                             </div>
@@ -154,7 +154,7 @@ export default function OrderList() {
                                                         <img src={item?.productDetail.img || "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnVyZ2VyfGVufDB8fDB8fHww"}
                                                             className='img-fluid rounded rounded box-shadow w-100' alt="" style={{ height: '200px', objectFit: "cover" }} />
                                                         <p className='mt-2 mb-0 fw-bold text-secondary'>Thank you for your feedback.</p>
-                                                        {!item.isreviewGiven ? <button className='btn btn-outline-primary btn-sm' onClick={() => { setModalState({ isVisible: true, id: item._id }) }}>Give Riview</button> : <p className='fw-bold text-secondary mb-0'><i className="bi bi-star-fill text-warning"></i> {item?.rating}/5</p>}
+                                                        {!item.isreviewGiven ? <button className='btn btn-outline-primary btn-sm' onClick={() => { setModalState({ isVisible: true, id: item._id }) }}>Give Riview</button> : <p className='fw-bold text-secondary mb-0'><i className="bi bi-star-fill text-warning"></i> { (String(item?.rating)).slice(0, 3)}/5</p>}
                                                         {/* {item.isreviewGiven ? <button className='btn btn-outline-primary btn-sm' onClick={() => { setModalState({ isVisible: true, id: item._id }) }}>Give Riview</button> : <p>{item?.rating}/5</p>} */}
                                                     </div>
                                                 </div>

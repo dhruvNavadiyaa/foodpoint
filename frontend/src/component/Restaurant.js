@@ -54,7 +54,7 @@ const Restaurent = () => {
                                 </div>
                                 <div className=''>
                                     <div className="border p-2 text-center rounded rounded-3" >
-                                        <p className='mb-0 border-bottom border-2 pb-2 fw-bold' ><i className="bi bi-star-fill text-success"></i> {restaurantDetails.rating}</p>
+                                        <p className='mb-0 border-bottom border-2 pb-2 fw-bold' ><i className="bi bi-star-fill text-success"></i> {(String(restaurantDetails?.rating)).slice(0, 3)}</p>
                                         <small className='fw-medium'>Ratings</small>
                                     </div>
                                 </div>
@@ -95,7 +95,7 @@ const Restaurent = () => {
                                                         <div className="col d-flex align-items-center">
                                                             <div>
                                                                 <p className='mb-0 fw-bold text-secondary'>By {restaurantDetails.name}</p>
-                                                                <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {item.rating}/5 &#8226; 20-25 min</small>
+                                                                <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {(String(item?.rating)).slice(0, 3)}/5 &#8226; 20-25 min</small>
                                                             </div>
                                                             {/* <i className="bi bi-heart-fill fs-4 me-3 ms-auto text-secondary"></i> */}
                                                         </div>

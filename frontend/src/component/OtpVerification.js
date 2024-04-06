@@ -1,12 +1,14 @@
 import React, { useState, useEffect, createRef, useRef } from 'react'
-import Navbar from './Navbar'
+import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios'
+import { setUserDetails } from "../redux/features/userSlice";
 
 export default function OtpVerification() {
 
   const [otp, setOtp] = useState(new Array(4).fill(''));
-  const [num, setnum] = useState('')
+  const dispatch = useDispatch();
   const inputRefs = useRef(otp.map(() => createRef()));
-
+  const userId = useSelector(state => state?.user?.userInfo?.userInfo?._id)
   const handleChange = (e, index) => {
     const value = e.target.value;
     const newOtp = [...otp];
@@ -21,7 +23,6 @@ export default function OtpVerification() {
     // If all fields are filled
     if (newOtp.every((digit) => digit)) {
       let a = (newOtp.join(''))
-      setnum(a)
     }
   };
 
@@ -31,9 +32,22 @@ export default function OtpVerification() {
       inputRefs.current[index - 1].focus();
     }
   };
-
+  const handelClick = async() =>{
+    let otpSend = otp.join("");
+    otpSend=Number(otpSend)
+    console.log(typeof(otpSend))
+    const response = await axios.post('http://localhost:5000/api/user/otpverify' , {
+      userId ,
+      otp:otpSend
+    })
+    dispatch(setUserDetails(response.data));
+    console.log(response.data)
+  }
+  const otpGenerate = async() =>{
+    const response = await axios.post('http://localhost:5000/api/user/otpGenerate' ,{userId})
+  }
   useEffect(() => {
-    console.log(num)
+    otpGenerate()
   }, [])
 
   return (
@@ -83,7 +97,7 @@ export default function OtpVerification() {
           </div>
 
           <p className='mt-3'>{otp}</p>
-          <button className='btn btn-primary rounded-pill py-2'>Verify</button>
+          <button className='btn btn-primary rounded-pill py-2' onClick={()=>{handelClick()}}>Verify</button>
           <button className='btn btn-outline-secondary rounded-pill py-2'>Cancel</button>
         </div>
 

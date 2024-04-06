@@ -1,81 +1,73 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Route, Routes, useNavigate } from 'react-router-dom'
-import { setUserDetails } from './redux/features/userSlice';
-import axios from 'axios'
-import Login from './component/Login'
-import SignUp from './component/SignUp'
-import Home from './component/Home'
-import React from 'react';
-import Restaurant from './component/Restaurant';
-import Search from './component/Search';
-import ContactUs from './component/ContactUs';
-import Favourite from './component/Favourite';
-import OrderList from './component/OrderList';
-import PlaceOrder from './component/PlaceOrder';
-import OtpVerification from './component/OtpVerification';
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import { setUserDetails } from "./redux/features/userSlice";
+import axios from "axios";
+import Login from "./component/Login";
+import SignUp from "./component/SignUp";
+import Home from "./component/Home";
+import React from "react";
+import Restaurant from "./component/Restaurant";
+import Search from "./component/Search";
+import ContactUs from "./component/ContactUs";
+import Favourite from "./component/Favourite";
+import OrderList from "./component/OrderList";
+import PlaceOrder from "./component/PlaceOrder";
+import OtpVerification from "./component/OtpVerification";
 
 function App() {
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const login = useSelector(state => state.user.userinfo.login)
-  const login = useSelector(state => state?.user?.login)
-  const userInfo = useSelector(state => state?.user?.userInfo?.isVerified)
-  // const login = false
-
+  const login = useSelector((state) => state?.user?.login);
+  const userInfo = useSelector((state) => state?.user?.userInfo?.userInfo?.isVerified);
+  console.log(userInfo)
   const refresh = async () => {
     try {
-      // console.log(localStorage.getItem("isLogin"));
-      const response = await axios.post('http://localhost:5000/api/user/refresh', {}, { withCredentials: true });
+      const response = await axios.post(
+        "http://localhost:5000/api/user/refresh",
+        {},
+        { withCredentials: true }
+      );
 
-      // console.log(response)
       if (response.data.login === true) {
-        // console.log(response.data)
-        dispatch(setUserDetails(response.data))
-        // navigate('/Home')
+       dispatch(setUserDetails(response.data));
       }
-      // else {
-      //   navigate('/')
-      // }
     } catch (error) {
-      console.log('Error fetching data:', error);
+      console.log("Error fetching data:", error);
     }
-  }
+  };
   useEffect(() => {
-    refresh()
-    // console.log(login)
-  }, [])
+    refresh();
+  }, []);
   return (
     <>
       <Routes>
-        {!login ?
+        {!login ? (
           <>
-            <Route path='/' element={<Login />} />
-            <Route path='/SignUp' element={<SignUp />} />
-            <Route path='/OtpVerification' element={<OtpVerification />} />
+            <Route path="/" element={<Login />} />
+            <Route path="/SignUp" element={<SignUp />} />
+            <Route path="/OtpVerification" element={<OtpVerification />} />
           </>
-          :
+        ) : (
           <>
-         { !userInfo ?
-            <Route path='*' element={<OtpVerification />} />
-            :
-            <>
-            <Route path='/' element={<Home />} />
-            <Route path='/Home' element={<Home />} />
-            <Route path='/Restaurant' element={<Restaurant />} />
-            <Route path='/Search' element={<Search />} />
-            <Route path='/ContactUs' element={<ContactUs />} />
-            <Route path='/Favourite' element={<Favourite />} />
-            <Route path='/ContactUs' element={<ContactUs />} />
-            <Route path='/OrderList' element={<OrderList />} />
-            <Route path='/Restaurant/:restroId' element={<Restaurant />} />
-            <Route path='/PlaceOrder/:productId' element={<PlaceOrder />} />
-            </>
-        }
+            {!userInfo ? (
+              <Route path="*" element={<OtpVerification />} />
+            ) : (
+              <>
+                <Route path="/" element={<Home />} />
+                <Route path="/Home" element={<Home />} />
+                <Route path="/Restaurant" element={<Restaurant />} />
+                <Route path="/Search" element={<Search />} />
+                <Route path="/ContactUs" element={<ContactUs />} />
+                <Route path="/Favourite" element={<Favourite />} />
+                <Route path="/ContactUs" element={<ContactUs />} />
+                <Route path="/OrderList" element={<OrderList />} />
+                <Route path="/Restaurant/:restroId" element={<Restaurant />} />
+                <Route path="/PlaceOrder/:productId" element={<PlaceOrder />} />
+              </>
+            )}
           </>
-
-        }
+        )}
       </Routes>
     </>
   );
