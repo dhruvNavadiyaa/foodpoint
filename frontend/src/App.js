@@ -20,7 +20,8 @@ function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   // const login = useSelector(state => state.user.userinfo.login)
-  const login = useSelector(state => state.user.login)
+  const login = useSelector(state => state?.user?.login)
+  const userInfo = useSelector(state => state?.user?.userInfo?.isVerified)
   // const login = false
 
   const refresh = async () => {
@@ -56,6 +57,10 @@ function App() {
           </>
           :
           <>
+         { !userInfo ?
+            <Route path='*' element={<OtpVerification />} />
+            :
+            <>
             <Route path='/' element={<Home />} />
             <Route path='/Home' element={<Home />} />
             <Route path='/Restaurant' element={<Restaurant />} />
@@ -66,7 +71,10 @@ function App() {
             <Route path='/OrderList' element={<OrderList />} />
             <Route path='/Restaurant/:restroId' element={<Restaurant />} />
             <Route path='/PlaceOrder/:productId' element={<PlaceOrder />} />
+            </>
+        }
           </>
+
         }
       </Routes>
     </>
