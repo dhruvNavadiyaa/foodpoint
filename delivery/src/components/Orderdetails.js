@@ -70,7 +70,7 @@ export default function Orderdetails() {
                                             <div className="col d-flex align-items-center">
                                                 <div>
                                                     <p className='mb-0 fw-bold text-secondary'>By {detailOrder?.restaurantDetail?.name}</p>
-                                                    <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {detailOrder?.restaurantDetail?.rating}/5</small>
+                                                    <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {`${detailOrder?.restaurantDetail?.rating}`.slice(0,3)}/5</small>
                                                 </div>
                                             </div>
                                             <div className='d-flex '>
