@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom'
 import React, { useEffect } from 'react'
 import '../css/Util.css'
 import '../css/Navbar.css'
+import axios from 'axios'
 
 export default function Navbar() {
 
@@ -33,6 +34,11 @@ export default function Navbar() {
       let cComponent = document.querySelector("#OrderList")
       cComponent.classList.add('bg-navitem')
     }
+  }
+  const logout = async() => {
+    const response = await axios.post('http://localhost:5000/api/logout/logout', {},{ withCredentials: true});
+    console.log(response.data);
+    window.location.reload();
   }
 
   useEffect(() => {
@@ -108,7 +114,7 @@ export default function Navbar() {
             <Link to='/ContactUs' className='text-dark text-decoration-none'>
               <li className='p-2 rounded rounded-3 mx-3' id='ContactUs' onClick={() => changeBgColor()}>Help</li>
             </Link>
-              <li className='p-2 rounded rounded-3 mx-3'>Log Out</li>
+              <li className='p-2 rounded rounded-3 mx-3' onClick={logout}>Log Out</li>
           </div>
         </div>
 

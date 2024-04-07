@@ -45,6 +45,7 @@ function App() {
         {!login ? (
           <>
             <Route path="/" element={<Login />} />
+            <Route path="*" element={<Login />} />
             <Route path="/SignUp" element={<SignUp />} />
             <Route path="/OtpVerification" element={<OtpVerification />} />
           </>
