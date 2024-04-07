@@ -1,20 +1,20 @@
 import React, { useState, useEffect, createRef, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios'
-import { setRestroDetails } from "../redux/features/RestaurantSlice";
+import { setdeliverDetails } from "../redux/features/deliverySlice";
 
 export default function OtpVerification() {
 
   const [otp, setOtp] = useState(new Array(4).fill(''));
   const dispatch = useDispatch();
   const inputRefs = useRef(otp.map(() => createRef()));
-  const userId = useSelector(state => state?.deliver?.deliverInfo?.deliveryBoyInfo?._id)
-  console.log(userId)
+  const DeliveryBoyId = useSelector(state => state?.deliver?.deliverInfo?.deliveryBoyInfo?._id)
+  console.log(DeliveryBoyId)
   const handleChange = (e, index) => {
     const value = e.target.value;
     const newOtp = [...otp];
     newOtp[index] = value;
-    setOtp(newOtp);
+    setOtp(newOtp); 
 
     // Move focus to next field if value is entered
     if (value && index < otp.length - 1) {
@@ -39,14 +39,15 @@ export default function OtpVerification() {
     otpSend=Number(otpSend)
     // console.log(typeof(otpSend))
     const response = await axios.post('http://localhost:5000/api/delivery/otpverify' , {
-      userId ,
+      DeliveryBoyId ,
       otp:otpSend
     })
-    dispatch(setRestroDetails(response.data));
-    // console.log(response.data)
+    dispatch(setdeliverDetails(response.data));
+    console.log(response.data)
   }
   const otpGenerate = async() =>{
-    const response = await axios.post('http://localhost:5000/api/delivery/otpGenerate' ,{userId})
+    const response = await axios.post('http://localhost:5000/api/delivery/otpGenerate' ,{DeliveryBoyId})
+    console.log(response.data)
   }
   
   useEffect(() => {

@@ -12,14 +12,15 @@ import Profile from './components/Profile';
 import OrderHistory from './components/OrderHistory';
 import Orderdetails from './components/Orderdetails';
 import Sorry from './components/Sorry'
+import OtpVerification from './components/OtpVerification';
 
 function App() {
 
   const isApproved = useSelector(state => state?.deliver?.deliverInfo?.deliveryBoyInfo?.isApproved)
+  const isVerified = useSelector(state => state?.deliver?.deliverInfo?.deliveryBoyInfo?.isVerified)
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const login = useSelector(state => state.deliver.login)
-  // const isApproved = useSelector(state => state.deliver.isApproved)
 
   const refresh = async () => {
     try {
@@ -48,7 +49,9 @@ function App() {
             <Route path='/SignUp' element={<SignUp />} />
           </>
           :
+
           <>{
+            isVerified ?
             isApproved === "pending" ?
               <>
                 <Route path='/' element={<Login />} />
@@ -67,6 +70,9 @@ function App() {
                 <Route path='/OrderHistory' element={<OrderHistory />} />
                 <Route path='/Orderdetails/:id' element={<Orderdetails />} />
               </>
+              :
+          <Route path='/*' element={<OtpVerification />} />
+
           }
           </>
         }

@@ -160,12 +160,13 @@ const otpGenerate = async (req, res) => {
   }
   // console.log(typeof(generateOTP()))
   const updateUser = await DeliveryBoy.findByIdAndUpdate(
-    req?.body?.userId,
+    req?.body?.DeliveryBoyId,
     {
       varifiedCode: generateOTP(),
     },
     { new: true }
   );
+  console.log(updateUser?.varifiedCode);
   await sendEmail(
     "OTP VERIFICATION",
     updateUser.email,
