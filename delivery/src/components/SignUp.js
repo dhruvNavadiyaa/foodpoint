@@ -6,12 +6,16 @@ import '../css/Login.css';
 const Login = () => {
 
     const navigate = useNavigate()
-
+    const mobileNumberRegex = /^\d{10}$/;
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [valid, setValid] = useState('');
+    const [error, setError] = useState({
+        emailExist: "",
+        number: "",
+        password:""
+    });
 
     const data = {
         name: name,
@@ -23,25 +27,41 @@ const Login = () => {
     const sendData = async () => {
         try {
             const response = await axios.post('http://localhost:5000/api/delivery/signup', data);
-            if(response.data.success) {
-                navigate('/')    
+            if (response.data.success) {
+                navigate('/')
             }
-            else{
-                setValid('Email alredy exist!')
-            }
+            else {
+                setError({emailExist: "Email is already in exist" })
+            } 
         } catch (error) {
             console.log('Error fetching data:',error);
         }
         // console.log(data)
     }
 
+    // VALIDATION OF FORM
+    const validateForm=()=>{
+        let newErrors = {};
+
+        if (!mobileNumberRegex.test(number)) {
+            newErrors.number = "Please enter valid Number!";
+        }
+        if(password.length < 3){
+            newErrors.password = "Password must be More than 3 Characters!";
+        }
+        setError(newErrors);
+        return Object.keys(newErrors).length === 0;
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (password.length < 4) {
-            setValid('Password should be more than 3 letters!')
-        }
-        else {
+        const isvalid = validateForm();
+        if(isvalid){
             sendData()
+            // console.log(data)
+        }
+        else{
+            console.log("form validation failed!")
         }
     };
 
@@ -56,7 +76,7 @@ const Login = () => {
                         <input
                             type="text"
                             id="name"
-                            className='w-100'
+                            className='w-100 border border-1 border-secondary rounded p-2'
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             required
@@ -65,39 +85,41 @@ const Login = () => {
                     <div className="mb-2">
                         <p className='mb-0'>Mobile Number</p>
                         <input
-                            type="number"
+                            type="text"
                             id="number"
-                            className='w-100'
+                            className='w-100 border border-1 border-secondary rounded p-2'
                             value={number}
                             onChange={(e) => { setNumber(e.target.value) }}
                             maxLength={10}
                             required
                         />
                     </div>
+                    <p className='text-danger'>{error.number}</p>
                     <div className="mb-2">
                         <p className='mb-0'>Email</p>
                         <input
                             type="email"
                             id="email"
-                            className='w-100'
+                            className='w-100 border border-1 border-secondary rounded p-2'
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
                         />
                     </div>
+                    <p className='text-danger'>{error.emailExist}</p>
                     <div className="mb-2">
                         <p className='mb-0'>Password</p>
                         <input
                             type="password"
                             id="password"
-                            className='w-100'
+                            className='w-100 border border-1 border-secondary rounded p-2'
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
                         />
                     </div>
-                    <small className='text-danger'>{valid}</small>
-                    <button type="submit" className='btn btn-primary w-100 mt-3 '>Sign Up</button>
+                    <p className='text-danger'>{error.password}</p>
+                    <button type="submit" className=' w-100 mt-3 '>Sign Up</button>
                     <small>If you have account! <Link to={'/'}>Login</Link></small>
                 </form>
             </div>

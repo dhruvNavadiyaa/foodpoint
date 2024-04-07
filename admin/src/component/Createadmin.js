@@ -44,13 +44,18 @@ export default function Createadmin() {
     title.classList.toggle("headerMove")
   }
 
-  const [showModal, setShowModal] = useState(true)
+  const mobileNumberRegex = /^\d{10}$/;
+  const [showModal, setShowModal] = useState(false)
   const [name, setName] = useState('')
   const [number, setNumber] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState({
+    emailExist: "",
+    number: "",
+    password: ""
+  });
 
-  
   const sendData = async () => {
 
     try {
@@ -67,10 +72,33 @@ export default function Createadmin() {
     }
     // console.log(data)
   }
-  const handleSubmit =async (event) => {
+
+  // VALIDATION OF FORM
+  const validateForm = () => {
+    let newErrors = {};
+
+    if (!mobileNumberRegex.test(number)) {
+      newErrors.number = "Please enter valid Number!";
+    }
+    if (password.length < 3) {
+      newErrors.password = "Password must be More than 3 Characters!";
+    }
+    setError(newErrors);
+    return Object.keys(newErrors).length === 0;
+  }
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-     sendData()
-    setShowModal(true)
+    const isvalid = validateForm();
+    if (isvalid) {
+      setShowModal(true)
+    }
+    else {
+      console.log("form validation failed!")
+    }
+  }
+  const CreateAdmin = () => {
+    sendData()
     setName('')
     setNumber('')
     setEmail('')
@@ -102,68 +130,75 @@ export default function Createadmin() {
 
                   <div className="row w-75">
                     <div className="col border rounded-4 bg-light box-shadow p-3"  >
-                      <form onSubmit={(e)=>{e.preventDefault();setShowModal(false)}}>
-                      <div className="row mt-3">
-                        <div className="col-3 ps-4  fs-5 d-flex align-items-center">Name</div>
-                        <div className="col-8 border bg-order d-flex align-items-center rounded  bg-order p-0">
-                          <input
-                            type="text"
-                            id="name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            className='addAdminForm w-100 p-2'
-                          />
+                      <form onSubmit={handleSubmit}>
+                        <div className="row mt-3">
+                          <div className="col-3 ps-4  fs-5 d-flex align-items-center">Name</div>
+                          <div className="col-8 border bg-order d-flex align-items-center rounded  bg-order p-0">
+                            <input
+                              type="text"
+                              id="name"
+                              value={name}
+                              onChange={(e) => setName(e.target.value)}
+                              className='addAdminForm w-100 p-2'
+                            />
+                          </div>
                         </div>
-                      </div>
-                      <div className="row mt-2">
-                        <div className="col-3 ps-4  fs-5 d-flex align-items-center overflow-visible">Mobile No.</div>
-                        <div className="col-8 border bg-order d-flex align-items-center rounded p-0">
-                          <input
-                            type="number"
-                            id="number"
-                            value={number}
-                            onChange={(e) => setNumber(e.target.value)}
-                            className='addAdminForm w-100 p-2'
-                          />
+                        <div className="row mt-2">
+                          <div className="col-3 ps-4  fs-5 d-flex align-items-center overflow-visible">Mobile No.</div>
+                          <div className="col-8 border bg-order d-flex align-items-center rounded p-0">
+                            <input
+                              type="text"
+                              maxLength={10}
+                              id="number"
+                              value={number}
+                              onChange={(e) => setNumber(e.target.value)}
+                              className='addAdminForm w-100 p-2'
+                            />
+                          </div>
+                          <div className='d-flex'>
+                            <p className='text-danger ms-auto me-5'>{error.number}</p>
+                          </div>
                         </div>
-                      </div>
-                      <div className="row mt-2">
-                        <div className="col-3 ps-4  fs-5 d-flex align-items-center overflow-visible">Email</div>
-                        <div className="col-8 border bg-order d-flex align-items-center rounded p-0">
-                          <input
-                            type="email"
-                            id="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className='addAdminForm w-100 p-2'
-                          />
+                        <div className="row mt-2">
+                          <div className="col-3 ps-4  fs-5 d-flex align-items-center overflow-visible">Email</div>
+                          <div className="col-8 border bg-order d-flex align-items-center rounded p-0">
+                            <input
+                              type="email"
+                              id="email"
+                              value={email}
+                              onChange={(e) => setEmail(e.target.value)}
+                              className='addAdminForm w-100 p-2'
+                            />
+                          </div>
                         </div>
-                      </div>
-                      <div className="row mt-2 mb-3">
-                        <div className="col-3 ps-4  fs-5 d-flex align-items-center overflow-visible">Password</div>
-                        <div className="col-8 border bg-order d-flex align-items-center rounded p-0">
-                          <input
-                            type="password"
-                            id="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className='addAdminForm w-100 p-2'
-                          />
+                        <div className="row mt-2 mb-3">
+                          <div className="col-3 ps-4  fs-5 d-flex align-items-center overflow-visible">Password</div>
+                          <div className="col-8 border bg-order d-flex align-items-center rounded p-0">
+                            <input
+                              type="password"
+                              id="password"
+                              value={password}
+                              onChange={(e) => setPassword(e.target.value)}
+                              className='addAdminForm w-100 p-2'
+                            />
+                          </div>
+                          <div className="d-flex">
+                            <p className='text-danger ms-auto me-5'>{error.password}</p>
+                          </div>
                         </div>
-                      </div>
-                      <div className="row d-flex justify-content-center">
-                        <button type="submit" className='w-25 mt-2 py-2 btn btn-outline-success' 
-                         disabled={name==='' || number==='' || email==='' || password===''}>
-                          Create Admin
-                        </button>
-                      </div>
+                        <div className="row d-flex justify-content-center">
+                          <button type="submit" className='w-25 mt-2 py-2 btn btn-outline-success'
+                            disabled={name === '' || number === '' || email === '' || password === ''}>
+                            Create Admin
+                          </button>
+                        </div>
                       </form>
                     </div>
                   </div>
 
 
                   {/* MODAL */}
-                  <div className="modal-overlay" hidden={showModal}>
+                  <div className="modal-overlay" hidden={!showModal}>
                     <div className="modal-content bg-light p-4 box-shadow">
                       <div className='text-center'>
                         <img src="https://www.svgrepo.com/show/527338/question-circle.svg" alt="" className='w-25' />
@@ -171,8 +206,8 @@ export default function Createadmin() {
                         <p className='font-light-thick'>You want to add new Admin ?</p>
                       </div>
                       <div className="modal-actions d-flex ms-auto mt-auto">
-                        <button className='btn btn-secondary me-2 px-3' onClick={() => setShowModal(true)}>Cancel</button>
-                        <button className='btn btn-danger px-3' onClick={handleSubmit}>Ok</button>
+                        <button className='btn btn-secondary me-2 px-3' onClick={() => {setShowModal(false);setName('');setNumber('');setEmail('');setPassword('')}}>Cancel</button>
+                        <button className='btn btn-danger px-3' onClick={CreateAdmin}>Ok</button>
                       </div>
                     </div>
                   </div>

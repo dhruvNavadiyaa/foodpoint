@@ -127,7 +127,7 @@ export default function Customer() {
                                       <small className='font-light-thick'>{item.email}</small>
                                     </div>
                                   </td>
-                                  <td>{item.order.length}</td>
+                                  <td>{item?.order?.length}</td>
                                   <td>{item.number}</td>
                                   <td className='align-items-center'>
                                     <button className='d-inline btn btn-outline-danger btn-sm me-2' onClick={() => { setShowModal(false); setCurrentId(`${item._id}`) }}>Delete</button>

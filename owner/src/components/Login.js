@@ -12,6 +12,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [details, setDetails] = useState({});
+    const [error,setError] = useState()
 
     const data = {
         email: email,
@@ -21,7 +22,7 @@ const Login = () => {
     const getdata = async () => {
         try {
             const response = await axios.post('http://localhost:5000/api/Restaurant/signin', data,{withCredentials:true});
-            console.log(response.data)
+            // console.log(response.data)
             // const id = response.data.RestaurantInfo._id;
             if (response.data.login === true) {
                 if(!response.data.RestaurantInfo.bankDetail){
@@ -34,7 +35,7 @@ const Login = () => {
                 }
             }
             else {
-                alert("Your Email Id and Password are incorrect!")
+                setError("Incorrect Email Id or Password!")
             }
         } catch (error) {
             console.log('Error fetching data:' , error);
@@ -74,7 +75,8 @@ const Login = () => {
                             required
                         />
                     </div>
-                    <button type="submit" className='w-100 mt-3 mb-2  btn btn-outline-danger'>Log In</button>
+                    <p className='mb-0 text-danger'>{error}</p>
+                    <button type="submit" className='w-100 mt-3 mb-2'>Log In</button>
                     <small className=''>Don't have account? <Link to={'/SignUp'}>Create One</Link></small>
                 </form>
             </div>

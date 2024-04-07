@@ -44,8 +44,10 @@ export default function Home() {
     const response = await axios.post('http://localhost:5000/api/product/resturent', { restaurant_id:restrodata._id });
     setProductDetail(response?.data?.AllProduct)
   }
+  const userId = useSelector(state => state?.restaurant?.RestaurantInfo?._id)
   useEffect(() => {
     getProduct()
+    console.log(userId)
   }, [])
 
   return (

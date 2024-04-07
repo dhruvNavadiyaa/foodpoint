@@ -27,7 +27,7 @@ const Login = () => {
                 navigate('/Home')
             }
             else {
-                setErrorEmail("Your Email Id and Password are incorrect!")
+                setErrorEmail("Incorrect Email Id or Password!")
             }
         } catch (error) {
             console.log('Error fetching data:' , error);
@@ -50,7 +50,7 @@ const Login = () => {
                         <input
                             type="email"
                             id="email"
-                            className='w-100'
+                            className='w-100 border border-1 border-secondary rounded p-2'
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
@@ -61,14 +61,14 @@ const Login = () => {
                         <input
                             type="password"
                             id="password"
-                            className='w-100'
+                            className='w-100 border border-1 border-secondary rounded p-2'
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
                         />
                     </div>
-                    <p className='text-danger'>{errorEmail}</p>
-                    <button type="submit" className='w-100 mt-3 mb-2  btn btn-outline-danger'>Log In</button>
+                    <p className='text-danger mb-0'>{errorEmail}</p>
+                    <button type="submit" className='w-100 mt-3 mb-2 '>Log In</button>
                     <small className=''>Don't have account? <Link to={'/SignUp'}>Create One</Link></small>
                 </form>
             </div>

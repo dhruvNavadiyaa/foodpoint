@@ -13,6 +13,7 @@ import ContactUs from './components/ContactUs';
 import Profile from './components/Profile';
 import Sorry from './components/Sorry'
 import RestroDetails from './components/RestroDetails';
+import OtpVerification from './components/OtpVerification';
 
 function App() {
 
@@ -50,19 +51,21 @@ function App() {
           <>
             <Route path='/' element={<Login />} />
             <Route path='/SignUp' element={<SignUp />} />
-            <Route path='/RestroDetails' element={<RestroDetails />} />
+            <Route path='/OtpVerification' element={<OtpVerification />} />
+            {/* <Route path='/RestroDetails' element={<RestroDetails />} /> */}
+
           </> :
           <>
             {
               isApproved === "Pending" ?
                 <>
-                  <Route path='/' element={<Login />} />
-                  <Route path='/SignUp' element={<SignUp />} />
+                  {/* <Route path='/' element={<Login />} /> */}
+                  {/* <Route path='/SignUp' element={<SignUp />} /> */}
                   <Route path='/Home' element={<Home />} />
                   <Route path='/ContactUs' element={<ContactUs />} />
                   <Route path='/Profile' element={<Profile />} />
                   <Route path='/Information' element={<Sorry />} />
-                  <Route path='/RestroDetails' element={<RestroDetails />} />
+                  {/* <Route path='/RestroDetails' element={<RestroDetails />} /> */}
                 </> : <>
                   <Route path='/' element={<Login />} />
                   <Route path='/SignUp' element={<SignUp />} />

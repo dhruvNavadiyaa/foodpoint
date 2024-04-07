@@ -1,14 +1,15 @@
 import React, { useState, useEffect, createRef, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios'
-import { setUserDetails } from "../redux/features/userSlice";
+import { setRestroDetails } from "../redux/features/RestaurantSlice";
 
 export default function OtpVerification() {
 
   const [otp, setOtp] = useState(new Array(4).fill(''));
   const dispatch = useDispatch();
   const inputRefs = useRef(otp.map(() => createRef()));
-  const userId = useSelector(state => state?.user?.userInfo?.userInfo?._id)
+  const userId = useSelector(state => state?.deliver?.deliverInfo?.deliveryBoyInfo?._id)
+  console.log(userId)
   const handleChange = (e, index) => {
     const value = e.target.value;
     const newOtp = [...otp];
@@ -37,19 +38,19 @@ export default function OtpVerification() {
     let otpSend = otp.join("");
     otpSend=Number(otpSend)
     // console.log(typeof(otpSend))
-    const response = await axios.post('http://localhost:5000/api/user/otpverify' , {
+    const response = await axios.post('http://localhost:5000/api/delivery/otpverify' , {
       userId ,
       otp:otpSend
     })
-    dispatch(setUserDetails(response.data));
+    dispatch(setRestroDetails(response.data));
     // console.log(response.data)
   }
   const otpGenerate = async() =>{
-    const response = await axios.post('http://localhost:5000/api/user/otpGenerate' ,{userId})
+    const response = await axios.post('http://localhost:5000/api/delivery/otpGenerate' ,{userId})
   }
   
   useEffect(() => {
-    otpGenerate()
+    // otpGenerate()
   }, [])
 
   return (
@@ -71,7 +72,7 @@ export default function OtpVerification() {
       </nav>
 
       {/* OTP FORM */}
-      <div className="container-fuild border d-flex justify-content-center align-items-center pt-sm-5" >
+      <div className="container-fuild  d-flex justify-content-center align-items-center pt-sm-5" >
 
         <div className='border p-3 py-4 mb-5 rounded box-shadow' style={{ width: '450px', marginTop: '65px' }}>
           <p className='fs-3 mb-3 fw-bold'>OTP verification</p>
@@ -99,8 +100,8 @@ export default function OtpVerification() {
           </div>
 
           {/* <p className='mt-3'>{otp}</p> */}
-          <button className='btn btn-primary rounded-pill py-2' onClick={()=>{handelClick()}}>Verify</button>
-          <button className='btn btn-outline-secondary rounded-pill py-2'>Cancel</button>
+          <button className='btn btn-primary rounded rounded-3 py-2' onClick={()=>{handelClick()}}>Verify</button>
+          <button className='ms-2 btn btn-outline-secondary rounded rounded-3 py-2'>Cancel</button>
         </div>
 
       </div>
