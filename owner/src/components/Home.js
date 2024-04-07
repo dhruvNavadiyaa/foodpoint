@@ -65,7 +65,7 @@ export default function Home() {
               <p className='fs-2 fw-bold text-secondary mb-5'>Welcom to <span className='text-warning border-bottom border-2 border-secondary text-uppercase'>{restrodata.name}</span></p>
               <div className='fw-medium'>
                 <p className='font-monospace'>Thank you for joining our online delivery platform! We're excited to partner with you and look forward to driving more customers to your delicious dishes.</p>
-                <p className='mb-0 text-secondary'><i className="bi bi-star text-dark"> </i>{restrodata.rating}/5 Overall Ratings</p>
+                <p className='mb-0 text-secondary'><i className="bi bi-star text-dark"> </i> {`${restrodata.rating}`.slice(0, 4)}/5 Overall Ratings</p>
                 <p className='mb-0 text-secondary'><i className="bi bi-clock text-dark"> </i> {restrodata?.timing?.openAt} to {restrodata?.timing?.closeAt}</p>
                 <p className='mb-0 text-secondary'><i className="bi bi-geo-alt text-dark"> </i> {restrodata?.address?.street}, {restrodata?.address?.area}</p>
                 <p className='mb-0 text-secondary'><i className="bi bi-envelope text-dark"> </i> {restrodata?.email}</p>
@@ -105,7 +105,7 @@ export default function Home() {
                         <small className='text-warning'><i className="bi bi-star-fill text-warning"> </i>BESTSELLER</small>
                       </div>
                       <div className='p-1 border rounded text-center ms-auto'>
-                        <small className='fw-medium '><i className="bi bi-star-fill text-success"> </i>{item?.rating}/5</small><br />
+                        <small className='fw-medium '><i className="bi bi-star-fill text-success"> </i>{`${item?.rating}`.slice(0,3)}/5</small><br />
                         <hr className='border border-dark border-1 my-0 mt-1' />
                         <small className=''>Ratings</small>
                       </div>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="" style={{backgroundColor:" rgba(255, 166, 0, 0.100)"}}>
+    <footer className="" style={{ backgroundColor: " rgba(255, 166, 0, 0.100)" }}>
       <div className="container py-4">
         <div className="row text-center mt-3">
 
@@ -13,6 +13,9 @@ const Footer = () => {
               <li><p className=" mb-1">Email: food.point@gmail.com</p></li>
               <li><p className=" mb-0">Phone: (123) 456-7890</p></li>
             </ul>
+
+            <button className='btn btn-outline-danger w-50'>Log Out</button>
+
           </div>
 
           <div className="col-md-4 col-6 mb-3 ">
@@ -27,8 +30,8 @@ const Footer = () => {
 
           <div className="col-md-4 col-6 mb-3 " >
             <ul className="list-unstyled d-flex align-items-center">
-              <img src="https://www.svgrepo.com/show/251613/food-location.svg" alt="" className='w-50'/>
-              <p className='fs-1 fw-bold' style={{color:'rgb(253, 117, 85)'}}>Food Point</p>
+              <img src="https://www.svgrepo.com/show/251613/food-location.svg" alt="" className='w-50' />
+              <p className='fs-1 fw-bold' style={{ color: 'rgb(253, 117, 85)' }}>Food Point</p>
             </ul>
           </div>
 

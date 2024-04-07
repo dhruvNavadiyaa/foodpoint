@@ -6,9 +6,11 @@ import { setUserDetails } from "../redux/features/userSlice";
 export default function OtpVerification() {
 
   const [otp, setOtp] = useState(new Array(4).fill(''));
+  const [error, setError] = useState()
   const dispatch = useDispatch();
   const inputRefs = useRef(otp.map(() => createRef()));
   const userId = useSelector(state => state?.user?.userInfo?.userInfo?._id)
+
   const handleChange = (e, index) => {
     const value = e.target.value;
     const newOtp = [...otp];
@@ -33,21 +35,31 @@ export default function OtpVerification() {
     }
   };
 
-  const handelClick = async() =>{
-    let otpSend = otp.join("");
-    otpSend=Number(otpSend)
-    // console.log(typeof(otpSend))
-    const response = await axios.post('http://localhost:5000/api/user/otpverify' , {
-      userId ,
-      otp:otpSend
-    })
-    dispatch(setUserDetails(response.data));
-    // console.log(response.data)
+  const handelClick = async () => {
+    try {
+      let otpSend = otp.join("");
+      otpSend = Number(otpSend)
+      // console.log(typeof(otpSend))
+      const response = await axios.post('http://localhost:5000/api/user/otpverify', {
+        userId,
+        otp: otpSend
+      })
+      console.log(response.data)
+      if(response.data.success){
+        dispatch(setUserDetails(response.data));
+      }
+      else{
+        setError("Please enter Valid OTP!")
+      }
+    }
+    catch(e){
+      console.log(error)
+    }
   }
-  const otpGenerate = async() =>{
-    const response = await axios.post('http://localhost:5000/api/user/otpGenerate' ,{userId})
+  const otpGenerate = async () => {
+    const response = await axios.post('http://localhost:5000/api/user/otpGenerate', { userId })
   }
-  
+
   useEffect(() => {
     otpGenerate()
   }, [])
@@ -71,7 +83,7 @@ export default function OtpVerification() {
       </nav>
 
       {/* OTP FORM */}
-      <div className="container-fuild border d-flex justify-content-center align-items-center pt-sm-5" >
+      <div className="container-fuild d-flex justify-content-center align-items-center pt-sm-5" >
 
         <div className='border p-3 py-4 mb-5 rounded box-shadow' style={{ width: '450px', marginTop: '65px' }}>
           <p className='fs-3 mb-3 fw-bold'>OTP verification</p>
@@ -94,12 +106,17 @@ export default function OtpVerification() {
               ))}
             </div>
             <div className='d-flex'>
-              <small className='ms-auto mt-3'>Didn't get code? <span className='text-primary'>Resend</span></small>
+              <small className='ms-auto mt-3'>Didn't get code? <span className='text-primary'>Resend</span></small><br />
             </div>
+              <p className='mb-0 text-danger'>{error}</p>
           </div>
 
           {/* <p className='mt-3'>{otp}</p> */}
-          <button className='btn btn-primary rounded-pill py-2' onClick={()=>{handelClick()}}>Verify</button>
+          <button className='btn btn-primary rounded-pill py-2'
+            onClick={() => { handelClick() }}
+            disabled={inputRefs.current[0].value === '' || inputRefs.current[1].value === '' || inputRefs.current[2].value === '' || inputRefs.current[3].value === ''}>
+            Verify
+          </button>
           <button className='btn btn-outline-secondary rounded-pill py-2'>Cancel</button>
         </div>
 

@@ -100,7 +100,10 @@ export default function OtpVerification() {
           </div>
 
           {/* <p className='mt-3'>{otp}</p> */}
-          <button className='btn btn-primary rounded rounded-3 py-2' onClick={()=>{handelClick()}}>Verify</button>
+          <button className='btn btn-primary rounded rounded-3 py-2' 
+          onClick={()=>{handelClick()}}
+          disabled={inputRefs.current[0].value===''||inputRefs.current[1].value===''||inputRefs.current[2].value===''||inputRefs.current[3].value===''}
+          >Verify</button>
           <button className='ms-2 btn btn-outline-secondary rounded rounded-3 py-2'>Cancel</button>
         </div>
 
