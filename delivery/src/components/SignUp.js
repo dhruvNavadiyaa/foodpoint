@@ -27,14 +27,15 @@ const Login = () => {
     const sendData = async () => {
         try {
             const response = await axios.post('http://localhost:5000/api/delivery/signup', data);
-            if (response.data.success) {
+            // console.log(response.data)
+            if (response.data.userinformation) {
                 navigate('/')
             }
             else {
                 setError({emailExist: "Email is already in exist" })
             } 
         } catch (error) {
-            console.log('Error fetching data:',error);
+            console.log('Error fetching data:');
         }
         // console.log(data)
     }
