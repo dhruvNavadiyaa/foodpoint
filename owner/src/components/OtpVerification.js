@@ -1,10 +1,12 @@
 import React, { useState, useEffect, createRef, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
+import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import { setRestroDetails } from "../redux/features/RestaurantSlice";
 
 export default function OtpVerification() {
 
+  const navigate = useNavigate()
   const [otp, setOtp] = useState(new Array(4).fill(''));
   const dispatch = useDispatch();
   const inputRefs = useRef(otp.map(() => createRef()));
@@ -43,9 +45,10 @@ export default function OtpVerification() {
       otp:otpSend
     })
     dispatch(setRestroDetails(response.data));
-    
+    navigate('/RestroDetails')
     console.log(response.data)
   }
+  
   const otpGenerate = async() =>{
     const response = await axios.post('http://localhost:5000/api/Restaurant/otpGenerate' ,{RestaurantId})
   }
