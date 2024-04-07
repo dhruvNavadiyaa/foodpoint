@@ -80,7 +80,7 @@ export default function AddProduct() {
     const fetchCategory = async () => {
         const response = await axios.post('http://localhost:5000/api/category/fetchid',{Restaurant_id:restroId})
         setCategories(response.data.AllProduct)
-        console.log(categories)
+        // console.log(categories)
     }
 
 

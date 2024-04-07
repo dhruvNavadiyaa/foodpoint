@@ -9,9 +9,10 @@ export default function Navbar() {
   const isApproved = useSelector(state => state.deliver.deliverInfo.deliveryBoyInfo.isApproved)
   const location = useLocation()
   const path = location.pathname
+  // const [path,setPath] = (location.pathname)
 
   const changeBgColor = () => {
-    // console.log(path)
+    console.log(path)
     if (path === '/Home') {
       let cComponent = document.querySelector("#Home")
       cComponent.classList.add('bg-navitem')
@@ -41,6 +42,7 @@ export default function Navbar() {
   useEffect(() => {
     changeBgColor()
     // console.log(isApproved) 
+    console.log(path)
   }, [path])
 
   return (

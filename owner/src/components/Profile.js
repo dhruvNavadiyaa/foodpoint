@@ -9,7 +9,7 @@ export default function Profile() {
   const [changeDetail, setChageDetail] = useState(true)
 
 useEffect(()=>{
-  console.log(RestaurantInfo)
+  // console.log(RestaurantInfo)
 },[])
   return (
     <>

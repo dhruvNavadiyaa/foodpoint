@@ -21,12 +21,12 @@ export default function CurrentOrder() {
         try {
             const response = await axios.post('http://localhost:5000/api/order/orderRestaurant', { Restaurant_id });
             const user = await axios.post('http://localhost:5000/api/order//orderprocess', { Restaurant_id :Restaurant_id});
-            console.log(user.data.orderInfo);
+            // console.log(user.data.orderInfo);
             setOrdersAccepted(user.data.orderInfo)
             // console.log(response.data.orderInfo[0].orders)
             setOrders(response.data.orderInfo[0].orders)
         } catch (error) {
-            console.log('Error fetching data:', error);
+            console.log('Error fetching data:');
         }
     }
 

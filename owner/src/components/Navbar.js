@@ -11,7 +11,7 @@ export default function Navbar() {
   const path = location.pathname
 
   const changeBgColor = () => {
-    // console.log(path)
+    console.log(path)
     if (path === '/Home') {
       let cComponent = document.querySelector("#Home")
       cComponent.classList.add('bg-navitem')
@@ -44,7 +44,8 @@ export default function Navbar() {
 
   useEffect(() => {
     changeBgColor()
-  }, [path])
+    console.log(path)
+  }, [])
 
   return (
     <nav>

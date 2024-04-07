@@ -42,7 +42,7 @@ export default function YourProducts() {
       const response = await axios.post('http://localhost:5000/api/product/catagory', categoryId);
       // console.log(response.data)
       setProduct(response.data.AllProduct)
-      console.log(response.data)
+      // console.log(response.data)
 
     } catch (error) {
       console.log('Error fetching data:', error);
