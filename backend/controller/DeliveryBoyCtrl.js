@@ -174,7 +174,7 @@ const otpGenerate = async (req, res) => {
   return res.send({
     success: true,
   });
-};
+}; 
 
 const verifyOtp = async (req, res) => {
   const deliveryboy = await DeliveryBoy.findById(req?.body.DeliveryBoyId);

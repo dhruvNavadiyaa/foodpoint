@@ -36,8 +36,7 @@ function App() {
 
   useEffect(() => {
     refresh()
-    // console.log(login)
-    // console.log(isApproved)
+
   }, [])
   return (
     <>

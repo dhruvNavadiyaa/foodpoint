@@ -20,17 +20,15 @@ function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const login = useSelector(state => state.restaurant.login)
-  const isApproved = useSelector(state => state.restaurant.isApproved)
-  const isVerified = useSelector(state => state.restaurant?.isVerified)
+  const isApproved = useSelector(state => state.restaurant.RestaurantInfo.isApproved)
+  console.log(isApproved)
+  const isVerified = useSelector(state => state.restaurant?.RestaurantInfo.isVerified)
 console.log(isVerified)
   const refresh = async () => {
     try {
       const response = await axios.post('http://localhost:5000/api/Restaurant/refresh', {}, { withCredentials: true });
       if (response.data.login === true) {
-        // console.log(response)
-        console.log(response.data)
-        dispatch(setRestroDetails(response.data))
-        // navigate('/Home')
+        await dispatch(setRestroDetails(response.data))
       }
       else {
         navigate('/')
@@ -58,7 +56,7 @@ console.log(isVerified)
           </> :
           <>
             {
-              !isVerified ?(
+              isVerified ?(
               isApproved === "Pending" ?
                 <>
                   {/* <Route path='/' element={<Login />} /> */}
