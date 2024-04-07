@@ -48,6 +48,7 @@ export default function OtpVerification() {
     navigate('/RestroDetails')
     console.log(response.data)
   }
+  
   const otpGenerate = async() =>{
     const response = await axios.post('http://localhost:5000/api/Restaurant/otpGenerate' ,{RestaurantId})
   }
