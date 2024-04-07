@@ -144,7 +144,7 @@ export default function Restaurantdetails() {
                                                         <div className='px-2'>
                                                             <p className='fs-md-4 fw-bold text-uppercase'>{item.name}</p>
                                                             <p className='mt-1 fs-6 fw-medium'> &#8226; {item.description}</p>
-                                                            <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {item.rating}/5</small>
+                                                            <small className='fw-medium text-secondary'><i className="bi bi-star-fill text-secondary"> </i> {`${item.rating}`.slice(0,3)}/5</small>
                                                         </div>
                                                         <hr className='my-2' />
                                                         <div className='row fs-md-5 fw-bold text-center'>

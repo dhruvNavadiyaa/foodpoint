@@ -104,7 +104,7 @@ export default function Category() {
                                             <table className="table table-hover mt-3">
                                                 <thead className=''>
                                                     <tr className='fs-6'>
-                                                        <th scope="col">NO.</th>
+                                                        {/* <th scope="col">NO.</th> */}
                                                         <th scope="col">NAME</th>
                                                         <th scope="col">EMAIL</th>
                                                         <th scope="col">MESSAGE</th>
@@ -117,7 +117,7 @@ export default function Category() {
                                                             if (item.from == "user") {
                                                                 return (
                                                                     <tr key={index}>
-                                                                        <td >{index}</td>
+                                                                        {/* <td >{index}</td> */}
                                                                         <td>{item.name}</td>
                                                                         <td>{item.email}</td>
                                                                         <td>{item.message}</td>
@@ -145,7 +145,7 @@ export default function Category() {
                                             <table className="table table-hover mt-3">
                                                 <thead>
                                                     <tr className='table-active'>
-                                                        <th scope="col">NO.</th>
+                                                        {/* <th scope="col">NO.</th> */}
                                                         <th scope="col">NAME</th>
                                                         <th scope="col">EMAIL</th>
                                                         <th scope="col">MESSAGE</th>
@@ -158,7 +158,7 @@ export default function Category() {
                                                             if (item.from == "restaurant") {
                                                                 return (
                                                                     <tr key={index}>
-                                                                        <td >{index}</td>
+                                                                        {/* <td >{index}</td> */}
                                                                         <td>{item.name}</td>
                                                                         <td>{item.email}</td>
                                                                         <td>{item.message}</td>
@@ -186,7 +186,7 @@ export default function Category() {
                                             <table className="table table-hover mt-3">
                                                 <thead>
                                                     <tr className='table-active'>
-                                                        <th scope="col">NO.</th>
+                                                        {/* <th scope="col">NO.</th> */}
                                                         <th scope="col">NAME</th>
                                                         <th scope="col">EMAIL</th>
                                                         <th scope="col">MESSAGE</th>
@@ -199,7 +199,7 @@ export default function Category() {
                                                             if (item.from == "delivery") {
                                                                 return (
                                                                     <tr key={index}>
-                                                                        <td >{index + 1}</td>
+                                                                        {/* <td >{index + 1}</td> */}
                                                                         <td>{item.name}</td>
                                                                         <td>{item.email}</td>
                                                                         <td>{item.message}</td>

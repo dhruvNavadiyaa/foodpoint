@@ -95,7 +95,7 @@ export default function Restaurant() {
                                                             <div className="overflow-hidden mt-1" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} >
                                                                 <p className='fs-6 fw-bold text-uppercase'>{item.name}</p>
                                                             </div>
-                                                            <small className='text-success text-sm'>{item.rating}/5 ratings</small><br />
+                                                            <small className='text-success text-sm'>{`${item.rating}`.slice(0,3)}/5 ratings</small><br />
                                                             <small className='text-sm fw-bold text-secondary'>Status : {item.isApproved}</small>
                                                         </div>
                                                     </div>

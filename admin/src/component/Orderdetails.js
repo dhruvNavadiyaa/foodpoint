@@ -52,7 +52,7 @@ export default function Orderdetails() {
 
     const getOrderDetails = async () => {
         const response = await axios.post('http://localhost:5000/api/order/orderwithid', { order_id: orderId })
-        // console.log(response.data.Orderinformation)
+        console.log(response.data.Orderinformation)
         setOrderDetails(response.data.Orderinformation)
     }
     useEffect(() => {
