@@ -63,7 +63,8 @@ const RestaurantSchema = mongoose.Schema({
     isApproved: {
         type: String,
         default:'Pending'
-    },isVerified: {
+    },
+    isVerified: {
         type : Boolean,
         default : false
     },

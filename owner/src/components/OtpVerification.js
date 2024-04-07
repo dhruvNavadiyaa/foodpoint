@@ -8,8 +8,8 @@ export default function OtpVerification() {
   const [otp, setOtp] = useState(new Array(4).fill(''));
   const dispatch = useDispatch();
   const inputRefs = useRef(otp.map(() => createRef()));
-  const userId = useSelector(state => state?.restaurant?.RestaurantInfo?._id)
-  console.log(userId)
+  const RestaurantId = useSelector(state => state?.restaurant?.RestaurantInfo?._id)
+  console.log(RestaurantId)
   const handleChange = (e, index) => {
     const value = e.target.value;
     const newOtp = [...otp];
@@ -39,14 +39,15 @@ export default function OtpVerification() {
     otpSend=Number(otpSend)
     // console.log(typeof(otpSend))
     const response = await axios.post('http://localhost:5000/api/Restaurant/otpverify' , {
-      userId ,
+      RestaurantId ,
       otp:otpSend
     })
     dispatch(setRestroDetails(response.data));
-    // console.log(response.data)
+    
+    console.log(response.data)
   }
   const otpGenerate = async() =>{
-    const response = await axios.post('http://localhost:5000/api/Restaurant/otpGenerate' ,{userId})
+    const response = await axios.post('http://localhost:5000/api/Restaurant/otpGenerate' ,{RestaurantId})
   }
   
   useEffect(() => {

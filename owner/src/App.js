@@ -21,13 +21,14 @@ function App() {
   const dispatch = useDispatch();
   const login = useSelector(state => state.restaurant.login)
   const isApproved = useSelector(state => state.restaurant.isApproved)
-
+  const isVerified = useSelector(state => state.restaurant?.isVerified)
+console.log(isVerified)
   const refresh = async () => {
     try {
       const response = await axios.post('http://localhost:5000/api/Restaurant/refresh', {}, { withCredentials: true });
       if (response.data.login === true) {
         // console.log(response)
-        // console.log(response.data)
+        console.log(response.data)
         dispatch(setRestroDetails(response.data))
         // navigate('/Home')
       }
@@ -52,12 +53,12 @@ function App() {
             <Route path='/' element={<Login />} />
             <Route path='*' element={<Login />} />
             <Route path='/SignUp' element={<SignUp />} />
-            <Route path='/OtpVerification' element={<OtpVerification />} />
             {/* <Route path='/RestroDetails' element={<RestroDetails />} /> */}
 
           </> :
           <>
             {
+              !isVerified ?(
               isApproved === "Pending" ?
                 <>
                   {/* <Route path='/' element={<Login />} /> */}
@@ -77,7 +78,10 @@ function App() {
                   <Route path='/ContactUs' element={<ContactUs />} />
                   <Route path='/Profile' element={<Profile />} />
                   {/* <Route path='/RestroDetails' element={<RestroDetails />} /> */}
-                </>
+                </>):
+                (
+            <Route path='*' element={<OtpVerification />} />
+                )
             }
           </>
         }

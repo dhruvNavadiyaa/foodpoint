@@ -311,7 +311,8 @@ const otpGenerate = async (req, res) => {
     },
     { new: true }
   );
-  await sendEmail("OTP VERIFICATION" ,updateRestaurant.email , `Your OTP verification code is ${updateRestaurant.varifiedCode} `) ;
+  console.log(updateRestaurant?.varifiedCode)
+  await sendEmail("OTP VERIFICATION" ,updateRestaurant?.email , `Your OTP verification code is ${updateRestaurant?.varifiedCode} `) ;
 
   return res.send({
     success: true,
