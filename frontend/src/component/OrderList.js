@@ -41,6 +41,7 @@ export default function OrderList() {
             // console.log(response.data)
             // console.log(rating)
             setModalState({ isVisible: false, id: null})
+            await getallOrder()
         }
         catch (e) {
             console.log(e)

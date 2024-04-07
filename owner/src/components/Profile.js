@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import { useSelector} from 'react-redux'
-
+import axios from 'axios'
 export default function Profile() {
   const RestaurantInfo  = useSelector(state => state.restaurant.RestaurantInfo)
 
   const [changeDetail, setChageDetail] = useState(true)
-
+  const logout = async() => {
+    const response = await axios.post('http://localhost:5000/api/logout/logout', {},{ withCredentials: true});
+    console.log(response.data);
+    window.location.reload();
+  }
 useEffect(()=>{
   // console.log(RestaurantInfo)
 },[])
@@ -29,7 +33,7 @@ useEffect(()=>{
 
               {/* <p className='py-2 ps-3 fw-medium border rounded rounded-5' style={{ backgroundColor: 'rgb(226, 232, 240)' }}>Update Profile</p>
               <p className='py-2 ps-3 fw-medium border rounded rounded-5' style={{ backgroundColor: 'rgb(226, 232, 240)' }}>Change Password</p> */}
-              <p className='py-2 ps-3 pe-3 fw-medium border rounded rounded-5' style={{ backgroundColor: 'rgb(226, 232, 240)' }}>Logout</p>
+              <p className='py-2 ps-3 pe-3 fw-medium border rounded rounded-5' onClick={logout} style={{ backgroundColor: 'rgb(226, 232, 240)' }}>Logout</p>
             </div>
           </div>
 

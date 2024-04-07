@@ -1,10 +1,15 @@
 import React, { useState } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
-
+import axios from 'axios'
 export default function Profile() {
 
   const [changeDetail, setChageDetail] = useState(true)
+  const logout = async() => {
+    const response = await axios.post('http://localhost:5000/api/logout/logout', {},{ withCredentials: true});
+    console.log(response.data);
+    window.location.reload();
+  }
 
   return (
     <>
@@ -24,7 +29,7 @@ export default function Profile() {
 
               {/* <p className='py-2 ps-3 fw-medium border rounded rounded-5' style={{ backgroundColor: 'rgb(226, 232, 240)' }}>Update Profile</p>
               <p className='py-2 ps-3 fw-medium border rounded rounded-5' style={{ backgroundColor: 'rgb(226, 232, 240)' }}>Change Password</p> */}
-              <p className='py-2 ps-3 fw-medium border rounded rounded-5' style={{ backgroundColor: 'rgb(226, 232, 240)' }}>Logout</p>
+              <p className='py-2 ps-3 fw-medium border rounded rounded-5' onClick={logout} style={{ backgroundColor: 'rgb(226, 232, 240)' }}>Logout</p>
             </div>  
           </div>
 
