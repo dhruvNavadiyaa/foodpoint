@@ -12,6 +12,7 @@ import category from './route/CategoryRoute.js'
 import ContactUs from './route/ContactUsRoute.js'
 import Order from './route/OrderRoute.js'
 import review  from "./route/ReviewRoute.js";
+import logout  from "./route/logoutRoute.js";
 dotenv.config()
 const app = express();
 app.use(express.json())
@@ -32,6 +33,7 @@ app.use("/api/category",category)
 app.use("/api/contactus",ContactUs)
 app.use("/api/order",Order)
 app.use("/api/review",review)
+app.use("/api/logout",logout)
 app.listen(process.env.PORT , ()=>{
     console.log(`runing on ${process.env.PORT}` )
 })
