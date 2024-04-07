@@ -50,7 +50,7 @@ export default function OtpVerification() {
   }
   
   useEffect(() => {
-    // otpGenerate()
+    otpGenerate()
   }, [])
 
   return (
