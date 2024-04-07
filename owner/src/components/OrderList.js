@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from './Navbar'
-import '../css/Util.css'
+// import '../css/Util.css'
 import Footer from './Footer';
 import axios from 'axios'
 import { useSelector } from 'react-redux';
@@ -17,12 +17,11 @@ export default function OrderList() {
             <div className='row m-0 p-3 ' >
 
                 <div className="row m-0 p-0" >
-                    <div className="col p-0 d-flex" style={{ marginTop: '80px' }}>
-                        <button className={`btn  ${!changeTables ? 'btn-outline-dark' : 'btn-dark'} me-2 w-25`} onClick={() => setChangeTables(true)}>Current Orders</button>
-                        <button className={`btn ${changeTables ? 'btn-outline-dark' : 'btn-dark'} w-25`} onClick={() => setChangeTables(false)}>Past Orders</button>
+                    <div className="col p-0" style={{ marginTop: '80px' }}>
+                        <button className={`btn  ${!changeTables ? 'btn-outline-dark' : 'btn-dark'} me-2`} onClick={() => setChangeTables(true)}>Current Orders</button>
+                        <button className={`btn ${changeTables ? 'btn-outline-dark' : 'btn-dark'}`} onClick={() => setChangeTables(false)}>Past Orders</button>
                     </div>
                 </div>
-
                 {
                     changeTables ? <CurrentOrder /> : <PastOrders />
                 }

@@ -96,9 +96,9 @@ export default function AddProduct() {
                 <div className='row  p-md-5 py-3 m-0' >
 
                     <div className="row m-0" >
-                        <div className="col" style={{ marginTop: '80px' }}>
+                        <div className="col " style={{ marginTop: '80px' }}>
                             <button className={`btn  ${!changeForm ? 'btn-outline-dark' : 'btn-dark'} me-2`} onClick={() => setChangeForm(true)}>Add Product</button>
-                            <button className={`btn ${changeForm ? 'btn-outline-dark' : 'btn-dark'}`} onClick={() => setChangeForm(false)}>Add Category</button>
+                            <button className={`btn ${changeForm ? 'btn-outline-dark' : 'btn-dark'} ` } onClick={() => setChangeForm(false)}>Add Category</button>
                         </div>
                     </div>
 
