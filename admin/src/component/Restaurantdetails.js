@@ -101,7 +101,7 @@ export default function Restaurantdetails() {
                                     </div>
                                     <div className=''>
                                         <div className="border p-2 text-center rounded rounded-3" >
-                                            <p className='mb-0 border-bottom border-2 pb-2 fw-bold' ><i className="bi bi-star-fill text-success"></i> {restaurantDetails.rating}</p>
+                                            <p className='mb-0 border-bottom border-2 pb-2 fw-bold' ><i className="bi bi-star-fill text-success"></i> {`${restaurantDetails.rating}`.slice(0,3)}</p>
                                             <small className='fw-medium'>Ratings</small>
                                         </div>
                                     </div>
