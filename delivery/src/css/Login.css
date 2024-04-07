@@ -19,7 +19,7 @@
     max-width: 400px;
 }
 
-button {
+/* button {
     width: 100%;
     padding: 10px;
     margin-top: 16px;
@@ -28,7 +28,7 @@ button {
     background-color: #ff4500;
     color: white;
     cursor: pointer;
-}
+} */
 
 button:hover {
     background-color: #e03e00;

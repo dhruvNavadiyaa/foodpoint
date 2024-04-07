@@ -111,7 +111,7 @@ export default function YourProducts() {
                       <div className='p-3 border rounded rounded-5 box-shadow' style={{ backgroundColor: 'white' }}>
                         <small className='font-light-thick'>&#x2022; {categoryName || "Street Food"}</small>
                         <p className='mb-0 text-success text-uppercase'>{item.name}</p>
-                        <p className='mb-0 text-warning'><i className="bi bi-star-fill "></i> {item.rating}/5</p>
+                        <p className='mb-0 text-warning'><i className="bi bi-star-fill "></i> {`${item.rating}`.slice(0,3)}/5</p>
                         <p className='mb-0 text-secondary'>&#8377;{item.price}/price</p>
                         <div className='d-flex align-items-center'>
                           <small className='text-danger fw-bold'>{item.isActive?"Active":"InActive"}</small>

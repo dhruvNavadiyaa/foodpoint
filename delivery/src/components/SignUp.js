@@ -119,7 +119,7 @@ const Login = () => {
                         />
                     </div>
                     <p className='text-danger'>{error.password}</p>
-                    <button type="submit" className=' w-100 mt-3 '>Sign Up</button>
+                    <button type="submit" className=' w-100 mt-3 btn btn-outline-danger'>Sign Up</button>
                     <small>If you have account! <Link to={'/'}>Login</Link></small>
                 </form>
             </div>
