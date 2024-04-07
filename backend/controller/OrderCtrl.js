@@ -5,7 +5,6 @@ import crypto from "crypto";
 import mongoose from "mongoose";
 
 const CreateOrder = async (req, res) => {
-  console.log(req?.body?.Restaurant_id)
   const create = await Order.create({
     products: {
       product: req?.body?.product,
@@ -145,7 +144,6 @@ const updateOrderStatus = async (req, res) => {
   const find = await Order.findByIdAndUpdate(req?.body?.Order_id, {
     status: req?.body?.status,
   });
-  console.log(find)
   return res.send({
     success: true,
     orderInfo: find,
@@ -153,7 +151,6 @@ const updateOrderStatus = async (req, res) => {
 };
 
 const findeOrderRestaurants = async (req, res) => {
-  console.log(req.body)
   const find = await Order.aggregate([
     {
       $match: {

@@ -15,7 +15,6 @@ const generateAccesssAndRefreshToken = async (_id) => {
 };
 
 const CreateRestaurant = async (req, res) => {
-  // console.log(req.files.restaurant)
   const exists = await Restaurant.findOne({
     email: req?.body?.email,
   });
@@ -171,7 +170,6 @@ const UpdateRestaurant = async (req, res) => {
       RestaurantInfo: updatedRestaurant,
     });
   } catch (err) {
-    console.log(err);
     return res.send({
       RestaurantInfo: updatedRestaurant,
       success : false,
@@ -303,7 +301,6 @@ const otpGenerate = async (req, res) => {
 
     return Number(OTP);
   }
-  // console.log(typeof(generateOTP()))
   const updateRestaurant = await Restaurant.findByIdAndUpdate(
     req?.body?.RestaurantId,
     {

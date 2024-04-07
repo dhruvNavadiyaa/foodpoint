@@ -4,8 +4,6 @@ import mongoose  from "mongoose";
 //Add Product and Also id push in to the Category And Restaurant models
 const CreateProduct = async(req,res)=>{
     const fileimg = req?.files?.product
-    console.log(fileimg)
-    console.log(req.body)
     let  img = ""
     if(fileimg){
       img =await uploadCloudinary(`./temp/img/${fileimg[0]?.filename}`)
@@ -24,15 +22,12 @@ const CreateProduct = async(req,res)=>{
     })
   }
   catch(e){
-    console.log(e)
   }
 }
 
 
 // Featch all products within catagory
 const CatagoryProuct = async(req,res)=>{
-    // console.log(req.query)
-    console.log(req?.body?.category_id)
     const AllFeatch = await Product.find({
         category : req?.body?.category_id
     })
@@ -80,7 +75,6 @@ const deleteProduct = async (req, res) => {
     
 
 const searchProduct = async (req, res) => {
-  console.log(req.body)
         const search = await Product.aggregate([
           {
             $match: {

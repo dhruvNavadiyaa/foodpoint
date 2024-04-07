@@ -74,7 +74,6 @@ const LoginUser = async (req, res) => {
 
 const DeleteUser = async (req, res) => {
   const deleteUser = await User.deleteOne({ _id: req?.body?.User_id });
-  // console.log(deleteUser)
   res.send({
     user: "User deleted",
   });
@@ -134,10 +133,9 @@ const otpGenerate = async (req, res) => {
     for (let i = 0; i < 4; i++) {
       OTP += digits[Math.floor(Math.random() * len)];
     }
-    console.log(OTP);
+    console.log(OTP)
     return Number(OTP);
   }
-  // console.log(typeof(generateOTP()))
   const updateUser = await User.findByIdAndUpdate(
     req?.body?.userId,
     {

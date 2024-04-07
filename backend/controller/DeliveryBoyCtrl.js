@@ -158,7 +158,6 @@ const otpGenerate = async (req, res) => {
 
     return Number(OTP);
   }
-  // console.log(typeof(generateOTP()))
   const updateUser = await DeliveryBoy.findByIdAndUpdate(
     req?.body?.DeliveryBoyId,
     {
