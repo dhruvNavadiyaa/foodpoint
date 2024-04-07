@@ -108,6 +108,7 @@ export default function Navbar() {
             <Link to='/ContactUs' className='text-dark text-decoration-none'>
               <li className='p-2 rounded rounded-3 mx-3' id='ContactUs' onClick={() => changeBgColor()}>Help</li>
             </Link>
+              <li className='p-2 rounded rounded-3 mx-3'>Log Out</li>
           </div>
         </div>
 
