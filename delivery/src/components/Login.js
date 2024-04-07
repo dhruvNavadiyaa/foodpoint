@@ -68,7 +68,7 @@ const Login = () => {
                         />
                     </div>
                     <p className='text-danger mb-0'>{errorEmail}</p>
-                    <button type="submit" className='w-100 mt-3 mb-2 '>Log In</button>
+                    <button type="submit" className='w-100 mt-3 mb-2 btn btn-outline-danger'>Log In</button>
                     <small className=''>Don't have account? <Link to={'/SignUp'}>Create One</Link></small>
                 </form>
             </div>
