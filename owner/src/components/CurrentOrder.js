@@ -32,8 +32,14 @@ export default function CurrentOrder() {
 
         const updateStatus = async (id) => {
             const response = await axios.post('http://localhost:5000/api/order/updateOrderStatus', { Order_id:id,status:"process" });
-            console.log(response.data)
+            // console.log(response.data)
             getOrderDetail()
+        }
+        const cancelOrder = async (id) => {
+            const response = await axios.post('http://localhost:5000/api/order/updateOrderStatus', { Order_id:id,status:"cancel" });
+            // console.log(response.data)
+            getOrderDetail()
+            // console.log(id)
         }
     useEffect(() => {
         getOrderDetail()
@@ -139,7 +145,7 @@ export default function CurrentOrder() {
                                     if (modalState.type == 'accept') {
                                         updateStatus(modalState.data);
                                     } else if (modalState.type == 'cancel') {
-                                        // cancelOrder(modalState.data);
+                                        cancelOrder(modalState.data);
                                     };
                                     setModalState({ isVisible: false, type: null, data: null })
                                 }}>Ok
