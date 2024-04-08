@@ -1,15 +1,17 @@
 import React, { useState, useEffect, createRef, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
+import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import { setdeliverDetails } from "../redux/features/deliverySlice";
 
 export default function OtpVerification() {
 
+  const navigate = useNavigate()
   const [otp, setOtp] = useState(new Array(4).fill(''));
   const dispatch = useDispatch();
   const inputRefs = useRef(otp.map(() => createRef()));
   const DeliveryBoyId = useSelector(state => state?.deliver?.deliverInfo?.deliveryBoyInfo?._id)
-  console.log(DeliveryBoyId)
+  // console.log(DeliveryBoyId)
   const handleChange = (e, index) => {
     const value = e.target.value;
     const newOtp = [...otp];
@@ -105,7 +107,7 @@ export default function OtpVerification() {
           onClick={()=>{handelClick()}}
           disabled={inputRefs.current[0].value===''||inputRefs.current[1].value===''||inputRefs.current[2].value===''||inputRefs.current[3].value===''}
           >Verify</button>
-          <button className='ms-2 btn btn-outline-secondary rounded rounded-3 py-2'>Cancel</button>
+          <button className='ms-2 btn btn-outline-secondary rounded rounded-3 py-2' onClick={()=>{navigate('/')}}>Cancel</button>
         </div>
 
       </div>

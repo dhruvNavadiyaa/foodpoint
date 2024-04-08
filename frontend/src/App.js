@@ -20,7 +20,7 @@ function App() {
   const dispatch = useDispatch();
   const login = useSelector((state) => state?.user?.login);
   const userInfo = useSelector((state) => state?.user?.userInfo?.userInfo?.isVerified);
-  console.log(userInfo)
+  // console.log(userInfo)
   const refresh = async () => {
     try {
       const response = await axios.post(
@@ -33,7 +33,7 @@ function App() {
        dispatch(setUserDetails(response.data));
       }
     } catch (error) {
-      console.log("Error fetching data:", error);
+      console.log("Error fetching data:");
     }
   };
   useEffect(() => {

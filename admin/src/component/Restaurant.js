@@ -50,7 +50,7 @@ export default function Restaurant() {
     const getAllDetail = async () => {
         try {
             const response = await axios.get('http://localhost:5000/api/Restaurant/fetchall');
-            console.log(response.data.Restaurant)
+            // console.log(response.data.Restaurant)
             setRestaurantDetails(response.data.Restaurant)
             // setCategoryData(response.data.allproductWithCategories)
         } catch (error) {

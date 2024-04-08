@@ -54,7 +54,7 @@ export default function Navbar() {
   useEffect(() => {
     changeBgColor()
     // console.log(isApproved) 
-    console.log(path)
+    // console.log(path)
   }, [path])
 
   return (

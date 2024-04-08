@@ -21,9 +21,9 @@ function App() {
   const dispatch = useDispatch();
   const login = useSelector(state => state.restaurant.login)
   const isApproved = useSelector(state => state.restaurant.RestaurantInfo.isApproved)
-  console.log(isApproved)
+  // console.log(isApproved)
   const isVerified = useSelector(state => state.restaurant?.RestaurantInfo.isVerified)
-console.log(isVerified)
+// console.log(isVerified)
   const refresh = async () => {
     try {
       const response = await axios.post('http://localhost:5000/api/Restaurant/refresh', {}, { withCredentials: true });
@@ -40,8 +40,8 @@ console.log(isVerified)
   }
   useEffect(() => {
     refresh()
-    console.log(login)
-    console.log(isApproved)
+    // console.log(login)
+    // console.log(isApproved)
   }, [])
   return (
     <>

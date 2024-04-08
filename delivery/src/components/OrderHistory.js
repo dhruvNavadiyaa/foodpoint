@@ -18,7 +18,7 @@ export default function OrderHistory() {
       { DeliveryBoy_id }
     );
     setOrderAccept(response.data.orderInfo);
-    console.log(response.data.orderInfo);
+    // console.log(response.data.orderInfo);
   };
   const orderInfo = async () => {
     const response = await axios.post(
@@ -26,7 +26,7 @@ export default function OrderHistory() {
       { DeliveryBoy_id }
     );
     setOrderHistory(response.data.orderInfo);
-    console.log(response.data.orderInfo);
+    // console.log(response.data.orderInfo);
   };
   const doneOrder = async (id) => {
     const response = await axios.post(
@@ -34,7 +34,7 @@ export default function OrderHistory() {
         { Order_id:id , status: "done" }
       );
       orderInfo()
-      console.log(response.data);
+      // console.log(response.data);
   }
   useEffect(() => {
     orderInfo();
