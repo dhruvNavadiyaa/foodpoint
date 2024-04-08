@@ -106,7 +106,7 @@ export default function OtpVerification() {
               ))}
             </div>
             <div className='d-flex'>
-              <small className='ms-auto mt-3'>Didn't get code? <span className='text-primary'>Resend</span></small><br />
+              <small className='ms-auto mt-3' onClick={otpGenerate}>Didn't get code? <span className='text-primary'>Resend</span></small><br />
             </div>
               <p className='mb-0 text-danger'>{error}</p>
           </div>
