@@ -1,2 +1,2 @@
 ﻿# foodpoint
-# Basic food delivery website wehere many restaurants are registered with their products.
+# Basic food delivery website where many restaurants are registered with their products.
